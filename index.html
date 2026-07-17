@@ -120,7 +120,7 @@ footer a:hover{color:var(--text-dark)}
     <h1 data-i18n="hero.title">Vos réunions se transcrivent toutes seules.</h1>
     <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser.</p>
     <div class="cta-row">
-      <a class="btn btn-primary btn-lg" href="#waitlist" data-i18n="hero.cta">Rejoindre la liste d'attente</a>
+      <a class="btn btn-primary btn-lg" href="mailto:contact@inovya.tech" data-i18n="hero.cta">Nous contacter</a>
     </div>
     <p class="note" data-i18n="hero.note">Bientôt disponible sur macOS.</p>
     <div class="hl-row">
@@ -198,20 +198,6 @@ footer a:hover{color:var(--text-dark)}
   </div>
 </section>
 
-<section class="waitlist" id="waitlist">
-  <div class="wrap">
-    <div class="box">
-      <h2 data-i18n="wl.title">Soyez parmi les premiers</h2>
-      <p data-i18n="wl.sub">Laissez votre email pour être prévenu du lancement et accéder à la bêta.</p>
-      <form id="wl-form" action="https://formspree.io/f/FORM_ID" method="POST">
-        <input type="email" name="email" required data-i18n-ph="wl.ph" placeholder="votre@email.com" aria-label="Email">
-        <button class="btn btn-primary" type="submit" data-i18n="wl.btn">S'inscrire</button>
-      </form>
-      <p class="ok" id="wl-ok" data-i18n="wl.ok">Merci ! Vous êtes sur la liste.</p>
-      <p class="err" id="wl-err" data-i18n="wl.err">Une erreur est survenue. Réessayez ou écrivez-nous directement.</p>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer>
@@ -227,7 +213,7 @@ en: {
   "hero.pill":"Native macOS app",
   "hero.title":"Your meetings transcribe themselves.",
   "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take.",
-  "hero.cta":"Join the waitlist",
+  "hero.cta":"Contact us",
   "hero.note":"Coming soon on macOS.",
   "hero.hl1":"Custom actions",
   "hero.hl2":"Stop paying for tokens",
@@ -253,13 +239,7 @@ en: {
   "priv.b.t":"100% local AI",
   "priv.b.p":"With Ollama, llama.cpp or LM Studio, nothing leaves your Mac — not even for summaries.",
   "priv.c.t":"Stop paying for tokens",
-  "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs.",
-  "wl.title":"Be among the first",
-  "wl.sub":"Leave your email to hear about the launch and get beta access.",
-  "wl.ph":"your@email.com",
-  "wl.btn":"Sign up",
-  "wl.ok":"Thanks! You're on the list.",
-  "wl.err":"Something went wrong. Try again or email us directly."
+  "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs."
 }};
 
 const FR = {};
@@ -283,16 +263,6 @@ const saved = (()=>{ try{ return localStorage.getItem('voiceovya-lang'); }catch(
 setLang(saved || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'));
 
 document.getElementById('year').textContent = new Date().getFullYear();
-
-document.getElementById('wl-form').addEventListener('submit', async ev=>{
-  ev.preventDefault();
-  const f = ev.target;
-  try{
-    const r = await fetch(f.action, {method:'POST', body:new FormData(f), headers:{Accept:'application/json'}});
-    if(r.ok){ f.style.display='none'; document.getElementById('wl-ok').style.display='block'; document.getElementById('wl-err').style.display='none'; }
-    else throw 0;
-  }catch(e){ document.getElementById('wl-err').style.display='block'; }
-});
 </script>
 </body>
 </html>
