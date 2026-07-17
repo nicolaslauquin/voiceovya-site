@@ -48,6 +48,30 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .hl-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .hl{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:600;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
 .hl svg{width:15px;height:15px;stroke:var(--accent-deep);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.applogo{width:88px;height:88px;margin:0 auto 26px;filter:drop-shadow(0 14px 30px rgba(31,158,99,.4))}
+.applogo svg{width:100%;height:100%;display:block}
+
+/* ---- Hero app window (built from design-system components) ---- */
+.heroshot{max-width:940px;margin:52px auto 0}
+.winbig{text-align:left}
+.winbig .winbody{display:grid;grid-template-columns:212px 1fr}
+.winbig .side{background:rgba(244,248,246,.6);border-right:.5px solid rgba(0,0,0,.06);padding:12px 10px}
+.winbig .gh{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);padding:8px 8px 4px}
+.winbig .note{padding:9px 10px;border-radius:10px;margin-bottom:2px}
+.winbig .note.sel{background:#fff;box-shadow:var(--shadow-card)}
+.winbig .ntop{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.winbig .nt{font-size:13px;font-weight:600}
+.winbig .ntime{font-size:11px;color:var(--text-light)}
+.winbig .ncat{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text-medium);margin-top:4px}
+.winbig .ncat .dot{width:6px;height:6px;border-radius:50%}
+.winbig .main{padding:16px 20px}
+.winbig .mtitle{font-size:18px;font-weight:700;letter-spacing:-.015em}
+.winbig .mmeta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin:6px 0 14px}
+.winbig .chip2{display:inline-flex;align-items:center;gap:5px;background:rgba(0,0,0,.045);border-radius:20px;padding:3px 9px}
+.winbig .chip2 .dot{width:6px;height:6px;border-radius:50%}
+.winbig .summary{margin-top:14px;background:var(--accent-soft);border-radius:12px;padding:12px 14px}
+.winbig .slb{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-deep);margin-bottom:5px}
+.winbig .summary p{font-size:12.5px;color:var(--text-dark)}
 
 /* ---- Sections ---- */
 section{padding:72px 0}
@@ -56,7 +80,7 @@ section{padding:72px 0}
 .sec-head p{color:var(--text-medium);font-size:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .card{background:#fff;border-radius:14px;padding:22px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
-.card.hero-card{box-shadow:var(--shadow-card),inset 0 0 0 1.5px var(--accent);background:linear-gradient(180deg,#fff,var(--accent-soft))}
+#features .card{box-shadow:var(--shadow-card),inset 0 0 0 1.5px var(--accent);background:linear-gradient(180deg,#fff,var(--accent-soft))}
 .card .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .card .ic svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .card h3{font-size:15px;font-weight:600;margin-bottom:6px}
@@ -161,6 +185,8 @@ footer a:hover{color:var(--text-dark)}
 @media (max-width:760px){
   .story .wrap{grid-template-columns:1fr;gap:28px}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
+  .winbig .winbody{grid-template-columns:1fr}
+  .winbig .side{display:none}
 }
 @media (max-width:720px){
   .hero{padding:56px 0 40px}
@@ -185,6 +211,9 @@ footer a:hover{color:var(--text-dark)}
 <main>
 <div class="wrap">
   <div class="hero">
+    <div class="applogo">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#1f9e63"/><rect x="13" y="6" width="6" height="14" rx="3" fill="#fff"/><path d="M8 16a8 8 0 0 0 16 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="16" y1="24" x2="16" y2="27" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </div>
     <h1 data-i18n="hero.title">Vos réunions se transcrivent toutes seules.</h1>
     <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser. Interrogez vos notes et définissez vos propres actions automatiques — générer un devis, une relance — selon vos envies. Et plus à venir.</p>
     <p class="note" data-i18n="hero.note">Bientôt disponible pour macOS sur l'App Store.</p>
@@ -192,6 +221,36 @@ footer a:hover{color:var(--text-dark)}
       <span class="hl"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span data-i18n="hero.hl1">Actions personnalisées</span></span>
       <span class="hl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5c0-1.4 1.1-2.2 2.5-2.2s2.5.8 2.5 2c0 2.2-5 2.1-5 4.4 0 1.2 1.1 2 2.5 2s2.5-.8 2.5-2.2"/></svg><span data-i18n="hero.hl2">Ne payez plus vos tokens</span></span>
       <span class="hl"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="hero.hl3">Vie privée respectée</span></span>
+    </div>
+
+    <div class="heroshot">
+      <div class="device winbig">
+        <div class="bar">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <span class="title" data-i18n="hs.win">Point hebdo équipe</span>
+          <span class="livepill"><span class="dot"></span>14:30</span>
+        </div>
+        <div class="winbody">
+          <div class="side">
+            <div class="gh" data-i18n="hs.today">Aujourd'hui</div>
+            <div class="note sel"><div class="ntop"><span class="nt" data-i18n="hs.n1">Point hebdo équipe</span><span class="ntime">14:30</span></div><div class="ncat"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.c1">Produit</span></div></div>
+            <div class="note"><div class="ntop"><span class="nt" data-i18n="hs.n2">Design review</span><span class="ntime">11:00</span></div><div class="ncat"><span class="dot" style="background:#2a73e8"></span><span data-i18n="hs.c2">Design</span></div></div>
+            <div class="gh" data-i18n="hs.yest">Hier</div>
+            <div class="note"><div class="ntop"><span class="nt" data-i18n="hs.n3">1:1 Marc</span><span class="ntime">16:30</span></div><div class="ncat"><span class="dot" style="background:#a259d9"></span><span data-i18n="hs.c3">Perso</span></div></div>
+          </div>
+          <div class="main">
+            <div class="mtitle" data-i18n="hs.n1">Point hebdo équipe</div>
+            <div class="mmeta"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.c1">Produit</span></span><span>14:00 – 14:30</span><span>·</span><span data-i18n="hs.part">4 participants</span></div>
+            <div class="line"><span class="ts">00:12</span><span class="txt"><b>Marc :</b> <span data-i18n="hs.l1">On commence par le point sur la roadmap.</span></span></div>
+            <div class="line active"><span class="ts">00:19</span><span class="txt"><b>Nicolas :</b> <span data-i18n="hs.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
+            <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="hs.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
+            <div class="summary">
+              <div class="slb" data-i18n="hs.sumlb">Résumé IA</div>
+              <p data-i18n="hs.sum">3 décisions, 2 actions assignées. Prochain point vendredi — Camille prend le suivi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -203,7 +262,7 @@ footer a:hover{color:var(--text-dark)}
       <p data-i18n="feat.sub">De l'enregistrement au résumé partagé, sans quitter votre Mac.</p>
     </div>
     <div class="grid">
-      <div class="card hero-card">
+      <div class="card">
         <div class="ic g-purple"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
         <h3 data-i18n="feat.actions.t">Actions personnalisées</h3>
         <p data-i18n="feat.actions.p">Créez vos propres actions — compte-rendu, relance client, liste de tâches — et appliquez-les en un clic sur n'importe quelle note.</p>
@@ -391,6 +450,16 @@ en: {
   "hero.title":"Your meetings transcribe themselves.",
   "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take. Ask your notes anything and define your own automatic actions — generate a quote, a follow-up — however you like. And more to come.",
   "hero.note":"Coming soon for macOS on the App Store.",
+  "hs.win":"Weekly team sync",
+  "hs.today":"Today","hs.yest":"Yesterday",
+  "hs.n1":"Weekly team sync","hs.n2":"Design review","hs.n3":"1:1 with Marc",
+  "hs.c1":"Product","hs.c2":"Design","hs.c3":"Personal",
+  "hs.part":"4 participants",
+  "hs.l1":"Let's start with the roadmap update.",
+  "hs.l2":"Yes, three priorities to settle this quarter.",
+  "hs.l3":"The first one is about local transcription",
+  "hs.sumlb":"AI summary",
+  "hs.sum":"3 decisions, 2 assigned actions. Next check-in Friday — Camille takes the follow-up.",
   "hero.hl1":"Custom actions",
   "hero.hl2":"Stop paying for tokens",
   "hero.hl3":"Privacy respected",
