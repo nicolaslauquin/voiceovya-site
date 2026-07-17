@@ -76,15 +76,68 @@ section{padding:72px 0}
 .privacy .card h3{color:#fff}
 .privacy .card p{color:rgba(255,255,255,.6)}
 
-/* ---- Waitlist ---- */
-.waitlist .box{max-width:520px;margin:0 auto;background:#fff;border-radius:18px;padding:36px;box-shadow:var(--shadow-pop),inset 0 0 0 .5px rgba(0,0,0,.06);text-align:center}
-.waitlist h2{font-size:26px;margin-bottom:8px}
-.waitlist p{color:var(--text-medium);font-size:14px;margin-bottom:24px}
-.waitlist form{display:flex;gap:10px}
-.waitlist input{flex:1;border:0;font:inherit;font-size:14px;background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);border-radius:10px;padding:11px 14px;color:var(--text-dark)}
-.waitlist input:focus{outline:none;background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
-.waitlist .ok{display:none;background:var(--accent-soft);color:var(--accent-deep);border-radius:11px;padding:11px 14px;font-size:13px;font-weight:600}
-.waitlist .err{display:none;background:var(--error-light);color:var(--error);border-radius:11px;padding:11px 14px;font-size:13px;font-weight:600;margin-top:10px}
+/* ---- Story sections (illustrated, alternating) ---- */
+.story{padding:56px 0}
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.story .viz{order:1}
+.story .text{order:2}
+.story.rev .viz{order:2}
+.story.rev .text{order:1}
+.story .kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);margin-bottom:10px}
+.story .text h2{font-size:clamp(22px,3vw,30px);margin-bottom:12px}
+.story .text>p{color:var(--text-medium);font-size:15px;margin-bottom:18px}
+.story .feats{list-style:none;display:flex;flex-direction:column;gap:11px}
+.story .feats li{display:flex;gap:10px;font-size:14px;align-items:flex-start}
+.story .feats svg{width:18px;height:18px;flex:none;margin-top:2px;stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---- Device mockups (built from design-system components) ---- */
+.device{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -22px rgba(18,38,28,.3),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.device .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,.7);border-bottom:.5px solid rgba(0,0,0,.08)}
+.device .lights{display:flex;gap:8px;margin-right:4px}
+.device .lights span{width:11px;height:11px;border-radius:50%}
+.device .lights span:nth-child(1){background:#ff5f57}.device .lights span:nth-child(2){background:#febc2e}.device .lights span:nth-child(3){background:#28c840}
+.device .bar .title{font-size:13px;font-weight:600}
+.device .livepill{display:inline-flex;align-items:center;gap:6px;margin-left:auto;padding:4px 10px;border-radius:20px;background:rgba(229,72,77,.1);color:var(--error);font-size:12px;font-weight:600}
+.device .livepill .dot{width:7px;height:7px;border-radius:50%;background:var(--error);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.device .body{padding:12px}
+.device .line{display:flex;gap:12px;padding:8px 10px;border-radius:9px}
+.device .line.active{background:var(--accent-soft)}
+.device .line .ts{font-family:var(--mono);font-size:11px;color:var(--text-light);flex:none;min-width:42px;padding-top:2px}
+.device .line .txt{font-size:13px;line-height:1.5}
+.device .line b{font-weight:600}
+.device .cursor{display:inline-block;width:2px;height:14px;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.device .msg{max-width:80%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;margin-bottom:8px}
+.device .msg.me{margin-left:auto;background:var(--accent-soft);color:var(--accent-deep);border-bottom-right-radius:5px}
+.device .msg.ai{background:rgba(0,0,0,.045);border-bottom-left-radius:5px}
+.device .pcard{position:relative;background:#fff;border-radius:12px;padding:13px 15px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-top:4px}
+.device .pcard .pt{font-size:13.5px;font-weight:600}
+.device .pcard .pd{font-size:12px;color:var(--text-medium);margin-top:3px;line-height:1.45}
+.device .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.device .tag{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;background:rgba(0,0,0,.05);font-size:11px}
+.device .tag .dot{width:6px;height:6px;border-radius:50%}
+.device .tag.auto{background:var(--accent-soft);color:var(--accent-deep);font-weight:600}
+.device .trigger{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);padding:7px 11px;border-radius:10px;margin-top:10px}
+.device .trigger svg{width:13px;height:13px;stroke:var(--text-medium);stroke-width:2;fill:none}
+.device.plain{background:transparent;box-shadow:none;overflow:visible}
+.menubar{display:flex;align-items:center;gap:12px;background:rgba(29,37,34,.94);border-radius:11px;padding:8px 14px;color:rgba(255,255,255,.85);font-size:12.5px;margin-bottom:16px;box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+.menubar .mi{display:flex;align-items:center;gap:6px;font-weight:600;color:#fff}
+.menubar .mi svg{width:14px;height:14px;stroke:#fff;stroke-width:2;fill:none}
+.menubar .sp{flex:1}
+.menubar .dim{color:rgba(255,255,255,.55)}
+.notif{background:rgba(255,255,255,.94);backdrop-filter:blur(30px);border-radius:16px;padding:14px 16px;box-shadow:0 30px 70px -18px rgba(18,38,28,.45),inset 0 0 0 .5px rgba(0,0,0,.06)}
+.notif .nh{display:flex;align-items:center;gap:9px}
+.notif .nlogo{width:26px;height:26px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center}
+.notif .nlogo svg{width:15px;height:15px;stroke:#fff;stroke-width:2.5;fill:none}
+.notif .napp{font-size:12px;font-weight:600}
+.notif .now{margin-left:auto;font-size:11px;color:var(--text-light)}
+.notif .nt{font-size:13.5px;font-weight:600;margin:8px 0 2px}
+.notif .nd{font-size:12px;color:var(--text-medium);margin-bottom:12px}
+.notif .nbtns{display:flex;gap:8px}
+.notif .nbtns button{flex:1;font:inherit;font-size:12.5px;font-weight:600;border:0;border-radius:9px;padding:8px;cursor:default}
+.notif .nbtns .pri{color:#fff;background:linear-gradient(180deg,var(--accent),var(--accent-deep))}
+.notif .nbtns .sec{background:rgba(0,0,0,.06);color:var(--text-dark)}
 
 /* ---- Footer ---- */
 footer{border-top:.5px solid rgba(0,0,0,.06);padding:28px 0;font-size:12px;color:var(--text-medium)}
@@ -92,8 +145,11 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 footer a{color:var(--text-medium);text-decoration:none}
 footer a:hover{color:var(--text-dark)}
 
+@media (max-width:760px){
+  .story .wrap{grid-template-columns:1fr;gap:28px}
+  .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
+}
 @media (max-width:720px){
-  .waitlist form{flex-direction:column}
   .hero{padding:56px 0 40px}
 }
 </style>
@@ -171,6 +227,106 @@ footer a:hover{color:var(--text-dark)}
   </div>
 </section>
 
+<section class="story" id="live">
+  <div class="wrap">
+    <div class="viz">
+      <div class="device">
+        <div class="bar">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <span class="title" data-i18n="s1.win">Point hebdo équipe</span>
+          <span class="livepill"><span class="dot"></span>12:04</span>
+        </div>
+        <div class="body">
+          <div class="line"><span class="ts">00:12</span><span class="txt"><b>Marc :</b> <span data-i18n="s1.l1">On commence par le point sur la roadmap.</span></span></div>
+          <div class="line active"><span class="ts">00:19</span><span class="txt"><b>Nicolas :</b> <span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
+          <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="text">
+      <span class="kicker" data-i18n="s1.k">En direct</span>
+      <h2 data-i18n="s1.t">Chaque mot capté, à l'instant où il est dit</h2>
+      <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion, avec horodatage et locuteurs. Une fenêtre miniature flottante reste dans un coin de l'écran pour garder un œil sans quitter votre travail.</p>
+      <ul class="feats">
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f1">Micro et audio système captés ensemble</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f2">Mode miniature flottant, toujours visible</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f3">Horodatage et séparation des intervenants</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="story rev" id="assistant">
+  <div class="wrap">
+    <div class="viz">
+      <div class="device">
+        <div class="body">
+          <div class="msg me" data-i18n="s2.q">Quelles décisions ont été prises ?</div>
+          <div class="msg ai" data-i18n="s2.a">Trois décisions : prioriser la transcription locale, reporter l'export PDF, et confier le suivi à Camille.</div>
+          <div class="pcard">
+            <div class="pt" data-i18n="s2.pt">Extraire les actions</div>
+            <div class="pd" data-i18n="s2.pd">Liste les tâches, responsables et échéances mentionnés dans la réunion.</div>
+            <div class="tags">
+              <span class="tag auto" data-i18n="s2.auto">Auto</span>
+              <span class="tag"><span class="dot" style="background:#1f9e63"></span>Produit</span>
+              <span class="tag"><span class="dot" style="background:#2a73e8"></span>Design</span>
+            </div>
+          </div>
+          <div class="trigger">Claude<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="text">
+      <span class="kicker" data-i18n="s2.k">Assistant</span>
+      <h2 data-i18n="s2.t">Discutez avec vos réunions, agissez en un clic</h2>
+      <p data-i18n="s2.p">Posez vos questions au chat, ou lancez une action personnalisée pour transformer la note en compte-rendu, relance ou liste de tâches. Choisissez le moteur : Claude, ChatGPT ou un modèle local.</p>
+      <ul class="feats">
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f1">Actions personnalisées réutilisables, exécutées en un clic</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f2">Prompts déclenchés automatiquement selon la catégorie</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f3">Claude, ChatGPT ou modèle local, au choix</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="calendar">
+  <div class="wrap">
+    <div class="viz">
+      <div class="device plain">
+        <div class="menubar">
+          <span class="mi"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg>VoiceOvya</span>
+          <span class="dim" data-i18n="s3.next">Sync Design · 14:00</span>
+          <span class="sp"></span>
+          <span class="dim">14:32</span>
+        </div>
+        <div class="notif">
+          <div class="nh">
+            <span class="nlogo"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>
+            <span class="napp">VoiceOvya</span>
+            <span class="now" data-i18n="s3.now">maintenant</span>
+          </div>
+          <div class="nt" data-i18n="s3.nt">« Sync Design » commence</div>
+          <div class="nd" data-i18n="s3.nd">14:00 – 14:30 · 4 participants</div>
+          <div class="nbtns">
+            <button class="pri" data-i18n="s3.b1">Rejoindre &amp; enregistrer</button>
+            <button class="sec" data-i18n="s3.b2">Plus tard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text">
+      <span class="kicker" data-i18n="s3.k">Agenda</span>
+      <h2 data-i18n="s3.t">Au bon moment, sans y penser</h2>
+      <p data-i18n="s3.p">VoiceOvya lit votre agenda et propose d'enregistrer pile quand la réunion démarre — depuis une notification ou la barre de menus. Chaque note reste reliée à son évènement.</p>
+      <ul class="feats">
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f1">Notification à l'ouverture de chaque réunion</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f2">Contrôle rapide depuis la barre de menus</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f3">Note automatiquement liée à l'évènement</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="privacy">
   <div class="wrap">
     <div class="sec-head">
@@ -192,6 +348,11 @@ footer a:hover{color:var(--text-dark)}
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5c0-1.4 1.1-2.2 2.5-2.2s2.5.8 2.5 2c0 2.2-5 2.1-5 4.4 0 1.2 1.1 2 2.5 2s2.5-.8 2.5-2.2"/></svg></div>
         <h3 data-i18n="priv.c.t">Ne payez plus vos tokens</h3>
         <p data-i18n="priv.c.p">Pas d'abonnement : un modèle local gratuit, ou vos propres clés API. Vous gardez la main sur vos coûts.</p>
+      </div>
+      <div class="card">
+        <div class="ic g-accent"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
+        <h3 data-i18n="priv.d.t">Exportable à tout moment</h3>
+        <p data-i18n="priv.d.p">Transcription et résumé en Markdown ou texte, quand vous voulez. Vos données vous suivent, sans verrouillage.</p>
       </div>
     </div>
   </div>
@@ -237,7 +398,42 @@ en: {
   "priv.b.t":"100% local AI",
   "priv.b.p":"With Ollama, llama.cpp or LM Studio, nothing leaves your Mac — not even for summaries.",
   "priv.c.t":"Stop paying for tokens",
-  "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs."
+  "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs.",
+  "priv.d.t":"Exportable anytime",
+  "priv.d.p":"Transcript and summary in Markdown or plain text, whenever you want. Your data goes with you, no lock-in.",
+  "s1.win":"Weekly team sync",
+  "s1.l1":"Let's start with the roadmap update.",
+  "s1.l2":"Yes, three priorities to settle this quarter.",
+  "s1.l3":"The first one is about local transcription",
+  "s1.k":"Live",
+  "s1.t":"Every word captured, the moment it's said",
+  "s1.p":"The transcript scrolls in real time during the meeting, with timestamps and speakers. A floating miniature window stays in a corner so you can keep an eye on it without leaving your work.",
+  "s1.f1":"Mic and system audio captured together",
+  "s1.f2":"Floating miniature mode, always visible",
+  "s1.f3":"Timestamps and speaker separation",
+  "s2.q":"What decisions were made?",
+  "s2.a":"Three decisions: prioritize local transcription, postpone the PDF export, and hand the follow-up to Camille.",
+  "s2.pt":"Extract action items",
+  "s2.pd":"Lists the tasks, owners and deadlines mentioned in the meeting.",
+  "s2.auto":"Auto",
+  "s2.k":"Assistant",
+  "s2.t":"Chat with your meetings, act in one click",
+  "s2.p":"Ask the chat your questions, or run a custom action to turn the note into minutes, a follow-up or a task list. Pick the engine: Claude, ChatGPT or a local model.",
+  "s2.f1":"Reusable custom actions, run in one click",
+  "s2.f2":"Prompts triggered automatically by category",
+  "s2.f3":"Claude, ChatGPT or a local model, your choice",
+  "s3.next":"Design sync · 14:00",
+  "s3.now":"now",
+  "s3.nt":"“Design sync” is starting",
+  "s3.nd":"14:00 – 14:30 · 4 participants",
+  "s3.b1":"Join &amp; record",
+  "s3.b2":"Later",
+  "s3.k":"Calendar",
+  "s3.t":"At the right moment, without thinking about it",
+  "s3.p":"VoiceOvya reads your calendar and offers to record right when the meeting starts — from a notification or the menu bar. Every note stays linked to its event.",
+  "s3.f1":"Notification when each meeting opens",
+  "s3.f2":"Quick control from the menu bar",
+  "s3.f3":"Note automatically linked to the event"
 }};
 
 const FR = {};
