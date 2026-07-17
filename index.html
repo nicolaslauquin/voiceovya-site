@@ -76,6 +76,19 @@ section{padding:72px 0}
 .privacy .card h3{color:#fff}
 .privacy .card p{color:rgba(255,255,255,.6)}
 
+/* ---- Per-section backgrounds (visual rhythm) ---- */
+#features{background:#fff}
+#live{background:var(--accent-soft)}
+#assistant{background:#f1eefb}
+#calendar{background:#e9f1fc}
+
+/* ---- Contact band ---- */
+.contact{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;text-align:center;padding:76px 0}
+.contact h2{font-size:clamp(24px,3.4vw,32px);margin-bottom:10px}
+.contact p{color:rgba(255,255,255,.88);font-size:16px;margin-bottom:26px}
+.contact .btn{background:#fff;color:var(--accent-deep);box-shadow:0 10px 28px -8px rgba(0,0,0,.35)}
+.contact .btn:hover{filter:none;transform:translateY(-1px)}
+
 /* ---- Story sections (illustrated, alternating) ---- */
 .story{padding:56px 0}
 .story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
@@ -174,9 +187,6 @@ footer a:hover{color:var(--text-dark)}
   <div class="hero">
     <h1 data-i18n="hero.title">Vos réunions se transcrivent toutes seules.</h1>
     <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary btn-lg" href="mailto:contact@inovya.tech" data-i18n="hero.cta">Nous contacter</a>
-    </div>
     <p class="note" data-i18n="hero.note">Bientôt disponible pour macOS sur l'App Store.</p>
     <div class="hl-row">
       <span class="hl"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span data-i18n="hero.hl1">Actions personnalisées</span></span>
@@ -358,6 +368,14 @@ footer a:hover{color:var(--text-dark)}
   </div>
 </section>
 
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 data-i18n="ct.t">On papote ?</h2>
+    <p data-i18n="ct.p">Une question, une idée, une envie de tester en avant-première ? Écrivez-nous, on répond vite.</p>
+    <a class="btn btn-lg" href="mailto:contact@inovya.tech" data-i18n="ct.cta">Dites-nous bonjour</a>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -372,7 +390,6 @@ const I18N = {
 en: {
   "hero.title":"Your meetings transcribe themselves.",
   "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take.",
-  "hero.cta":"Contact us",
   "hero.note":"Coming soon for macOS on the App Store.",
   "hero.hl1":"Custom actions",
   "hero.hl2":"Stop paying for tokens",
@@ -433,7 +450,10 @@ en: {
   "s3.p":"VoiceOvya reads your calendar and offers to record right when the meeting starts — from a notification or the menu bar. Every note stays linked to its event.",
   "s3.f1":"Notification when each meeting opens",
   "s3.f2":"Quick control from the menu bar",
-  "s3.f3":"Note automatically linked to the event"
+  "s3.f3":"Note automatically linked to the event",
+  "ct.t":"Let's chat",
+  "ct.p":"A question, an idea, want to try it early? Drop us a line, we reply fast.",
+  "ct.cta":"Say hello"
 }};
 
 const FR = {};
