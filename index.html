@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VoiceOvya — Vos réunions se transcrivent toutes seules</title>
 <meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac, avec les actions à réaliser. Actions personnalisées, modèles locaux, respect de votre vie privée.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f9e63'/%3E%3Crect x='13' y='6' width='6' height='14' rx='3' fill='%23fff'/%3E%3Cpath d='M8 16a8 8 0 0 0 16 0' stroke='%23fff' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cline x1='16' y1='24' x2='16' y2='27' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/appicon-sm.png">
 <style>
 :root{
   --accent:#1f9e63; --accent-deep:#157a4b; --accent-soft:#e7f4ec;
@@ -28,7 +28,7 @@ a{color:var(--accent-deep)}
 header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdrop-filter:blur(28px) saturate(1.6);border-bottom:.5px solid rgba(0,0,0,.06)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text-dark);text-decoration:none}
-.brand svg{width:28px;height:28px;border-radius:7px}
+.brand img{width:28px;height:28px;border-radius:7px}
 .lang{display:flex;background:rgba(0,0,0,.06);border-radius:9px;padding:2px;gap:2px}
 .lang button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:600;color:var(--text-medium);padding:4px 10px;border-radius:7px;cursor:pointer}
 .lang button.on{background:#fff;color:var(--text-dark);box-shadow:0 1px 2px rgba(0,0,0,.12)}
@@ -100,11 +100,28 @@ section{padding:72px 0}
 .privacy .card h3{color:#fff}
 .privacy .card p{color:rgba(255,255,255,.6)}
 
-/* ---- Per-section backgrounds (visual rhythm) ---- */
+/* ---- Per-section backgrounds (white / soft green rhythm) ---- */
 #features{background:#fff}
 #live{background:var(--accent-soft)}
-#assistant{background:#f1eefb}
-#calendar{background:#e9f1fc}
+#assistant{background:#fff}
+#calendar{background:var(--accent-soft)}
+#models{background:#fff}
+
+/* ---- Models section ---- */
+.models{text-align:center}
+.models .sec-head{margin-bottom:30px}
+.models .kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);margin-bottom:10px}
+.models-card{max-width:380px;margin:0 auto;text-align:left;background:#fff;border-radius:16px;padding:10px;box-shadow:0 20px 50px -18px rgba(18,38,28,.22),inset 0 0 0 .5px rgba(0,0,0,.07)}
+.mopt{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:11px;font-size:14px;font-weight:500}
+.mopt+.mopt{margin-top:2px}
+.mopt.sel{background:var(--accent-soft)}
+.mopt .check{width:16px;height:16px;flex:none;stroke:var(--accent);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.mopt.sel .check{opacity:1}
+.mopt .mn{flex:1}
+.mopt .mb{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;flex:none}
+.mopt .mb.local{background:var(--accent-soft);color:var(--accent-deep)}
+.mopt.sel .mb.local{background:#fff}
+.mopt .mb.online{background:rgba(0,0,0,.06);color:var(--text-medium)}
 
 /* ---- Contact band ---- */
 .contact{background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:#fff;text-align:center;padding:76px 0}
@@ -198,7 +215,7 @@ footer a:hover{color:var(--text-dark)}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#">
-      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#1f9e63"/><rect x="13" y="6" width="6" height="14" rx="3" fill="#fff"/><path d="M8 16a8 8 0 0 0 16 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="16" y1="24" x2="16" y2="27" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <img src="assets/appicon-sm.png" alt="" width="28" height="28">
       VoiceOvya
     </a>
     <div class="lang" role="group" aria-label="Language">
@@ -212,7 +229,7 @@ footer a:hover{color:var(--text-dark)}
 <div class="wrap">
   <div class="hero">
     <div class="applogo">
-      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#1f9e63"/><rect x="13" y="6" width="6" height="14" rx="3" fill="#fff"/><path d="M8 16a8 8 0 0 0 16 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="16" y1="24" x2="16" y2="27" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <img src="assets/appicon.png" alt="VoiceOvya" width="88" height="88">
     </div>
     <h1 data-i18n="hero.title">Vos réunions se transcrivent toutes seules.</h1>
     <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser. Interrogez vos notes et définissez vos propres actions automatiques — générer un devis, une relance — selon vos envies. Et plus à venir.</p>
@@ -396,6 +413,23 @@ footer a:hover{color:var(--text-dark)}
   </div>
 </section>
 
+<section class="models" id="models">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="mo.k">Votre modèle, votre choix</span>
+      <h2 data-i18n="mo.t">Apple Intelligence, ou le modèle que vous voulez</h2>
+      <p data-i18n="mo.p">Utilisez Apple Intelligence, intégré à macOS, ou branchez votre propre modèle — gemma-4, qwen3… Aucun problème : c'est vous qui choisissez votre modèle.</p>
+    </div>
+    <div class="models-card">
+      <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Apple Intelligence</span><span class="mb local" data-i18n="mo.builtin">Intégré macOS</span></div>
+      <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Ollama · gemma-4</span><span class="mb local" data-i18n="mo.local">Local</span></div>
+      <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">LM Studio · qwen3</span><span class="mb local" data-i18n="mo.local">Local</span></div>
+      <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Claude</span><span class="mb online" data-i18n="mo.online">En ligne</span></div>
+      <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">ChatGPT</span><span class="mb online" data-i18n="mo.online">En ligne</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="privacy">
   <div class="wrap">
     <div class="sec-head">
@@ -520,6 +554,12 @@ en: {
   "s3.f1":"Notification when each meeting opens",
   "s3.f2":"Quick control from the menu bar",
   "s3.f3":"Note automatically linked to the event",
+  "mo.k":"Your model, your choice",
+  "mo.t":"Apple Intelligence, or whatever model you want",
+  "mo.p":"Use Apple Intelligence, built into macOS, or plug in your own model — gemma-4, qwen3… No problem: you choose your model.",
+  "mo.builtin":"Built into macOS",
+  "mo.local":"Local",
+  "mo.online":"Online",
   "ct.t":"Let's chat",
   "ct.p":"A question, an idea, want to try it early? Drop us a line!",
   "ct.cta":"Say hello"
