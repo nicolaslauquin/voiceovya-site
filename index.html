@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VoiceOvya — Vos réunions se transcrivent toutes seules</title>
-<meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac. Assistants IA, modèles locaux, prompts personnalisés, contexte calendrier.">
+<meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac, avec les actions à réaliser. Actions personnalisées, modèles locaux, respect de votre vie privée.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f9e63'/%3E%3Crect x='13' y='6' width='6' height='14' rx='3' fill='%23fff'/%3E%3Cpath d='M8 16a8 8 0 0 0 16 0' stroke='%23fff' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cline x1='16' y1='24' x2='16' y2='27' stroke='%23fff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -14,7 +14,6 @@
   --error:#e5484d; --error-light:#fdecec;
   --shadow-card:0 1px 3px rgba(0,0,0,.05);
   --shadow-pop:0 12px 34px -8px rgba(18,38,28,.34);
-  --shadow-window:0 30px 70px -18px rgba(18,38,28,.28);
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,monospace;
 }
@@ -30,7 +29,6 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text-dark);text-decoration:none}
 .brand svg{width:28px;height:28px;border-radius:7px}
-.nav-right{display:flex;align-items:center;gap:14px}
 .lang{display:flex;background:rgba(0,0,0,.06);border-radius:9px;padding:2px;gap:2px}
 .lang button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:600;color:var(--text-medium);padding:4px 10px;border-radius:7px;cursor:pointer}
 .lang button.on{background:#fff;color:var(--text-dark);box-shadow:0 1px 2px rgba(0,0,0,.12)}
@@ -40,42 +38,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .btn-lg{font-size:15px;padding:12px 24px;border-radius:13px}
 
 /* ---- Hero ---- */
-.hero{padding:84px 0 60px;text-align:center}
+.hero{padding:96px 0 72px;text-align:center}
 .pill{display:inline-flex;align-items:center;gap:7px;background:var(--accent-soft);color:var(--accent-deep);font-size:12px;font-weight:600;border-radius:20px;padding:5px 14px;margin-bottom:22px}
 .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .hero h1{font-size:clamp(32px,5.4vw,52px);line-height:1.12;max-width:760px;margin:0 auto 18px}
-.hero p.sub{font-size:18px;color:var(--text-medium);max-width:620px;margin:0 auto 32px}
+.hero p.sub{font-size:18px;color:var(--text-medium);max-width:640px;margin:0 auto 32px}
 .hero .cta-row{display:flex;gap:12px;justify-content:center;align-items:center;margin-bottom:14px}
-.hero .note{font-size:12px;color:var(--text-light)}
-
-/* ---- App window illustration ---- */
-.window{max-width:920px;margin:56px auto 0;background:var(--bg-white);border-radius:18px;box-shadow:var(--shadow-window),inset 0 0 0 .5px rgba(0,0,0,.08);overflow:hidden;text-align:left}
-.titlebar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:.5px solid rgba(0,0,0,.07);background:rgba(255,255,255,.6);backdrop-filter:blur(28px)}
-.traffic{display:flex;gap:7px}
-.traffic i{width:12px;height:12px;border-radius:50%;display:block}
-.traffic i:nth-child(1){background:#ff5f57}.traffic i:nth-child(2){background:#febc2e}.traffic i:nth-child(3){background:#28c840}
-.titlebar .t{font-size:13px;font-weight:600;margin-left:8px}
-.live{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:12px;font-weight:600;color:var(--error)}
-.live .dot{width:8px;height:8px;border-radius:50%;background:var(--error);animation:pulse 1.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.win-body{display:grid;grid-template-columns:200px 1fr;min-height:340px}
-.win-side{background:rgba(244,248,246,.6);border-right:.5px solid rgba(0,0,0,.06);padding:14px 10px;font-size:12.5px}
-.win-side .grp{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);padding:6px 10px}
-.win-side .it{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:9px;color:var(--text-dark)}
-.win-side .it.on{background:#fff;font-weight:600;box-shadow:var(--shadow-card)}
-.win-side .sw{width:8px;height:8px;border-radius:50%;flex:none}
-.win-main{padding:20px 24px}
-.win-main .nt{font-size:20px;font-weight:700;letter-spacing:-.015em;margin-bottom:4px}
-.win-main .meta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin-bottom:16px}
-.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.045);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500}
-.chip .sw{width:7px;height:7px;border-radius:50%}
-.tr{display:flex;gap:12px;padding:7px 10px;border-radius:9px;font-size:13px}
-.tr.on{background:var(--accent-soft)}
-.tr .ts{font-family:var(--mono);font-size:11px;color:var(--text-light);min-width:44px;padding-top:2px}
-.tr b{font-weight:600}
-.win-main .sum{margin-top:16px;background:#fff;border-radius:14px;padding:14px 16px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
-.win-main .sum .lb{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);margin-bottom:6px}
-.win-main .sum p{font-size:12.5px;color:var(--text-medium)}
+.hero .note{font-size:12px;color:var(--text-light);margin-bottom:36px}
+.hl-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hl{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:600;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
+.hl svg{width:15px;height:15px;stroke:var(--accent-deep);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
 /* ---- Sections ---- */
 section{padding:72px 0}
@@ -84,6 +56,7 @@ section{padding:72px 0}
 .sec-head p{color:var(--text-medium);font-size:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .card{background:#fff;border-radius:14px;padding:22px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
+.card.hero-card{box-shadow:var(--shadow-card),inset 0 0 0 1.5px var(--accent);background:linear-gradient(180deg,#fff,var(--accent-soft))}
 .card .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .card .ic svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .card h3{font-size:15px;font-weight:600;margin-bottom:6px}
@@ -120,8 +93,6 @@ footer a{color:var(--text-medium);text-decoration:none}
 footer a:hover{color:var(--text-dark)}
 
 @media (max-width:720px){
-  .win-body{grid-template-columns:1fr}
-  .win-side{display:none}
   .waitlist form{flex-direction:column}
   .hero{padding:56px 0 40px}
 }
@@ -135,12 +106,9 @@ footer a:hover{color:var(--text-dark)}
       <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#1f9e63"/><rect x="13" y="6" width="6" height="14" rx="3" fill="#fff"/><path d="M8 16a8 8 0 0 0 16 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="16" y1="24" x2="16" y2="27" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
       VoiceOvya
     </a>
-    <div class="nav-right">
-      <div class="lang" role="group" aria-label="Language">
-        <button id="lang-fr" onclick="setLang('fr')">FR</button>
-        <button id="lang-en" onclick="setLang('en')">EN</button>
-      </div>
-      <a class="btn btn-primary" href="#waitlist" data-i18n="nav.cta">Rejoindre la liste d'attente</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-fr">FR</button>
+      <button type="button" id="lang-en">EN</button>
     </div>
   </div>
 </header>
@@ -150,42 +118,15 @@ footer a:hover{color:var(--text-dark)}
   <div class="hero">
     <span class="pill"><span class="dot"></span><span data-i18n="hero.pill">App macOS native</span></span>
     <h1 data-i18n="hero.title">Vos réunions se transcrivent toutes seules.</h1>
-    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables — le tout sur votre Mac, avec l'IA de votre choix.</p>
+    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser.</p>
     <div class="cta-row">
       <a class="btn btn-primary btn-lg" href="#waitlist" data-i18n="hero.cta">Rejoindre la liste d'attente</a>
     </div>
     <p class="note" data-i18n="hero.note">Bientôt disponible sur macOS.</p>
-
-    <div class="window" aria-hidden="true">
-      <div class="titlebar">
-        <span class="traffic"><i></i><i></i><i></i></span>
-        <span class="t">VoiceOvya</span>
-        <span class="live"><span class="dot"></span><span data-i18n="win.live">Enregistrement</span>&nbsp;· 14:32</span>
-      </div>
-      <div class="win-body">
-        <div class="win-side">
-          <div class="grp" data-i18n="win.today">Aujourd'hui</div>
-          <div class="it on"><span class="sw" style="background:#2a73e8"></span><span data-i18n="win.n1">Sync Design</span></div>
-          <div class="it"><span class="sw" style="background:#d98a1f"></span><span data-i18n="win.n2">Atelier roadmap</span></div>
-          <div class="grp" data-i18n="win.yesterday">Hier</div>
-          <div class="it"><span class="sw" style="background:#a259d9"></span><span data-i18n="win.n3">Point client</span></div>
-          <div class="it"><span class="sw" style="background:#1f9e63"></span><span data-i18n="win.n4">Rétro sprint 12</span></div>
-        </div>
-        <div class="win-main">
-          <div class="nt" data-i18n="win.n1">Sync Design</div>
-          <div class="meta">
-            <span class="chip"><span class="sw" style="background:#2a73e8"></span>Design</span>
-            <span>14:00 – 14:30</span><span>·</span><span data-i18n="win.participants">4 participants</span>
-          </div>
-          <div class="tr"><span class="ts">00:12</span><p><b>Camille</b> — <span data-i18n="win.t1">On découple le streaming du résumé validé pendant l'appel.</span></p></div>
-          <div class="tr on"><span class="ts">01:05</span><p><b>Marc</b> — <span data-i18n="win.t2">Je m'occupe de la déduplication des captures côté calendrier.</span></p></div>
-          <div class="tr"><span class="ts">01:48</span><p><b>Léa</b> — <span data-i18n="win.t3">On vérifie la mémoire pendant la phase de résumé.</span></p></div>
-          <div class="sum">
-            <div class="lb" data-i18n="win.sumlb">Résumé IA</div>
-            <p data-i18n="win.sum">3 décisions, 2 actions assignées. Prochain point vendredi — Camille prend le suivi EventKit, Marc la déduplication.</p>
-          </div>
-        </div>
-      </div>
+    <div class="hl-row">
+      <span class="hl"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg><span data-i18n="hero.hl1">Actions personnalisées</span></span>
+      <span class="hl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5c0-1.4 1.1-2.2 2.5-2.2s2.5.8 2.5 2c0 2.2-5 2.1-5 4.4 0 1.2 1.1 2 2.5 2s2.5-.8 2.5-2.2"/></svg><span data-i18n="hero.hl2">Ne payez plus vos tokens</span></span>
+      <span class="hl"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="hero.hl3">Vie privée respectée</span></span>
     </div>
   </div>
 </div>
@@ -197,6 +138,11 @@ footer a:hover{color:var(--text-dark)}
       <p data-i18n="feat.sub">De l'enregistrement au résumé partagé, sans quitter votre Mac.</p>
     </div>
     <div class="grid">
+      <div class="card hero-card">
+        <div class="ic g-purple"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <h3 data-i18n="feat.actions.t">Actions personnalisées</h3>
+        <p data-i18n="feat.actions.p">Créez vos propres actions — compte-rendu, relance client, liste de tâches — et appliquez-les en un clic sur n'importe quelle note.</p>
+      </div>
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <h3 data-i18n="feat.rec.t">Enregistrement &amp; transcription en direct</h3>
@@ -211,11 +157,6 @@ footer a:hover{color:var(--text-dark)}
         <div class="ic g-slate"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg></div>
         <h3 data-i18n="feat.local.t">Modèles locaux</h3>
         <p data-i18n="feat.local.p">Branchez Ollama, llama.cpp ou LM Studio et faites tourner l'IA entièrement sur votre machine.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-purple"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/><circle cx="19" cy="19" r="2.5"/></svg></div>
-        <h3 data-i18n="feat.prompts.t">Prompts personnalisés</h3>
-        <p data-i18n="feat.prompts.p">Créez vos propres prompts — compte-rendu, relance client, to-do — et appliquez-les en un clic.</p>
       </div>
       <div class="card">
         <div class="ic g-blue"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
@@ -235,7 +176,7 @@ footer a:hover{color:var(--text-dark)}
   <div class="wrap">
     <div class="sec-head">
       <h2 data-i18n="priv.title">Vos données, votre pouvoir</h2>
-      <p data-i18n="priv.sub">VoiceOvya est une app native macOS, pensée pour garder vos conversations chez vous.</p>
+      <p data-i18n="priv.sub">VoiceOvya est une app native macOS, pensée pour garder vos conversations chez vous — et vos coûts sous contrôle.</p>
     </div>
     <div class="grid">
       <div class="card">
@@ -244,14 +185,14 @@ footer a:hover{color:var(--text-dark)}
         <p data-i18n="priv.a.p">Audio, transcriptions et notes restent sur votre machine. Pas de compte, pas de cloud imposé.</p>
       </div>
       <div class="card">
-        <div class="ic g-accent"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3 data-i18n="priv.b.t">Clés API sécurisées</h3>
-        <p data-i18n="priv.b.p">Vos clés Claude ou ChatGPT sont stockées dans le trousseau sécurisé de macOS, jamais en clair.</p>
+        <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
+        <h3 data-i18n="priv.b.t">IA 100 % locale</h3>
+        <p data-i18n="priv.b.p">Avec Ollama, llama.cpp ou LM Studio, rien ne quitte votre Mac — même pas pour les résumés.</p>
       </div>
       <div class="card">
-        <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h3 data-i18n="priv.c.t">IA 100 % locale possible</h3>
-        <p data-i18n="priv.c.p">Avec Ollama, llama.cpp ou LM Studio, rien ne quitte votre Mac — même pas pour les résumés.</p>
+        <div class="ic g-accent"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5c0-1.4 1.1-2.2 2.5-2.2s2.5.8 2.5 2c0 2.2-5 2.1-5 4.4 0 1.2 1.1 2 2.5 2s2.5-.8 2.5-2.2"/></svg></div>
+        <h3 data-i18n="priv.c.t">Ne payez plus vos tokens</h3>
+        <p data-i18n="priv.c.p">Pas d'abonnement : un modèle local gratuit, ou vos propres clés API. Vous gardez la main sur vos coûts.</p>
       </div>
     </div>
   </div>
@@ -283,43 +224,36 @@ footer a:hover{color:var(--text-dark)}
 <script>
 const I18N = {
 en: {
-  "nav.cta":"Join the waitlist",
   "hero.pill":"Native macOS app",
   "hero.title":"Your meetings transcribe themselves.",
-  "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries — all on your Mac, with the AI of your choice.",
+  "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take.",
   "hero.cta":"Join the waitlist",
   "hero.note":"Coming soon on macOS.",
-  "win.live":"Recording",
-  "win.today":"Today","win.yesterday":"Yesterday",
-  "win.n1":"Design sync","win.n2":"Roadmap workshop","win.n3":"Client check-in","win.n4":"Sprint 12 retro",
-  "win.participants":"4 participants",
-  "win.t1":"We decouple streaming from the validated summary during the call.",
-  "win.t2":"I'll handle capture deduplication on the calendar side.",
-  "win.t3":"We check memory usage during the summary phase.",
-  "win.sumlb":"AI summary",
-  "win.sum":"3 decisions, 2 assigned actions. Next check-in Friday — Camille takes EventKit follow-up, Marc the deduplication.",
+  "hero.hl1":"Custom actions",
+  "hero.hl2":"Stop paying for tokens",
+  "hero.hl3":"Privacy respected",
   "feat.title":"Your whole meeting cycle, in one app",
   "feat.sub":"From recording to shared summary, without leaving your Mac.",
+  "feat.actions.t":"Custom actions",
+  "feat.actions.p":"Build your own actions — minutes, client follow-up, task list — and apply them to any note in one click.",
   "feat.rec.t":"Live recording &amp; transcription",
   "feat.rec.p":"Capture mic and system audio, follow the transcript in real time, with timestamps and speakers.",
   "feat.ai.t":"AI summaries &amp; assistants",
   "feat.ai.p":"Automatic summaries, extracted decisions and actions. Chat with your notes through Claude or ChatGPT.",
   "feat.local.t":"Local models",
   "feat.local.p":"Plug in Ollama, llama.cpp or LM Studio and run AI entirely on your machine.",
-  "feat.prompts.t":"Custom prompts",
-  "feat.prompts.p":"Build your own prompts — minutes, client follow-up, to-dos — and apply them in one click.",
   "feat.cal.t":"Connected to your calendar",
   "feat.cal.p":"VoiceOvya detects your meetings, offers to record at the right moment and links every note to its event.",
   "feat.lib.t":"An organized library",
   "feat.lib.p":"Notes sorted by category and participants, instant search, personal notes next to the transcript.",
   "priv.title":"Your data, your power",
-  "priv.sub":"VoiceOvya is a native macOS app, built to keep your conversations at home.",
+  "priv.sub":"VoiceOvya is a native macOS app, built to keep your conversations at home — and your costs under control.",
   "priv.a.t":"Stored on your Mac",
   "priv.a.p":"Audio, transcripts and notes stay on your machine. No account, no forced cloud.",
-  "priv.b.t":"Secure API keys",
-  "priv.b.p":"Your Claude or ChatGPT keys live in the macOS secure keychain, never in plain text.",
-  "priv.c.t":"Fully local AI, if you want",
-  "priv.c.p":"With Ollama, llama.cpp or LM Studio, nothing leaves your Mac — not even for summaries.",
+  "priv.b.t":"100% local AI",
+  "priv.b.p":"With Ollama, llama.cpp or LM Studio, nothing leaves your Mac — not even for summaries.",
+  "priv.c.t":"Stop paying for tokens",
+  "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs.",
   "wl.title":"Be among the first",
   "wl.sub":"Leave your email to hear about the launch and get beta access.",
   "wl.ph":"your@email.com",
@@ -342,6 +276,9 @@ function setLang(l){
   document.getElementById('lang-en').classList.toggle('on', l==='en');
   try{ localStorage.setItem('voiceovya-lang', l); }catch(e){}
 }
+document.getElementById('lang-fr').addEventListener('click', ()=>setLang('fr'));
+document.getElementById('lang-en').addEventListener('click', ()=>setLang('en'));
+
 const saved = (()=>{ try{ return localStorage.getItem('voiceovya-lang'); }catch(e){ return null; } })();
 setLang(saved || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'));
 
