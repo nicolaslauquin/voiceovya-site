@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VoiceOvya · Vos réunions se transcrivent toutes seules</title>
+<title>VoiceOvya · Vos réunions ont la réponse</title>
 <meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac, avec les actions à réaliser. Smart actions, modèles locaux, respect de votre vie privée.">
 <link rel="icon" href="assets/appicon-sm.png">
 <style>
@@ -84,30 +84,41 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .avs span:nth-child(2){background:#d9e4ef;color:#54718c}
 .avs span:nth-child(3){background:#e3dced;color:#6d5f8a}
 
-/* ---- Recording window (full) + floating mini ---- */
-.recwrap{position:relative;padding:0 14px 26px 0}
+/* ---- Recording window ---- */
+.recwrap{position:relative}
 .winrec .bar .rtimer{margin-left:auto;font-family:var(--mono);font-size:12.5px;font-weight:600}
 .winrec .rico{width:26px;height:26px;border-radius:8px;background:rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;flex:none}
 .winrec .rico svg{width:13px;height:13px;stroke:var(--text-dark);stroke-width:2;fill:none;stroke-linecap:round}
 .winrec .rico .stopsq{width:10px;height:10px;border-radius:3px;background:var(--error)}
 .rtrans{padding:12px 14px 20px}
 .rlb{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-medium);margin-bottom:8px}
-.mini{position:absolute;right:-6px;bottom:0;width:196px;border-radius:14px;box-shadow:0 24px 55px -14px rgba(18,38,28,.45),inset 0 0 0 .5px rgba(0,0,0,.08)}
-.minibar{display:flex;align-items:center;gap:7px;padding:8px 11px;border-bottom:.5px solid rgba(0,0,0,.07)}
-.minibar .mdot{width:8px;height:8px;border-radius:50%;background:var(--error);animation:pulse 1.4s ease-in-out infinite}
-.minibar .mtimer{font-family:var(--mono);font-size:11.5px;font-weight:700}
-.minibar .mstop{margin-left:auto;width:9px;height:9px;border-radius:2.5px;background:var(--error)}
-.minibody{padding:9px 11px}
-.mline{font-size:10.5px;line-height:1.45;margin-bottom:6px}
-.mline .mts{display:block;font-family:var(--mono);font-size:9px;color:var(--text-light)}
-.mbubble{background:var(--bg-dark);color:rgba(255,255,255,.92);font-size:10px;line-height:1.5;border-radius:10px;padding:8px 10px}
-
 /* ---- Note detail (assistant) ---- */
-#assistant .wrap{display:block}
-.assistant-copy{max-width:760px;margin:0 auto 30px;text-align:center}
-.assistant-copy .feats{justify-content:center}
-.detail-fullshot{max-width:1040px;margin:0 auto;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 34px 80px -24px rgba(18,38,28,.34),inset 0 0 0 .5px rgba(0,0,0,.08)}
-.detail-fullshot img{display:block;width:100%;height:auto}
+#assistant .wrap{grid-template-columns:minmax(300px,.84fr) minmax(0,1.16fr);gap:40px}
+.assistant-copy{order:1;margin:0;text-align:left}
+.assistant-demo{order:2;position:relative;width:100%;min-height:430px;display:flex;align-items:center;justify-content:center;padding:24px}
+.assistant-demo::before{content:"";position:absolute;inset:44px 12px;background:var(--accent-soft);border-radius:16px;transform:rotate(-2deg)}
+.assistant-panel{position:relative;width:min(100%,520px);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 28px 64px -28px rgba(18,38,28,.38),inset 0 0 0 .5px rgba(0,0,0,.08);opacity:0}
+.assistant-demo.is-visible .assistant-panel{animation:assistant-focus .7s cubic-bezier(.2,.8,.2,1) both}
+.assistant-bar{display:flex;align-items:center;gap:9px;height:46px;padding:0 15px;border-bottom:.5px solid rgba(0,0,0,.08);font-size:12.5px;font-weight:600}
+.assistant-bar svg{width:16px;height:16px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.assistant-chat{padding:20px 20px 16px;min-height:310px}
+.assistant-question{width:fit-content;max-width:86%;margin-left:auto;background:var(--accent);color:#fff;border-radius:13px 13px 3px 13px;padding:10px 14px;font-size:13px;font-weight:600;opacity:0}
+.assistant-demo.is-visible .assistant-question{animation:assistant-rise .45s .2s ease both}
+.assistant-answer{margin-top:20px;opacity:0}
+.assistant-demo.is-visible .assistant-answer{animation:assistant-rise .45s .55s ease both}
+.assistant-context{display:flex;align-items:center;gap:7px;color:var(--accent-deep);font-size:10.5px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.assistant-context>span:first-child{width:6px;height:6px;flex:none;border-radius:50%;background:var(--accent)}
+.assistant-answer>p{font-size:13px;color:var(--text-medium);margin-bottom:11px}
+.assistant-results{display:grid;gap:7px;list-style:none}
+.assistant-results li{display:flex;align-items:center;gap:10px;padding:9px 11px;background:var(--bg-clear);border-radius:9px;font-size:12.5px;font-weight:600;opacity:0}
+.assistant-demo.is-visible .assistant-results li{animation:assistant-rise .4s ease both}
+.assistant-demo.is-visible .assistant-results li:nth-child(1){animation-delay:.75s}.assistant-demo.is-visible .assistant-results li:nth-child(2){animation-delay:.9s}.assistant-demo.is-visible .assistant-results li:nth-child(3){animation-delay:1.05s}
+.assistant-results svg{width:15px;height:15px;flex:none;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.assistant-compose{display:flex;align-items:center;gap:10px;margin-top:16px;padding:10px 12px;border-radius:10px;background:var(--bg-clear);color:var(--text-light);font-size:11.5px}
+.assistant-compose span{flex:1}.assistant-compose svg{width:16px;height:16px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@keyframes assistant-focus{from{opacity:0;transform:scale(.92) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes assistant-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.assistant-panel,.assistant-question,.assistant-answer,.assistant-results li{opacity:1!important;animation:none!important}}
 
 /* ---- Menu bar dropdown ---- */
 .mbmenu{width:250px;background:rgba(255,255,255,.9);backdrop-filter:blur(40px) saturate(1.6);border-radius:13px;padding:6px;box-shadow:var(--shadow-pop),inset 0 0 0 .5px rgba(0,0,0,.08)}
@@ -246,14 +257,12 @@ footer a:hover{color:var(--text-dark)}
 
 @media (max-width:760px){
   .story .wrap{grid-template-columns:1fr;gap:28px}
-  .assistant-copy{text-align:left;margin-bottom:22px}
-  .assistant-copy .feats{justify-content:flex-start}
-  .detail-fullshot{border-radius:13px}
+  #assistant .wrap{grid-template-columns:1fr;gap:24px}
+  .assistant-copy,.assistant-demo{order:0}
+  .assistant-demo{min-height:390px;padding:8px 0}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
   .winbig .winbody{grid-template-columns:1fr}
   .winbig .side{display:none}
-  .recwrap{padding:0 0 26px 0}
-  .mini{right:0}
 }
 @media (max-width:720px){
   .hero{padding:56px 0 40px}
@@ -281,8 +290,8 @@ footer a:hover{color:var(--text-dark)}
     <div class="applogo">
       <img src="assets/appicon.png" alt="VoiceOvya" width="88" height="88">
     </div>
-    <h1 data-i18n="hero.title">Vos réunions se transcrivent toutes seules.</h1>
-    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser. Interrogez vos notes et définissez vos propres smart actions (générer un devis, une réponse) selon vos envies. Et plus à venir.</p>
+    <h1 data-i18n="hero.title">Vos réunions ont la réponse.</h1>
+    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac. Interrogez vos notes pour retrouver en quelques secondes ce qui a été dit, décidé ou promis.</p>
     <p class="note" data-i18n="hero.note">Bientôt disponible pour macOS sur l'App Store.</p>
     <div class="hl-row">
       <span class="hl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg><span data-i18n="hero.hl1">Local first</span></span>
@@ -352,7 +361,7 @@ footer a:hover{color:var(--text-dark)}
 <section id="features">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-i18n="feat.title">Tout le cycle de vos réunions, dans une seule app</h2>
+      <h2 data-i18n="feat.title">Tout le cycle de vos réunions, dans une app.</h2>
       <p data-i18n="feat.sub">De l'enregistrement au résumé, sans quitter votre Mac.</p>
     </div>
     <div class="grid">
@@ -409,22 +418,15 @@ footer a:hover{color:var(--text-dark)}
             <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
           </div>
         </div>
-        <div class="mini device">
-          <div class="minibar"><span class="mdot"></span><span class="mtimer jstimer" data-s="148">00:02:28</span><span class="mstop"></span></div>
-          <div class="minibody">
-            <div class="mline"><span class="mts">00:19</span><span data-i18n="rc.m1">Oui, trois priorités à arbitrer ce trimestre.</span></div>
-            <div class="mbubble" data-i18n="rc.mb"><b>Récap :</b> 3 priorités arbitrées, suivi confié à Camille.</div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="text">
       <span class="kicker" data-i18n="s1.k">En direct</span>
       <h2 data-i18n="s1.t">Chaque mot capté, à l'instant où il est dit</h2>
-      <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion, horodatée à la seconde. Une fenêtre miniature flottante reste dans un coin de l'écran pour garder un œil sans quitter votre travail.</p>
+      <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion pour suivre chaque prise de parole au moment où elle est captée.</p>
       <ul class="feats">
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f1">Micro et audio système captés ensemble</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f2">Mode miniature flottant, toujours visible</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f2">Transcription lisible en direct, ligne par ligne</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f3">Horodatage précis de chaque prise de parole</span></li>
       </ul>
     </div>
@@ -443,8 +445,26 @@ footer a:hover{color:var(--text-dark)}
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f3">Choisissez votre modèle préféré.</span></li>
       </ul>
     </div>
-    <div class="detail-fullshot">
-      <img src="assets/record-detail-full.png" alt="Vue détail VoiceOvya avec panneau assistant">
+    <div class="assistant-demo" aria-label="Démonstration de l'assistant VoiceOvya">
+      <div class="assistant-panel">
+        <div class="assistant-bar">
+          <svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 14l.9 2.3L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.7z"/></svg>
+          <span data-i18n="s2.context">Dans cette réunion</span>
+        </div>
+        <div class="assistant-chat">
+          <div class="assistant-question" data-i18n="s2.q">Quelles technologies sont évoquées ?</div>
+          <div class="assistant-answer">
+            <div class="assistant-context"><span></span><span data-i18n="s2.found">Réponse retrouvée dans vos notes</span></div>
+            <p data-i18n="s2.answer">Les technologies évoquées pendant cette conférence sont :</p>
+            <ul class="assistant-results">
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.a1">Les technologies émergentes</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.a2">L'intelligence artificielle (IA)</span></li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.a3">Le machine learning</span></li>
+            </ul>
+          </div>
+          <div class="assistant-compose"><span data-i18n="s2.ask">Poser une question sur la note...</span><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -581,8 +601,8 @@ footer a:hover{color:var(--text-dark)}
 <script>
 const I18N = {
 en: {
-  "hero.title":"Your meetings transcribe themselves.",
-  "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take. Ask your notes anything and define your own smart actions (generate a quote, a reply) however you like. And more to come.",
+  "hero.title":"Your meetings have the answer.",
+  "hero.sub":"VoiceOvya records, transcribes, and summarizes your meetings on your Mac. Ask your notes to find in seconds what was said, decided, or promised.",
   "hero.note":"Coming soon for macOS on the App Store.",
   "hs.win":"My notes",
   "hs.srch":"Search notes",
@@ -595,7 +615,7 @@ en: {
   "hero.hl1b":"Works offline",
   "hero.hl2":"Stop paying for tokens",
   "hero.hl3":"Privacy respected",
-  "feat.title":"Your whole meeting cycle, in one app",
+  "feat.title":"Your whole meeting cycle, in one app.",
   "feat.sub":"From recording to summary, without leaving your Mac.",
   "feat.actions.t":"Smart actions",
   "feat.actions.p":"Build your own smart actions (minutes, client quote) and apply them to any note in one click.",
@@ -623,13 +643,11 @@ en: {
   "s1.l1":"Let's start with the roadmap update.",
   "s1.l2":"Yes, three priorities to settle this quarter.",
   "s1.l3":"The first one is about local transcription",
-  "rc.m1":"Yes, three priorities to settle this quarter.",
-  "rc.mb":"<b>Recap:</b> 3 priorities settled, follow-up handed to Camille.",
   "s1.k":"Live",
   "s1.t":"Every word captured, the moment it's said",
-  "s1.p":"The transcript scrolls in real time during the meeting, timestamped to the second. A floating miniature window stays in a corner so you can keep an eye on it without leaving your work.",
+  "s1.p":"The transcript scrolls in real time during the meeting so you can follow every speaker as their words are captured.",
   "s1.f1":"Mic and system audio captured together",
-  "s1.f2":"Floating miniature mode, always visible",
+  "s1.f2":"A clear live transcript, line by line",
   "s1.f3":"Precise timestamp for every utterance",
   "s2.win":"Note detail",
   "s2.nt":"Conference on Emerging Technologies",
@@ -651,6 +669,8 @@ en: {
   "s2.t2":"Evaluate two local models on a real dataset",
   "s2.trans":"Transcript",
   "s2.q":"Which technologies are mentioned?",
+  "s2.context":"In this meeting",
+  "s2.found":"Answer found in your notes",
   "s2.answer":"Based on the context provided during this conference, the technologies mentioned are:",
   "s2.a1":"Emerging technologies",
   "s2.a2":"Artificial intelligence (AI)",
@@ -721,6 +741,17 @@ const saved = (()=>{ try{ return localStorage.getItem('voiceovya-lang'); }catch(
 setLang(saved || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'));
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+const assistantDemo = document.querySelector('.assistant-demo');
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(([entry], observer)=>{
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('is-visible');
+    observer.disconnect();
+  }, {threshold:.3}).observe(assistantDemo);
+} else {
+  assistantDemo.classList.add('is-visible');
+}
 
 document.querySelectorAll('.jstimer').forEach(el=>{ el._s = parseInt(el.dataset.s,10)||0; });
 setInterval(()=>{
