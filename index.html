@@ -48,6 +48,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .hl-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .hl{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:600;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
 .hl svg{width:15px;height:15px;stroke:var(--accent-deep);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.moneyicon{width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex:none;color:var(--accent-deep);font-weight:800;font-size:14px;line-height:1}
 .applogo{width:123px;height:123px;margin:0 auto 26px;filter:drop-shadow(0 14px 30px rgba(31,158,99,.4))}
 .applogo img{width:100%;height:100%;display:block;border-radius:28px}
 
@@ -102,29 +103,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .mbubble{background:var(--bg-dark);color:rgba(255,255,255,.92);font-size:10px;line-height:1.5;border-radius:10px;padding:8px 10px}
 
 /* ---- Note detail (assistant) ---- */
-.ndetail .body{padding:16px}
-.ndt{font-size:16px;font-weight:700;letter-spacing:-.015em}
-.ndm{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin:5px 0 12px}
-.sumblk{background:var(--accent-soft);border-radius:12px;padding:11px 13px;margin-bottom:10px}
-.slb{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-deep);margin-bottom:4px}
-.sumblk p{font-size:12.5px;color:var(--text-dark)}
-.actblk{background:#fff;border-radius:12px;padding:11px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08)}
-.abt{font-size:13px;font-weight:600;margin-bottom:8px}
-.blist{list-style:none;display:flex;flex-direction:column;gap:6px}
-.blist li{position:relative;padding-left:16px;font-size:12.5px;line-height:1.5;color:var(--text-dark)}
-.blist li::before{content:"•";position:absolute;left:2px;color:var(--text-medium)}
-.perso{background:#fff;border-radius:12px;padding:10px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-bottom:10px}
-.perso .plb{font-size:12.5px;font-weight:600;margin-bottom:2px}
-.perso p{font-size:12px;color:var(--text-medium)}
-.kd{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
-.kdc{background:#fff;border-radius:12px;padding:11px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08)}
-.player{display:flex;align-items:center;gap:11px;background:#fff;border-radius:12px;padding:10px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-top:10px}
-.player .pbtn{width:34px;height:34px;border-radius:50%;flex:none;background:linear-gradient(180deg,var(--accent),var(--accent-deep));display:flex;align-items:center;justify-content:center}
-.player .pbtn svg{width:13px;height:13px;fill:#fff;margin-left:2px}
-.player .ptrack{flex:1;height:4px;border-radius:2px;background:rgba(0,0,0,.1);position:relative}
-.player .ptrack .pfill{position:absolute;left:0;top:0;height:100%;width:20%;border-radius:2px;background:var(--accent)}
-.player .ptrack .pfill::after{content:"";position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
-.player .ptime{font-size:11px;color:var(--text-medium)}
+#assistant .wrap{display:block}
+.assistant-copy{max-width:760px;margin:0 auto 30px;text-align:center}
+.assistant-copy .feats{justify-content:center}
+.detail-fullshot{max-width:1040px;margin:0 auto;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 34px 80px -24px rgba(18,38,28,.34),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.detail-fullshot img{display:block;width:100%;height:auto}
 
 /* ---- Menu bar dropdown ---- */
 .mbmenu{width:250px;background:rgba(255,255,255,.9);backdrop-filter:blur(40px) saturate(1.6);border-radius:13px;padding:6px;box-shadow:var(--shadow-pop),inset 0 0 0 .5px rgba(0,0,0,.08)}
@@ -155,8 +138,14 @@ section{padding:72px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .card{background:#fff;border-radius:14px;padding:22px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
 #features .card{box-shadow:var(--shadow-card),inset 0 0 0 1.5px var(--accent);background:linear-gradient(180deg,#fff,var(--accent-soft))}
-.card .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+#features .grid{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+#features .card{display:flex;align-items:center;gap:14px;min-height:92px;padding:18px 20px}
+#features .card .ic{margin-bottom:0}
+#features .card h3{margin-bottom:0;font-size:16px;line-height:1.25}
+#features .card p{display:none}
+.card .ic{width:42px;height:42px;aspect-ratio:1/1;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .card .ic svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.card .ic .moneyicon{width:22px;height:22px;color:#fff;font-size:22px}
 .card h3{font-size:15px;font-weight:600;margin-bottom:6px}
 .card p{font-size:13px;color:var(--text-medium)}
 .g-accent{background:linear-gradient(135deg,#28b573,var(--accent-deep))}
@@ -257,6 +246,9 @@ footer a:hover{color:var(--text-dark)}
 
 @media (max-width:760px){
   .story .wrap{grid-template-columns:1fr;gap:28px}
+  .assistant-copy{text-align:left;margin-bottom:22px}
+  .assistant-copy .feats{justify-content:flex-start}
+  .detail-fullshot{border-radius:13px}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
   .winbig .winbody{grid-template-columns:1fr}
   .winbig .side{display:none}
@@ -295,7 +287,7 @@ footer a:hover{color:var(--text-dark)}
     <div class="hl-row">
       <span class="hl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg><span data-i18n="hero.hl1">Local first</span></span>
       <span class="hl"><svg viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg><span data-i18n="hero.hl1b">Fonctionne offline</span></span>
-      <span class="hl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5c0-1.4 1.1-2.2 2.5-2.2s2.5.8 2.5 2c0 2.2-5 2.1-5 4.4 0 1.2 1.1 2 2.5 2s2.5-.8 2.5-2.2"/></svg><span data-i18n="hero.hl2">Ne payez plus vos tokens</span></span>
+      <span class="hl"><span class="moneyicon">€</span><span data-i18n="hero.hl2">Ne payez plus vos tokens</span></span>
       <span class="hl"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="hero.hl3">Vie privée respectée</span></span>
     </div>
 
@@ -365,11 +357,6 @@ footer a:hover{color:var(--text-dark)}
     </div>
     <div class="grid">
       <div class="card">
-        <div class="ic g-purple"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-        <h3 data-i18n="feat.actions.t">Smart actions</h3>
-        <p data-i18n="feat.actions.p">Créez vos propres smart actions (compte-rendu, devis client) et appliquez-les en un clic sur n'importe quelle note.</p>
-      </div>
-      <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <h3 data-i18n="feat.rec.t">Enregistrement &amp; transcription en direct</h3>
         <p data-i18n="feat.rec.p">Capturez micro et audio système, suivez la transcription en temps réel, horodatée à la seconde.</p>
@@ -378,6 +365,11 @@ footer a:hover{color:var(--text-dark)}
         <div class="ic g-violet"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 14l.9 2.3L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.7z"/></svg></div>
         <h3 data-i18n="feat.ai.t">Résumés &amp; assistants IA</h3>
         <p data-i18n="feat.ai.p">Résumé automatique, décisions et actions extraites. Discutez avec vos notes via Claude ou ChatGPT.</p>
+      </div>
+      <div class="card">
+        <div class="ic g-purple"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <h3 data-i18n="feat.actions.t">Smart actions</h3>
+        <p data-i18n="feat.actions.p">Créez vos propres smart actions (compte-rendu, devis client) et appliquez-les en un clic sur n'importe quelle note.</p>
       </div>
       <div class="card">
         <div class="ic g-slate"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg></div>
@@ -441,59 +433,18 @@ footer a:hover{color:var(--text-dark)}
 
 <section class="story rev" id="assistant">
   <div class="wrap">
-    <div class="viz">
-      <div class="device ndetail">
-        <div class="body">
-          <div class="ndt" data-i18n="s2.nt">Conférence Technologies Émergentes &amp; IA</div>
-          <div class="ndm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span data-i18n="s2.date">Samedi 18 juillet · 10:13 – 11:13 · 1 h</span></div>
-          <div class="perso">
-            <div class="plb" data-i18n="s2.plb">Notes perso</div>
-            <p data-i18n="s2.perso">Meetup, conf reco par Olivier</p>
-          </div>
-          <div class="sumblk">
-            <div class="slb" data-i18n="s2.slb">Résumé court</div>
-            <p data-i18n="s2.sum">Discussion sur les technologies émergentes, l'IA générative et leur impact sur l'industrie.</p>
-          </div>
-          <div class="kd">
-            <div class="kdc">
-              <div class="abt" data-i18n="s2.kt">Points clés</div>
-              <ul class="blist">
-                <li data-i18n="s2.k1">L'IA générative redéfinit les cycles de production</li>
-                <li data-i18n="s2.k2">Le ML embarqué réduit la dépendance au cloud</li>
-              </ul>
-            </div>
-            <div class="kdc">
-              <div class="abt" data-i18n="s2.dt">Décisions</div>
-              <ul class="blist">
-                <li data-i18n="s2.d1">Prioriser les modèles exécutés localement</li>
-                <li data-i18n="s2.d2">Lancer un pilote interne d'abord</li>
-              </ul>
-            </div>
-          </div>
-          <div class="actblk">
-            <div class="abt" data-i18n="s2.abt">Actions à suivre</div>
-            <ul class="blist">
-              <li data-i18n="s2.t1">Cartographier les cas d'usage IA par équipe</li>
-              <li data-i18n="s2.t2">Évaluer deux modèles locaux sur un jeu réel</li>
-            </ul>
-          </div>
-          <div class="player">
-            <span class="pbtn"><svg viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg></span>
-            <span class="ptrack"><span class="pfill"></span></span>
-            <span class="ptime">1:41</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text">
+    <div class="text assistant-copy">
       <span class="kicker" data-i18n="s2.k">Assistant</span>
-      <h2 data-i18n="s2.t">Discutez avec vos réunions, agissez en un clic</h2>
-      <p data-i18n="s2.p">Posez vos questions au chat, ou lancez une smart action pour transformer la note en compte-rendu, relance ou liste de tâches. Choisissez le moteur : Claude, ChatGPT ou un modèle local.</p>
+      <h2 data-i18n="s2.t">Interrogez vos notes.</h2>
+      <p data-i18n="s2.p">Retrouvez en quelques secondes ce qui a été dit, décidé ou promis dans vos réunions.</p>
       <ul class="feats">
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f1">Smart actions réutilisables, exécutées en un clic</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f2">Prompts déclenchés automatiquement selon la catégorie</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f3">Claude, ChatGPT ou modèle local, au choix</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f3">Choisissez votre modèle préféré.</span></li>
       </ul>
+    </div>
+    <div class="detail-fullshot">
+      <img src="assets/record-detail-full.png" alt="Vue détail VoiceOvya avec panneau assistant">
     </div>
   </div>
 </section>
@@ -597,7 +548,7 @@ footer a:hover{color:var(--text-dark)}
         <p data-i18n="priv.b.p">Avec Ollama, llama.cpp ou LM Studio, rien ne quitte votre Mac, même pas pour les résumés.</p>
       </div>
       <div class="card">
-        <div class="ic g-accent"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5c0-1.4 1.1-2.2 2.5-2.2s2.5.8 2.5 2c0 2.2-5 2.1-5 4.4 0 1.2 1.1 2 2.5 2s2.5-.8 2.5-2.2"/></svg></div>
+        <div class="ic g-accent"><span class="moneyicon">€</span></div>
         <h3 data-i18n="priv.c.t">Ne payez plus vos tokens</h3>
         <p data-i18n="priv.c.p">Pas d'abonnement : un modèle local gratuit, ou vos propres clés API. Vous gardez la main sur vos coûts.</p>
       </div>
@@ -680,27 +631,42 @@ en: {
   "s1.f1":"Mic and system audio captured together",
   "s1.f2":"Floating miniature mode, always visible",
   "s1.f3":"Precise timestamp for every utterance",
-  "s2.nt":"Emerging Tech &amp; AI conference",
-  "s2.date":"Saturday 18 July · 10:13 – 11:13 · 1 h",
+  "s2.win":"Note detail",
+  "s2.nt":"Conference on Emerging Technologies",
+  "s2.date":"Saturday 18 July 2026 · 10:13–11:13 · 1 h",
+  "s2.addcontact":"+ Add contact",
   "s2.plb":"Personal notes",
   "s2.perso":"Meetup, talk recommended by Olivier",
   "s2.slb":"Short summary",
-  "s2.sum":"Deep dive into emerging technologies, generative AI and their impact on the industry.",
+  "s2.sum":"In-depth discussion about emerging technologies, artificial intelligence, machine learning, and their impact on modern industry.",
   "s2.kt":"Key points",
-  "s2.k1":"Generative AI reshapes production cycles",
-  "s2.k2":"On-device ML cuts cloud dependency",
+  "s2.k1":"Generative AI reshapes software production cycles",
+  "s2.k2":"On-device machine learning reduces cloud dependency",
+  "s2.k3":"Data privacy becomes a differentiating factor",
   "s2.dt":"Decisions",
-  "s2.d1":"Prioritize models running locally",
-  "s2.d2":"Start with an internal pilot",
+  "s2.d1":"Prioritize models running locally on device",
+  "s2.d2":"Launch an internal pilot before broad rollout",
   "s2.abt":"Action items",
-  "s2.t1":"Map priority AI use cases per team",
+  "s2.t1":"Map priority AI use cases by team",
   "s2.t2":"Evaluate two local models on a real dataset",
+  "s2.trans":"Transcript",
+  "s2.q":"Which technologies are mentioned?",
+  "s2.answer":"Based on the context provided during this conference, the technologies mentioned are:",
+  "s2.a1":"Emerging technologies",
+  "s2.a2":"Artificial intelligence (AI)",
+  "s2.a3":"Machine learning",
+  "s2.a4":"Artificial neural networks",
+  "s2.pc1":"Action items",
+  "s2.pc2":"Topics covered",
+  "s2.pc3":"Open questions",
+  "s2.pc4":"+ Add",
+  "s2.ask":"Ask a question about the note...",
   "s2.k":"Assistant",
-  "s2.t":"Chat with your meetings, act in one click",
-  "s2.p":"Ask the chat your questions, or run a smart action to turn the note into minutes, a follow-up or a task list. Pick the engine: Claude, ChatGPT or a local model.",
+  "s2.t":"Ask your notes.",
+  "s2.p":"Find in seconds what was said, decided, or promised in your meetings.",
   "s2.f1":"Reusable smart actions, run in one click",
   "s2.f2":"Prompts triggered automatically by category",
-  "s2.f3":"Claude, ChatGPT or a local model, your choice",
+  "s2.f3":"Choose your favorite model.",
   "s3.mb":"Vacation planning",
   "s3.mh":"Upcoming meetings",
   "s3.m1":"Vacation planning","s3.m1r":"in progress",
