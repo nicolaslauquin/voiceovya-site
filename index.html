@@ -113,6 +113,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .blist{list-style:none;display:flex;flex-direction:column;gap:6px}
 .blist li{position:relative;padding-left:16px;font-size:12.5px;line-height:1.5;color:var(--text-dark)}
 .blist li::before{content:"•";position:absolute;left:2px;color:var(--text-medium)}
+.perso{background:#fff;border-radius:12px;padding:10px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-bottom:10px}
+.perso .plb{font-size:12.5px;font-weight:600;margin-bottom:2px}
+.perso p{font-size:12px;color:var(--text-medium)}
+.kd{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.kdc{background:#fff;border-radius:12px;padding:11px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08)}
+.player{display:flex;align-items:center;gap:11px;background:#fff;border-radius:12px;padding:10px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-top:10px}
+.player .pbtn{width:34px;height:34px;border-radius:50%;flex:none;background:linear-gradient(180deg,var(--accent),var(--accent-deep));display:flex;align-items:center;justify-content:center}
+.player .pbtn svg{width:13px;height:13px;fill:#fff;margin-left:2px}
+.player .ptrack{flex:1;height:4px;border-radius:2px;background:rgba(0,0,0,.1);position:relative}
+.player .ptrack .pfill{position:absolute;left:0;top:0;height:100%;width:20%;border-radius:2px;background:var(--accent)}
+.player .ptrack .pfill::after{content:"";position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.player .ptime{font-size:11px;color:var(--text-medium)}
 
 /* ---- Menu bar dropdown ---- */
 .mbmenu{width:250px;background:rgba(255,255,255,.9);backdrop-filter:blur(40px) saturate(1.6);border-radius:13px;padding:6px;box-shadow:var(--shadow-pop),inset 0 0 0 .5px rgba(0,0,0,.08)}
@@ -433,10 +445,30 @@ footer a:hover{color:var(--text-dark)}
       <div class="device ndetail">
         <div class="body">
           <div class="ndt" data-i18n="s2.nt">Conférence Technologies Émergentes &amp; IA</div>
-          <div class="ndm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span>10:13 – 11:13 · 1 h</span></div>
+          <div class="ndm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span data-i18n="s2.date">Samedi 18 juillet · 10:13 – 11:13 · 1 h</span></div>
+          <div class="perso">
+            <div class="plb" data-i18n="s2.plb">Notes perso</div>
+            <p data-i18n="s2.perso">Meetup, conf reco par Olivier</p>
+          </div>
           <div class="sumblk">
             <div class="slb" data-i18n="s2.slb">Résumé court</div>
             <p data-i18n="s2.sum">Discussion sur les technologies émergentes, l'IA générative et leur impact sur l'industrie.</p>
+          </div>
+          <div class="kd">
+            <div class="kdc">
+              <div class="abt" data-i18n="s2.kt">Points clés</div>
+              <ul class="blist">
+                <li data-i18n="s2.k1">L'IA générative redéfinit les cycles de production</li>
+                <li data-i18n="s2.k2">Le ML embarqué réduit la dépendance au cloud</li>
+              </ul>
+            </div>
+            <div class="kdc">
+              <div class="abt" data-i18n="s2.dt">Décisions</div>
+              <ul class="blist">
+                <li data-i18n="s2.d1">Prioriser les modèles exécutés localement</li>
+                <li data-i18n="s2.d2">Lancer un pilote interne d'abord</li>
+              </ul>
+            </div>
           </div>
           <div class="actblk">
             <div class="abt" data-i18n="s2.abt">Actions à suivre</div>
@@ -444,6 +476,11 @@ footer a:hover{color:var(--text-dark)}
               <li data-i18n="s2.t1">Cartographier les cas d'usage IA par équipe</li>
               <li data-i18n="s2.t2">Évaluer deux modèles locaux sur un jeu réel</li>
             </ul>
+          </div>
+          <div class="player">
+            <span class="pbtn"><svg viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg></span>
+            <span class="ptrack"><span class="pfill"></span></span>
+            <span class="ptime">1:41</span>
           </div>
         </div>
       </div>
@@ -644,8 +681,17 @@ en: {
   "s1.f2":"Floating miniature mode, always visible",
   "s1.f3":"Precise timestamp for every utterance",
   "s2.nt":"Emerging Tech &amp; AI conference",
+  "s2.date":"Saturday 18 July · 10:13 – 11:13 · 1 h",
+  "s2.plb":"Personal notes",
+  "s2.perso":"Meetup, talk recommended by Olivier",
   "s2.slb":"Short summary",
   "s2.sum":"Deep dive into emerging technologies, generative AI and their impact on the industry.",
+  "s2.kt":"Key points",
+  "s2.k1":"Generative AI reshapes production cycles",
+  "s2.k2":"On-device ML cuts cloud dependency",
+  "s2.dt":"Decisions",
+  "s2.d1":"Prioritize models running locally",
+  "s2.d2":"Start with an internal pilot",
   "s2.abt":"Action items",
   "s2.t1":"Map priority AI use cases per team",
   "s2.t2":"Evaluate two local models on a real dataset",
