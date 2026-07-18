@@ -89,16 +89,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .winrec .rico{width:26px;height:26px;border-radius:8px;background:rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;flex:none}
 .winrec .rico svg{width:13px;height:13px;stroke:var(--text-dark);stroke-width:2;fill:none;stroke-linecap:round}
 .winrec .rico .stopsq{width:10px;height:10px;border-radius:3px;background:var(--error)}
-.recbody{display:grid;grid-template-columns:1.35fr 1fr}
-.rtrans{padding:12px 14px;border-right:.5px solid rgba(0,0,0,.07)}
+.rtrans{padding:12px 14px 20px}
 .rlb{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-medium);margin-bottom:8px}
-.rside{padding:12px;display:flex;flex-direction:column;gap:9px}
-.fastpill{align-self:flex-end;background:linear-gradient(180deg,var(--accent),var(--accent-deep));color:#fff;font-size:11.5px;font-weight:600;border-radius:20px;padding:5px 12px}
-.rsum{font-size:11.5px;line-height:1.55;color:var(--text-dark)}
-.rsum ul{margin:3px 0 0 16px}
-.qchips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
-.qc{background:var(--accent-soft);color:var(--accent-deep);font-size:10.5px;font-weight:600;border-radius:20px;padding:3px 9px;white-space:nowrap}
-.qinput{background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);border-radius:9px;padding:7px 11px;font-size:11.5px;color:var(--text-light)}
 .mini{position:absolute;right:-6px;bottom:0;width:196px;border-radius:14px;box-shadow:0 24px 55px -14px rgba(18,38,28,.45),inset 0 0 0 .5px rgba(0,0,0,.08)}
 .minibar{display:flex;align-items:center;gap:7px;padding:8px 11px;border-bottom:.5px solid rgba(0,0,0,.07)}
 .minibar .mdot{width:8px;height:8px;border-radius:50%;background:var(--error);animation:pulse 1.4s ease-in-out infinite}
@@ -116,7 +108,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .sumblk{background:var(--accent-soft);border-radius:12px;padding:11px 13px;margin-bottom:10px}
 .slb{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-deep);margin-bottom:4px}
 .sumblk p{font-size:12.5px;color:var(--text-dark)}
-.actblk{background:#fff;border-radius:12px;padding:11px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-bottom:12px}
+.actblk{background:#fff;border-radius:12px;padding:11px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08)}
 .abt{font-size:13px;font-weight:600;margin-bottom:8px}
 .todo{display:flex;align-items:center;gap:10px;margin-bottom:7px}
 .todo:last-child{margin-bottom:0}
@@ -248,14 +240,10 @@ section{padding:72px 0}
 .device .line b{font-weight:600}
 .device .cursor{display:inline-block;width:2px;height:14px;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.device .msg{max-width:80%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;margin-bottom:8px}
-.device .msg.me{margin-left:auto;background:var(--accent-soft);color:var(--accent-deep);border-bottom-right-radius:5px}
-.device .msg.ai{background:rgba(0,0,0,.045);border-bottom-left-radius:5px}
 .device.plain{background:transparent;box-shadow:none;overflow:visible}
 .menubar{display:flex;align-items:center;gap:12px;background:rgba(29,37,34,.94);border-radius:11px;padding:8px 14px;color:rgba(255,255,255,.85);font-size:12.5px;margin-bottom:16px;box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
 .menubar .mi{display:flex;align-items:center;gap:6px;font-weight:600;background:#fff;color:var(--text-dark);border-radius:8px;padding:3px 10px}
 .menubar .mi svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;flex:none}
-.ndetail .qchips{margin-bottom:8px}
 .menubar .sp{flex:1}
 .menubar .dim{color:rgba(255,255,255,.55)}
 /* ---- Footer ---- */
@@ -269,8 +257,6 @@ footer a:hover{color:var(--text-dark)}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
   .winbig .winbody{grid-template-columns:1fr}
   .winbig .side{display:none}
-  .recbody{grid-template-columns:1fr}
-  .rside{display:none}
   .recwrap{padding:0 0 26px 0}
   .mini{right:0}
 }
@@ -421,26 +407,11 @@ footer a:hover{color:var(--text-dark)}
             <span class="rico"><svg viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></svg></span>
             <span class="rico"><span class="stopsq"></span></span>
           </div>
-          <div class="recbody">
-            <div class="rtrans">
-              <div class="rlb">Transcription</div>
-              <div class="line"><span class="ts">00:12</span><span class="txt"><b>Marc :</b> <span data-i18n="s1.l1">On commence par le point sur la roadmap.</span></span></div>
-              <div class="line active"><span class="ts">00:19</span><span class="txt"><b>Nicolas :</b> <span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
-              <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
-            </div>
-            <div class="rside">
-              <span class="fastpill">Fast Recap</span>
-              <div class="rsum">
-                <span data-i18n="rc.o"><b>Objet :</b> roadmap du trimestre.</span>
-                <ul>
-                  <li data-i18n="rc.b1">Transcription locale en priorité 1</li>
-                  <li data-i18n="rc.b2">Export PDF reporté</li>
-                  <li data-i18n="rc.b3">Suivi confié à Camille</li>
-                </ul>
-              </div>
-              <div class="qchips"><span class="qc">Fast Recap</span><span class="qc" data-i18n="rc.c1">Actions à réaliser</span><span class="qc" data-i18n="rc.c2">Sujets abordés</span></div>
-              <div class="qinput" data-i18n="rc.in">Pose ta question ici</div>
-            </div>
+          <div class="rtrans">
+            <div class="rlb">Transcription</div>
+            <div class="line"><span class="ts">00:12</span><span class="txt"><b>Marc :</b> <span data-i18n="s1.l1">On commence par le point sur la roadmap.</span></span></div>
+            <div class="line active"><span class="ts">00:19</span><span class="txt"><b>Nicolas :</b> <span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
+            <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
           </div>
         </div>
         <div class="mini device">
@@ -481,10 +452,6 @@ footer a:hover{color:var(--text-dark)}
             <div class="todo done"><span class="cb"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><span class="tl" data-i18n="s2.t1">Cartographier les cas d'usage IA par équipe</span></div>
             <div class="todo auto"><span class="cb"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><span class="tl" data-i18n="s2.t2">Évaluer deux modèles locaux sur un jeu réel</span></div>
           </div>
-          <div class="msg me" data-i18n="s2.q">Quelles sont les technologies évoquées ?</div>
-          <div class="msg ai" data-i18n="s2.a">L'IA générative, le machine learning embarqué et les réseaux de neurones.</div>
-          <div class="qchips"><span class="qc" data-i18n="rc.c1">Actions à réaliser</span><span class="qc" data-i18n="rc.c2">Sujets abordés</span><span class="qc" data-i18n="rc.c3">Points flous</span></div>
-          <div class="qinput" data-i18n="s2.in">Poser une question sur la note…</div>
         </div>
       </div>
     </div>
@@ -672,12 +639,6 @@ en: {
   "s1.l1":"Let's start with the roadmap update.",
   "s1.l2":"Yes, three priorities to settle this quarter.",
   "s1.l3":"The first one is about local transcription",
-  "rc.o":"<b>Topic:</b> this quarter's roadmap.",
-  "rc.b1":"Local transcription is priority 1",
-  "rc.b2":"PDF export postponed",
-  "rc.b3":"Follow-up handed to Camille",
-  "rc.c1":"Actions to take","rc.c2":"Topics covered","rc.c3":"Open questions",
-  "rc.in":"Ask your question here",
   "rc.m1":"Yes, three priorities to settle this quarter.",
   "rc.mb":"<b>Recap:</b> 3 priorities settled, follow-up handed to Camille.",
   "s1.k":"Live",
@@ -692,9 +653,6 @@ en: {
   "s2.abt":"Action items",
   "s2.t1":"Map priority AI use cases per team",
   "s2.t2":"Evaluate two local models on a real dataset",
-  "s2.q":"Which technologies were mentioned?",
-  "s2.a":"Generative AI, on-device machine learning and neural networks.",
-  "s2.in":"Ask a question about the note…",
   "s2.k":"Assistant",
   "s2.t":"Chat with your meetings, act in one click",
   "s2.p":"Ask the chat your questions, or run a smart action to turn the note into minutes, a follow-up or a task list. Pick the engine: Claude, ChatGPT or a local model.",
