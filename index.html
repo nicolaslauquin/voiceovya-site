@@ -51,27 +51,107 @@ header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.75);backdro
 .applogo{width:123px;height:123px;margin:0 auto 26px;filter:drop-shadow(0 14px 30px rgba(31,158,99,.4))}
 .applogo img{width:100%;height:100%;display:block;border-radius:28px}
 
-/* ---- Hero app window (built from design-system components) ---- */
+/* ---- Hero app window: home note list ---- */
 .heroshot{max-width:940px;margin:52px auto 0}
 .winbig{text-align:left}
 .winbig .winbody{display:grid;grid-template-columns:212px 1fr}
 .winbig .side{background:rgba(244,248,246,.6);border-right:.5px solid rgba(0,0,0,.06);padding:12px 10px}
 .winbig .gh{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);padding:8px 8px 4px}
-.winbig .note{padding:9px 10px;border-radius:10px;margin-bottom:2px}
-.winbig .note.sel{background:#fff;box-shadow:var(--shadow-card)}
-.winbig .ntop{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.winbig .nt{font-size:13px;font-weight:600}
-.winbig .ntime{font-size:11px;color:var(--text-light)}
-.winbig .ncat{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text-medium);margin-top:4px}
-.winbig .ncat .dot{width:6px;height:6px;border-radius:50%}
-.winbig .main{padding:16px 20px}
-.winbig .mtitle{font-size:18px;font-weight:700;letter-spacing:-.015em}
-.winbig .mmeta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin:6px 0 14px}
-.winbig .chip2{display:inline-flex;align-items:center;gap:5px;background:rgba(0,0,0,.045);border-radius:20px;padding:3px 9px}
-.winbig .chip2 .dot{width:6px;height:6px;border-radius:50%}
-.winbig .summary{margin-top:14px;background:var(--accent-soft);border-radius:12px;padding:12px 14px}
-.winbig .slb{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-deep);margin-bottom:5px}
-.winbig .summary p{font-size:12.5px;color:var(--text-dark)}
+.winbig .cat{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:9px;font-size:13px;margin-bottom:1px}
+.winbig .cat.sel{background:#fff;box-shadow:var(--shadow-card);font-weight:600;color:var(--accent-deep)}
+.winbig .cat .dot{width:8px;height:8px;border-radius:3px;flex:none}
+.winbig .cat .cn{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.winbig .cat .cc{font-size:11.5px;color:var(--text-light)}
+.srch{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);border-radius:9px;padding:5px 11px;font-size:11.5px;color:var(--text-light)}
+.srch svg{width:12px;height:12px;stroke:var(--text-light);stroke-width:2;fill:none;stroke-linecap:round}
+.winbig .main{padding:14px 18px}
+.gh2{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);margin-bottom:10px}
+.ncard{display:flex;align-items:center;gap:12px;background:#fff;border-radius:13px;padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.05)}
+.ncard.rise{animation:vo-rise .55s ease .35s backwards}
+@keyframes vo-rise{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.wv{width:38px;height:38px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;gap:2.5px}
+.wv i{width:3px;border-radius:2px;background:var(--c)}
+.wv i:nth-child(1){height:9px}.wv i:nth-child(2){height:16px}.wv i:nth-child(3){height:12px}.wv i:nth-child(4){height:7px}
+.ncard .nc{flex:1;min-width:0}
+.ncard .nct{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ncard .ncm{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin-top:3px}
+.chip2{display:inline-flex;align-items:center;gap:5px;background:rgba(0,0,0,.045);border-radius:20px;padding:2px 9px;font-size:11px}
+.chip2 .dot{width:6px;height:6px;border-radius:50%}
+.avs{display:flex;flex:none}
+.avs span{width:22px;height:22px;border-radius:50%;background:#eadfce;color:#7c6a50;font-size:8.5px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1.5px #fff}
+.avs span+span{margin-left:-7px}
+.avs span:nth-child(2){background:#d9e4ef;color:#54718c}
+.avs span:nth-child(3){background:#e3dced;color:#6d5f8a}
+
+/* ---- Recording window (full) + floating mini ---- */
+.recwrap{position:relative;padding:0 14px 26px 0}
+.winrec .bar .rtimer{margin-left:auto;font-family:var(--mono);font-size:12.5px;font-weight:600}
+.winrec .rico{width:26px;height:26px;border-radius:8px;background:rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;flex:none}
+.winrec .rico svg{width:13px;height:13px;stroke:var(--text-dark);stroke-width:2;fill:none;stroke-linecap:round}
+.winrec .rico .stopsq{width:10px;height:10px;border-radius:3px;background:var(--error)}
+.recbody{display:grid;grid-template-columns:1.35fr 1fr}
+.rtrans{padding:12px 14px;border-right:.5px solid rgba(0,0,0,.07)}
+.rlb{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-medium);margin-bottom:8px}
+.rside{padding:12px;display:flex;flex-direction:column;gap:9px}
+.fastpill{align-self:flex-end;background:linear-gradient(180deg,var(--accent),var(--accent-deep));color:#fff;font-size:11.5px;font-weight:600;border-radius:20px;padding:5px 12px}
+.rsum{font-size:11.5px;line-height:1.55;color:var(--text-dark)}
+.rsum ul{margin:3px 0 0 16px}
+.qchips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.qc{background:var(--accent-soft);color:var(--accent-deep);font-size:10.5px;font-weight:600;border-radius:20px;padding:3px 9px;white-space:nowrap}
+.qinput{background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);border-radius:9px;padding:7px 11px;font-size:11.5px;color:var(--text-light)}
+.mini{position:absolute;right:-6px;bottom:0;width:196px;border-radius:14px;box-shadow:0 24px 55px -14px rgba(18,38,28,.45),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.minibar{display:flex;align-items:center;gap:7px;padding:8px 11px;border-bottom:.5px solid rgba(0,0,0,.07)}
+.minibar .mdot{width:8px;height:8px;border-radius:50%;background:var(--error);animation:pulse 1.4s ease-in-out infinite}
+.minibar .mtimer{font-family:var(--mono);font-size:11.5px;font-weight:700}
+.minibar .mstop{margin-left:auto;width:9px;height:9px;border-radius:2.5px;background:var(--error)}
+.minibody{padding:9px 11px}
+.mline{font-size:10.5px;line-height:1.45;margin-bottom:6px}
+.mline .mts{display:block;font-family:var(--mono);font-size:9px;color:var(--text-light)}
+.mbubble{background:var(--bg-dark);color:rgba(255,255,255,.92);font-size:10px;line-height:1.5;border-radius:10px;padding:8px 10px}
+
+/* ---- Note detail (assistant) ---- */
+.ndetail .body{padding:16px}
+.ndt{font-size:16px;font-weight:700;letter-spacing:-.015em}
+.ndm{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin:5px 0 12px}
+.sumblk{background:var(--accent-soft);border-radius:12px;padding:11px 13px;margin-bottom:10px}
+.slb{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-deep);margin-bottom:4px}
+.sumblk p{font-size:12.5px;color:var(--text-dark)}
+.actblk{background:#fff;border-radius:12px;padding:11px 13px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-bottom:12px}
+.abt{font-size:13px;font-weight:600;margin-bottom:8px}
+.todo{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.todo:last-child{margin-bottom:0}
+.todo .cb{width:18px;height:18px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.25)}
+.todo .cb svg{width:10px;height:10px;stroke:#fff;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.todo .tl{font-size:12.5px}
+.todo.done .cb{background:var(--accent);box-shadow:none}
+.todo.done .cb svg{opacity:1}
+.todo.done .tl{color:var(--text-light)}
+.todo.auto .cb{animation:autocb 5s ease infinite}
+.todo.auto .cb svg{animation:autock 5s ease infinite}
+.todo.auto .tl{animation:autotl 5s ease infinite}
+@keyframes autocb{0%,38%{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.25)}48%,86%{background:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}96%,100%{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.25)}}
+@keyframes autock{0%,38%{opacity:0}48%,86%{opacity:1}96%,100%{opacity:0}}
+@keyframes autotl{0%,38%{color:var(--text-dark)}48%,86%{color:var(--text-light)}96%,100%{color:var(--text-dark)}}
+
+/* ---- Menu bar dropdown ---- */
+.mbmenu{width:250px;background:rgba(255,255,255,.9);backdrop-filter:blur(40px) saturate(1.6);border-radius:13px;padding:6px;box-shadow:var(--shadow-pop),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.mmh{font-size:11.5px;color:var(--text-light);padding:5px 10px 2px}
+.mmi{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 10px;border-radius:8px;font-size:13px}
+.mmi b{font-weight:600;display:block;line-height:1.3}
+.mmi .mms{font-size:11.5px;color:var(--text-medium);line-height:1.3}
+.mmi .mmr{font-size:12px;color:var(--text-medium);flex:none}
+.mmi.hov{background:var(--accent);color:#fff}
+.msep{height:.5px;background:rgba(0,0,0,.1);margin:5px 10px}
+
+/* ---- macOS notification (standard) ---- */
+.notif{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.94);backdrop-filter:blur(30px);border-radius:16px;padding:12px 14px;box-shadow:0 30px 70px -18px rgba(18,38,28,.45),inset 0 0 0 .5px rgba(0,0,0,.06)}
+.notif .nicon{width:38px;height:38px;border-radius:9px;flex:none}
+.notif .ntxt{flex:1;min-width:0}
+.notif .nt{font-size:13px;font-weight:600;line-height:1.35}
+.notif .nd{font-size:11.5px;color:var(--text-medium)}
+.notif .nbtn{font:inherit;font-size:12.5px;font-weight:500;border:0;border-radius:20px;padding:7px 13px;cursor:default;flex:none;color:var(--text-dark);background:rgba(0,0,0,.08)}
+.calrow{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.calrow .notif{flex:1;min-width:230px;margin-top:22px}
 
 /* ---- Sections ---- */
 section{padding:72px 0}
@@ -171,34 +251,13 @@ section{padding:72px 0}
 .device .msg{max-width:80%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.5;margin-bottom:8px}
 .device .msg.me{margin-left:auto;background:var(--accent-soft);color:var(--accent-deep);border-bottom-right-radius:5px}
 .device .msg.ai{background:rgba(0,0,0,.045);border-bottom-left-radius:5px}
-.device .pcard{position:relative;background:#fff;border-radius:12px;padding:13px 15px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);margin-top:4px}
-.device .pcard .pt{font-size:13.5px;font-weight:600}
-.device .pcard .pd{font-size:12px;color:var(--text-medium);margin-top:3px;line-height:1.45}
-.device .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
-.device .tag{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;background:rgba(0,0,0,.05);font-size:11px}
-.device .tag .dot{width:6px;height:6px;border-radius:50%}
-.device .tag.auto{background:var(--accent-soft);color:var(--accent-deep);font-weight:600}
-.device .trigger{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);padding:7px 11px;border-radius:10px;margin-top:10px}
-.device .trigger svg{width:13px;height:13px;stroke:var(--text-medium);stroke-width:2;fill:none}
 .device.plain{background:transparent;box-shadow:none;overflow:visible}
 .menubar{display:flex;align-items:center;gap:12px;background:rgba(29,37,34,.94);border-radius:11px;padding:8px 14px;color:rgba(255,255,255,.85);font-size:12.5px;margin-bottom:16px;box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
-.menubar .mi{display:flex;align-items:center;gap:6px;font-weight:600;color:#fff}
-.menubar .mi svg{width:14px;height:14px;stroke:#fff;stroke-width:2;fill:none}
+.menubar .mi{display:flex;align-items:center;gap:6px;font-weight:600;background:#fff;color:var(--text-dark);border-radius:8px;padding:3px 10px}
+.menubar .mi svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;flex:none}
+.ndetail .qchips{margin-bottom:8px}
 .menubar .sp{flex:1}
 .menubar .dim{color:rgba(255,255,255,.55)}
-.notif{background:rgba(255,255,255,.94);backdrop-filter:blur(30px);border-radius:16px;padding:14px 16px;box-shadow:0 30px 70px -18px rgba(18,38,28,.45),inset 0 0 0 .5px rgba(0,0,0,.06)}
-.notif .nh{display:flex;align-items:center;gap:9px}
-.notif .nlogo{width:26px;height:26px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center}
-.notif .nlogo svg{width:15px;height:15px;stroke:#fff;stroke-width:2.5;fill:none}
-.notif .napp{font-size:12px;font-weight:600}
-.notif .now{margin-left:auto;font-size:11px;color:var(--text-light)}
-.notif .nt{font-size:13.5px;font-weight:600;margin:8px 0 2px}
-.notif .nd{font-size:12px;color:var(--text-medium);margin-bottom:12px}
-.notif .nbtns{display:flex;gap:8px}
-.notif .nbtns button{flex:1;font:inherit;font-size:12.5px;font-weight:600;border:0;border-radius:9px;padding:8px;cursor:default}
-.notif .nbtns .pri{color:#fff;background:linear-gradient(180deg,var(--accent),var(--accent-deep))}
-.notif .nbtns .sec{background:rgba(0,0,0,.06);color:var(--text-dark)}
-
 /* ---- Footer ---- */
 footer{border-top:.5px solid rgba(0,0,0,.06);padding:28px 0;font-size:12px;color:var(--text-medium)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
@@ -210,6 +269,10 @@ footer a:hover{color:var(--text-dark)}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
   .winbig .winbody{grid-template-columns:1fr}
   .winbig .side{display:none}
+  .recbody{grid-template-columns:1fr}
+  .rside{display:none}
+  .recwrap{padding:0 0 26px 0}
+  .mini{right:0}
 }
 @media (max-width:720px){
   .hero{padding:56px 0 40px}
@@ -251,26 +314,52 @@ footer a:hover{color:var(--text-dark)}
       <div class="device winbig">
         <div class="bar">
           <div class="lights"><span></span><span></span><span></span></div>
-          <span class="title" data-i18n="hs.win">Point hebdo équipe</span>
-          <span class="livepill"><span class="dot"></span>14:30</span>
+          <span class="title" data-i18n="hs.win">Mes notes</span>
+          <span class="srch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span data-i18n="hs.srch">Rechercher dans les notes</span></span>
         </div>
         <div class="winbody">
           <div class="side">
-            <div class="gh" data-i18n="hs.today">Aujourd'hui</div>
-            <div class="note sel"><div class="ntop"><span class="nt" data-i18n="hs.n1">Point hebdo équipe</span><span class="ntime">14:30</span></div><div class="ncat"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.c1">Produit</span></div></div>
-            <div class="note"><div class="ntop"><span class="nt" data-i18n="hs.n2">Design review</span><span class="ntime">11:00</span></div><div class="ncat"><span class="dot" style="background:#2a73e8"></span><span data-i18n="hs.c2">Design</span></div></div>
-            <div class="gh" data-i18n="hs.yest">Hier</div>
-            <div class="note"><div class="ntop"><span class="nt" data-i18n="hs.n3">1:1 Marc</span><span class="ntime">16:30</span></div><div class="ncat"><span class="dot" style="background:#a259d9"></span><span data-i18n="hs.c3">Perso</span></div></div>
+            <div class="gh" data-i18n="hs.gnotes">Notes</div>
+            <div class="cat sel"><span class="dot" style="background:#6b7785"></span><span class="cn" data-i18n="hs.all">Toutes les notes</span><span class="cc">53</span></div>
+            <div class="cat"><span class="dot" style="background:#5b5bd6"></span><span class="cn">Finance</span><span class="cc">8</span></div>
+            <div class="cat"><span class="dot" style="background:#d98a1f"></span><span class="cn">Marketing</span><span class="cc">8</span></div>
+            <div class="cat"><span class="dot" style="background:#a259d9"></span><span class="cn" data-i18n="hs.cperso">Perso</span><span class="cc">9</span></div>
+            <div class="cat"><span class="dot" style="background:#6b7785"></span><span class="cn">Pro</span><span class="cc">8</span></div>
+            <div class="cat"><span class="dot" style="background:#1f9e63"></span><span class="cn" data-i18n="hs.cprod">Produit</span><span class="cc">10</span></div>
+            <div class="cat"><span class="dot" style="background:#2a73e8"></span><span class="cn">Tech</span><span class="cc">10</span></div>
+            <div class="gh" data-i18n="hs.gcts">Contacts</div>
+            <div class="cat"><span class="dot" style="background:#45525a"></span><span class="cn" data-i18n="hs.allc">Tous les contacts</span><span class="cc">12</span></div>
           </div>
           <div class="main">
-            <div class="mtitle" data-i18n="hs.n1">Point hebdo équipe</div>
-            <div class="mmeta"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.c1">Produit</span></span><span>14:00 – 14:30</span><span>·</span><span data-i18n="hs.part">4 participants</span></div>
-            <div class="line"><span class="ts">00:12</span><span class="txt"><b>Marc :</b> <span data-i18n="hs.l1">On commence par le point sur la roadmap.</span></span></div>
-            <div class="line active"><span class="ts">00:19</span><span class="txt"><b>Nicolas :</b> <span data-i18n="hs.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
-            <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="hs.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
-            <div class="summary">
-              <div class="slb" data-i18n="hs.sumlb">Résumé IA</div>
-              <p data-i18n="hs.sum">3 décisions, 2 actions assignées. Prochain point vendredi, Camille prend le suivi.</p>
+            <div class="gh2" data-i18n="hs.today">Aujourd'hui</div>
+            <div class="ncard rise" style="--c:#2a73e8">
+              <span class="wv" style="background:#e6eefb"><i></i><i></i><i></i><i></i></span>
+              <div class="nc">
+                <div class="nct" data-i18n="hs.n1">Compte rendu #1</div>
+                <div class="ncm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span>11:13 · 10 min</span></div>
+              </div>
+            </div>
+            <div class="ncard" style="--c:#1f9e63">
+              <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
+              <div class="nc">
+                <div class="nct">Sync Design</div>
+                <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:43 · 30 min</span></div>
+              </div>
+              <div class="avs"><span>CR</span><span>IB</span><span>MT</span><span>+1</span></div>
+            </div>
+            <div class="ncard" style="--c:#1f9e63">
+              <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
+              <div class="nc">
+                <div class="nct" data-i18n="hs.n3">Suivi client #2</div>
+                <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:13 · 12 min</span></div>
+              </div>
+            </div>
+            <div class="ncard" style="--c:#d98a1f">
+              <span class="wv" style="background:#faf0dd"><i></i><i></i><i></i><i></i></span>
+              <div class="nc">
+                <div class="nct" data-i18n="hs.n4">Idées produit #3</div>
+                <div class="ncm"><span class="chip2"><span class="dot" style="background:#d98a1f"></span>Marketing</span><span>09:13 · 14 min</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -323,16 +412,43 @@ footer a:hover{color:var(--text-dark)}
 <section class="story" id="live">
   <div class="wrap">
     <div class="viz">
-      <div class="device">
-        <div class="bar">
-          <div class="lights"><span></span><span></span><span></span></div>
-          <span class="title" data-i18n="s1.win">Point hebdo équipe</span>
-          <span class="livepill"><span class="dot"></span>12:04</span>
+      <div class="recwrap">
+        <div class="device winrec">
+          <div class="bar">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <span class="title" data-i18n="s1.win">Enregistrement en cours</span>
+            <span class="rtimer jstimer" data-s="111">00:01:51</span>
+            <span class="rico"><svg viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></svg></span>
+            <span class="rico"><span class="stopsq"></span></span>
+          </div>
+          <div class="recbody">
+            <div class="rtrans">
+              <div class="rlb">Transcription</div>
+              <div class="line"><span class="ts">00:12</span><span class="txt"><b>Marc :</b> <span data-i18n="s1.l1">On commence par le point sur la roadmap.</span></span></div>
+              <div class="line active"><span class="ts">00:19</span><span class="txt"><b>Nicolas :</b> <span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
+              <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
+            </div>
+            <div class="rside">
+              <span class="fastpill">Fast Recap</span>
+              <div class="rsum">
+                <span data-i18n="rc.o"><b>Objet :</b> roadmap du trimestre.</span>
+                <ul>
+                  <li data-i18n="rc.b1">Transcription locale en priorité 1</li>
+                  <li data-i18n="rc.b2">Export PDF reporté</li>
+                  <li data-i18n="rc.b3">Suivi confié à Camille</li>
+                </ul>
+              </div>
+              <div class="qchips"><span class="qc">Fast Recap</span><span class="qc" data-i18n="rc.c1">Actions à réaliser</span><span class="qc" data-i18n="rc.c2">Sujets abordés</span></div>
+              <div class="qinput" data-i18n="rc.in">Pose ta question ici</div>
+            </div>
+          </div>
         </div>
-        <div class="body">
-          <div class="line"><span class="ts">00:12</span><span class="txt"><b>Marc :</b> <span data-i18n="s1.l1">On commence par le point sur la roadmap.</span></span></div>
-          <div class="line active"><span class="ts">00:19</span><span class="txt"><b>Nicolas :</b> <span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
-          <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
+        <div class="mini device">
+          <div class="minibar"><span class="mdot"></span><span class="mtimer jstimer" data-s="148">00:02:28</span><span class="mstop"></span></div>
+          <div class="minibody">
+            <div class="mline"><span class="mts">00:19</span><span data-i18n="rc.m1">Oui, trois priorités à arbitrer ce trimestre.</span></div>
+            <div class="mbubble" data-i18n="rc.mb"><b>Récap :</b> 3 priorités arbitrées, suivi confié à Camille.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -352,20 +468,23 @@ footer a:hover{color:var(--text-dark)}
 <section class="story rev" id="assistant">
   <div class="wrap">
     <div class="viz">
-      <div class="device">
+      <div class="device ndetail">
         <div class="body">
-          <div class="msg me" data-i18n="s2.q">Quelles décisions ont été prises ?</div>
-          <div class="msg ai" data-i18n="s2.a">Trois décisions : prioriser la transcription locale, reporter l'export PDF, et confier le suivi à Camille.</div>
-          <div class="pcard">
-            <div class="pt" data-i18n="s2.pt">Extraire les actions</div>
-            <div class="pd" data-i18n="s2.pd">Liste les tâches, responsables et échéances mentionnés dans la réunion.</div>
-            <div class="tags">
-              <span class="tag auto" data-i18n="s2.auto">Auto</span>
-              <span class="tag"><span class="dot" style="background:#1f9e63"></span>Produit</span>
-              <span class="tag"><span class="dot" style="background:#2a73e8"></span>Design</span>
-            </div>
+          <div class="ndt" data-i18n="s2.nt">Conférence Technologies Émergentes &amp; IA</div>
+          <div class="ndm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span>10:13 – 11:13 · 1 h</span></div>
+          <div class="sumblk">
+            <div class="slb" data-i18n="s2.slb">Résumé court</div>
+            <p data-i18n="s2.sum">Discussion sur les technologies émergentes, l'IA générative et leur impact sur l'industrie.</p>
           </div>
-          <div class="trigger">Claude<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="actblk">
+            <div class="abt" data-i18n="s2.abt">Actions à suivre</div>
+            <div class="todo done"><span class="cb"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><span class="tl" data-i18n="s2.t1">Cartographier les cas d'usage IA par équipe</span></div>
+            <div class="todo auto"><span class="cb"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><span class="tl" data-i18n="s2.t2">Évaluer deux modèles locaux sur un jeu réel</span></div>
+          </div>
+          <div class="msg me" data-i18n="s2.q">Quelles sont les technologies évoquées ?</div>
+          <div class="msg ai" data-i18n="s2.a">L'IA générative, le machine learning embarqué et les réseaux de neurones.</div>
+          <div class="qchips"><span class="qc" data-i18n="rc.c1">Actions à réaliser</span><span class="qc" data-i18n="rc.c2">Sujets abordés</span><span class="qc" data-i18n="rc.c3">Points flous</span></div>
+          <div class="qinput" data-i18n="s2.in">Poser une question sur la note…</div>
         </div>
       </div>
     </div>
@@ -387,22 +506,29 @@ footer a:hover{color:var(--text-dark)}
     <div class="viz">
       <div class="device plain">
         <div class="menubar">
-          <span class="mi"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg>VoiceOvya</span>
-          <span class="dim" data-i18n="s3.next">Sync Design · 14:00</span>
+          <span class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg><span data-i18n="s3.mb">Organisation vacances</span></span>
           <span class="sp"></span>
-          <span class="dim">14:32</span>
+          <span class="dim">12:04</span>
         </div>
-        <div class="notif">
-          <div class="nh">
-            <span class="nlogo"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>
-            <span class="napp">VoiceOvya</span>
-            <span class="now" data-i18n="s3.now">maintenant</span>
+        <div class="calrow">
+          <div class="mbmenu">
+            <div class="mmh" data-i18n="s3.mh">Prochaines réunions</div>
+            <div class="mmi"><div class="mmt"><b data-i18n="s3.m1">Organisation vacances</b><div class="mms">12:00 – 12:30</div></div><span class="mmr" data-i18n="s3.m1r">en cours</span></div>
+            <div class="mmi"><div class="mmt"><b data-i18n="s3.m2">Association AG</b><div class="mms">13:00 – 13:30</div></div><span class="mmr" data-i18n="s3.m2r">dans 51 min</span></div>
+            <div class="msep"></div>
+            <div class="mmi hov" data-i18n="s3.launch">Lancer un enregistrement</div>
+            <div class="msep"></div>
+            <div class="mmi" data-i18n="s3.open">Ouvrir VoiceOvya</div>
+            <div class="mmi" data-i18n="s3.prefs">Accéder aux préférences</div>
+            <div class="mmi" data-i18n="s3.quit">Quitter VoiceOvya</div>
           </div>
-          <div class="nt" data-i18n="s3.nt">« Sync Design » commence</div>
-          <div class="nd" data-i18n="s3.nd">14:00 – 14:30 · 4 participants</div>
-          <div class="nbtns">
-            <button class="pri" data-i18n="s3.b1">Rejoindre &amp; enregistrer</button>
-            <button class="sec" data-i18n="s3.b2">Plus tard</button>
+          <div class="notif">
+            <img class="nicon" src="assets/appicon-sm.png" alt="">
+            <div class="ntxt">
+              <div class="nt" data-i18n="s3.nt">Organisation vacances</div>
+              <div class="nd">16:00 – 16:30</div>
+            </div>
+            <button class="nbtn" data-i18n="s3.b1">Lancer l'enregistrement</button>
           </div>
         </div>
       </div>
@@ -507,16 +633,13 @@ en: {
   "hero.title":"Your meetings transcribe themselves.",
   "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take. Ask your notes anything and define your own smart actions (generate a quote, a reply) however you like. And more to come.",
   "hero.note":"Coming soon for macOS on the App Store.",
-  "hs.win":"Weekly team sync",
-  "hs.today":"Today","hs.yest":"Yesterday",
-  "hs.n1":"Weekly team sync","hs.n2":"Design review","hs.n3":"1:1 with Marc",
-  "hs.c1":"Product","hs.c2":"Design","hs.c3":"Personal",
-  "hs.part":"4 participants",
-  "hs.l1":"Let's start with the roadmap update.",
-  "hs.l2":"Yes, three priorities to settle this quarter.",
-  "hs.l3":"The first one is about local transcription",
-  "hs.sumlb":"AI summary",
-  "hs.sum":"3 decisions, 2 assigned actions. Next check-in Friday, Camille takes the follow-up.",
+  "hs.win":"My notes",
+  "hs.srch":"Search notes",
+  "hs.gnotes":"Notes","hs.gcts":"Contacts",
+  "hs.all":"All notes","hs.allc":"All contacts",
+  "hs.cperso":"Personal","hs.cprod":"Product",
+  "hs.today":"Today",
+  "hs.n1":"Minutes #1","hs.n3":"Client follow-up #2","hs.n4":"Product ideas #3",
   "hero.hl1":"Local first",
   "hero.hl1b":"Works offline",
   "hero.hl2":"Stop paying for tokens",
@@ -545,33 +668,49 @@ en: {
   "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs.",
   "priv.d.t":"Exportable anytime",
   "priv.d.p":"Transcript and summary in Markdown or plain text, whenever you want. Your data goes with you, no lock-in.",
-  "s1.win":"Weekly team sync",
+  "s1.win":"Recording in progress",
   "s1.l1":"Let's start with the roadmap update.",
   "s1.l2":"Yes, three priorities to settle this quarter.",
   "s1.l3":"The first one is about local transcription",
+  "rc.o":"<b>Topic:</b> this quarter's roadmap.",
+  "rc.b1":"Local transcription is priority 1",
+  "rc.b2":"PDF export postponed",
+  "rc.b3":"Follow-up handed to Camille",
+  "rc.c1":"Actions to take","rc.c2":"Topics covered","rc.c3":"Open questions",
+  "rc.in":"Ask your question here",
+  "rc.m1":"Yes, three priorities to settle this quarter.",
+  "rc.mb":"<b>Recap:</b> 3 priorities settled, follow-up handed to Camille.",
   "s1.k":"Live",
   "s1.t":"Every word captured, the moment it's said",
   "s1.p":"The transcript scrolls in real time during the meeting, with timestamps and speakers. A floating miniature window stays in a corner so you can keep an eye on it without leaving your work.",
   "s1.f1":"Mic and system audio captured together",
   "s1.f2":"Floating miniature mode, always visible",
   "s1.f3":"Timestamps and speaker separation",
-  "s2.q":"What decisions were made?",
-  "s2.a":"Three decisions: prioritize local transcription, postpone the PDF export, and hand the follow-up to Camille.",
-  "s2.pt":"Extract action items",
-  "s2.pd":"Lists the tasks, owners and deadlines mentioned in the meeting.",
-  "s2.auto":"Auto",
+  "s2.nt":"Emerging Tech &amp; AI conference",
+  "s2.slb":"Short summary",
+  "s2.sum":"Deep dive into emerging technologies, generative AI and their impact on the industry.",
+  "s2.abt":"Action items",
+  "s2.t1":"Map priority AI use cases per team",
+  "s2.t2":"Evaluate two local models on a real dataset",
+  "s2.q":"Which technologies were mentioned?",
+  "s2.a":"Generative AI, on-device machine learning and neural networks.",
+  "s2.in":"Ask a question about the note…",
   "s2.k":"Assistant",
   "s2.t":"Chat with your meetings, act in one click",
   "s2.p":"Ask the chat your questions, or run a smart action to turn the note into minutes, a follow-up or a task list. Pick the engine: Claude, ChatGPT or a local model.",
   "s2.f1":"Reusable smart actions, run in one click",
   "s2.f2":"Prompts triggered automatically by category",
   "s2.f3":"Claude, ChatGPT or a local model, your choice",
-  "s3.next":"Design sync · 14:00",
-  "s3.now":"now",
-  "s3.nt":"“Design sync” is starting",
-  "s3.nd":"14:00 – 14:30 · 4 participants",
-  "s3.b1":"Join &amp; record",
-  "s3.b2":"Later",
+  "s3.mb":"Vacation planning",
+  "s3.mh":"Upcoming meetings",
+  "s3.m1":"Vacation planning","s3.m1r":"in progress",
+  "s3.m2":"Association AGM","s3.m2r":"in 51 min",
+  "s3.launch":"Start a recording",
+  "s3.open":"Open VoiceOvya",
+  "s3.prefs":"Open Settings",
+  "s3.quit":"Quit VoiceOvya",
+  "s3.nt":"Vacation planning",
+  "s3.b1":"Start recording",
   "s3.k":"Calendar",
   "s3.t":"At the right moment, without thinking about it",
   "s3.p":"VoiceOvya reads your calendar and offers to record right when the meeting starts, from a notification or the menu bar. Every note stays linked to its event.",
@@ -616,6 +755,15 @@ const saved = (()=>{ try{ return localStorage.getItem('voiceovya-lang'); }catch(
 setLang(saved || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'));
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+document.querySelectorAll('.jstimer').forEach(el=>{ el._s = parseInt(el.dataset.s,10)||0; });
+setInterval(()=>{
+  document.querySelectorAll('.jstimer').forEach(el=>{
+    el._s++;
+    const p = n => String(n).padStart(2,'0');
+    el.textContent = p(Math.floor(el._s/3600))+':'+p(Math.floor(el._s/60)%60)+':'+p(el._s%60);
+  });
+},1000);
 </script>
 </body>
 </html>
