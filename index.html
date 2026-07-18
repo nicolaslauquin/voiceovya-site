@@ -241,11 +241,11 @@ section{padding:72px 0}
 .device .cursor{display:inline-block;width:2px;height:14px;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .device.plain{background:transparent;box-shadow:none;overflow:visible}
-.menubar{display:flex;align-items:center;gap:12px;background:rgba(29,37,34,.94);border-radius:11px;padding:8px 14px;color:rgba(255,255,255,.85);font-size:12.5px;margin-bottom:16px;box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
-.menubar .mi{display:flex;align-items:center;gap:6px;font-weight:600;background:#fff;color:var(--text-dark);border-radius:8px;padding:3px 10px}
+.menubar{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.5);backdrop-filter:blur(28px) saturate(1.6);border-radius:11px;padding:7px 14px;color:var(--text-dark);font-size:12.5px;margin-bottom:16px;box-shadow:0 8px 24px -12px rgba(18,38,28,.25),inset 0 0 0 .5px rgba(0,0,0,.06)}
+.menubar .mi{display:flex;align-items:center;gap:6px;font-weight:600;background:#fff;color:var(--text-dark);border-radius:8px;padding:3px 10px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .menubar .mi svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;flex:none}
 .menubar .sp{flex:1}
-.menubar .dim{color:rgba(255,255,255,.55)}
+.menubar .dim{color:var(--text-medium)}
 /* ---- Footer ---- */
 footer{border-top:.5px solid rgba(0,0,0,.06);padding:28px 0;font-size:12px;color:var(--text-medium)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
