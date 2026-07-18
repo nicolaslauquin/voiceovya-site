@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VoiceOvya — Vos réunions se transcrivent toutes seules</title>
-<meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac, avec les actions à réaliser. Actions personnalisées, modèles locaux, respect de votre vie privée.">
+<meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac, avec les actions à réaliser. Smart actions, modèles locaux, respect de votre vie privée.">
 <link rel="icon" href="assets/appicon-sm.png">
 <style>
 :root{
@@ -110,6 +110,13 @@ section{padding:72px 0}
 /* ---- Models section ---- */
 .models{text-align:center}
 .models .sec-head{margin-bottom:30px}
+.profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;max-width:860px;margin:0 auto 34px;text-align:left}
+.profile{background:#fff;border-radius:16px;padding:24px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.07)}
+.profile .pk{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-radius:20px;padding:4px 11px;margin-bottom:12px}
+.profile .pk.easy{background:var(--accent-soft);color:var(--accent-deep)}
+.profile .pk.power{background:rgba(69,82,90,.1);color:#45525a}
+.profile h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.profile p{font-size:13.5px;color:var(--text-medium)}
 .models .kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);margin-bottom:10px}
 .models-card{max-width:380px;margin:0 auto;text-align:left;background:#fff;border-radius:16px;padding:10px;box-shadow:0 20px 50px -18px rgba(18,38,28,.22),inset 0 0 0 .5px rgba(0,0,0,.07)}
 .mopt{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:11px;font-size:14px;font-weight:500}
@@ -232,7 +239,7 @@ footer a:hover{color:var(--text-dark)}
       <img src="assets/appicon.png" alt="VoiceOvya" width="88" height="88">
     </div>
     <h1 data-i18n="hero.title">Vos réunions se transcrivent toutes seules.</h1>
-    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser. Interrogez vos notes et définissez vos propres actions automatiques (générer un devis, une réponse) selon vos envies. Et plus à venir.</p>
+    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre vos réunions, les transcrit en direct et en tire des résumés exploitables, avec les actions à réaliser. Interrogez vos notes et définissez vos propres smart actions (générer un devis, une réponse) selon vos envies. Et plus à venir.</p>
     <p class="note" data-i18n="hero.note">Bientôt disponible pour macOS sur l'App Store.</p>
     <div class="hl-row">
       <span class="hl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-i18n="hero.hl0">Native macOS app</span></span>
@@ -282,8 +289,8 @@ footer a:hover{color:var(--text-dark)}
     <div class="grid">
       <div class="card">
         <div class="ic g-purple"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-        <h3 data-i18n="feat.actions.t">Actions personnalisées</h3>
-        <p data-i18n="feat.actions.p">Créez vos propres actions (compte-rendu, devis client) et appliquez-les en un clic sur n'importe quelle note.</p>
+        <h3 data-i18n="feat.actions.t">Smart actions</h3>
+        <p data-i18n="feat.actions.p">Créez vos propres smart actions (compte-rendu, devis client) et appliquez-les en un clic sur n'importe quelle note.</p>
       </div>
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -366,9 +373,9 @@ footer a:hover{color:var(--text-dark)}
     <div class="text">
       <span class="kicker" data-i18n="s2.k">Assistant</span>
       <h2 data-i18n="s2.t">Discutez avec vos réunions, agissez en un clic</h2>
-      <p data-i18n="s2.p">Posez vos questions au chat, ou lancez une action personnalisée pour transformer la note en compte-rendu, relance ou liste de tâches. Choisissez le moteur : Claude, ChatGPT ou un modèle local.</p>
+      <p data-i18n="s2.p">Posez vos questions au chat, ou lancez une smart action pour transformer la note en compte-rendu, relance ou liste de tâches. Choisissez le moteur : Claude, ChatGPT ou un modèle local.</p>
       <ul class="feats">
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f1">Actions personnalisées réutilisables, exécutées en un clic</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f1">Smart actions réutilisables, exécutées en un clic</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f2">Prompts déclenchés automatiquement selon la catégorie</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f3">Claude, ChatGPT ou modèle local, au choix</span></li>
       </ul>
@@ -419,7 +426,18 @@ footer a:hover{color:var(--text-dark)}
     <div class="sec-head">
       <span class="kicker" data-i18n="mo.k">Votre modèle, votre choix</span>
       <h2 data-i18n="mo.t">Apple Intelligence, ou le modèle que vous voulez</h2>
-      <p data-i18n="mo.p">Utilisez Apple Intelligence, intégré à macOS, ou branchez votre propre modèle — gemma-4, qwen3… Aucun problème : c'est vous qui choisissez votre modèle.</p>
+    </div>
+    <div class="profiles">
+      <div class="profile">
+        <span class="pk easy" data-i18n="mo.ek">Clef en main</span>
+        <h3 data-i18n="mo.et">Zéro configuration</h3>
+        <p data-i18n="mo.ep">Vous n'y connaissez rien en informatique ? Aucun souci. VoiceOvya fonctionne par défaut avec Apple Intelligence, intégré à macOS : rien à installer, rien à régler — ça marche. Encore plus fluide sur une machine récente.</p>
+      </div>
+      <div class="profile">
+        <span class="pk power" data-i18n="mo.pk">Power user</span>
+        <h3 data-i18n="mo.pt">Le modèle de votre choix</h3>
+        <p data-i18n="mo.pp">Branchez le modèle que vous voulez — gemma-4, qwen3… — via votre outil préféré : Ollama, llama.cpp ou LM Studio. C'est vous qui décidez ce qui tourne, et où.</p>
+      </div>
     </div>
     <div class="models-card">
       <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Apple Intelligence</span><span class="mb local" data-i18n="mo.builtin">Intégré macOS</span></div>
@@ -483,7 +501,7 @@ footer a:hover{color:var(--text-dark)}
 const I18N = {
 en: {
   "hero.title":"Your meetings transcribe themselves.",
-  "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take. Ask your notes anything and define your own automatic actions — generate a quote, a follow-up — however you like. And more to come.",
+  "hero.sub":"VoiceOvya records your meetings, transcribes them live and turns them into actionable summaries, with the actions to take. Ask your notes anything and define your own smart actions — generate a quote, a reply — however you like. And more to come.",
   "hero.note":"Coming soon for macOS on the App Store.",
   "hs.win":"Weekly team sync",
   "hs.today":"Today","hs.yest":"Yesterday",
@@ -501,8 +519,8 @@ en: {
   "hero.hl3":"Privacy respected",
   "feat.title":"Your whole meeting cycle, in one app",
   "feat.sub":"From recording to summary, without leaving your Mac.",
-  "feat.actions.t":"Custom actions",
-  "feat.actions.p":"Build your own actions (minutes, client quote) and apply them to any note in one click.",
+  "feat.actions.t":"Smart actions",
+  "feat.actions.p":"Build your own smart actions (minutes, client quote) and apply them to any note in one click.",
   "feat.rec.t":"Live recording &amp; transcription",
   "feat.rec.p":"Capture mic and system audio, follow the transcript in real time, with timestamps and speakers.",
   "feat.ai.t":"AI summaries &amp; assistants",
@@ -540,8 +558,8 @@ en: {
   "s2.auto":"Auto",
   "s2.k":"Assistant",
   "s2.t":"Chat with your meetings, act in one click",
-  "s2.p":"Ask the chat your questions, or run a custom action to turn the note into minutes, a follow-up or a task list. Pick the engine: Claude, ChatGPT or a local model.",
-  "s2.f1":"Reusable custom actions, run in one click",
+  "s2.p":"Ask the chat your questions, or run a smart action to turn the note into minutes, a follow-up or a task list. Pick the engine: Claude, ChatGPT or a local model.",
+  "s2.f1":"Reusable smart actions, run in one click",
   "s2.f2":"Prompts triggered automatically by category",
   "s2.f3":"Claude, ChatGPT or a local model, your choice",
   "s3.next":"Design sync · 14:00",
@@ -558,7 +576,12 @@ en: {
   "s3.f3":"Note automatically linked to the event",
   "mo.k":"Your model, your choice",
   "mo.t":"Apple Intelligence, or whatever model you want",
-  "mo.p":"Use Apple Intelligence, built into macOS, or plug in your own model — gemma-4, qwen3… No problem: you choose your model.",
+  "mo.ek":"Turnkey",
+  "mo.et":"Zero configuration",
+  "mo.ep":"Not a computer person? No worries. VoiceOvya works out of the box with Apple Intelligence, built into macOS: nothing to install, nothing to set up — it just works. Even smoother on a recent machine.",
+  "mo.pk":"Power user",
+  "mo.pt":"The model of your choice",
+  "mo.pp":"Plug in whatever model you want — gemma-4, qwen3… — through your favorite tool: Ollama, llama.cpp or LM Studio. You decide what runs, and where.",
   "mo.builtin":"Built into macOS",
   "mo.local":"Local",
   "mo.online":"Online",
