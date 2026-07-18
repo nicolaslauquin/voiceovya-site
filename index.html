@@ -90,7 +90,7 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .winrec .rico{width:26px;height:26px;border-radius:8px;background:rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;flex:none}
 .winrec .rico svg{width:13px;height:13px;stroke:var(--text-dark);stroke-width:2;fill:none;stroke-linecap:round}
 .winrec .rico .stopsq{width:10px;height:10px;border-radius:3px;background:var(--error)}
-.rtrans{padding:12px 14px 20px}
+.rtrans{padding:12px 14px 18px}
 .rlb{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-medium);margin-bottom:8px}
 /* ---- Note detail (assistant) ---- */
 #assistant .wrap{grid-template-columns:minmax(300px,.84fr) minmax(0,1.16fr);gap:40px}
@@ -149,7 +149,7 @@ section{padding:72px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .card{background:#fff;border-radius:14px;padding:22px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
 #features .card{box-shadow:var(--shadow-card),inset 0 0 0 1.5px var(--accent);background:linear-gradient(180deg,#fff,var(--accent-soft))}
-#features .grid{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+#features .grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:960px;margin:0 auto}
 #features .card{display:flex;align-items:center;gap:14px;min-height:92px;padding:18px 20px}
 #features .card .ic{margin-bottom:0}
 #features .card h3{margin-bottom:0;font-size:16px;line-height:1.25}
@@ -235,10 +235,10 @@ section{padding:72px 0}
 .device .livepill .dot{width:7px;height:7px;border-radius:50%;background:var(--error);animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .device .body{padding:12px}
-.device .line{display:flex;gap:12px;padding:8px 10px;border-radius:9px}
+.device .line{display:flex;gap:12px;padding:7px 10px;border-radius:9px}
 .device .line.active{background:var(--accent-soft)}
 .device .line .ts{font-family:var(--mono);font-size:11px;color:var(--text-light);flex:none;min-width:42px;padding-top:2px}
-.device .line .txt{font-size:13px;line-height:1.5}
+.device .line .txt{font-size:12.5px;line-height:1.45}
 .device .line b{font-weight:600}
 .device .cursor{display:inline-block;width:2px;height:14px;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -256,6 +256,7 @@ footer a{color:var(--text-medium);text-decoration:none}
 footer a:hover{color:var(--text-dark)}
 
 @media (max-width:760px){
+  #features .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .story .wrap{grid-template-columns:1fr;gap:28px}
   #assistant .wrap{grid-template-columns:1fr;gap:24px}
   .assistant-copy,.assistant-demo{order:0}
@@ -266,6 +267,9 @@ footer a:hover{color:var(--text-dark)}
 }
 @media (max-width:720px){
   .hero{padding:56px 0 40px}
+}
+@media (max-width:560px){
+  #features .grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -413,9 +417,11 @@ footer a:hover{color:var(--text-dark)}
           </div>
           <div class="rtrans">
             <div class="rlb">Transcription</div>
-            <div class="line"><span class="ts">00:12</span><span class="txt"><span data-i18n="s1.l1">On commence par le point sur la roadmap.</span></span></div>
-            <div class="line active"><span class="ts">00:19</span><span class="txt"><span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre.</span></span></div>
-            <div class="line"><span class="ts">00:27</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale</span><span class="cursor"></span></span></div>
+            <div class="line"><span class="ts">00:12</span><span class="txt"><span data-i18n="s1.l1">On commence par le point sur la roadmap produit et les retours de la beta.</span></span></div>
+            <div class="line"><span class="ts">00:38</span><span class="txt"><span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre : capture locale, résumés et recherche dans les notes.</span></span></div>
+            <div class="line"><span class="ts">01:14</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale, parce qu'on veut garder les réunions confidentielles.</span></span></div>
+            <div class="line"><span class="ts">01:58</span><span class="txt"><span data-i18n="s1.l4">Ensuite, il faut retrouver rapidement une décision sans relire toute la réunion.</span></span></div>
+            <div class="line active"><span class="ts">02:31</span><span class="txt"><span data-i18n="s1.l5" data-dictate>Camille confirme qu'on lance le pilote sur l'équipe produit lundi prochain.</span><span class="cursor"></span></span></div>
           </div>
         </div>
       </div>
@@ -425,9 +431,10 @@ footer a:hover{color:var(--text-dark)}
       <h2 data-i18n="s1.t">Chaque mot capté, à l'instant où il est dit</h2>
       <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion pour suivre chaque prise de parole au moment où elle est captée.</p>
       <ul class="feats">
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f1">Micro et audio système captés ensemble</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f1">Micro, audio système et prise de notes en parallèle</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f2">Transcription lisible en direct, ligne par ligne</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f3">Horodatage précis de chaque prise de parole</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f3">Quick récap et questions à l'assistant pendant la réunion</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f4">Mode fenêtre ou overlay, toujours visible si besoin</span></li>
       </ul>
     </div>
   </div>
@@ -640,15 +647,18 @@ en: {
   "priv.d.t":"Exportable anytime",
   "priv.d.p":"Transcript and summary in Markdown or plain text, whenever you want. Your data goes with you, no lock-in.",
   "s1.win":"Recording in progress",
-  "s1.l1":"Let's start with the roadmap update.",
-  "s1.l2":"Yes, three priorities to settle this quarter.",
-  "s1.l3":"The first one is about local transcription",
+  "s1.l1":"Let's start with the product roadmap and the beta feedback.",
+  "s1.l2":"Yes, three priorities to settle this quarter: local capture, summaries, and note search.",
+  "s1.l3":"The first one is local transcription, because we want to keep meetings confidential.",
+  "s1.l4":"Then we need to find a decision quickly without rereading the whole meeting.",
+  "s1.l5":"Camille confirms that we launch the pilot with the product team next Monday.",
   "s1.k":"Live",
   "s1.t":"Every word captured, the moment it's said",
   "s1.p":"The transcript scrolls in real time during the meeting so you can follow every speaker as their words are captured.",
-  "s1.f1":"Mic and system audio captured together",
+  "s1.f1":"Mic, system audio, and parallel note-taking",
   "s1.f2":"A clear live transcript, line by line",
-  "s1.f3":"Precise timestamp for every utterance",
+  "s1.f3":"Quick recap and assistant questions during the meeting",
+  "s1.f4":"Window or overlay mode, always visible when needed",
   "s2.win":"Note detail",
   "s2.nt":"Conference on Emerging Technologies",
   "s2.date":"Saturday 18 July 2026 · 10:13–11:13 · 1 h",
@@ -733,6 +743,7 @@ function setLang(l){
   document.getElementById('lang-fr').classList.toggle('on', l==='fr');
   document.getElementById('lang-en').classList.toggle('on', l==='en');
   try{ localStorage.setItem('voiceovya-lang', l); }catch(e){}
+  startDictationPreview();
 }
 document.getElementById('lang-fr').addEventListener('click', ()=>setLang('fr'));
 document.getElementById('lang-en').addEventListener('click', ()=>setLang('en'));
@@ -741,6 +752,24 @@ const saved = (()=>{ try{ return localStorage.getItem('voiceovya-lang'); }catch(
 setLang(saved || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'));
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+var dictationTimer;
+function startDictationPreview(){
+  const el = document.querySelector('[data-dictate]');
+  if (!el) return;
+  const text = el.textContent.trim();
+  clearInterval(dictationTimer);
+  el.textContent = '';
+  let i = 0;
+  dictationTimer = setInterval(()=>{
+    i += text[i] === ' ' ? 2 : 1;
+    el.textContent = text.slice(0, i);
+    if (i >= text.length) {
+      clearInterval(dictationTimer);
+      setTimeout(startDictationPreview, 1800);
+    }
+  }, 62);
+}
 
 const assistantDemo = document.querySelector('.assistant-demo');
 if ('IntersectionObserver' in window) {
