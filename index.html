@@ -27,6 +27,7 @@ a{color:var(--accent-deep)}
 /* ---- Header ---- */
 header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-filter:blur(28px) saturate(1.6);border-bottom:.5px solid rgba(0,0,0,.06)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-actions{display:flex;align-items:center;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text-dark);text-decoration:none}
 .brand img{width:28px;height:28px;border-radius:7px}
 .lang{display:flex;background:rgba(0,0,0,.06);border-radius:9px;padding:2px;gap:2px}
@@ -55,8 +56,8 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 /* ---- Hero app window: home note list ---- */
 .heroshot{max-width:940px;margin:52px auto 0}
 .winbig{text-align:left}
-.winbig .winbody{display:grid;grid-template-columns:212px 1fr}
-.winbig .side{background:rgba(244,248,246,.6);border-right:.5px solid rgba(0,0,0,.06);padding:12px 10px}
+.winbig .winbody{position:relative;display:grid;grid-template-columns:212px 1fr;overflow:hidden}
+.winbig .side{position:relative;z-index:1;background:rgba(244,248,246,.6);border-right:.5px solid rgba(0,0,0,.06);padding:12px 10px;animation:note-sidebar-cycle 9s ease-in-out infinite}
 .winbig .gh{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);padding:8px 8px 4px}
 .winbig .cat{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:9px;font-size:13px;margin-bottom:1px}
 .winbig .cat.sel{background:#fff;box-shadow:var(--shadow-card);font-weight:600;color:var(--accent-deep)}
@@ -65,10 +66,15 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .winbig .cat .cc{font-size:11.5px;color:var(--text-light)}
 .srch{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);border-radius:9px;padding:5px 11px;font-size:11.5px;color:var(--text-light)}
 .srch svg{width:12px;height:12px;stroke:var(--text-light);stroke-width:2;fill:none;stroke-linecap:round}
-.winbig .main{padding:14px 18px}
+.mock-record{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:9px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;text-decoration:none;box-shadow:0 2px 7px -3px rgba(31,158,99,.65)}
+.mock-record .rec-dot{width:7px;height:7px;border-radius:50%;background:#fff}
+.winbig .srch{margin-left:0}
+.winbig .main{min-height:338px;padding:14px 18px}
+.winbig .listview{animation:note-list-cycle 9s ease-in-out infinite}
 .gh2{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);margin-bottom:10px}
 .ncard{display:flex;align-items:center;gap:12px;background:#fff;border-radius:13px;padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.05)}
 .ncard.rise{animation:vo-rise .55s ease .35s backwards}
+.ncard.opening{animation:note-card-open 9s ease-in-out infinite}
 @keyframes vo-rise{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
 .wv{width:38px;height:38px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;gap:2.5px}
 .wv i{width:3px;border-radius:2px;background:var(--c)}
@@ -76,6 +82,57 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .ncard .nc{flex:1;min-width:0}
 .ncard .nct{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ncard .ncm{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin-top:3px}
+.note-detail-preview{position:absolute;z-index:2;inset:0;background:#fff;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06);opacity:0;transform:translateX(38px) scale(.97);transform-origin:right center;pointer-events:none;animation:note-detail-open 9s ease-in-out infinite}
+.detail-note{width:75%;height:100%;min-width:0;box-sizing:border-box;padding:18px 20px;background:linear-gradient(135deg,#fff 0%,#fff 68%,var(--accent-soft) 100%)}
+.note-detail-preview .back{display:inline-flex;align-items:center;gap:6px;color:var(--accent-deep);font-size:11px;font-weight:700;margin-bottom:10px}
+.note-detail-preview .back svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.note-detail-preview h3{font-size:18px;line-height:1.2;margin-bottom:6px;max-width:440px}
+.note-detail-preview .meta{font-size:11.5px;color:var(--text-medium);margin-bottom:12px}
+.detail-block{background:#fff;border-radius:11px;padding:11px 12px;margin-bottom:8px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.05)}
+.detail-block .label,.detail-personal .label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-deep);margin-bottom:5px}
+.detail-block p,.detail-block li{font-size:12.5px;line-height:1.45;color:var(--text-dark)}
+.detail-block ul{margin-left:16px}
+.detail-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.detail-actions{display:flex;flex-direction:column;gap:7px}
+.detail-action{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;line-height:1.35;color:var(--text-dark)}
+.detail-action .check{width:14px;height:14px;border-radius:4px;border:1.5px solid rgba(28,40,35,.22);flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center;background:#fff}
+.detail-action .check svg{width:10px;height:10px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.detail-action.done .check{background:var(--accent);border-color:var(--accent)}
+.detail-action.done span:last-child{color:var(--text-medium)}
+.detail-content{display:block}
+.detail-content .detail-row{margin-bottom:0}
+.detail-personal{padding:9px 11px;background:#fff;border-radius:11px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.05)}
+.detail-personal p{font-size:12.5px;line-height:1.45;color:var(--text-dark)}
+.detail-assistant{position:absolute;inset:0 0 0 auto;width:25%;box-sizing:border-box;display:flex;flex-direction:column;min-height:0;padding:16px 14px;background:var(--bg-clear);border-left:.5px solid rgba(0,0,0,.09);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.7);opacity:1;transform:none}
+.detail-assistant .assistant-head{font-size:11px;font-weight:800;color:var(--accent-deep);margin-bottom:10px}
+.detail-assistant .assistant-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;margin-bottom:10px}
+.detail-assistant .assistant-actions span{padding:5px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep);font-size:10px;font-weight:700;white-space:nowrap}
+.detail-assistant .assistant-question{max-width:100%;margin:0 0 8px;padding:8px 10px;background:var(--accent);border-radius:9px 9px 3px 9px;color:#fff;font-size:11px;line-height:1.35;font-weight:600}
+.detail-assistant .assistant-answer{margin:0;padding:9px 10px;background:var(--bg-clear);border-radius:3px 9px 9px 9px;color:var(--text-medium);font-size:10.5px;line-height:1.42}
+.detail-assistant .assistant-compose{display:flex;align-items:center;gap:8px;padding:7px 7px 7px 9px;border-radius:9px;background:#fff;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.12);font-size:10.5px;color:var(--text-dark)}
+.detail-assistant .assistant-compose > span:first-child{flex:1;min-width:0}
+.detail-assistant .assistant-send{width:26px;height:26px;flex:0 0 26px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center}
+.detail-assistant .assistant-send svg{width:12px;height:12px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@keyframes note-card-open{
+  0%,18%,99%,100%{transform:translateY(0) scale(1);box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.05)}
+  25%,98%{transform:translateY(-1px) scale(1.015);box-shadow:0 20px 46px -24px rgba(18,38,28,.45),inset 0 0 0 1.5px var(--accent)}
+}
+@keyframes note-list-cycle{
+  0%,22%,99%,100%{opacity:1;transform:translateX(0) scale(1)}
+  32%,98%{opacity:0;transform:translateX(-18px) scale(.985)}
+}
+@keyframes note-sidebar-cycle{
+  0%,22%,99%,100%{opacity:1;transform:translateX(0)}
+  32%,98%{opacity:0;transform:translateX(-100%)}
+}
+@keyframes note-detail-open{
+  0%,22%,99%,100%{opacity:0;transform:translateX(38px) scale(.97)}
+  32%,98%{opacity:1;transform:translateX(0) scale(1)}
+}
+@media (prefers-reduced-motion:reduce){
+  .winbig .listview,.winbig .side,.ncard.opening,.note-detail-preview{animation:none}
+  .note-detail-preview{display:none}
+}
 .chip2{display:inline-flex;align-items:center;gap:5px;background:rgba(0,0,0,.045);border-radius:20px;padding:2px 9px;font-size:11px}
 .chip2 .dot{width:6px;height:6px;border-radius:50%}
 .avs{display:flex;flex:none}
@@ -270,6 +327,10 @@ footer a:hover{color:var(--text-dark)}
 }
 @media (max-width:560px){
   #features .grid{grid-template-columns:1fr}
+  .mock-record{padding:6px 9px}
+  .detail-note{width:100%}
+  .detail-content{grid-template-columns:1fr}
+  .detail-assistant{display:none}
 }
 </style>
 </head>
@@ -281,9 +342,11 @@ footer a:hover{color:var(--text-dark)}
       <img src="assets/appicon-sm.png" alt="" width="28" height="28">
       VoiceOvya
     </a>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" id="lang-fr">FR</button>
-      <button type="button" id="lang-en">EN</button>
+    <div class="nav-actions">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="lang-fr">FR</button>
+        <button type="button" id="lang-en">EN</button>
+      </div>
     </div>
   </div>
 </header>
@@ -309,6 +372,7 @@ footer a:hover{color:var(--text-dark)}
         <div class="bar">
           <div class="lights"><span></span><span></span><span></span></div>
           <span class="title" data-i18n="hs.win">Mes notes</span>
+          <a class="mock-record" href="#live"><span class="rec-dot"></span><span data-i18n="hs.record">Enregistrer</span></a>
           <span class="srch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span data-i18n="hs.srch">Rechercher dans les notes</span></span>
         </div>
         <div class="winbody">
@@ -325,35 +389,74 @@ footer a:hover{color:var(--text-dark)}
             <div class="cat"><span class="dot" style="background:#45525a"></span><span class="cn" data-i18n="hs.allc">Tous les contacts</span><span class="cc">12</span></div>
           </div>
           <div class="main">
-            <div class="gh2" data-i18n="hs.today">Aujourd'hui</div>
-            <div class="ncard rise" style="--c:#2a73e8">
-              <span class="wv" style="background:#e6eefb"><i></i><i></i><i></i><i></i></span>
-              <div class="nc">
-                <div class="nct" data-i18n="hs.n1">Compte rendu #1</div>
-                <div class="ncm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span>11:13 · 10 min</span></div>
+            <div class="listview">
+              <div class="gh2" data-i18n="hs.today">Aujourd'hui</div>
+              <div class="ncard rise opening" style="--c:#2a73e8">
+                <span class="wv" style="background:#e6eefb"><i></i><i></i><i></i><i></i></span>
+                <div class="nc">
+                  <div class="nct" data-i18n="hs.n1">Compte rendu #1</div>
+                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span>11:13 · 10 min</span></div>
+                </div>
+              </div>
+              <div class="ncard" style="--c:#1f9e63">
+                <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
+                <div class="nc">
+                  <div class="nct">Sync Design</div>
+                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:43 · 30 min</span></div>
+                </div>
+                <div class="avs"><span>CR</span><span>IB</span><span>MT</span><span>+1</span></div>
+              </div>
+              <div class="ncard" style="--c:#1f9e63">
+                <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
+                <div class="nc">
+                  <div class="nct" data-i18n="hs.n3">Suivi client #2</div>
+                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:13 · 12 min</span></div>
+                </div>
+              </div>
+              <div class="ncard" style="--c:#d98a1f">
+                <span class="wv" style="background:#faf0dd"><i></i><i></i><i></i><i></i></span>
+                <div class="nc">
+                  <div class="nct" data-i18n="hs.n4">Idées produit #3</div>
+                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#d98a1f"></span>Marketing</span><span>09:13 · 14 min</span></div>
+                </div>
               </div>
             </div>
-            <div class="ncard" style="--c:#1f9e63">
-              <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
-              <div class="nc">
-                <div class="nct">Sync Design</div>
-                <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:43 · 30 min</span></div>
+          </div>
+          <div class="note-detail-preview" aria-hidden="true">
+            <div class="detail-note">
+              <div class="back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span data-i18n="hd.back">Notes</span></div>
+              <h3 data-i18n="hd.title">Compte rendu #1</h3>
+              <div class="meta"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span> · <span data-i18n="hd.meta">Samedi 18 juillet · 11:13 · 10 min</span></div>
+              <div class="detail-content">
+                <div class="detail-block">
+                  <div class="label" data-i18n="hd.sumt">Résumé court</div>
+                  <p data-i18n="hd.sum">Point rapide sur la roadmap produit, les retours de la beta et les priorités à valider cette semaine.</p>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-block">
+                    <div class="label" data-i18n="hd.keyt">Points clés</div>
+                    <ul><li data-i18n="hd.k1">Capture locale prioritaire</li><li data-i18n="hd.k2">Recherche dans les notes</li></ul>
+                  </div>
+                  <div class="detail-block">
+                    <div class="label" data-i18n="hd.actt">Actions</div>
+                    <div class="detail-actions">
+                      <div class="detail-action done"><span class="check"><svg viewBox="0 0 12 12"><path d="M2.2 6.4l2.2 2.1 5-5.2"/></svg></span><span data-i18n="hd.a1">Lancer le pilote produit</span></div>
+                      <div class="detail-action"><span class="check"></span><span data-i18n="hd.a2">Préparer le récap client</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="detail-personal">
+                  <div class="label" data-i18n="hd.personalt">Notes perso</div>
+                  <p data-i18n="hd.personal">Audrey veut valider le périmètre avant vendredi.</p>
+                </div>
               </div>
-              <div class="avs"><span>CR</span><span>IB</span><span>MT</span><span>+1</span></div>
             </div>
-            <div class="ncard" style="--c:#1f9e63">
-              <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
-              <div class="nc">
-                <div class="nct" data-i18n="hs.n3">Suivi client #2</div>
-                <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:13 · 12 min</span></div>
-              </div>
-            </div>
-            <div class="ncard" style="--c:#d98a1f">
-              <span class="wv" style="background:#faf0dd"><i></i><i></i><i></i><i></i></span>
-              <div class="nc">
-                <div class="nct" data-i18n="hs.n4">Idées produit #3</div>
-                <div class="ncm"><span class="chip2"><span class="dot" style="background:#d98a1f"></span>Marketing</span><span>09:13 · 14 min</span></div>
-              </div>
+            <div class="detail-assistant">
+              <div class="assistant-head" data-i18n="hd.ask">Assistant</div>
+              <div class="assistant-question" data-i18n="hd.question">Quel est le point prioritaire sur la roadmap selon Audrey ?</div>
+              <div class="assistant-answer" data-i18n="hd.answer">Audrey priorise la capture locale avant la recherche, car c'est le point le plus sensible pour les équipes beta.</div>
+              <div class="assistant-actions"><span data-i18n="hd.fast1">Actions à faire</span><span data-i18n="hd.fast2">Décisions</span><span data-i18n="hd.fast3">Points bloquants</span></div>
+              <div class="assistant-compose"><span data-i18n="hd.askhint">Poser une question...</span><span class="assistant-send"><svg viewBox="0 0 24 24"><path d="M19 7v5a4 4 0 0 1-4 4H5"/><path d="m9 12-4 4 4 4"/></svg></span></div>
             </div>
           </div>
         </div>
@@ -427,7 +530,7 @@ footer a:hover{color:var(--text-dark)}
       </div>
     </div>
     <div class="text">
-      <span class="kicker" data-i18n="s1.k">En direct</span>
+      <span class="kicker" data-i18n="s1.k">Enregistrement en direct</span>
       <h2 data-i18n="s1.t">Chaque mot capté, à l'instant où il est dit</h2>
       <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion pour suivre chaque prise de parole au moment où elle est captée.</p>
       <ul class="feats">
@@ -514,11 +617,10 @@ footer a:hover{color:var(--text-dark)}
     <div class="text">
       <span class="kicker" data-i18n="s3.k">Agenda</span>
       <h2 data-i18n="s3.t">Au bon moment, sans y penser</h2>
-      <p data-i18n="s3.p">VoiceOvya lit votre agenda et propose d'enregistrer pile quand la réunion démarre, depuis une notification ou la barre de menus. Chaque note reste reliée à son évènement.</p>
+      <p data-i18n="s3.p">VoiceOvya lit votre agenda et propose d'enregistrer pile quand la réunion démarre, depuis une notification ou la barre de menus.</p>
       <ul class="feats">
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f1">Notification à l'ouverture de chaque réunion</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f2">Contrôle rapide depuis la barre de menus</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f3">Note automatiquement liée à l'évènement</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f2">Enregistrement rapide depuis la barre de menu</span></li>
       </ul>
     </div>
   </div>
@@ -590,7 +692,7 @@ footer a:hover{color:var(--text-dark)}
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2 data-i18n="ct.t">On papote ?</h2>
+    <h2 data-i18n="ct.t">Echangeons</h2>
     <p data-i18n="ct.p">Une question, une idée, une envie de tester en avant-première ? Envois un message !</p>
     <a class="btn btn-lg" href="mailto:hello@voiceovya.com" data-i18n="ct.cta">Dites hello</a>
   </div>
@@ -612,12 +714,33 @@ en: {
   "hero.sub":"VoiceOvya records, transcribes, and summarizes your meetings on your Mac. Ask your notes to find in seconds what was said, decided, or promised.",
   "hero.note":"Coming soon for macOS on the App Store.",
   "hs.win":"My notes",
+  "hs.record":"Record",
   "hs.srch":"Search notes",
   "hs.gnotes":"Notes","hs.gcts":"Contacts",
   "hs.all":"All notes","hs.allc":"All contacts",
   "hs.cperso":"Personal","hs.cprod":"Product",
   "hs.today":"Today",
   "hs.n1":"Minutes #1","hs.n3":"Client follow-up #2","hs.n4":"Product ideas #3",
+  "hd.back":"Notes",
+  "hd.title":"Minutes #1",
+  "hd.meta":"Saturday 18 July · 11:13 · 10 min",
+  "hd.sumt":"Short summary",
+  "hd.sum":"Quick update on the product roadmap, beta feedback, and priorities to validate this week.",
+  "hd.keyt":"Key points",
+  "hd.k1":"Local capture is priority",
+  "hd.k2":"Search across notes",
+  "hd.actt":"Actions",
+  "hd.a1":"Launch the product pilot",
+  "hd.a2":"Prepare the client recap",
+  "hd.personalt":"Personal notes",
+  "hd.personal":"Audrey wants the scope validated before Friday.",
+  "hd.ask":"Assistant",
+  "hd.fast1":"To-dos",
+  "hd.fast2":"Decisions",
+  "hd.fast3":"Blockers",
+  "hd.question":"What is the top roadmap priority according to Audrey?",
+  "hd.answer":"Audrey prioritizes local capture before search, because it is the most sensitive point for beta teams.",
+  "hd.askhint":"Ask a question...",
   "hero.hl1":"Local first",
   "hero.hl1b":"Works offline",
   "hero.hl2":"Stop paying for tokens",
@@ -652,7 +775,7 @@ en: {
   "s1.l3":"The first one is local transcription, because we want to keep meetings confidential.",
   "s1.l4":"Then we need to find a decision quickly without rereading the whole meeting.",
   "s1.l5":"Camille confirms that we launch the pilot with the product team next Monday.",
-  "s1.k":"Live",
+  "s1.k":"Live recording",
   "s1.t":"Every word captured, the moment it's said",
   "s1.p":"The transcript scrolls in real time during the meeting so you can follow every speaker as their words are captured.",
   "s1.f1":"Mic, system audio, and parallel note-taking",
@@ -709,10 +832,9 @@ en: {
   "s3.b1":"Start recording",
   "s3.k":"Calendar",
   "s3.t":"At the right moment, without thinking about it",
-  "s3.p":"VoiceOvya reads your calendar and offers to record right when the meeting starts, from a notification or the menu bar. Every note stays linked to its event.",
+  "s3.p":"VoiceOvya reads your calendar and offers to record right when the meeting starts, from a notification or the menu bar.",
   "s3.f1":"Notification when each meeting opens",
-  "s3.f2":"Quick control from the menu bar",
-  "s3.f3":"Note automatically linked to the event",
+  "s3.f2":"Quick recording from the menu bar",
   "mo.k":"Your model, your choice",
   "mo.t":"Apple Intelligence, or whatever model you want",
   "mo.ek":"Turnkey",
