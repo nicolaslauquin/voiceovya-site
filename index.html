@@ -287,7 +287,7 @@ section{padding:72px 0}
 .device .lights{display:flex;gap:8px;margin-right:4px}
 .device .lights span{width:11px;height:11px;border-radius:50%}
 .device .lights span:nth-child(1){background:#ff5f57}.device .lights span:nth-child(2){background:#febc2e}.device .lights span:nth-child(3){background:#28c840}
-.device .bar .title{font-size:13px;font-weight:600}
+.device .bar .title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .device .livepill{display:inline-flex;align-items:center;gap:6px;margin-left:auto;padding:4px 10px;border-radius:20px;background:rgba(229,72,77,.1);color:var(--error);font-size:12px;font-weight:600}
 .device .livepill .dot{width:7px;height:7px;border-radius:50%;background:var(--error);animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -513,7 +513,7 @@ footer a:hover{color:var(--text-dark)}
         <div class="device winrec">
           <div class="bar">
             <div class="lights"><span></span><span></span><span></span></div>
-            <span class="title" data-i18n="s1.win">Enregistrement en cours</span>
+            <span class="title" data-i18n="s1.win">En direct</span>
             <span class="rtimer jstimer" data-s="111">00:01:51</span>
             <span class="rico"><svg viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></svg></span>
             <span class="rico"><span class="stopsq"></span></span>
@@ -769,7 +769,7 @@ en: {
   "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs.",
   "priv.d.t":"Exportable anytime",
   "priv.d.p":"Transcript and summary in Markdown or plain text, whenever you want. Your data goes with you, no lock-in.",
-  "s1.win":"Recording in progress",
+  "s1.win":"Live",
   "s1.l1":"Let's start with the product roadmap and the beta feedback.",
   "s1.l2":"Yes, three priorities to settle this quarter: local capture, summaries, and note search.",
   "s1.l3":"The first one is local transcription, because we want to keep meetings confidential.",
