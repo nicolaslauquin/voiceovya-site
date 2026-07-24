@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# -ne 1 ]]; then
-  echo "Usage: $0 <répertoire-distant-inovya>" >&2
-  echo "Exemple : $0 /home/voiceoe/inovya/" >&2
+if [[ $# -gt 1 ]]; then
+  echo "Usage: $0 [répertoire-distant-inovya]" >&2
   exit 2
 fi
 
 HOST="${OVH_SFTP_HOST:-ftp.cluster129.hosting.ovh.net}"
-SFTP_USER="${OVH_SFTP_USER:-voiceoe}"
+SFTP_USER="${OVH_SFTP_USER:-inovyar}"
 KEYCHAIN_SERVICE="${OVH_KEYCHAIN_SERVICE:-inovya-sftp}"
-REMOTE_DIR="${1%/}/"
+REMOTE_DIR="${1:-/home/inovyar}"
+REMOTE_DIR="${REMOTE_DIR%/}/"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [[ "${REMOTE_DIR}" == "/" || "${REMOTE_DIR}" == "/home/" || "${REMOTE_DIR}" == "/home/${SFTP_USER}/" ]]; then
+if [[ "${REMOTE_DIR}" == "/" || "${REMOTE_DIR}" == "/home/" ]]; then
   echo "Répertoire distant trop large : ${REMOTE_DIR}" >&2
   exit 2
 fi
