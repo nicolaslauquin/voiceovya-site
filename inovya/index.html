@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inovya — Développement logiciel &amp; intelligence artificielle</title>
+  <meta name="description" content="Inovya conçoit des applications mobiles, macOS et des solutions d’intelligence artificielle sur mesure, du cadrage au déploiement.">
+  <meta name="theme-color" content="#f4f1e9">
+  <link rel="canonical" href="https://inovya.tech/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Inovya — Vos idées, en produits utiles.">
+  <meta property="og:description" content="Conseil IA et développement d’applications mobiles, macOS et web.">
+  <meta property="og:url" content="https://inovya.tech/">
+  <meta property="og:image" content="https://inovya.tech/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://inovya.tech/og.png">
+  <style>
+    :root {
+      --ink: #111820;
+      --muted: #5f656c;
+      --paper: #f4f1e9;
+      --white: #fffef9;
+      --blue: #2e57e8;
+      --blue-dark: #1839ac;
+      --lime: #d8ff70;
+      --line: rgba(17, 24, 32, .14);
+      --shadow: 0 26px 70px rgba(27, 40, 70, .12);
+      --sans: Inter, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .28;
+      background-image: radial-gradient(rgba(17,24,32,.18) .55px, transparent .55px);
+      background-size: 7px 7px;
+    }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--blue);
+      font: 700 12px/1 var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .skip {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 20;
+      padding: 10px 14px;
+      color: white;
+      background: var(--ink);
+      border-radius: 8px;
+      transform: translateY(-150%);
+    }
+    .skip:focus { transform: translateY(0); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 241, 233, .84);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      position: relative;
+      display: inline-block;
+      border: 8px solid var(--blue);
+      border-radius: 50% 50% 50% 7px;
+      transform: rotate(-45deg);
+    }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .nav-links a:not(.nav-cta):hover { color: var(--blue); }
+    .nav-cta {
+      padding: 11px 17px;
+      color: white;
+      background: var(--ink);
+      border-radius: 999px;
+    }
+
+    .hero {
+      min-height: calc(100svh - 72px);
+      padding: 92px 0 70px;
+      display: grid;
+      align-items: center;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(380px, .88fr);
+      align-items: center;
+      gap: 64px;
+    }
+    h1 {
+      max-width: 790px;
+      margin: 0;
+      font-size: clamp(54px, 7.8vw, 106px);
+      line-height: .91;
+      letter-spacing: -.075em;
+    }
+    h1 em {
+      color: var(--blue);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 630px;
+      margin: 32px 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      min-height: 50px;
+      padding: 0 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary {
+      color: white;
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 12px 28px rgba(46, 87, 232, .25);
+    }
+    .button-secondary:hover { background: var(--white); }
+
+    .system-card {
+      position: relative;
+      min-height: 500px;
+      padding: 22px;
+      background: var(--ink);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: rotate(2deg);
+    }
+    .system-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -100px auto;
+      width: 330px;
+      aspect-ratio: 1;
+      background: var(--blue);
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+    .window {
+      position: relative;
+      z-index: 1;
+      padding: 18px;
+      color: white;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+    .window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      font: 600 11px/1 var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .window-dots { display: flex; gap: 6px; }
+    .window-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+    .window-dots i:nth-child(2) { opacity: .6; }
+    .window-dots i:nth-child(3) { opacity: .28; }
+    .flow { display: grid; gap: 12px; }
+    .flow-row { display: grid; grid-template-columns: 1fr 34px 1fr; align-items: center; gap: 8px; }
+    .node {
+      padding: 15px;
+      color: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      font-size: 12px;
+    }
+    .node b { display: block; margin-bottom: 5px; color: white; font-size: 14px; }
+    .arrow { color: var(--lime); text-align: center; font: 700 17px/1 var(--mono); }
+    .status {
+      margin-top: 18px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      background: var(--lime);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .status i { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
+    .card-note {
+      position: absolute;
+      z-index: 2;
+      right: 18px;
+      bottom: 22px;
+      width: 66%;
+      padding: 18px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transform: rotate(-5deg);
+    }
+    .card-note span { font: 700 10px/1 var(--mono); color: var(--blue); text-transform: uppercase; }
+    .card-note p { margin: 9px 0 0; font-size: 17px; font-weight: 750; line-height: 1.3; }
+
+    .marquee {
+      padding: 17px 0;
+      color: white;
+      background: var(--blue);
+      border-block: 1px solid rgba(255,255,255,.3);
+      overflow: hidden;
+    }
+    .marquee-inner {
+      width: max-content;
+      display: flex;
+      gap: 32px;
+      font: 700 12px/1 var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: scroll 28s linear infinite;
+    }
+    .marquee b { color: var(--lime); }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    section { padding: 116px 0; }
+    .section-head {
+      margin-bottom: 54px;
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 40px;
+      align-items: end;
+    }
+    h2 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1;
+      letter-spacing: -.06em;
+    }
+    .section-head > p {
+      max-width: 530px;
+      margin: 0 0 5px auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .service {
+      min-height: 410px;
+      padding: 30px 28px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--line);
+    }
+    .service:last-child { border-right: 0; }
+    .service-number { color: var(--blue); font: 700 12px/1 var(--mono); }
+    .service h3 { margin: auto 0 15px; font-size: 29px; line-height: 1.05; letter-spacing: -.045em; }
+    .service p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; font: 600 10px/1 var(--mono); }
+    .service:hover { background: var(--white); }
+
+    .method { color: white; background: var(--ink); }
+    .method .eyebrow { color: var(--lime); }
+    .method .section-head > p { color: rgba(255,255,255,.6); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.16); }
+    .step { min-height: 250px; padding: 26px; background: var(--ink); }
+    .step strong { color: var(--lime); font: 700 12px/1 var(--mono); }
+    .step h3 { margin: 80px 0 12px; font-size: 22px; letter-spacing: -.035em; }
+    .step p { margin: 0; color: rgba(255,255,255,.58); font-size: 14px; line-height: 1.55; }
+
+    .product-card {
+      padding: clamp(28px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 50px;
+      background: var(--blue);
+      border-radius: 36px;
+      box-shadow: 0 32px 80px rgba(46,87,232,.2);
+      overflow: hidden;
+    }
+    .product-card .eyebrow { color: var(--lime); }
+    .product-card h2 { color: white; }
+    .product-card p { max-width: 520px; color: rgba(255,255,255,.72); font-size: 18px; line-height: 1.6; }
+    .product-card .button { color: var(--blue); background: var(--white); border-color: var(--white); }
+    .product-visual {
+      min-height: 410px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.23);
+      transform: rotate(3deg);
+    }
+    .product-top { display: flex; justify-content: space-between; align-items: center; padding: 4px 2px 18px; font: 700 11px/1 var(--mono); }
+    .voice-lines { display: grid; gap: 10px; }
+    .voice-line { padding: 13px; background: #efeee8; border-radius: 10px; }
+    .voice-line small { display: block; margin-bottom: 7px; color: var(--blue); font: 700 10px/1 var(--mono); }
+    .voice-line span { font-size: 13px; line-height: 1.35; }
+    .summary {
+      margin-top: auto;
+      padding: 16px;
+      color: white;
+      background: var(--ink);
+      border-radius: 12px;
+    }
+    .summary small { color: var(--lime); font: 700 10px/1 var(--mono); text-transform: uppercase; }
+    .summary p { margin: 8px 0 0; color: white; font-size: 13px; line-height: 1.45; }
+
+    .cta {
+      padding-top: 40px;
+      text-align: center;
+    }
+    .cta-box {
+      padding: 96px 30px;
+      background: var(--lime);
+      border-radius: 36px;
+    }
+    .cta-box h2 { max-width: 850px; margin: 0 auto 24px; }
+    .cta-box p { max-width: 620px; margin: 0 auto 30px; color: #364025; font-size: 18px; line-height: 1.55; }
+    .cta-box .button { color: white; background: var(--ink); }
+
+    footer { padding: 48px 0 36px; }
+    .footer-grid {
+      padding-top: 25px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+    .footer-grid a { text-underline-offset: 3px; }
+    .legal { max-width: 720px; }
+    .footer-right { text-align: right; }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; }
+      .hero-grid, .section-head, .product-card { grid-template-columns: 1fr; }
+      .hero-grid { gap: 50px; }
+      .system-card { max-width: 560px; min-height: 440px; }
+      .section-head > p { margin-left: 0; }
+      .services { grid-template-columns: 1fr; }
+      .service { min-height: 300px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .services .service:last-child { border-bottom: 0; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .product-visual { max-width: 560px; width: 100%; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      nav { min-height: 64px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 9px 13px; font-size: 12px !important; }
+      .hero { padding: 66px 0 50px; }
+      h1 { font-size: clamp(48px, 15.5vw, 74px); }
+      .hero-copy > p:not(.eyebrow) { font-size: 17px; }
+      .button { width: 100%; }
+      .system-card { min-height: 390px; padding: 14px; border-radius: 24px; transform: none; }
+      .window { padding: 14px; }
+      .node { padding: 11px 9px; }
+      .node b { font-size: 12px; }
+      .node span { font-size: 10px; }
+      .card-note { width: 76%; right: 12px; bottom: 15px; }
+      section { padding: 82px 0; }
+      .section-head { gap: 24px; }
+      .service { min-height: 260px; padding-inline: 12px; }
+      .steps { grid-template-columns: 1fr; }
+      .step { min-height: 205px; }
+      .step h3 { margin-top: 55px; }
+      .product-card { border-radius: 24px; gap: 36px; }
+      .product-visual { min-height: 390px; transform: none; }
+      .cta-box { padding: 70px 20px; border-radius: 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-right { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .marquee-inner { animation: none; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <header>
+    <nav class="shell" aria-label="Navigation principale">
+      <a class="brand" href="#top" aria-label="Inovya, accueil">
+        <span class="brand-mark" aria-hidden="true"></span>
+        inovya
+      </a>
+      <div class="nav-links">
+        <a href="#expertises">Expertises</a>
+        <a href="#methode">Méthode</a>
+        <a href="#produit">Produit</a>
+        <a class="nav-cta" href="mailto:hello@inovya.tech">Parlons de votre projet</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Studio produit &amp; conseil IA · Nantes</p>
+          <h1>Vos idées, en produits <em>utiles.</em></h1>
+          <p>Inovya imagine, conçoit et développe des logiciels sur mesure — applications iOS, Android, macOS et solutions d’intelligence artificielle — avec une exigence simple&nbsp;: créer de la valeur, pas de la complexité.</p>
+          <div class="actions">
+            <a class="button button-primary" href="mailto:hello@inovya.tech?subject=Parlons%20de%20mon%20projet">Échangeons sur votre projet <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#expertises">Découvrir nos expertises</a>
+          </div>
+        </div>
+
+        <div class="system-card" aria-label="Illustration d’un flux produit, de l’idée au déploiement">
+          <div class="window">
+            <div class="window-bar">
+              <span>Product system / 01</span>
+              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <div class="flow">
+              <div class="flow-row">
+                <div class="node"><b>Besoin métier</b><span>Objectifs, usages, contraintes</span></div>
+                <div class="arrow" aria-hidden="true">→</div>
+                <div class="node"><b>Prototype</b><span>Expérience testable rapidement</span></div>
+              </div>
+              <div class="flow-row">
+                <div class="node"><b>Architecture</b><span>Mobile, desktop, cloud, IA</span></div>
+                <div class="arrow" aria-hidden="true">→</div>
+                <div class="node"><b>Produit</b><span>Fiable, mesurable, évolutif</span></div>
+              </div>
+            </div>
+            <div class="status"><i aria-hidden="true"></i> Prêt à être utilisé, pas seulement démontré.</div>
+          </div>
+          <div class="card-note">
+            <span>Notre approche</span>
+            <p>Comprendre juste. Concevoir vite. Construire durablement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>iOS &amp; Android <b>✦</b> macOS <b>✦</b> Intelligence artificielle <b>✦</b> Architecture produit <b>✦</b> Prototypage <b>✦</b> Conseil technique <b>✦</b></span>
+        <span>iOS &amp; Android <b>✦</b> macOS <b>✦</b> Intelligence artificielle <b>✦</b> Architecture produit <b>✦</b> Prototypage <b>✦</b> Conseil technique <b>✦</b></span>
+      </div>
+    </div>
+
+    <section id="expertises">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Ce que nous faisons</p>
+            <h2>De la stratégie à la mise en production.</h2>
+          </div>
+          <p>Un interlocuteur technique engagé à vos côtés, capable de challenger le besoin, de construire la bonne solution et de l’accompagner dans la durée.</p>
+        </div>
+
+        <div class="services">
+          <article class="service">
+            <span class="service-number">01 / CONSEIL</span>
+            <h3>Conseil produit &amp; stratégie IA</h3>
+            <p>Nous identifions les cas d’usage qui comptent vraiment, évaluons leur faisabilité et transformons les ambitions en une feuille de route concrète.</p>
+            <div class="tags"><span class="tag">Audit</span><span class="tag">Roadmap</span><span class="tag">Architecture</span></div>
+          </article>
+          <article class="service">
+            <span class="service-number">02 / APPLICATIONS</span>
+            <h3>Applications mobiles &amp; macOS</h3>
+            <p>Des applications natives, fluides et robustes, pensées pour les utilisateurs comme pour les équipes qui devront les faire évoluer.</p>
+            <div class="tags"><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">macOS</span><span class="tag">API</span></div>
+          </article>
+          <article class="service">
+            <span class="service-number">03 / IA APPLIQUÉE</span>
+            <h3>Solutions IA sur mesure</h3>
+            <p>Assistants métier, recherche sémantique, traitement de documents ou modèles locaux&nbsp;: l’IA intégrée là où elle améliore réellement le produit.</p>
+            <div class="tags"><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">On-device</span><span class="tag">Agents</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="method" id="methode">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Une méthode pragmatique</p>
+            <h2>Moins de flou. Plus de produit.</h2>
+          </div>
+          <p>Chaque étape produit un résultat visible. Vous gardez la maîtrise des choix, du budget et de la propriété de votre solution.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><strong>01</strong><h3>Cadrer</h3><p>Comprendre les utilisateurs, les objectifs et les contraintes avant d’écrire du code.</p></article>
+          <article class="step"><strong>02</strong><h3>Prototyper</h3><p>Rendre l’idée tangible, valider les parcours et réduire rapidement les incertitudes.</p></article>
+          <article class="step"><strong>03</strong><h3>Développer</h3><p>Construire par itérations courtes avec une architecture solide et des choix expliqués.</p></article>
+          <article class="step"><strong>04</strong><h3>Faire évoluer</h3><p>Mesurer l’usage, améliorer le produit et accompagner sa croissance dans la durée.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="produit">
+      <div class="shell">
+        <article class="product-card">
+          <div>
+            <p class="eyebrow">Un produit signé Inovya</p>
+            <h2>VoiceOvya</h2>
+            <p>Une application macOS native qui enregistre, transcrit et résume vos réunions. Une démonstration concrète de notre savoir-faire en expérience produit, IA locale et développement Apple.</p>
+            <a class="button" href="https://voiceovya.tech" target="_blank" rel="noopener">Découvrir VoiceOvya <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="product-visual" aria-label="Aperçu stylisé de l’application VoiceOvya">
+            <div class="product-top"><span>VoiceOvya / Note du jour</span><span>10:42</span></div>
+            <div class="voice-lines">
+              <div class="voice-line"><small>NICOLAS · 10:38</small><span>Commençons par les retours du pilote et les priorités produit.</span></div>
+              <div class="voice-line"><small>CAMILLE · 10:39</small><span>La transcription locale est le point le plus apprécié par l’équipe.</span></div>
+            </div>
+            <div class="summary"><small>Résumé généré</small><p>Le pilote confirme l’intérêt d’une capture locale et d’un accès immédiat aux décisions de réunion.</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="shell cta-box">
+        <p class="eyebrow">Un projet en tête ?</p>
+        <h2>Faisons-en un produit qui compte.</h2>
+        <p>Parlez-nous de votre contexte, même si le périmètre n’est pas encore parfaitement défini. Le premier échange sert justement à y voir clair.</p>
+        <a class="button" href="mailto:hello@inovya.tech?subject=Parlons%20de%20mon%20projet">hello@inovya.tech <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div class="legal">
+        <strong>Inovya SASU</strong><br>
+        5 rue du Port Guichard, 44000 Nantes · SIREN 993 854 249 · RCS Nantes
+      </div>
+      <div class="footer-right">
+        <a href="mailto:hello@inovya.tech">Contact</a><br>
+        © <span id="year"></span> Inovya
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
