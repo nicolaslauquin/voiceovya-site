@@ -335,19 +335,74 @@
     .cta-box .button { color: white; background: var(--ink); }
 
     footer { padding: 48px 0 36px; }
-    .footer-grid {
+    footer .shell {
       padding-top: 25px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 12px;
       line-height: 1.7;
     }
-    .footer-grid a { text-underline-offset: 3px; }
-    .legal { max-width: 720px; }
-    .footer-right { text-align: right; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+    .footer-brand { white-space: nowrap; }
+    .legal-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .legal-modal:target { display: flex; }
+    .legal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(17, 24, 32, .38);
+      backdrop-filter: blur(10px);
+    }
+    .legal-panel {
+      position: relative;
+      z-index: 1;
+      width: min(580px, 100%);
+      padding: 30px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 28px 90px -36px rgba(17, 24, 32, .5);
+    }
+    .legal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      border-radius: 50%;
+      font-size: 21px;
+      line-height: 1;
+      text-decoration: none;
+    }
+    .legal-close:hover { color: var(--ink); background: var(--paper); }
+    .legal-panel .eyebrow { margin-bottom: 10px; }
+    .legal-panel h2 { margin-bottom: 14px; font-size: 27px; letter-spacing: -.04em; }
+    .legal-panel > p:not(.eyebrow) { margin: 0 0 22px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .legal-panel dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 9px 18px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .legal-panel dt { color: var(--muted); }
+    .legal-panel dd { margin: 0; color: var(--ink); }
+    .legal-panel dd a { color: var(--blue-dark); text-underline-offset: 3px; }
 
     @media (max-width: 900px) {
       .hero { min-height: auto; }
@@ -382,8 +437,8 @@
       .step { min-height: 205px; }
       .step h3 { margin-top: 55px; }
       .cta-box { padding: 70px 20px; border-radius: 24px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-right { text-align: left; }
+      .legal-panel dl { grid-template-columns: 1fr; gap: 3px; }
+      .legal-panel dt { margin-top: 8px; font-size: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -519,15 +574,30 @@
   </main>
 
   <footer>
-    <div class="shell footer-grid">
-      <div class="legal">
-        © <span id="year"></span> Inovya SASU · 5 rue du Port Guichard, 44000 Nantes · SIREN 993 854 249 · RCS Nantes
-      </div>
-      <div class="footer-right">
-        <a href="mailto:hello@inovya.tech">hello@inovya.tech</a>
-      </div>
+    <div class="shell">
+      <span class="footer-brand"><a href="#mentions-legales">© <span id="year"></span> Inovya SASU</a></span>
     </div>
   </footer>
+
+  <section class="legal-modal" id="mentions-legales" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+    <a class="legal-backdrop" href="#" aria-label="Fermer les mentions légales"></a>
+    <div class="legal-panel">
+      <a class="legal-close" href="#" aria-label="Fermer les mentions légales">×</a>
+      <p class="eyebrow">Mentions légales</p>
+      <h2 id="legal-title">Informations éditeur</h2>
+      <p><strong>Inovya est une société française de conseil produit, logiciel et intelligence artificielle.</strong> Elle accompagne les organisations dans le cadrage de leurs besoins et leurs décisions techniques.</p>
+      <dl>
+        <dt>Société</dt>
+        <dd>Inovya SASU</dd>
+        <dt>Adresse</dt>
+        <dd>5 rue du Port Guichard, 44000 Nantes</dd>
+        <dt>SIREN</dt>
+        <dd>993 854 249</dd>
+        <dt>Contact</dt>
+        <dd><a href="mailto:hello@inovya.tech">hello@inovya.tech</a></dd>
+      </dl>
+    </div>
+  </section>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();

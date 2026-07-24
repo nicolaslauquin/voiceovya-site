@@ -27,6 +27,8 @@ done
 
 SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SERVICE}" -w 2>/dev/null)" || {
   echo "Aucun mot de passe trouvé dans le Trousseau pour ${SFTP_USER}/${KEYCHAIN_SERVICE}." >&2
+  echo "Enregistre-le avec :" >&2
+  echo "  security add-generic-password -a \"${SFTP_USER}\" -s \"${KEYCHAIN_SERVICE}\" -w -U" >&2
   exit 1
 }
 
