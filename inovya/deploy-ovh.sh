@@ -9,7 +9,7 @@ fi
 
 HOST="${OVH_SFTP_HOST:-ftp.cluster129.hosting.ovh.net}"
 SFTP_USER="${OVH_SFTP_USER:-voiceoe}"
-KEYCHAIN_SERVICE="${OVH_KEYCHAIN_SERVICE:-voiceovya-sftp}"
+KEYCHAIN_SERVICE="${OVH_KEYCHAIN_SERVICE:-inovya-sftp}"
 REMOTE_DIR="${1%/}/"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
