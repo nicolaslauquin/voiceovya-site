@@ -3,8 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>VoiceOvya · Vos réunions ont la réponse</title>
 <meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac, avec les actions à réaliser. Smart actions, modèles locaux, respect de votre vie privée.">
+<link rel="canonical" href="https://voiceovya.com/">
+<meta name="theme-color" content="#f4f8f6">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="VoiceOvya · Vos réunions ont la réponse">
+<meta property="og:description" content="Enregistrez, transcrivez et résumez vos réunions sur votre Mac. Retrouvez en quelques secondes ce qui a été dit, décidé ou promis.">
+<meta property="og:url" content="https://voiceovya.com/">
 <link rel="icon" href="assets/appicon-sm.png">
 <style>
 :root{
@@ -659,7 +668,7 @@ footer a:hover{color:var(--text-dark)}
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Claude</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">ChatGPT</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
         </div>
-        <p class="pnote" data-i18n="mo.note">Déjà un compte ChatGPT ou Claude ? Collez votre clé, c'est tout.</p>
+        <p class="pnote" data-i18n="mo.note">Vous utilisez déjà l’API d’OpenAI ou d’Anthropic ? Ajoutez votre clé, c’est tout.</p>
       </div>
       <div class="profile">
         <span class="pk power" data-i18n="mo.pk">Power user</span>
@@ -709,9 +718,9 @@ footer a:hover{color:var(--text-dark)}
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2 data-i18n="ct.t">Echangeons</h2>
-    <p data-i18n="ct.p">Une question, une idée, une envie de tester en avant-première ? Envois un message !</p>
-    <a class="btn btn-lg" href="mailto:hello@voiceovya.com" data-i18n="ct.cta">Dites hello</a>
+    <h2 data-i18n="ct.t">Échangeons</h2>
+    <p data-i18n="ct.p">Une question, une idée ou l’envie de tester VoiceOvya en avant-première ? Écrivez-nous.</p>
+    <a class="btn btn-lg" href="mailto:hello@voiceovya.com" data-i18n="ct.cta">Nous écrire</a>
   </div>
 </section>
 
@@ -729,7 +738,7 @@ footer a:hover{color:var(--text-dark)}
     <a class="legal-close" href="#" aria-label="Fermer les mentions légales">×</a>
     <p class="kicker" data-i18n="legal.k">Mentions légales</p>
     <h2 id="legal-title" data-i18n="legal.t">Informations éditeur</h2>
-    <p data-i18n="legal.p"><strong>Inovya est une société française de conseil en ingénierie logicielle et en intelligence artificielle, ainsi que d’édition de logiciels.</strong> Elle accompagne les organisations dans la clarification de leurs besoins, le cadrage de leurs projets et leurs choix techniques.</p>
+    <p data-i18n="legal.p"><strong>Inovya est une société française de conseil en ingénierie logicielle et en intelligence artificielle.</strong> Elle accompagne les entreprises dans la clarification de leurs besoins, le cadrage de leurs projets et leurs choix techniques. Inovya édite également ses propres logiciels.</p>
     <dl>
       <dt data-i18n="legal.company.k">Société</dt>
       <dd>Inovya SASU</dd>
@@ -818,25 +827,6 @@ en: {
   "s1.f2":"A clear live transcript, line by line",
   "s1.f3":"Quick recap and assistant questions during the meeting",
   "s1.f4":"Window or overlay mode, always visible when needed",
-  "s2.win":"Note detail",
-  "s2.nt":"Conference on Emerging Technologies",
-  "s2.date":"Saturday 18 July 2026 · 10:13–11:13 · 1 h",
-  "s2.addcontact":"+ Add contact",
-  "s2.plb":"Personal notes",
-  "s2.perso":"Meetup, talk recommended by Olivier",
-  "s2.slb":"Short summary",
-  "s2.sum":"In-depth discussion about emerging technologies, artificial intelligence, machine learning, and their impact on modern industry.",
-  "s2.kt":"Key points",
-  "s2.k1":"Generative AI reshapes software production cycles",
-  "s2.k2":"On-device machine learning reduces cloud dependency",
-  "s2.k3":"Data privacy becomes a differentiating factor",
-  "s2.dt":"Decisions",
-  "s2.d1":"Prioritize models running locally on device",
-  "s2.d2":"Launch an internal pilot before broad rollout",
-  "s2.abt":"Action items",
-  "s2.t1":"Map priority AI use cases by team",
-  "s2.t2":"Evaluate two local models on a real dataset",
-  "s2.trans":"Transcript",
   "s2.q":"Which technologies are mentioned?",
   "s2.context":"In this meeting",
   "s2.found":"Answer found in your notes",
@@ -844,11 +834,6 @@ en: {
   "s2.a1":"Emerging technologies",
   "s2.a2":"Artificial intelligence (AI)",
   "s2.a3":"Machine learning",
-  "s2.a4":"Artificial neural networks",
-  "s2.pc1":"Action items",
-  "s2.pc2":"Topics covered",
-  "s2.pc3":"Open questions",
-  "s2.pc4":"+ Add",
   "s2.ask":"Ask a question about the note...",
   "s2.k":"Assistant",
   "s2.t":"Ask your notes.",
@@ -881,17 +866,17 @@ en: {
   "mo.pp":"Plug in whatever model you want (gemma-4, qwen3…) through your favorite tool: Ollama, llama.cpp or LM Studio. You decide what runs, and where.",
   "mo.builtin":"Built into macOS",
   "mo.key":"Your API key",
-  "mo.note":"Already have a ChatGPT or Claude account? Paste your key, that's it.",
+  "mo.note":"Already using the OpenAI or Anthropic API? Add your key, that’s it.",
   "mo.pn":"Pick your tool and the model suited to your use.",
   "legal.k":"Legal notice",
   "legal.t":"Publisher information",
-  "legal.p":"<strong>Inovya is a French software engineering and artificial intelligence consulting company, as well as a software publisher.</strong> It helps organizations clarify their needs, scope their projects, and make technical decisions.",
+  "legal.p":"<strong>Inovya is a French software engineering and artificial intelligence consulting company.</strong> It helps businesses clarify their needs, scope their projects, and make technical decisions. Inovya also publishes its own software.",
   "legal.company.k":"Company",
   "legal.address.k":"Address",
   "legal.contact.k":"Contact",
-  "ct.t":"Let's chat",
-  "ct.p":"A question, an idea, want to try it early? Drop a line!",
-  "ct.cta":"Say hello"
+  "ct.t":"Let’s talk",
+  "ct.p":"Have a question, an idea, or want to try VoiceOvya early? Get in touch.",
+  "ct.cta":"Contact us"
 }};
 
 const FR = {};
