@@ -308,9 +308,24 @@ section{padding:72px 0}
 .menubar .dim{color:var(--text-medium)}
 /* ---- Footer ---- */
 footer{border-top:.5px solid rgba(0,0,0,.06);padding:28px 0;font-size:12px;color:var(--text-medium)}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+footer .wrap{display:flex;align-items:center;justify-content:center}
+footer .footer-brand{white-space:nowrap}
 footer a{color:var(--text-medium);text-decoration:none}
 footer a:hover{color:var(--text-dark)}
+.legal-modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:24px}
+.legal-modal:target{display:flex}
+.legal-backdrop{position:absolute;inset:0;background:rgba(17,24,20,.35);backdrop-filter:blur(10px)}
+.legal-panel{position:relative;z-index:1;width:min(560px,100%);border-radius:16px;background:#fff;padding:28px;box-shadow:0 28px 90px -36px rgba(18,38,28,.45),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.legal-close{position:absolute;top:16px;right:18px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:20px;line-height:1;color:var(--text-medium)}
+.legal-close:hover{background:var(--bg-clear);color:var(--text-dark)}
+.legal-panel .kicker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);margin-bottom:8px}
+.legal-panel h2{font-size:24px;margin-bottom:12px}
+.legal-panel p{font-size:14px;color:var(--text-medium);margin-bottom:18px}
+.legal-panel dl{display:grid;grid-template-columns:120px 1fr;gap:8px 16px;font-size:14px}
+.legal-panel dt{color:var(--text-light)}
+.legal-panel dd{color:var(--text-dark)}
+.legal-panel a{color:var(--accent-deep);text-decoration:none}
+.legal-panel a:hover{text-decoration:underline}
 
 @media (max-width:760px){
   #features .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -324,6 +339,8 @@ footer a:hover{color:var(--text-dark)}
 }
 @media (max-width:720px){
   .hero{padding:56px 0 40px}
+  .legal-panel dl{grid-template-columns:1fr;gap:4px}
+  .legal-panel dt{font-size:12px}
 }
 @media (max-width:560px){
   #features .grid{grid-template-columns:1fr}
@@ -702,10 +719,29 @@ footer a:hover{color:var(--text-dark)}
 
 <footer>
   <div class="wrap">
-    <span>© <span id="year"></span> VoiceOvya</span>
-    <span><a href="mailto:hello@voiceovya.com">hello@voiceovya.com</a></span>
+    <span class="footer-brand"><a href="#mentions-legales">© <span id="year"></span> Inovya SASU</a></span>
   </div>
 </footer>
+
+<section class="legal-modal" id="mentions-legales" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+  <a class="legal-backdrop" href="#" aria-label="Fermer les mentions légales"></a>
+  <div class="legal-panel">
+    <a class="legal-close" href="#" aria-label="Fermer les mentions légales">×</a>
+    <p class="kicker" data-i18n="legal.k">Mentions légales</p>
+    <h2 id="legal-title" data-i18n="legal.t">Informations éditeur</h2>
+    <p data-i18n="legal.p"><strong>Inovya est une société française de conseil en ingénierie logicielle et en intelligence artificielle, ainsi que d’édition de logiciels.</strong> Elle accompagne les organisations dans la clarification de leurs besoins, le cadrage de leurs projets et leurs choix techniques.</p>
+    <dl>
+      <dt data-i18n="legal.company.k">Société</dt>
+      <dd>Inovya SASU</dd>
+      <dt data-i18n="legal.address.k">Adresse</dt>
+      <dd>5 rue du Port Guichard, 44000 Nantes</dd>
+      <dt>SIREN</dt>
+      <dd>993 854 249</dd>
+      <dt data-i18n="legal.contact.k">Contact</dt>
+      <dd><a href="mailto:hello@inovya.tech">hello@inovya.tech</a></dd>
+    </dl>
+  </div>
+</section>
 
 <script>
 const I18N = {
@@ -847,6 +883,12 @@ en: {
   "mo.key":"Your API key",
   "mo.note":"Already have a ChatGPT or Claude account? Paste your key, that's it.",
   "mo.pn":"Pick your tool and the model suited to your use.",
+  "legal.k":"Legal notice",
+  "legal.t":"Publisher information",
+  "legal.p":"<strong>Inovya is a French software engineering and artificial intelligence consulting company, as well as a software publisher.</strong> It helps organizations clarify their needs, scope their projects, and make technical decisions.",
+  "legal.company.k":"Company",
+  "legal.address.k":"Address",
+  "legal.contact.k":"Contact",
   "ct.t":"Let's chat",
   "ct.p":"A question, an idea, want to try it early? Drop a line!",
   "ct.cta":"Say hello"
