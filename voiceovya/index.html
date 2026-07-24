@@ -304,7 +304,7 @@ section{padding:72px 0}
 .device .line{display:flex;gap:12px;padding:7px 10px;border-radius:9px}
 .device .line.active{background:var(--accent-soft)}
 .device .line .ts{font-family:var(--mono);font-size:11px;color:var(--text-light);flex:none;min-width:42px;padding-top:2px}
-.device .line .txt{font-size:12.5px;line-height:1.45}
+.device .line .txt{flex:1;min-width:0;font-size:12.5px;line-height:1.45}
 .device .line b{font-weight:600}
 .device .cursor{display:inline-block;width:2px;height:14px;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -892,7 +892,8 @@ function setLang(l){
   document.getElementById('lang-fr').classList.toggle('on', l==='fr');
   document.getElementById('lang-en').classList.toggle('on', l==='en');
   try{ localStorage.setItem('voiceovya-lang', l); }catch(e){}
-  startDictationPreview();
+  const dictatedText = document.querySelector('[data-dictate]')?.textContent.trim();
+  startDictationPreview(dictatedText);
 }
 document.getElementById('lang-fr').addEventListener('click', ()=>setLang('fr'));
 document.getElementById('lang-en').addEventListener('click', ()=>setLang('en'));
@@ -903,11 +904,28 @@ setLang(saved || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'f
 document.getElementById('year').textContent = new Date().getFullYear();
 
 var dictationTimer;
-function startDictationPreview(){
+var dictationRestartTimer;
+var dictationResizeFrame;
+
+function reserveDictationHeight(el, text){
+  const line = el.closest('.txt');
+  if (!line) return;
+  const currentText = el.textContent;
+  el.textContent = text;
+  line.style.minHeight = '';
+  line.style.minHeight = Math.ceil(line.getBoundingClientRect().height)+'px';
+  el.textContent = currentText;
+}
+
+function startDictationPreview(fullText){
   const el = document.querySelector('[data-dictate]');
   if (!el) return;
-  const text = el.textContent.trim();
+  const text = (fullText || el.dataset.fullText || el.textContent).trim();
+  if (!text) return;
+  el.dataset.fullText = text;
   clearInterval(dictationTimer);
+  clearTimeout(dictationRestartTimer);
+  reserveDictationHeight(el, text);
   el.textContent = '';
   let i = 0;
   dictationTimer = setInterval(()=>{
@@ -915,10 +933,18 @@ function startDictationPreview(){
     el.textContent = text.slice(0, i);
     if (i >= text.length) {
       clearInterval(dictationTimer);
-      setTimeout(startDictationPreview, 1800);
+      dictationRestartTimer = setTimeout(()=>startDictationPreview(text), 1800);
     }
   }, 62);
 }
+
+window.addEventListener('resize', ()=>{
+  cancelAnimationFrame(dictationResizeFrame);
+  dictationResizeFrame = requestAnimationFrame(()=>{
+    const el = document.querySelector('[data-dictate]');
+    if (el?.dataset.fullText) reserveDictationHeight(el, el.dataset.fullText);
+  });
+});
 
 const assistantDemo = document.querySelector('.assistant-demo');
 if ('IntersectionObserver' in window) {
