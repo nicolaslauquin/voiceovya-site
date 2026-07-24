@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inovya — Développement logiciel &amp; intelligence artificielle</title>
-  <meta name="description" content="Inovya conçoit des applications mobiles, macOS et des solutions d’intelligence artificielle sur mesure, du cadrage au déploiement.">
+  <title>Inovya — Conseil produit, logiciel &amp; intelligence artificielle</title>
+  <meta name="description" content="Inovya accompagne les équipes dans leurs choix produit, logiciel et intelligence artificielle avec des interventions ciblées, du diagnostic à la feuille de route.">
   <meta name="theme-color" content="#f4f1e9">
   <link rel="canonical" href="https://inovya.tech/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:title" content="Inovya — Vos idées, en produits utiles.">
-  <meta property="og:description" content="Conseil IA et développement d’applications mobiles, macOS et web.">
+  <meta property="og:title" content="Inovya — Décider juste, avant de construire.">
+  <meta property="og:description" content="Conseil produit, logiciel et IA. Des interventions ciblées pour décider juste avant d’investir.">
   <meta property="og:url" content="https://inovya.tech/">
-  <meta property="og:image" content="https://inovya.tech/og.png">
+  <meta property="og:image" content="https://inovya.tech/og-consulting.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://inovya.tech/og.png">
+  <meta name="twitter:image" content="https://inovya.tech/og-consulting.png">
   <style>
     :root {
       --ink: #111820;
@@ -322,49 +322,7 @@
     .step h3 { margin: 80px 0 12px; font-size: 22px; letter-spacing: -.035em; }
     .step p { margin: 0; color: rgba(255,255,255,.58); font-size: 14px; line-height: 1.55; }
 
-    .product-card {
-      padding: clamp(28px, 6vw, 72px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 50px;
-      background: var(--blue);
-      border-radius: 36px;
-      box-shadow: 0 32px 80px rgba(46,87,232,.2);
-      overflow: hidden;
-    }
-    .product-card .eyebrow { color: var(--lime); }
-    .product-card h2 { color: white; }
-    .product-card p { max-width: 520px; color: rgba(255,255,255,.72); font-size: 18px; line-height: 1.6; }
-    .product-card .button { color: var(--blue); background: var(--white); border-color: var(--white); }
-    .product-visual {
-      min-height: 410px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      color: var(--ink);
-      background: var(--white);
-      border-radius: 22px;
-      box-shadow: 0 24px 60px rgba(0,0,0,.23);
-      transform: rotate(3deg);
-    }
-    .product-top { display: flex; justify-content: space-between; align-items: center; padding: 4px 2px 18px; font: 700 11px/1 var(--mono); }
-    .voice-lines { display: grid; gap: 10px; }
-    .voice-line { padding: 13px; background: #efeee8; border-radius: 10px; }
-    .voice-line small { display: block; margin-bottom: 7px; color: var(--blue); font: 700 10px/1 var(--mono); }
-    .voice-line span { font-size: 13px; line-height: 1.35; }
-    .summary {
-      margin-top: auto;
-      padding: 16px;
-      color: white;
-      background: var(--ink);
-      border-radius: 12px;
-    }
-    .summary small { color: var(--lime); font: 700 10px/1 var(--mono); text-transform: uppercase; }
-    .summary p { margin: 8px 0 0; color: white; font-size: 13px; line-height: 1.45; }
-
     .cta {
-      padding-top: 40px;
       text-align: center;
     }
     .cta-box {
@@ -380,7 +338,7 @@
     .footer-grid {
       padding-top: 25px;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 30px;
       border-top: 1px solid var(--line);
       color: var(--muted);
@@ -393,7 +351,7 @@
 
     @media (max-width: 900px) {
       .hero { min-height: auto; }
-      .hero-grid, .section-head, .product-card { grid-template-columns: 1fr; }
+      .hero-grid, .section-head { grid-template-columns: 1fr; }
       .hero-grid { gap: 50px; }
       .system-card { max-width: 560px; min-height: 440px; }
       .section-head > p { margin-left: 0; }
@@ -401,7 +359,6 @@
       .service { min-height: 300px; border-right: 0; border-bottom: 1px solid var(--line); }
       .services .service:last-child { border-bottom: 0; }
       .steps { grid-template-columns: 1fr 1fr; }
-      .product-visual { max-width: 560px; width: 100%; margin: 0 auto; }
     }
     @media (max-width: 640px) {
       .shell { width: min(100% - 28px, 1180px); }
@@ -424,8 +381,6 @@
       .steps { grid-template-columns: 1fr; }
       .step { min-height: 205px; }
       .step h3 { margin-top: 55px; }
-      .product-card { border-radius: 24px; gap: 36px; }
-      .product-visual { min-height: 390px; transform: none; }
       .cta-box { padding: 70px 20px; border-radius: 24px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-right { text-align: left; }
@@ -449,8 +404,7 @@
       <div class="nav-links">
         <a href="#expertises">Expertises</a>
         <a href="#methode">Méthode</a>
-        <a href="#produit">Produit</a>
-        <a class="nav-cta" href="mailto:hello@inovya.tech">Parlons de votre projet</a>
+        <a class="nav-cta" href="mailto:hello@inovya.tech?subject=Demande%20de%20conseil">Parlons de votre besoin</a>
       </div>
     </nav>
   </header>
@@ -459,16 +413,16 @@
     <section class="hero" id="top">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Studio produit &amp; conseil IA · Nantes</p>
-          <h1>Vos idées, en produits <em>utiles.</em></h1>
-          <p>Inovya imagine, conçoit et développe des logiciels sur mesure — applications iOS, Android, macOS et solutions d’intelligence artificielle — avec une exigence simple&nbsp;: créer de la valeur, pas de la complexité.</p>
+          <p class="eyebrow">Conseil produit, logiciel &amp; IA · Nantes</p>
+          <h1>Décider juste, avant de <em>construire.</em></h1>
+          <p>Inovya aide les équipes à clarifier un besoin, challenger une solution et sécuriser leurs choix techniques — avec une expertise particulière en applications mobiles, macOS et intelligence artificielle.</p>
           <div class="actions">
-            <a class="button button-primary" href="mailto:hello@inovya.tech?subject=Parlons%20de%20mon%20projet">Échangeons sur votre projet <span aria-hidden="true">↗</span></a>
+            <a class="button button-primary" href="mailto:hello@inovya.tech?subject=Demande%20de%20conseil">Échangeons sur votre besoin <span aria-hidden="true">↗</span></a>
             <a class="button button-secondary" href="#expertises">Découvrir nos expertises</a>
           </div>
         </div>
 
-        <div class="system-card" aria-label="Illustration d’un flux produit, de l’idée au déploiement">
+        <div class="system-card" aria-label="Illustration d’une mission de conseil, du besoin à la recommandation">
           <div class="window">
             <div class="window-bar">
               <span>Product system / 01</span>
@@ -476,21 +430,21 @@
             </div>
             <div class="flow">
               <div class="flow-row">
-                <div class="node"><b>Besoin métier</b><span>Objectifs, usages, contraintes</span></div>
+                <div class="node"><b>Contexte</b><span>Objectifs, usages, contraintes</span></div>
                 <div class="arrow" aria-hidden="true">→</div>
-                <div class="node"><b>Prototype</b><span>Expérience testable rapidement</span></div>
+                <div class="node"><b>Diagnostic</b><span>Risques et opportunités</span></div>
               </div>
               <div class="flow-row">
-                <div class="node"><b>Architecture</b><span>Mobile, desktop, cloud, IA</span></div>
+                <div class="node"><b>Options</b><span>Arbitrages produit et techniques</span></div>
                 <div class="arrow" aria-hidden="true">→</div>
-                <div class="node"><b>Produit</b><span>Fiable, mesurable, évolutif</span></div>
+                <div class="node"><b>Recommandation</b><span>Décisions et feuille de route</span></div>
               </div>
             </div>
-            <div class="status"><i aria-hidden="true"></i> Prêt à être utilisé, pas seulement démontré.</div>
+            <div class="status"><i aria-hidden="true"></i> Une trajectoire claire avant d’investir.</div>
           </div>
           <div class="card-note">
             <span>Notre approche</span>
-            <p>Comprendre juste. Concevoir vite. Construire durablement.</p>
+            <p>Comprendre. Arbitrer. Transmettre.</p>
           </div>
         </div>
       </div>
@@ -498,8 +452,8 @@
 
     <div class="marquee" aria-hidden="true">
       <div class="marquee-inner">
-        <span>iOS &amp; Android <b>✦</b> macOS <b>✦</b> Intelligence artificielle <b>✦</b> Architecture produit <b>✦</b> Prototypage <b>✦</b> Conseil technique <b>✦</b></span>
-        <span>iOS &amp; Android <b>✦</b> macOS <b>✦</b> Intelligence artificielle <b>✦</b> Architecture produit <b>✦</b> Prototypage <b>✦</b> Conseil technique <b>✦</b></span>
+        <span>Audit produit <b>✦</b> Architecture logicielle <b>✦</b> Stratégie IA <b>✦</b> Applications Apple <b>✦</b> Prototypage de validation <b>✦</b> Conseil technique <b>✦</b></span>
+        <span>Audit produit <b>✦</b> Architecture logicielle <b>✦</b> Stratégie IA <b>✦</b> Applications Apple <b>✦</b> Prototypage de validation <b>✦</b> Conseil technique <b>✦</b></span>
       </div>
     </div>
 
@@ -508,9 +462,9 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Ce que nous faisons</p>
-            <h2>De la stratégie à la mise en production.</h2>
+            <h2>Du besoin à une décision éclairée.</h2>
           </div>
-          <p>Un interlocuteur technique engagé à vos côtés, capable de challenger le besoin, de construire la bonne solution et de l’accompagner dans la durée.</p>
+          <p>Des interventions ciblées pour prendre du recul, réduire les risques et transmettre une trajectoire exploitable à vos équipes.</p>
         </div>
 
         <div class="services">
@@ -522,14 +476,14 @@
           </article>
           <article class="service">
             <span class="service-number">02 / APPLICATIONS</span>
-            <h3>Applications mobiles &amp; macOS</h3>
-            <p>Des applications natives, fluides et robustes, pensées pour les utilisateurs comme pour les équipes qui devront les faire évoluer.</p>
+            <h3>Expertise mobile &amp; macOS</h3>
+            <p>Revue d’architecture, choix technologiques, cadrage d’une application native et accompagnement ponctuel de vos équipes.</p>
             <div class="tags"><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">macOS</span><span class="tag">API</span></div>
           </article>
           <article class="service">
             <span class="service-number">03 / IA APPLIQUÉE</span>
-            <h3>Solutions IA sur mesure</h3>
-            <p>Assistants métier, recherche sémantique, traitement de documents ou modèles locaux&nbsp;: l’IA intégrée là où elle améliore réellement le produit.</p>
+            <h3>Cadrage de solutions IA</h3>
+            <p>Assistants métier, recherche sémantique, traitement de documents ou modèles locaux&nbsp;: identifier la bonne approche avant d’engager le développement.</p>
             <div class="tags"><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">On-device</span><span class="tag">Agents</span></div>
           </article>
         </div>
@@ -541,46 +495,25 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Une méthode pragmatique</p>
-            <h2>Moins de flou. Plus de produit.</h2>
+            <h2>Moins de flou. De meilleurs choix.</h2>
           </div>
-          <p>Chaque étape produit un résultat visible. Vous gardez la maîtrise des choix, du budget et de la propriété de votre solution.</p>
+          <p>Le format s’adapte au besoin&nbsp;: regard ponctuel, audit ciblé ou cycle de conseil planifié. Chaque intervention aboutit à des décisions documentées.</p>
         </div>
         <div class="steps">
-          <article class="step"><strong>01</strong><h3>Cadrer</h3><p>Comprendre les utilisateurs, les objectifs et les contraintes avant d’écrire du code.</p></article>
-          <article class="step"><strong>02</strong><h3>Prototyper</h3><p>Rendre l’idée tangible, valider les parcours et réduire rapidement les incertitudes.</p></article>
-          <article class="step"><strong>03</strong><h3>Développer</h3><p>Construire par itérations courtes avec une architecture solide et des choix expliqués.</p></article>
-          <article class="step"><strong>04</strong><h3>Faire évoluer</h3><p>Mesurer l’usage, améliorer le produit et accompagner sa croissance dans la durée.</p></article>
+          <article class="step"><strong>01</strong><h3>Qualifier</h3><p>Comprendre le contexte, les objectifs et la décision que vous devez prendre.</p></article>
+          <article class="step"><strong>02</strong><h3>Auditer</h3><p>Examiner l’existant, confronter les hypothèses et faire apparaître les vrais risques.</p></article>
+          <article class="step"><strong>03</strong><h3>Recommander</h3><p>Comparer les options et proposer des arbitrages argumentés, réalistes et priorisés.</p></article>
+          <article class="step"><strong>04</strong><h3>Transmettre</h3><p>Formaliser une feuille de route claire que vos équipes peuvent mettre en œuvre.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section id="produit">
-      <div class="shell">
-        <article class="product-card">
-          <div>
-            <p class="eyebrow">Un produit signé Inovya</p>
-            <h2>VoiceOvya</h2>
-            <p>Une application macOS native qui enregistre, transcrit et résume vos réunions. Une démonstration concrète de notre savoir-faire en expérience produit, IA locale et développement Apple.</p>
-            <a class="button" href="https://voiceovya.tech" target="_blank" rel="noopener">Découvrir VoiceOvya <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="product-visual" aria-label="Aperçu stylisé de l’application VoiceOvya">
-            <div class="product-top"><span>VoiceOvya / Note du jour</span><span>10:42</span></div>
-            <div class="voice-lines">
-              <div class="voice-line"><small>NICOLAS · 10:38</small><span>Commençons par les retours du pilote et les priorités produit.</span></div>
-              <div class="voice-line"><small>CAMILLE · 10:39</small><span>La transcription locale est le point le plus apprécié par l’équipe.</span></div>
-            </div>
-            <div class="summary"><small>Résumé généré</small><p>Le pilote confirme l’intérêt d’une capture locale et d’un accès immédiat aux décisions de réunion.</p></div>
-          </div>
-        </article>
       </div>
     </section>
 
     <section class="cta" id="contact">
       <div class="shell cta-box">
-        <p class="eyebrow">Un projet en tête ?</p>
-        <h2>Faisons-en un produit qui compte.</h2>
-        <p>Parlez-nous de votre contexte, même si le périmètre n’est pas encore parfaitement défini. Le premier échange sert justement à y voir clair.</p>
-        <a class="button" href="mailto:hello@inovya.tech?subject=Parlons%20de%20mon%20projet">hello@inovya.tech <span aria-hidden="true">↗</span></a>
+        <p class="eyebrow">Besoin d’un regard extérieur ?</p>
+        <h2>Clarifions vos choix techniques.</h2>
+        <p>Inovya intervient sur un nombre volontairement limité de missions, planifiées par cycles. La priorité va aux audits, cadrages et conseils ponctuels à fort impact.</p>
+        <a class="button" href="mailto:hello@inovya.tech?subject=Demande%20de%20conseil">Présenter votre besoin <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
@@ -588,12 +521,10 @@
   <footer>
     <div class="shell footer-grid">
       <div class="legal">
-        <strong>Inovya SASU</strong><br>
-        5 rue du Port Guichard, 44000 Nantes · SIREN 993 854 249 · RCS Nantes
+        © <span id="year"></span> Inovya SASU · 5 rue du Port Guichard, 44000 Nantes · SIREN 993 854 249 · RCS Nantes
       </div>
       <div class="footer-right">
-        <a href="mailto:hello@inovya.tech">Contact</a><br>
-        © <span id="year"></span> Inovya
+        <a href="mailto:hello@inovya.tech">hello@inovya.tech</a>
       </div>
     </div>
   </footer>

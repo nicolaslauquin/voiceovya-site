@@ -18,7 +18,7 @@ if [[ "${REMOTE_DIR}" == "/" || "${REMOTE_DIR}" == "/home/" ]]; then
   exit 2
 fi
 
-for file in index.html og.png; do
+for file in index.html og-consulting.png; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/${file}" >&2
     exit 1
@@ -36,7 +36,7 @@ sshpass -p "${SFTP_PASS}" sftp \
   "${SFTP_USER}@${HOST}" <<EOF
 cd ${REMOTE_DIR}
 put ${LOCAL_DIR}/index.html
-put ${LOCAL_DIR}/og.png
+put ${LOCAL_DIR}/og-consulting.png
 bye
 EOF
 
