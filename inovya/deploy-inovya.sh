@@ -9,7 +9,7 @@ fi
 HOST="${OVH_SFTP_HOST:-ftp.cluster129.hosting.ovh.net}"
 SFTP_USER="${OVH_SFTP_USER:-inovyar}"
 KEYCHAIN_SERVICE="${OVH_KEYCHAIN_SERVICE:-inovya-sftp}"
-REMOTE_DIR="${1:-/home/inovyar}"
+REMOTE_DIR="${1:-/home/inovyar/www}"
 REMOTE_DIR="${REMOTE_DIR%/}/"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
