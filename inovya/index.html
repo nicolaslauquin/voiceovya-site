@@ -279,30 +279,6 @@
       font-weight: 800;
     }
     .status i { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
-    .decision-note {
-      position: absolute;
-      z-index: 2;
-      right: 18px;
-      bottom: 22px;
-      width: 64%;
-      padding: 17px;
-      color: var(--ink);
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      transform: rotate(-3deg);
-    }
-    .decision-note span {
-      color: var(--blue);
-      font: 700 10px/1 var(--mono);
-      text-transform: uppercase;
-    }
-    .decision-note p {
-      margin: 7px 0 0;
-      font-size: 16px;
-      font-weight: 750;
-      line-height: 1.3;
-    }
 
     .marquee {
       padding: 17px 0;
@@ -354,16 +330,16 @@
       border-right: 1px solid var(--line);
     }
     .service:last-child { border-right: 0; }
-    .service-number { color: var(--blue); font: 700 12px/1 var(--mono); }
+    .service-number { margin-bottom: 138px; color: var(--blue); font: 700 12px/1 var(--mono); }
     .service h3 {
       min-height: 2.1em;
-      margin: auto 0 15px;
+      margin: 0 0 15px;
       font-size: 29px;
       line-height: 1.05;
       letter-spacing: -.045em;
     }
     .service p { margin: 0; color: var(--muted); line-height: 1.6; }
-    .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .tags { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 7px; }
     .tag { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; font: 600 10px/1 var(--mono); }
     .service:hover { background: var(--white); }
 
@@ -530,6 +506,7 @@
       .section-head > p { margin-left: 0; }
       .services { grid-template-columns: 1fr; }
       .service { min-height: 300px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .service-number { margin-bottom: 56px; }
       .service h3 { min-height: 0; }
       .services .service:last-child { border-bottom: 0; }
       .publisher-card { grid-template-columns: 1fr; gap: 38px; }
@@ -549,10 +526,10 @@
       .brief-card { padding: 15px; }
       .brief-card strong { font-size: 17px; }
       .decision { padding: 10px; }
-      .decision-note { width: 78%; right: 12px; bottom: 15px; }
       section { padding: 82px 0; }
       .section-head { gap: 24px; }
       .service { min-height: 260px; padding-inline: 12px; }
+      .service-number { margin-bottom: 42px; }
       .publisher-card { padding: 30px 22px; border-radius: 24px; }
       .product-card { padding: 23px; }
       .steps { grid-template-columns: 1fr; }
@@ -616,10 +593,6 @@
             </div>
             <div class="status"><i aria-hidden="true"></i> Une décision claire, expliquée et exploitable.</div>
           </div>
-          <div class="decision-note">
-            <span>Livrable</span>
-            <p>Des choix argumentés et une feuille de route claire.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -649,16 +622,16 @@
             <div class="tags"><span class="tag">Audit</span><span class="tag">Roadmap</span><span class="tag">Architecture</span></div>
           </article>
           <article class="service">
-            <span class="service-number">APPLICATIONS</span>
+            <span class="service-number">DÉVELOPPEMENT</span>
             <h3>Expertise web, mobile &amp; macOS</h3>
-            <p>Revue d’architecture, choix technologiques, cadrage d’applications web ou natives et accompagnement ponctuel de vos équipes.</p>
+            <p>Revue d’architecture, choix technologiques, cadrage d’applications web ou natives et accompagnement de vos équipes.</p>
             <div class="tags"><span class="tag">Web</span><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">macOS</span><span class="tag">API</span></div>
           </article>
           <article class="service">
-            <span class="service-number">IA &amp; FORMATION</span>
-            <h3>IA appliquée &amp; formation</h3>
-            <p>Cadrage de solutions, choix des outils et formation au développement assisté par l’IA&nbsp;: nous aidons les équipes à adopter les bons usages et à gagner rapidement en autonomie.</p>
-            <div class="tags"><span class="tag">Cadrage</span><span class="tag">Formation</span><span class="tag">IA générative</span><span class="tag">Outils</span></div>
+            <span class="service-number">IA APPLIQUÉE</span>
+            <h3>IA appliquée et accélération</h3>
+            <p>Cadrage de solutions, choix des outils et montée en compétence des équipes&nbsp;: nous aidons à intégrer l’IA dans les pratiques de travail pour gagner en efficacité, en qualité et en productivité.</p>
+            <div class="tags"><span class="tag">Cadrage</span><span class="tag">Accélération</span><span class="tag">IA générative</span><span class="tag">Outils</span></div>
           </article>
         </div>
       </div>
@@ -697,12 +670,12 @@
           <div class="publisher-copy">
             <p class="eyebrow">Édition logicielle</p>
             <h2>Nous créons aussi nos propres logiciels.</h2>
-            <p>Cette pratique nourrit une approche concrète du produit, de l’architecture et de l’intelligence artificielle.</p>
+            <p>Cette pratique garde Inovya proche du terrain&nbsp;: concevoir, arbitrer, construire et améliorer des produits utilisés au quotidien.</p>
           </div>
           <a class="product-card" href="https://voiceovya.com/" aria-label="Découvrir VoiceOvya">
-            <span class="product-meta"><span>Application macOS</span><span aria-hidden="true">↗</span></span>
+            <span class="product-meta"><span>Produit Inovya</span><span aria-hidden="true">↗</span></span>
             <h3>VoiceOvya</h3>
-            <p>Une application macOS qui enregistre, transcrit et résume les réunions, avec une attention particulière portée au traitement local des données.</p>
+            <p>VoiceOvya aide à enregistrer, transcrire et résumer les réunions, avec une attention particulière portée au traitement local des données.</p>
             <span class="product-link">Découvrir VoiceOvya <span aria-hidden="true">↗</span></span>
           </a>
         </div>
