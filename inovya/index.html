@@ -5,30 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Inovya · Conseil en ingénierie logicielle &amp; intelligence artificielle</title>
-  <meta name="description" content="Inovya accompagne les entreprises dans la clarification de leurs besoins, le cadrage de leurs projets et leurs choix en ingénierie logicielle et en intelligence artificielle.">
+  <title>Inovya · Conseil, logiciels et investissement utile</title>
+  <meta name="description" content="Inovya conseille les entreprises, crée ses propres logiciels et soutient des innovations utiles au vivant et à la transition bas-carbone.">
   <meta name="theme-color" content="#f4f1e9">
   <link rel="canonical" href="https://inovya.tech/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:title" content="Inovya · Décider juste, avant de construire.">
-  <meta property="og:description" content="Conseil en ingénierie logicielle et en IA. Des interventions ciblées pour décider juste avant d’investir.">
+  <meta property="og:title" content="Inovya · La technologie n’a de valeur que lorsqu’elle est utile.">
+  <meta property="og:description" content="Conseil & audit, édition logicielle et investissement dans des innovations utiles.">
   <meta property="og:url" content="https://inovya.tech/">
-  <meta property="og:image" content="https://inovya.tech/og-consulting-capitalized.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://inovya.tech/og-consulting-capitalized.png">
   <style>
     :root {
       --ink: #111820;
-      --muted: #5f656c;
+      --muted: #586069;
       --paper: #f4f1e9;
       --white: #fffef9;
       --blue: #2e57e8;
-      --blue-dark: #1839ac;
+      --blue-dark: #1739b4;
       --lime: #d8ff70;
-      --line: rgba(17, 24, 32, .14);
-      --shadow: 0 26px 70px rgba(27, 40, 70, .12);
+      --night: #061619;
+      --forest: #0d342d;
+      --cyan: #58dfe7;
+      --line: rgba(17, 24, 32, .2);
+      --line-light: rgba(255, 255, 255, .2);
       --sans: Inter, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --serif: Iowan Old Style, Baskerville, Georgia, "Times New Roman", serif;
       --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     }
 
@@ -42,47 +43,71 @@
       -webkit-font-smoothing: antialiased;
     }
     body::before {
-      content: "";
       position: fixed;
       inset: 0;
       z-index: -1;
+      content: "";
       pointer-events: none;
-      opacity: .28;
-      background-image: radial-gradient(rgba(17,24,32,.18) .55px, transparent .55px);
-      background-size: 7px 7px;
+      opacity: .3;
+      background-image: linear-gradient(to right, transparent calc(100% - 1px), rgba(17, 24, 32, .08) 1px);
+      background-size: calc((100vw - 96px) / 12) 100%;
+      background-position: 48px 0;
     }
     a { color: inherit; }
-    .shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--blue);
-      font: 700 12px/1 var(--mono);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
+    button { color: inherit; font: inherit; }
+    .shell { width: min(1408px, calc(100% - 80px)); margin-inline: auto; }
     .skip {
       position: fixed;
       top: 12px;
       left: 12px;
-      z-index: 20;
+      z-index: 100;
       padding: 10px 14px;
       color: white;
       background: var(--ink);
-      border-radius: 8px;
-      transform: translateY(-150%);
+      transform: translateY(-160%);
     }
     .skip:focus { transform: translateY(0); }
+    .eyebrow {
+      margin: 0;
+      color: var(--blue);
+      font: 700 12px/1 var(--mono);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .button {
+      min-height: 52px;
+      padding: 0 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .18s ease, color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .button:hover { transform: translate(-3px, -3px); }
+    .button-primary {
+      background: var(--lime);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+    .button-dark { color: white; background: var(--ink); }
+    .button-dark:hover { background: var(--blue); }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(244, 241, 233, .84);
+      z-index: 20;
+      background: rgba(244, 241, 233, .9);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(18px);
     }
     nav {
-      min-height: 72px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -91,382 +116,249 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 11px;
-      font-size: 19px;
-      font-weight: 800;
-      letter-spacing: -.04em;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -.045em;
       text-decoration: none;
     }
     .brand-mark {
-      width: 28px;
-      height: 28px;
-      position: relative;
+      width: 29px;
+      height: 29px;
       display: inline-block;
       border: 8px solid var(--blue);
       border-radius: 50% 50% 50% 7px;
       transform: rotate(-45deg);
     }
-    .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 650;
-      text-decoration: none;
-    }
-    .nav-links a:not(.nav-cta):hover { color: var(--blue); }
-    .nav-cta {
-      padding: 11px 17px;
-      color: white;
-      background: var(--ink);
-      border-radius: 999px;
-    }
-
-    .hero {
-      min-height: calc(100svh - 72px);
-      padding: 92px 0 70px;
-      display: grid;
-      align-items: center;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(380px, .88fr);
-      align-items: center;
-      gap: 64px;
-    }
-    h1 {
-      max-width: 790px;
-      margin: 0;
-      font-size: clamp(54px, 7.8vw, 106px);
-      line-height: .91;
-      letter-spacing: -.075em;
-    }
-    h1 em {
-      color: var(--blue);
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-    }
-    .hero-copy > p:not(.eyebrow) {
-      max-width: 630px;
-      margin: 32px 0;
-      color: var(--muted);
-      font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.55;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .button {
-      min-height: 50px;
-      padding: 0 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 1px solid var(--ink);
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 750;
-      text-decoration: none;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary {
-      color: white;
-      background: var(--blue);
-      border-color: var(--blue);
-      box-shadow: 0 12px 28px rgba(46, 87, 232, .25);
-    }
-    .button-secondary:hover { background: var(--white); }
-
-    .hero-art {
-      min-height: 520px;
-      margin: 0;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 36px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .hero-art img {
-      width: 100%;
-      height: 100%;
-      min-height: 520px;
-      display: block;
-      object-fit: cover;
-      object-position: right center;
-      transform: scale(1.25);
-      transform-origin: right center;
-    }
-
-    .marquee {
-      padding: 17px 0;
-      color: white;
-      background: var(--blue);
-      border-block: 1px solid rgba(255,255,255,.3);
-      overflow: hidden;
-    }
-    .marquee-inner {
-      width: max-content;
-      display: flex;
-      gap: 32px;
-      font: 700 12px/1 var(--mono);
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      animation: scroll 28s linear infinite;
-    }
-    .marquee b { color: var(--lime); }
-    @keyframes scroll { to { transform: translateX(-50%); } }
-
-    section { padding: 116px 0; }
-    .section-head {
-      margin-bottom: 54px;
-      display: grid;
-      grid-template-columns: .75fr 1.25fr;
-      gap: 40px;
-      align-items: end;
-    }
-    h2 {
-      max-width: 800px;
-      margin: 0;
-      font-size: clamp(42px, 6vw, 76px);
-      line-height: 1;
-      letter-spacing: -.06em;
-    }
-    .section-head > p {
-      max-width: 530px;
-      margin: 0 0 5px auto;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-    .service {
-      min-height: 410px;
-      padding: 30px 28px;
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid var(--line);
-    }
-    .service:last-child { border-right: 0; }
-    .service-number { margin-bottom: 138px; color: var(--blue); font: 700 12px/1 var(--mono); }
-    .service h3 {
-      min-height: 2.1em;
-      margin: 0 0 15px;
-      font-size: 29px;
-      line-height: 1.05;
-      letter-spacing: -.045em;
-    }
-    .service p { margin: 0; color: var(--muted); line-height: 1.6; }
-    .tags { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 7px; }
-    .tag { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; font: 600 10px/1 var(--mono); }
-    .service:hover { background: var(--white); }
-
-    .publisher { padding-top: 0; }
-    .publisher-card {
-      padding: 62px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
-      align-items: center;
-      gap: 72px;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-    }
-    .publisher-card h2 { font-size: clamp(38px, 5vw, 64px); }
-    .publisher-copy > p:not(.eyebrow) {
-      max-width: 590px;
-      margin: 24px 0 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.6;
-    }
-    .product-showcase {
+    .nav-side, .nav-links, .languages { display: flex; align-items: center; }
+    .nav-links { gap: 28px; }
+    .nav-links > a {
       position: relative;
-      min-height: 330px;
-      padding: 8px 0 8px 54px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-left: 1px solid var(--line);
-    }
-    .voice-signal {
-      height: 70px;
-      margin: 0 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .voice-signal i {
-      width: 6px;
-      height: var(--signal-height);
-      display: block;
-      background: var(--blue);
-      border-radius: 999px;
-      opacity: var(--signal-opacity, 1);
-    }
-    .product-showcase h3 {
-      margin: 0 0 10px;
-      font-size: 40px;
-      letter-spacing: -.045em;
-    }
-    .product-showcase > p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    .product-link {
-      width: fit-content;
-      margin-top: 24px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--blue-dark);
       font-size: 13px;
       font-weight: 750;
       text-decoration: none;
     }
-    .product-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-
-    .method { color: white; background: var(--ink); }
-    .method .eyebrow { color: var(--lime); }
-    .method .section-head > p { color: rgba(255,255,255,.6); }
-    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.16); }
-    .step { min-height: 250px; padding: 26px; background: var(--ink); }
-    .step strong { color: var(--lime); font: 700 12px/1 var(--mono); }
-    .step h3 { margin: 80px 0 12px; font-size: 22px; letter-spacing: -.035em; }
-    .step p { margin: 0; color: rgba(255,255,255,.58); font-size: 14px; line-height: 1.55; }
-
-    .cta {
-      text-align: center;
-    }
-    .cta-box {
-      padding: 96px 30px;
-      background: var(--lime);
-      border-radius: 36px;
-    }
-    .cta-box h2 { max-width: 850px; margin: 0 auto 24px; }
-    .cta-box p { max-width: 620px; margin: 0 auto 30px; color: #364025; font-size: 18px; line-height: 1.55; }
-    .cta-box .button { color: white; background: var(--ink); }
-
-    footer { padding: 48px 0 36px; }
-    footer .shell {
-      padding-top: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.7;
-    }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--ink); }
-    .footer-brand { white-space: nowrap; }
-    .legal-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .legal-modal:target { display: flex; }
-    .legal-backdrop {
+    .nav-links > a::after {
       position: absolute;
-      inset: 0;
-      background: rgba(17, 24, 32, .38);
-      backdrop-filter: blur(10px);
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 2px;
+      content: "";
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .18s ease;
     }
-    .legal-panel {
+    .nav-links > a:hover::after { transform: scaleX(1); }
+    .nav-side { gap: 18px; }
+    .languages {
+      gap: 4px;
+      padding-right: 18px;
+      border-right: 1px solid var(--line);
+    }
+    .languages button {
+      padding: 5px 6px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      color: var(--muted);
+      font: 700 11px/1 var(--mono);
+    }
+    .languages button[aria-pressed="true"] { color: var(--blue); text-decoration: underline; text-underline-offset: 5px; }
+    .nav-contact { min-height: 40px; padding: 0 15px; color: white; background: var(--ink); border: 1px solid var(--ink); cursor: pointer; font-size: 12px; font-weight: 800; }
+
+    .hero { min-height: 620px; padding: 76px 0 58px; display: grid; align-items: start; }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 24px;
+    }
+    .hero-kicker { grid-column: 2 / 12; margin-bottom: 28px; }
+    .hero-copy { grid-column: 2 / 12; position: relative; }
+    h1 {
       position: relative;
       z-index: 1;
-      width: min(580px, 100%);
-      padding: 30px;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: 0 28px 90px -36px rgba(17, 24, 32, .5);
-    }
-    .legal-close {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      width: 30px;
-      height: 30px;
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      border-radius: 50%;
-      font-size: 21px;
-      line-height: 1;
-      text-decoration: none;
-    }
-    .legal-close:hover { color: var(--ink); background: var(--paper); }
-    .legal-panel .eyebrow { margin-bottom: 10px; }
-    .legal-panel h2 { margin-bottom: 14px; font-size: 27px; letter-spacing: -.04em; }
-    .legal-panel > p:not(.eyebrow) { margin: 0 0 22px; color: var(--muted); font-size: 14px; line-height: 1.6; }
-    .legal-panel dl {
+      max-width: 1220px;
       margin: 0;
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 9px 18px;
-      font-size: 14px;
+      font-size: clamp(58px, 5.6vw, 104px);
+      line-height: .94;
+      letter-spacing: -.07em;
+    }
+    h1 em {
+      color: var(--blue);
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+    .hero-bottom {
+      grid-column: 2 / 10;
+      margin-top: 62px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+    .hero-lead {
+      max-width: 790px;
+      margin: 0;
+      color: #303842;
+      font-size: clamp(18px, 2vw, 25px);
       line-height: 1.5;
+      letter-spacing: -.025em;
     }
-    .legal-panel dt { color: var(--muted); }
-    .legal-panel dd { margin: 0; color: var(--ink); }
-    .legal-panel dd a { color: var(--blue-dark); text-underline-offset: 3px; }
 
-    @media (max-width: 900px) {
-      .hero { min-height: auto; }
-      .hero-grid, .section-head { grid-template-columns: 1fr; }
-      .hero-grid { gap: 50px; }
-      .hero-art, .hero-art img { max-width: 560px; min-height: 480px; }
-      .hero-art img { transform: scale(1.5); }
-      .section-head > p { margin-left: 0; }
-      .services { grid-template-columns: 1fr; }
-      .service { min-height: 300px; border-right: 0; border-bottom: 1px solid var(--line); }
-      .service-number { margin-bottom: 56px; }
-      .service h3 { min-height: 0; }
-      .services .service:last-child { border-bottom: 0; }
-      .publisher-card { grid-template-columns: 1fr; gap: 42px; }
-      .product-showcase { min-height: auto; padding: 42px 0 0; border-top: 1px solid var(--line); border-left: 0; }
-      .steps { grid-template-columns: 1fr 1fr; }
+    section { padding: 112px 0; }
+    h2 {
+      margin: 0;
+      font-size: clamp(45px, 5.6vw, 82px);
+      line-height: .98;
+      letter-spacing: -.065em;
     }
-    @media (max-width: 640px) {
-      .shell { width: min(100% - 28px, 1180px); }
-      nav { min-height: 64px; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      .nav-cta { padding: 9px 13px; font-size: 12px !important; }
-      .hero { padding: 66px 0 50px; }
-      h1 { font-size: clamp(48px, 15.5vw, 74px); }
-      .hero-copy > p:not(.eyebrow) { font-size: 17px; }
+    h2 em { color: var(--blue); font-family: var(--serif); font-weight: 400; }
+
+    .consulting { background: var(--white); }
+    .consulting-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; }
+    .consulting-copy p:not(.eyebrow) { max-width: 560px; margin: 26px 0 0; color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .method { border-top: 1px solid var(--line); }
+    .method-row {
+      padding: 22px 0;
+      display: grid;
+      grid-template-columns: 70px 1fr 1.35fr;
+      gap: 22px;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .method-row b { color: var(--blue); font: 700 12px/1 var(--mono); }
+    .method-row strong { font-size: 20px; letter-spacing: -.03em; }
+    .method-row span { color: var(--muted); line-height: 1.5; }
+
+    .edition-card {
+      padding: 68px;
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 64px;
+      color: white;
+      background: var(--blue);
+      border: 1px solid var(--ink);
+      box-shadow: 12px 12px 0 var(--lime);
+    }
+    .edition-card .eyebrow { color: var(--lime); }
+    .edition-card h2 { margin-top: 30px; }
+    .edition-card p { max-width: 610px; margin: 28px 0 0; color: rgba(255,255,255,.76); font-size: 17px; line-height: 1.65; }
+    .product {
+      padding-left: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid rgba(255,255,255,.35);
+    }
+    .signal { height: 62px; margin-bottom: 26px; display: flex; align-items: center; gap: 7px; }
+    .signal i { width: 6px; height: var(--h); display: block; background: var(--lime); border-radius: 99px; opacity: var(--o, 1); }
+    .product h3 { margin: 0 0 10px; font-size: 40px; letter-spacing: -.05em; }
+    .product .button { width: fit-content; margin-top: 28px; color: var(--ink); background: var(--lime); }
+
+    .impact {
+      position: relative;
+      overflow: hidden;
+      color: #f2eee3;
+      background: var(--night);
+    }
+    .impact::before {
+      position: absolute;
+      top: -420px;
+      right: -180px;
+      width: 850px;
+      height: 850px;
+      content: "";
+      border: 1px solid rgba(216,255,112,.33);
+      border-radius: 50%;
+      box-shadow: 0 0 120px rgba(13,52,45,.8);
+    }
+    .impact .shell { position: relative; }
+    .impact .eyebrow { color: var(--lime); }
+    .impact h2 { max-width: 940px; margin-top: 32px; }
+    .impact h2 em { color: var(--lime); }
+    .impact-grid { margin-top: 70px; display: grid; grid-template-columns: 5fr 7fr; gap: 80px; }
+    .impact-lead { margin: 0; color: rgba(242,238,227,.74); font-size: 20px; line-height: 1.65; }
+    .impact-criteria { margin-top: 34px; }
+    .impact-criteria > p { margin: 0 0 14px; color: var(--cyan); font: 700 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .impact-tags { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 9px; list-style: none; }
+    .impact-tags li { padding: 9px 12px; color: rgba(242,238,227,.88); border: 1px solid rgba(242,238,227,.28); font-size: 13px; }
+    .impact-domains { margin: 26px 0 0; color: rgba(242,238,227,.58); font-size: 13px; line-height: 1.7; }
+    .impact-domains strong { color: var(--cyan); font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .impact-list { border-top: 1px solid var(--line-light); }
+    .impact-item { padding: 23px 0; display: grid; grid-template-columns: 42px 1fr; gap: 18px; border-bottom: 1px solid var(--line-light); }
+    .impact-item b { color: var(--cyan); font: 700 12px/1 var(--mono); }
+    .impact-item strong { display: block; margin-bottom: 7px; font-size: 20px; }
+    .impact-item span { color: rgba(242,238,227,.6); line-height: 1.5; }
+
+    .text-link { display: inline-flex; gap: 9px; color: var(--blue-dark); font-size: 14px; font-weight: 800; text-underline-offset: 5px; }
+
+    .contact { padding: 48px 0 12px; }
+    .contact-box { padding: 88px 50px; text-align: center; background: var(--lime); border: 1px solid var(--ink); }
+    .contact-box .eyebrow { color: var(--ink); }
+    .contact-box h2 { max-width: 900px; margin: 26px auto 22px; }
+    .contact-box p { max-width: 640px; margin: 0 auto 32px; color: #394127; font-size: 18px; line-height: 1.6; }
+
+    footer { padding: 18px 0 22px; }
+    .footer-row { padding-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a, .footer-links button { padding: 0; border: 0; background: transparent; cursor: pointer; color: var(--muted); text-decoration: none; }
+
+    dialog {
+      width: min(600px, calc(100% - 32px));
+      padding: 34px;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--ink);
+      box-shadow: 10px 10px 0 var(--blue);
+    }
+    dialog::backdrop { background: rgba(6,22,25,.65); backdrop-filter: blur(8px); }
+    .dialog-close { position: absolute; top: 14px; right: 16px; width: 34px; height: 34px; border: 0; background: transparent; cursor: pointer; font-size: 25px; }
+    dialog h2 { margin: 14px 0 18px; font-size: 32px; letter-spacing: -.04em; }
+    dialog p { color: var(--muted); line-height: 1.6; }
+    dialog dl { margin: 24px 0 0; display: grid; grid-template-columns: 120px 1fr; gap: 10px 18px; font-size: 14px; }
+    dialog dt { color: var(--muted); }
+    dialog dd { margin: 0; }
+
+    @media (max-width: 1040px) {
+      .nav-links { display: none; }
+      .hero-kicker { grid-column: 1 / 13; margin-bottom: 35px; padding-top: 0; }
+      .hero-copy { grid-column: 1 / 13; }
+      .hero-bottom { grid-column: 1 / 11; }
+      .consulting-grid, .edition-card, .impact-grid { grid-template-columns: 1fr; }
+      .product { padding: 44px 0 0; border-top: 1px solid rgba(255,255,255,.35); border-left: 0; }
+    }
+    @media (max-width: 700px) {
+      body::before { display: none; }
+      .shell { width: min(100% - 28px, 1408px); }
+      nav { min-height: 66px; }
+      .languages { padding-right: 8px; }
+      .nav-contact { padding-inline: 10px; }
+      .hero { min-height: auto; padding: 68px 0 50px; }
+      h1 { font-size: clamp(49px, 14.8vw, 72px); }
+      .hero-bottom { grid-column: 1 / 13; margin-top: 50px; }
       .button { width: 100%; }
-      .hero-art, .hero-art img { min-height: 430px; border-radius: 26px; }
-      .hero-art img { transform: scale(1.12); }
-      section { padding: 82px 0; }
-      .section-head { gap: 24px; }
-      .service { min-height: 260px; padding-inline: 12px; }
-      .service-number { margin-bottom: 42px; }
-      .publisher-card { padding: 34px 24px; border-radius: 24px; }
-      .product-showcase { padding-top: 34px; }
-      .voice-signal { margin-block: 24px 20px; }
-      .steps { grid-template-columns: 1fr; }
-      .step { min-height: 205px; }
-      .step h3 { margin-top: 55px; }
-      .cta-box { padding: 70px 20px; border-radius: 24px; }
-      .legal-panel dl { grid-template-columns: 1fr; gap: 3px; }
-      .legal-panel dt { margin-top: 8px; font-size: 12px; }
+      section { padding: 78px 0; }
+      .consulting-grid { gap: 48px; }
+      .method-row { grid-template-columns: 42px 1fr; }
+      .method-row span { grid-column: 2; }
+      .edition-card { padding: 38px 25px; box-shadow: 7px 7px 0 var(--lime); }
+      .product { padding-top: 35px; }
+      .impact-grid { gap: 45px; }
+      .contact { padding: 32px 0 8px; }
+      .contact-box { padding: 64px 22px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+      dialog dl { grid-template-columns: 1fr; gap: 3px; }
+      dialog dt { margin-top: 9px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .marquee-inner { animation: none; }
-      .button { transition: none; }
+      *, *::before, *::after { transition-duration: 0s !important; }
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#contenu">Aller au contenu</a>
+  <a class="skip" href="#content" data-fr="Aller au contenu" data-en="Skip to content">Aller au contenu</a>
 
   <header>
     <nav class="shell" aria-label="Navigation principale">
@@ -475,157 +367,169 @@
         Inovya
       </a>
       <div class="nav-links">
-        <a href="#expertises">Expertises</a>
-        <a href="#methode">Méthode</a>
-        <a class="nav-cta" href="mailto:hello@inovya.tech?subject=Demande%20de%20conseil">Parlons de votre besoin</a>
+        <a href="#conseil" data-fr="Conseil & audit" data-en="Consulting & audit">Conseil &amp; audit</a>
+        <a href="#edition" data-fr="Édition logicielle" data-en="Software publishing">Édition logicielle</a>
+        <a href="#investissement" data-fr="Investissement" data-en="Investment">Investissement</a>
+      </div>
+      <div class="nav-side">
+        <div class="languages" aria-label="Langue">
+          <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="nav-contact js-email" type="button"><span data-fr="Contact" data-en="Contact">Contact</span> ↗</button>
       </div>
     </nav>
   </header>
 
-  <main id="contenu">
+  <main id="content">
     <section class="hero" id="top">
       <div class="shell hero-grid">
+        <div class="hero-kicker">
+          <p class="eyebrow" data-fr="Conseiller · Créer · Investir" data-en="Advise · Create · Invest">Conseiller · Créer · Investir</p>
+        </div>
         <div class="hero-copy">
-          <p class="eyebrow">Conseil en ingénierie logicielle &amp; IA</p>
-          <h1>Décider juste, avant de <em>construire.</em></h1>
-          <p>Inovya aide les entreprises à y voir plus clair dans leurs projets logiciels et IA, à comparer les options et à choisir la bonne direction.</p>
-          <div class="actions">
-            <a class="button button-primary" href="mailto:hello@inovya.tech?subject=Demande%20de%20conseil">Échangeons sur votre besoin <span aria-hidden="true">↗</span></a>
-            <a class="button button-secondary" href="#expertises">Découvrir nos expertises</a>
-          </div>
+          <h1 data-fr-html="Trois façons de rendre la technologie <em>utile.</em>" data-en-html="Three ways to make technology <em>useful.</em>">Trois façons de rendre la technologie <em>utile.</em></h1>
         </div>
-
-        <figure class="hero-art">
-          <img src="og-consulting-capitalized.png" alt="" width="1734" height="907">
-        </figure>
+        <div class="hero-bottom">
+          <p class="hero-lead" data-fr="Inovya accompagne les entreprises dans leurs choix technologiques, développe ses propres logiciels et investit directement dans des entreprises innovantes à impact environnemental ou social positif." data-en="Inovya supports companies in their technology choices, develops its own software and invests directly in innovative companies with a positive environmental or social impact.">Inovya accompagne les entreprises dans leurs choix technologiques, développe ses propres logiciels et investit directement dans des entreprises innovantes à impact environnemental ou social positif.</p>
+        </div>
       </div>
     </section>
 
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-inner">
-        <span>Architecture logicielle <b>✦</b> Stratégie IA <b>✦</b> Applications Apple <b>✦</b> Prototypage de validation <b>✦</b> Conseil technique <b>✦</b></span>
-        <span>Architecture logicielle <b>✦</b> Stratégie IA <b>✦</b> Applications Apple <b>✦</b> Prototypage de validation <b>✦</b> Conseil technique <b>✦</b></span>
+    <section class="consulting" id="conseil">
+      <div class="shell consulting-grid">
+        <div class="consulting-copy">
+          <p class="eyebrow" data-fr="Conseil & audit" data-en="Consulting & audit">Conseil &amp; audit</p>
+          <h2 data-fr-html="Moins de flou.<br><em>De meilleurs choix.</em>" data-en-html="Less uncertainty.<br><em>Better choices.</em>">Moins de flou.<br><em>De meilleurs choix.</em></h2>
+          <p data-fr="Inovya intervient directement pour clarifier un besoin, auditer l’existant, comparer les options et accélérer la productivité des équipes grâce à l’IA. Le prototypage permet, lorsqu’il est utile, de valider rapidement une décision." data-en="Inovya works directly with you to clarify a need, audit what exists, compare options and boost team productivity with AI. Prototyping, when useful, helps validate a decision quickly.">Inovya intervient directement pour clarifier un besoin, auditer l’existant, comparer les options et accélérer la productivité des équipes grâce à l’IA. Le prototypage permet, lorsqu’il est utile, de valider rapidement une décision.</p>
+        </div>
+        <div class="method">
+          <div class="method-row"><b>01</b><strong data-fr="Qualifier" data-en="Qualify">Qualifier</strong><span data-fr="Comprendre le contexte, l’utilisateur et la décision à prendre." data-en="Understand the context, the user and the decision to be made.">Comprendre le contexte, l’utilisateur et la décision à prendre.</span></div>
+          <div class="method-row"><b>02</b><strong data-fr="Auditer" data-en="Audit">Auditer</strong><span data-fr="Examiner l’existant, les contraintes, la data et les risques." data-en="Review the existing system, constraints, data and risks.">Examiner l’existant, les contraintes, la data et les risques.</span></div>
+          <div class="method-row"><b>03</b><strong data-fr="Recommander" data-en="Recommend">Recommander</strong><span data-fr="Comparer les options et formuler des arbitrages argumentés." data-en="Compare options and formulate well-supported trade-offs.">Comparer les options et formuler des arbitrages argumentés.</span></div>
+          <div class="method-row"><b>04</b><strong data-fr="Accompagner" data-en="Support">Accompagner</strong><span data-fr="Transmettre une feuille de route claire et aider les équipes à la mettre en œuvre." data-en="Deliver a clear roadmap and help teams put it into practice.">Transmettre une feuille de route claire et aider les équipes à la mettre en œuvre.</span></div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <section id="expertises">
+    <section id="edition">
+      <div class="shell edition-card">
+        <div>
+          <p class="eyebrow" data-fr="Édition logicielle" data-en="Software publishing">Édition logicielle</p>
+          <h2 data-fr="Créer pour rester au contact du réel." data-en="Create to stay connected to reality.">Créer pour rester au contact du réel.</h2>
+          <p data-fr="Concevoir nos propres logiciels est aussi un exercice permanent d’auto-formation. Cela garde Inovya proche des vrais arbitrages : comprendre un besoin, construire une expérience, intégrer l’IA avec discernement et améliorer un produit utilisé au quotidien." data-en="Building our own software is also a continuous exercise in self-directed learning. It keeps Inovya close to real trade-offs: understanding a need, designing an experience, integrating AI thoughtfully and improving a product used every day.">Concevoir nos propres logiciels est aussi un exercice permanent d’auto-formation. Cela garde Inovya proche des vrais arbitrages : comprendre un besoin, construire une expérience, intégrer l’IA avec discernement et améliorer un produit utilisé au quotidien.</p>
+        </div>
+        <div class="product">
+          <div class="signal" aria-hidden="true">
+            <i style="--h:18px;--o:.45"></i><i style="--h:36px;--o:.65"></i><i style="--h:58px"></i><i style="--h:30px;--o:.7"></i><i style="--h:49px"></i><i style="--h:23px;--o:.55"></i><i style="--h:42px;--o:.8"></i><i style="--h:15px;--o:.4"></i>
+          </div>
+          <h3>VoiceOvya</h3>
+          <p data-fr="Des réunions transformées en connaissances, décisions et actions — avec une attention particulière au traitement local des données." data-en="Meetings turned into knowledge, decisions and actions — with particular attention to local data processing.">Des réunions transformées en connaissances, décisions et actions — avec une attention particulière au traitement local des données.</p>
+          <a class="button" href="https://voiceovya.com/" rel="noopener" data-fr="Découvrir VoiceOvya ↗" data-en="Discover VoiceOvya ↗">Découvrir VoiceOvya ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact" id="investissement">
       <div class="shell">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Ce que nous faisons</p>
-            <h2>Du besoin à une décision éclairée.</h2>
-          </div>
-          <p>Des interventions ciblées pour prendre du recul, réduire les risques et transmettre une trajectoire exploitable à vos équipes.</p>
-        </div>
-
-        <div class="services">
-          <article class="service">
-            <span class="service-number">CONSEIL</span>
-            <h3>Conseil tech &amp; stratégie IA</h3>
-            <p>Nous clarifions les besoins, évaluons les options techniques et transformons les objectifs en une feuille de route concrète.</p>
-            <div class="tags"><span class="tag">Audit</span><span class="tag">Roadmap</span><span class="tag">Architecture</span></div>
-          </article>
-          <article class="service">
-            <span class="service-number">DÉVELOPPEMENT</span>
-            <h3>Expertise web, mobile &amp; macOS</h3>
-            <p>Revue d’architecture, choix technologiques, cadrage d’applications web ou natives et accompagnement de vos équipes.</p>
-            <div class="tags"><span class="tag">Web</span><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">macOS</span><span class="tag">API</span></div>
-          </article>
-          <article class="service">
-            <span class="service-number">IA APPLIQUÉE</span>
-            <h3>IA appliquée et accélération</h3>
-            <p>Cadrage de solutions, choix des outils et montée en compétence des équipes&nbsp;: nous aidons à intégrer l’IA dans les pratiques de travail pour gagner en efficacité, en qualité et en productivité.</p>
-            <div class="tags"><span class="tag">Cadrage</span><span class="tag">Accélération</span><span class="tag">IA générative</span><span class="tag">Outils</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="method" id="methode">
-      <div class="shell">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Une méthode pragmatique</p>
-            <h2>Moins de flou. De meilleurs choix.</h2>
-          </div>
-          <p>Le format s’adapte au besoin&nbsp;: regard ponctuel, audit ciblé ou cycle de conseil planifié. Chaque intervention aboutit à des décisions documentées.</p>
-        </div>
-        <div class="steps">
-          <article class="step"><strong>01</strong><h3>Qualifier</h3><p>Comprendre le contexte, les objectifs et la décision que vous devez prendre.</p></article>
-          <article class="step"><strong>02</strong><h3>Auditer</h3><p>Examiner l’existant, confronter les hypothèses et faire apparaître les vrais risques.</p></article>
-          <article class="step"><strong>03</strong><h3>Recommander</h3><p>Comparer les options et proposer des arbitrages argumentés, réalistes et priorisés.</p></article>
-          <article class="step"><strong>04</strong><h3>Transmettre</h3><p>Formaliser une feuille de route claire que vos équipes peuvent mettre en œuvre.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta" id="contact">
-      <div class="shell cta-box">
-        <p class="eyebrow">Besoin d’un regard extérieur ?</p>
-        <h2>Clarifions vos choix techniques.</h2>
-        <p>Inovya intervient sur un nombre volontairement limité de missions. La priorité va aux audits, cadrages et conseils ponctuels à fort impact.</p>
-        <a class="button" href="mailto:hello@inovya.tech?subject=Demande%20de%20conseil">Présenter votre besoin <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-
-    <section class="publisher" id="edition">
-      <div class="shell">
-        <div class="publisher-card">
-          <div class="publisher-copy">
-            <p class="eyebrow">Édition logicielle</p>
-            <h2>Nous créons aussi nos propres logiciels.</h2>
-            <p>Cette pratique garde Inovya proche du terrain&nbsp;: concevoir, arbitrer, construire et améliorer des produits utilisés au quotidien.</p>
-          </div>
-          <div class="product-showcase">
-            <div class="voice-signal" aria-hidden="true">
-              <i style="--signal-height: 20px; --signal-opacity: .35"></i>
-              <i style="--signal-height: 38px; --signal-opacity: .48"></i>
-              <i style="--signal-height: 58px; --signal-opacity: .72"></i>
-              <i style="--signal-height: 31px; --signal-opacity: .55"></i>
-              <i style="--signal-height: 66px"></i>
-              <i style="--signal-height: 46px; --signal-opacity: .82"></i>
-              <i style="--signal-height: 24px; --signal-opacity: .46"></i>
-              <i style="--signal-height: 53px; --signal-opacity: .78"></i>
-              <i style="--signal-height: 34px; --signal-opacity: .58"></i>
-              <i style="--signal-height: 16px; --signal-opacity: .3"></i>
+        <p class="eyebrow" data-fr="Investissement à impact" data-en="Impact investment">Investissement à impact</p>
+        <h2 data-fr-html="Investir directement dans les innovations qui <em>transforment le réel.</em>" data-en-html="Invest directly in innovations that <em>transform the real world.</em>">Investir directement dans les innovations qui <em>transforment le réel.</em></h2>
+        <div class="impact-grid">
+          <div class="impact-copy">
+            <p class="impact-lead" data-fr="Inovya investit à titre propre dans des entreprises qui répondent à un problème concret, rencontrent un usage réel et recherchent un impact environnemental ou social positif." data-en="Inovya invests on its own account in companies that address a concrete problem, demonstrate real-world use and pursue a positive environmental or social impact.">Inovya investit à titre propre dans des entreprises qui répondent à un problème concret, rencontrent un usage réel et recherchent un impact environnemental ou social positif.</p>
+            <div class="impact-criteria">
+              <p data-fr="Critères recherchés" data-en="What we look for">Critères recherchés</p>
+              <ul class="impact-tags">
+                <li data-fr="Impact identifiable" data-en="Identifiable impact">Impact identifiable</li>
+                <li data-fr="Problème concret & usage réel" data-en="Concrete problem & real use">Problème concret &amp; usage réel</li>
+                <li data-fr="Modèle économique durable" data-en="Sustainable business model">Modèle économique durable</li>
+                <li data-fr="Levier technique" data-en="Technical leverage">Levier technique</li>
+              </ul>
             </div>
-            <h3>VoiceOvya</h3>
-            <p>VoiceOvya aide à enregistrer, transcrire et résumer les réunions, avec une attention particulière portée au traitement local des données.</p>
-            <a class="product-link" href="https://voiceovya.com/">Découvrir VoiceOvya <span aria-hidden="true">↗</span></a>
+            <p class="impact-domains" data-fr-html="<strong>Domaines d’intérêt</strong><br>Décarbonation · Vivant et ressources · Impact social · Services utiles" data-en-html="<strong>Areas of interest</strong><br>Decarbonisation · Living systems and resources · Social impact · Useful services"><strong>Domaines d’intérêt</strong><br>Décarbonation · Vivant et ressources · Impact social · Services utiles</p>
+          </div>
+          <div class="impact-list">
+            <div class="impact-item"><b>01</b><div><strong data-fr="Capital" data-en="Capital">Capital</strong><span data-fr="Investir dans des projets dont la mission et le modèle peuvent créer une valeur réelle et durable." data-en="Invest in projects whose mission and model can create real, lasting value.">Investir dans des projets dont la mission et le modèle peuvent créer une valeur réelle et durable.</span></div></div>
+            <div class="impact-item"><b>02</b><div><strong data-fr="Regard technique et produit" data-en="Technical and product perspective">Regard technique et produit</strong><span data-fr="Aider à challenger les choix structurants et à concentrer l’effort sur l’essentiel." data-en="Challenge structural choices and focus effort on what matters most.">Aider à challenger les choix structurants et à concentrer l’effort sur l’essentiel.</span></div></div>
+            <div class="impact-item"><b>03</b><div><strong data-fr="Réseau et communautés" data-en="Network and communities">Réseau et communautés</strong><span data-fr="Mettre en relation avec les bonnes compétences et les communautés pertinentes." data-en="Connect projects with the right expertise and relevant communities.">Mettre en relation avec les bonnes compétences et les communautés pertinentes.</span></div></div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="shell contact-box">
+        <p class="eyebrow" data-fr="Une question, un projet, une conviction ?" data-en="A question, a project, a conviction?">Une question, un projet, une conviction ?</p>
+        <h2 data-fr="Faisons avancer votre projet." data-en="Let’s move your project forward.">Faisons avancer votre projet.</h2>
+        <p data-fr="Mission de conseil, produit logiciel ou projet à impact : décrivez simplement votre contexte et la décision que vous souhaitez faire avancer." data-en="Consulting engagement, software product or impact project: simply describe your context and the decision you want to move forward.">Mission de conseil, produit logiciel ou projet à impact : décrivez simplement votre contexte et la décision que vous souhaitez faire avancer.</p>
+        <button class="button button-dark js-email" type="button" data-fr="Contact ↗" data-en="Contact ↗">Contact ↗</button>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="shell">
-      <span class="footer-brand"><a href="#mentions-legales">© <span id="year"></span> Inovya SASU</a></span>
+    <div class="shell footer-row">
+      <span>© <span id="year"></span> Inovya SASU</span>
+      <div class="footer-links">
+        <button type="button" data-dialog="legal" data-fr="Mentions légales" data-en="Legal notice">Mentions légales</button>
+      </div>
     </div>
   </footer>
 
-  <section class="legal-modal" id="mentions-legales" role="dialog" aria-modal="true" aria-labelledby="legal-title">
-    <a class="legal-backdrop" href="#" aria-label="Fermer les mentions légales"></a>
-    <div class="legal-panel">
-      <a class="legal-close" href="#" aria-label="Fermer les mentions légales">×</a>
-      <p class="eyebrow">Mentions légales</p>
-      <h2 id="legal-title">Informations éditeur</h2>
-      <p><strong>Inovya est une société française de conseil en ingénierie logicielle et en intelligence artificielle.</strong> Elle accompagne les entreprises dans la clarification de leurs besoins, le cadrage de leurs projets et leurs choix techniques. Inovya édite également ses propres logiciels.</p>
-      <dl>
-        <dt>Société</dt>
-        <dd>Inovya SASU</dd>
-        <dt>Adresse</dt>
-        <dd>5 rue du Port Guichard, 44000 Nantes</dd>
-        <dt>SIREN</dt>
-        <dd>993 854 249</dd>
-        <dt>Contact</dt>
-        <dd><a href="mailto:hello@inovya.tech">hello@inovya.tech</a></dd>
-      </dl>
-    </div>
-  </section>
+  <dialog id="legal">
+    <button class="dialog-close" type="button" aria-label="Fermer">×</button>
+    <p class="eyebrow" data-fr="Mentions légales" data-en="Legal notice">Mentions légales</p>
+    <h2 data-fr="Informations éditeur" data-en="Publisher information">Informations éditeur</h2>
+    <p data-fr="Inovya est une société française de conseil et d’audit technologique, d’édition logicielle et d’investissement." data-en="Inovya is a French technology consulting and audit, software publishing and investment company.">Inovya est une société française de conseil et d’audit technologique, d’édition logicielle et d’investissement.</p>
+    <dl>
+      <dt data-fr="Société" data-en="Company">Société</dt><dd>Inovya SASU</dd>
+      <dt data-fr="Adresse" data-en="Address">Adresse</dt><dd>5 rue du Port Guichard, 44000 Nantes</dd>
+      <dt>SIREN</dt><dd>993 854 249</dd>
+      <dt data-fr="Contact" data-en="Contact">Contact</dt><dd><button class="text-link js-email" type="button" data-fr="Contact ↗" data-en="Contact ↗">Contact ↗</button></dd>
+    </dl>
+  </dialog>
 
   <script>
+    const translations = document.querySelectorAll("[data-fr], [data-fr-html]");
+    const langButtons = document.querySelectorAll("[data-lang]");
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      translations.forEach((element) => {
+        const html = element.dataset[`${lang}Html`];
+        const text = element.dataset[lang];
+        if (html) element.innerHTML = html;
+        else if (text) element.textContent = text;
+      });
+      langButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.lang === lang)));
+      try { localStorage.setItem("inovya-language", lang); } catch (_) {}
+    }
+
+    langButtons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.lang)));
+
+    function openEmail(event) {
+      const address = atob("aGVsbG9AaW5vdnlhLnRlY2g=");
+      const lang = document.documentElement.lang;
+      const subject = event.currentTarget.dataset[`emailSubject${lang === "en" ? "En" : "Fr"}`]
+        || (lang === "en" ? "A project for Inovya" : "Un projet pour Inovya");
+      window.location.href = `mailto:${address}?subject=${encodeURIComponent(subject)}`;
+    }
+
+    document.querySelectorAll(".js-email").forEach((button) => button.addEventListener("click", openEmail));
+    document.querySelectorAll("[data-dialog]").forEach((button) => {
+      button.addEventListener("click", () => document.getElementById(button.dataset.dialog).showModal());
+    });
+    document.querySelectorAll("dialog").forEach((dialog) => {
+      dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+
     document.getElementById("year").textContent = new Date().getFullYear();
+    let savedLanguage = "fr";
+    try { savedLanguage = localStorage.getItem("inovya-language") || (navigator.language.startsWith("fr") ? "fr" : "en"); } catch (_) {}
+    setLanguage(savedLanguage);
   </script>
 </body>
 </html>
