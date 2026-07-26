@@ -175,110 +175,25 @@
     }
     .button-secondary:hover { background: var(--white); }
 
-    .system-card {
-      position: relative;
-      min-height: 500px;
-      padding: 22px;
-      background: var(--ink);
-      border-radius: 32px;
+    .hero-art {
+      min-height: 520px;
+      margin: 0;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 36px;
       box-shadow: var(--shadow);
       overflow: hidden;
-      transform: rotate(2deg);
     }
-    .system-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -80px -100px auto;
-      width: 330px;
-      aspect-ratio: 1;
-      background: var(--blue);
-      border-radius: 50%;
-      filter: blur(4px);
-    }
-    .window {
-      position: relative;
-      z-index: 1;
-      padding: 18px;
-      color: white;
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-    }
-    .window-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      font: 600 11px/1 var(--mono);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .window-dots { display: flex; gap: 6px; }
-    .window-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
-    .window-dots i:nth-child(2) { opacity: .6; }
-    .window-dots i:nth-child(3) { opacity: .28; }
-    .brief-card {
-      padding: 18px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 14px;
-    }
-    .brief-card span {
-      color: var(--lime);
-      font: 700 10px/1 var(--mono);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .brief-card strong {
-      max-width: 360px;
-      margin-top: 10px;
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
       display: block;
-      font-size: 20px;
-      line-height: 1.25;
-      letter-spacing: -.025em;
+      object-fit: cover;
+      object-position: right center;
+      transform: scale(1.25);
+      transform-origin: right center;
     }
-    .decision-list {
-      margin-top: 12px;
-      display: grid;
-      gap: 8px;
-    }
-    .decision {
-      padding: 11px 13px;
-      display: grid;
-      grid-template-columns: 28px 1fr auto;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,.72);
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 11px;
-      font-size: 12px;
-    }
-    .decision b {
-      color: var(--lime);
-      font: 700 10px/1 var(--mono);
-    }
-    .decision strong { color: white; font-size: 13px; }
-    .decision i {
-      width: 7px;
-      height: 7px;
-      background: var(--lime);
-      border-radius: 50%;
-    }
-    .status {
-      margin-top: 18px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--ink);
-      background: var(--lime);
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 800;
-    }
-    .status i { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
 
     .marquee {
       padding: 17px 0;
@@ -345,11 +260,11 @@
 
     .publisher { padding-top: 0; }
     .publisher-card {
-      padding: 56px;
+      padding: 62px;
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
       align-items: center;
-      gap: 64px;
+      gap: 72px;
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 30px;
@@ -363,49 +278,53 @@
       font-size: 17px;
       line-height: 1.6;
     }
-    .product-card {
-      padding: 28px;
-      display: block;
-      color: var(--ink);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      text-decoration: none;
-      transition: transform .18s ease, border-color .18s ease;
+    .product-showcase {
+      position: relative;
+      min-height: 330px;
+      padding: 8px 0 8px 54px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid var(--line);
     }
-    .product-card:hover {
-      border-color: var(--blue);
-      transform: translateY(-3px);
-    }
-    .product-meta {
+    .voice-signal {
+      height: 70px;
+      margin: 0 0 24px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      color: var(--blue);
-      font: 700 10px/1 var(--mono);
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      gap: 7px;
     }
-    .product-card h3 {
-      margin: 32px 0 10px;
-      font-size: 31px;
+    .voice-signal i {
+      width: 6px;
+      height: var(--signal-height);
+      display: block;
+      background: var(--blue);
+      border-radius: 999px;
+      opacity: var(--signal-opacity, 1);
+    }
+    .product-showcase h3 {
+      margin: 0 0 10px;
+      font-size: 40px;
       letter-spacing: -.045em;
     }
-    .product-card > p {
+    .product-showcase > p {
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
+      font-size: 15px;
+      line-height: 1.6;
     }
     .product-link {
-      margin-top: 28px;
+      width: fit-content;
+      margin-top: 24px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       color: var(--blue-dark);
       font-size: 13px;
       font-weight: 750;
+      text-decoration: none;
     }
+    .product-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
     .method { color: white; background: var(--ink); }
     .method .eyebrow { color: var(--lime); }
@@ -502,14 +421,16 @@
       .hero { min-height: auto; }
       .hero-grid, .section-head { grid-template-columns: 1fr; }
       .hero-grid { gap: 50px; }
-      .system-card { max-width: 560px; min-height: 440px; }
+      .hero-art, .hero-art img { max-width: 560px; min-height: 480px; }
+      .hero-art img { transform: scale(1.5); }
       .section-head > p { margin-left: 0; }
       .services { grid-template-columns: 1fr; }
       .service { min-height: 300px; border-right: 0; border-bottom: 1px solid var(--line); }
       .service-number { margin-bottom: 56px; }
       .service h3 { min-height: 0; }
       .services .service:last-child { border-bottom: 0; }
-      .publisher-card { grid-template-columns: 1fr; gap: 38px; }
+      .publisher-card { grid-template-columns: 1fr; gap: 42px; }
+      .product-showcase { min-height: auto; padding: 42px 0 0; border-top: 1px solid var(--line); border-left: 0; }
       .steps { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
@@ -521,17 +442,15 @@
       h1 { font-size: clamp(48px, 15.5vw, 74px); }
       .hero-copy > p:not(.eyebrow) { font-size: 17px; }
       .button { width: 100%; }
-      .system-card { min-height: 390px; padding: 14px; border-radius: 24px; transform: none; }
-      .window { padding: 14px; }
-      .brief-card { padding: 15px; }
-      .brief-card strong { font-size: 17px; }
-      .decision { padding: 10px; }
+      .hero-art, .hero-art img { min-height: 430px; border-radius: 26px; }
+      .hero-art img { transform: scale(1.12); }
       section { padding: 82px 0; }
       .section-head { gap: 24px; }
       .service { min-height: 260px; padding-inline: 12px; }
       .service-number { margin-bottom: 42px; }
-      .publisher-card { padding: 30px 22px; border-radius: 24px; }
-      .product-card { padding: 23px; }
+      .publisher-card { padding: 34px 24px; border-radius: 24px; }
+      .product-showcase { padding-top: 34px; }
+      .voice-signal { margin-block: 24px 20px; }
       .steps { grid-template-columns: 1fr; }
       .step { min-height: 205px; }
       .step h3 { margin-top: 55px; }
@@ -576,24 +495,9 @@
           </div>
         </div>
 
-        <div class="system-card" aria-label="Illustration d’une mission de conseil, du besoin à la recommandation">
-          <div class="window">
-            <div class="window-bar">
-              <span>Mission de conseil / cadrage</span>
-              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            </div>
-            <div class="brief-card">
-              <span>Question à trancher</span>
-              <strong>Quelle solution permet d’avancer sans surinvestir&nbsp;?</strong>
-            </div>
-            <div class="decision-list">
-              <div class="decision"><b>01</b><strong>Comprendre le besoin réel</strong><i aria-hidden="true"></i></div>
-              <div class="decision"><b>02</b><strong>Comparer les options</strong><i aria-hidden="true"></i></div>
-              <div class="decision"><b>03</b><strong>Recommander une direction</strong><i aria-hidden="true"></i></div>
-            </div>
-            <div class="status"><i aria-hidden="true"></i> Une décision claire, expliquée et exploitable.</div>
-          </div>
-        </div>
+        <figure class="hero-art">
+          <img src="og-consulting-capitalized.png" alt="" width="1734" height="907">
+        </figure>
       </div>
     </section>
 
@@ -672,12 +576,23 @@
             <h2>Nous créons aussi nos propres logiciels.</h2>
             <p>Cette pratique garde Inovya proche du terrain&nbsp;: concevoir, arbitrer, construire et améliorer des produits utilisés au quotidien.</p>
           </div>
-          <a class="product-card" href="https://voiceovya.com/" aria-label="Découvrir VoiceOvya">
-            <span class="product-meta"><span>Produit Inovya</span><span aria-hidden="true">↗</span></span>
+          <div class="product-showcase">
+            <div class="voice-signal" aria-hidden="true">
+              <i style="--signal-height: 20px; --signal-opacity: .35"></i>
+              <i style="--signal-height: 38px; --signal-opacity: .48"></i>
+              <i style="--signal-height: 58px; --signal-opacity: .72"></i>
+              <i style="--signal-height: 31px; --signal-opacity: .55"></i>
+              <i style="--signal-height: 66px"></i>
+              <i style="--signal-height: 46px; --signal-opacity: .82"></i>
+              <i style="--signal-height: 24px; --signal-opacity: .46"></i>
+              <i style="--signal-height: 53px; --signal-opacity: .78"></i>
+              <i style="--signal-height: 34px; --signal-opacity: .58"></i>
+              <i style="--signal-height: 16px; --signal-opacity: .3"></i>
+            </div>
             <h3>VoiceOvya</h3>
             <p>VoiceOvya aide à enregistrer, transcrire et résumer les réunions, avec une attention particulière portée au traitement local des données.</p>
-            <span class="product-link">Découvrir VoiceOvya <span aria-hidden="true">↗</span></span>
-          </a>
+            <a class="product-link" href="https://voiceovya.com/">Découvrir VoiceOvya <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
     </section>
