@@ -1,0 +1,2 @@
+# Reports live on the server, never in the repo: they are user-submitted machine fingerprints.
+data/*.json

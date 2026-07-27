@@ -1,0 +1,3 @@
+# Raw reports are read by index.php, never served. Kept even though a report carries no note
+# content: the machine fingerprint of an individual user is nobody else's business.
+Require all denied

@@ -1,0 +1,14 @@
+DirectoryIndex index.php
+Options -Indexes
+
+<IfModule mod_headers.c>
+  # Overrides the site-wide noindex: this page is meant to be found by someone asking
+  # "which AI model on which Mac".
+  Header always set X-Robots-Tag "index, follow"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), geolocation=(), microphone=()"
+  # No script and no external asset on this page: everything is server-rendered.
+  Header always set Content-Security-Policy "default-src 'none'; base-uri 'none'; img-src 'self' data:; style-src 'unsafe-inline'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+</IfModule>
