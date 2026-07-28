@@ -7,7 +7,9 @@ REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site su
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-for file in index.html robots.txt .htaccess; do
+# `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
+# a copy inside a subdirectory (modelbenchmark) has no effect.
+for file in index.html robots.txt .htaccess .ovhconfig; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/${file}" >&2
     exit 1
@@ -25,6 +27,7 @@ cd ${REMOTE_DIR}
 put ${LOCAL_DIR}/index.html
 put ${LOCAL_DIR}/robots.txt
 put ${LOCAL_DIR}/.htaccess
+put ${LOCAL_DIR}/.ovhconfig
 put -r ${LOCAL_DIR}/assets
 bye
 EOF

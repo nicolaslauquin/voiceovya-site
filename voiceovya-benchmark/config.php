@@ -13,3 +13,8 @@ const MAX_BODY_BYTES = 307200;
 const MAX_STORED_REPORTS = 5000;
 // Under this many samples a median is an anecdote; the page shows the value but flags it.
 const MIN_SAMPLES_FOR_SOLID = 3;
+// Accepted reports per hour and per address. A sweep takes minutes, so a real user never comes
+// close; this stops a loop gone wrong and casual abuse, not a motivated attacker (see README).
+const MAX_REPORTS_PER_HOUR = 12;
+// Directory of the rate counters. Outside DATA_DIR so a counter is never mistaken for a report.
+const RATE_DIR = __DIR__ . '/rate';

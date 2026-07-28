@@ -1,2 +1,5 @@
 # Reports live on the server, never in the repo: they are user-submitted machine fingerprints.
 data/*.json
+# Throttle counters, created on the server and pruned every hour.
+rate/*
+!rate/.htaccess

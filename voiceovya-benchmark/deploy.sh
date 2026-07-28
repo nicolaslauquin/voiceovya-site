@@ -29,9 +29,12 @@ SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SER
 }
 
 # `-mkdir` on the first deploy; the error on an existing directory is harmless, hence `-`.
+# The PHP engine version is not shipped here: `.ovhconfig` is hosting-wide and OVH only reads it at
+# the web root, so it travels with ../voiceovya/deploy.sh.
 sshpass -p "${SFTP_PASS}" sftp -o PreferredAuthentications=password -o PubkeyAuthentication=no "${SFTP_USER}@${HOST}" <<EOF
 -mkdir ${REMOTE_DIR}
 -mkdir ${REMOTE_DIR}/data
+-mkdir ${REMOTE_DIR}/rate
 cd ${REMOTE_DIR}
 put ${LOCAL_DIR}/index.php
 put ${LOCAL_DIR}/lib.php
@@ -39,6 +42,7 @@ put ${LOCAL_DIR}/api.php
 put ${LOCAL_DIR}/config.php
 put ${LOCAL_DIR}/.htaccess
 put ${LOCAL_DIR}/data/.htaccess data/.htaccess
+put ${LOCAL_DIR}/rate/.htaccess rate/.htaccess
 bye
 EOF
 

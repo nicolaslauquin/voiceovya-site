@@ -1,0 +1,3 @@
+# Throttle counters, written and read by api.php only. Never served: a counter name is a salted
+# hash of an address, so it is not something to hand out even though it holds no report.
+Require all denied

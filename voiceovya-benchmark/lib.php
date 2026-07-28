@@ -34,6 +34,16 @@ function load_reports(): array
     return $reports;
 }
 
+/**
+ * A duration only counts when it is a positive number. `api.php` rejects anything else at the
+ * door; this second guard covers what is already stored, since a file written before that check
+ * existed never passed it.
+ */
+function positive_seconds($value): ?float
+{
+    return is_numeric($value) && (float) $value > 0 ? (float) $value : null;
+}
+
 /** Median rather than mean everywhere: one throttled Mac or misconfigured runtime ruins a mean. */
 function median(array $values): ?float
 {
@@ -169,11 +179,11 @@ function speed_sections(array $reports): array
         }
         $config = machine_config($report);
         foreach ($report['models'] as $measure) {
-            $run = fresh_run($measure);
-            if ($run === null || !isset($run['seconds'])) {
+            $seconds = positive_seconds(fresh_run($measure)['seconds'] ?? null);
+            if ($seconds === null) {
                 continue;
             }
-            $byConfig[$config][model_label($measure['target'])][] = (float) $run['seconds'];
+            $byConfig[$config][model_label($measure['target'])][] = $seconds;
         }
     }
     $sections = [];
@@ -226,15 +236,14 @@ function transcription_rows(array $reports): array
         if (!is_fair_speed_sample($report)) {
             continue;
         }
-        $runs = $report['transcription']['runSeconds'] ?? [];
-        $audio = $report['corpus']['audioSeconds'] ?? 0;
-        if ($runs === [] || $audio <= 0) {
+        $runs = array_filter(
+            array_map('positive_seconds', $report['transcription']['runSeconds'] ?? []),
+            fn($value) => $value !== null);
+        $audio = positive_seconds($report['corpus']['audioSeconds'] ?? null);
+        if ($runs === [] || $audio === null) {
             continue;
         }
-        $best = min($runs);
-        if ($best > 0) {
-            $byChip[$report['machine']['gpuName']][] = $audio / $best;
-        }
+        $byChip[$report['machine']['gpuName']][] = $audio / min($runs);
     }
     $rows = [];
     foreach ($byChip as $chip => $factors) {
