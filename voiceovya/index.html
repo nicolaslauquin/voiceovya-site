@@ -390,7 +390,7 @@ footer a:hover{color:var(--text-dark)}
     <h1 data-i18n="hero.title">Vos réunions ont la réponse.</h1>
     <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac. Interrogez vos notes pour retrouver en quelques secondes ce qui a été dit, décidé ou promis.</p>
     <div class="cta-row">
-      <a class="btn btn-primary btn-lg" id="download-link" href="downloads/VoiceOvya.dmg" download data-i18n="hero.download">Télécharger pour macOS 27</a>
+      <a class="btn btn-primary btn-lg" id="download-link" href="build/dist/index.html" data-i18n="hero.download">Télécharger pour macOS 26.4+</a>
     </div>
     <p class="download-status hidden" id="download-status" aria-live="polite"></p>
     <div class="hl-row">
@@ -509,6 +509,11 @@ footer a:hover{color:var(--text-dark)}
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <h3 data-i18n="feat.rec.t">Enregistrement &amp; transcription en direct</h3>
         <p data-i18n="feat.rec.p">Capturez micro et audio système, suivez la transcription en temps réel, horodatée à la seconde.</p>
+      </div>
+      <div class="card">
+        <div class="ic g-blue"><svg viewBox="0 0 24 24"><path d="M5 8h9"/><path d="M9 4v4c0 4-2 7-5 9"/><path d="M6 13c2 0 4-1 5-3"/><path d="M13 20l4-10 4 10"/><path d="M15 16h4"/></svg></div>
+        <h3 data-i18n="feat.translate.t">Traducteur temps réel</h3>
+        <p data-i18n="feat.translate.p">Traduisez la conversation pendant qu'elle se déroule, sans interrompre la réunion.</p>
       </div>
       <div class="card">
         <div class="ic g-violet"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 14l.9 2.3L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.7z"/></svg></div>
@@ -672,6 +677,7 @@ footer a:hover{color:var(--text-dark)}
         <p data-i18n="mo.ep">Vous n'y connaissez rien en informatique ? Aucun souci. VoiceOvya fonctionne par défaut avec Apple Intelligence, intégré à macOS : rien à installer, rien à régler, ça marche. Encore plus fluide sur une machine récente.</p>
         <div class="pviz">
           <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Apple Intelligence</span><span class="mb local" data-i18n="mo.builtin">Intégré macOS</span></div>
+          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">MLX</span><span class="mb local" data-i18n="mo.local">Local</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Claude</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">ChatGPT</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
         </div>
@@ -764,10 +770,11 @@ const I18N = {
 en: {
   "hero.title":"Your meetings have the answer.",
   "hero.sub":"VoiceOvya records, transcribes, and summarizes your meetings on your Mac. Ask your notes to find in seconds what was said, decided, or promised.",
-  "hero.download":"Download for macOS 27",
-  "compat.old":"This Mac appears to run macOS {version}. VoiceOvya requires macOS 27 or newer.",
-  "compat.unknown":"We could not verify your macOS version from this browser. VoiceOvya requires macOS 27 or newer.",
-  "compat.notmac":"VoiceOvya is a Mac app. Download it from a Mac running macOS 27 or newer.",
+  "hero.download":"Download for macOS 26.4+",
+  "compat.limited":"VoiceOvya is available on this Mac. Full power starts with macOS 27.",
+  "compat.old":"This Mac appears to run macOS {version}. VoiceOvya requires macOS 26.4 or newer.",
+  "compat.unknown":"We could not verify your macOS version from this browser. VoiceOvya requires macOS 26.4 or newer, with full power starting from macOS 27.",
+  "compat.notmac":"VoiceOvya is a Mac app. Download it from a Mac running macOS 26.4 or newer.",
   "hs.win":"My notes",
   "hs.record":"Record",
   "hs.srch":"Search notes",
@@ -806,6 +813,8 @@ en: {
   "feat.actions.p":"Build your own smart actions (minutes, client quote) and apply them to any note in one click.",
   "feat.rec.t":"Live recording &amp; transcription",
   "feat.rec.p":"Capture mic and system audio, follow the transcript in real time, timestamped to the second.",
+  "feat.translate.t":"Real-time translator",
+  "feat.translate.p":"Translate the conversation as it happens, without interrupting the meeting.",
   "feat.ai.t":"AI summaries &amp; assistants",
   "feat.ai.p":"Automatic summaries, extracted decisions and actions. Chat with your notes through Claude or ChatGPT.",
   "feat.local.t":"Local models",
@@ -875,6 +884,7 @@ en: {
   "mo.pt":"The model of your choice",
   "mo.pp":"Plug in whatever model you want (gemma-4, qwen3…) through your favorite tool: Ollama, llama.cpp or LM Studio. You decide what runs, and where.",
   "mo.builtin":"Built into macOS",
+  "mo.local":"Local",
   "mo.key":"Your API key",
   "mo.note":"Already using the OpenAI or Anthropic API? Add your key, that’s it.",
   "mo.pn":"Pick your tool and the model suited to your use.",
@@ -893,9 +903,10 @@ const FR = {};
 document.querySelectorAll('[data-i18n]').forEach(e=>FR[e.dataset.i18n]=e.innerHTML);
 document.querySelectorAll('[data-i18n-ph]').forEach(e=>FR[e.dataset.i18nPh]=e.placeholder);
 Object.assign(FR, {
-  "compat.old":"Ce Mac semble utiliser macOS {version}. VoiceOvya nécessite macOS 27 ou plus récent.",
-  "compat.unknown":"Impossible de vérifier votre version de macOS depuis ce navigateur. VoiceOvya nécessite macOS 27 ou plus récent.",
-  "compat.notmac":"VoiceOvya est une app Mac. Téléchargez-la depuis un Mac avec macOS 27 ou plus récent."
+  "compat.limited":"VoiceOvya est disponible sur ce Mac. Toute sa puissance est disponible à partir de macOS 27.",
+  "compat.old":"Ce Mac semble utiliser macOS {version}. VoiceOvya nécessite macOS 26.4 ou plus récent.",
+  "compat.unknown":"Impossible de vérifier votre version de macOS depuis ce navigateur. VoiceOvya nécessite macOS 26.4 ou plus récent, avec toute sa puissance à partir de macOS 27.",
+  "compat.notmac":"VoiceOvya est une app Mac. Téléchargez-la depuis un Mac avec macOS 26.4 ou plus récent."
 });
 I18N.fr = FR;
 
@@ -940,6 +951,11 @@ function parseMacOSVersion(value){
   };
 }
 
+function isAtLeastMacOS(version, major, minor){
+  if (!version) return false;
+  return version.major > major || (version.major === major && version.minor >= minor);
+}
+
 function getMacOSVersionFromUA(){
   const match = navigator.userAgent.match(/Mac OS X ([\d_]+)/);
   return match ? parseMacOSVersion(match[1]) : null;
@@ -964,6 +980,10 @@ function renderCompatibilityResult(result){
     el.textContent = '';
     return;
   }
+  if (result.status === 'limited') {
+    el.textContent = t('compat.limited');
+    return;
+  }
   if (result.status === 'old') {
     el.classList.add('warn');
     el.textContent = t('compat.old', {version: result.version.raw});
@@ -976,13 +996,15 @@ async function detectMacOSCompatibility(){
   if (!isMacPlatform()) return {status:'not-mac'};
   const uaVersion = getMacOSVersionFromUA();
   if (uaVersion && uaVersion.major >= 27) return {status:'ok', version:uaVersion};
-  if (uaVersion && uaVersion.major > 10 && uaVersion.major < 27) return {status:'old', version:uaVersion};
+  if (isAtLeastMacOS(uaVersion, 26, 4)) return {status:'limited', version:uaVersion};
+  if (uaVersion && uaVersion.major > 10) return {status:'old', version:uaVersion};
   if (navigator.userAgentData?.getHighEntropyValues) {
     try {
       const hints = await navigator.userAgentData.getHighEntropyValues(['platformVersion']);
       const hintVersion = parseMacOSVersion(hints.platformVersion);
       if (hintVersion && hintVersion.major >= 27) return {status:'ok', version:hintVersion};
-      if (hintVersion && hintVersion.major > 10 && hintVersion.major < 27) return {status:'old', version:hintVersion};
+      if (isAtLeastMacOS(hintVersion, 26, 4)) return {status:'limited', version:hintVersion};
+      if (hintVersion && hintVersion.major > 10) return {status:'old', version:hintVersion};
     } catch(e) {}
   }
   return {status:'unknown'};

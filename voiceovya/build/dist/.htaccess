@@ -1,5 +1,5 @@
 AuthType Basic
 AuthName "VoiceOvya beta download"
-AuthUserFile /home/voiceoe/www/downloads/.htpasswd
+AuthUserFile /home/voiceoe/www/build/dist/.htpasswd
 Require valid-user
 
