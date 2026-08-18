@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CHECK BEFORE PUBLISHING: same two points as confidentialite.html (one single GDPR contact
+     address, and retention stated as a CEILING on purpose: the free plans in use keep 30 days
+     on Sentry and 90 on TelemetryDeck, and a ceiling stays accurate if either tier changes.
+     Never announce a shorter period than reality; the other way round is harmless). Keep both
+     language versions in step: a change here must be mirrored in confidentialite.html.
+     No `meta robots` here: crawlers are blocked site-wide by robots.txt and the .htaccess
+     X-Robots-Tag header. One place to flip at launch. -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Privacy Policy · VoiceOvya</title>
+<meta name="description" content="What VoiceOvya sends, what never leaves your Mac, and on what legal basis.">
+<link rel="canonical" href="https://voiceovya.com/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://voiceovya.com/confidentialite.html">
+<link rel="alternate" hreflang="en" href="https://voiceovya.com/privacy.html">
+<meta name="theme-color" content="#f4f8f6">
+<link rel="icon" href="assets/appicon-sm.png">
+<style>
+:root{
+  --accent:#1f9e63; --accent-deep:#157a4b; --accent-soft:#e7f4ec;
+  --text-dark:#1d2522; --text-medium:#6b756f; --text-light:#b3bbb5;
+  --bg-white:#fafcfb; --bg-clear:#f4f8f6;
+  --shadow-card:0 1px 3px rgba(0,0,0,.05);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);font-size:15px;line-height:1.65;color:var(--text-dark);background:var(--bg-clear);-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--accent-deep)}
+header{background:rgba(244,248,246,.75);backdrop-filter:blur(28px) saturate(1.6);border-bottom:.5px solid rgba(0,0,0,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text-dark);text-decoration:none}
+.brand img{width:26px;height:26px;border-radius:6px}
+.lang{font-size:13px;color:var(--text-medium);text-decoration:none}
+main{padding:44px 0 20px}
+.kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);margin-bottom:10px}
+h1{font-size:30px;font-weight:700;letter-spacing:-.015em;margin-bottom:8px}
+.updated{font-size:13px;color:var(--text-light);margin-bottom:28px}
+.lede{font-size:17px;color:var(--text-medium);margin-bottom:34px}
+h2{font-size:19px;font-weight:700;letter-spacing:-.01em;margin:34px 0 10px}
+h3{font-size:15px;font-weight:600;margin:22px 0 6px}
+p{margin-bottom:12px;color:var(--text-medium)}
+p strong,li strong{color:var(--text-dark);font-weight:600}
+ul{margin:0 0 12px 20px;color:var(--text-medium)}
+li{margin-bottom:6px}
+.card{background:var(--bg-white);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06);margin-bottom:16px}
+.card h3{margin-top:0}
+dl{display:grid;grid-template-columns:150px 1fr;gap:6px 16px;font-size:14px;margin-bottom:12px}
+dt{color:var(--text-light)}
+dd{color:var(--text-dark)}
+footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px;font-size:12.5px;color:var(--text-medium)}
+@media (max-width:560px){dl{grid-template-columns:1fr;gap:2px 0}dt{margin-top:8px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/appicon-sm.png" alt="">VoiceOvya</a>
+    <a class="lang" href="confidentialite.html" hreflang="fr">Français</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="kicker">Privacy</p>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: 17 August 2026</p>
+
+  <p class="lede">VoiceOvya records, transcribes and summarizes your meetings <strong>on your Mac</strong>. This page states the only data that leaves your machine, the data that never does, and on what basis.</p>
+
+  <h2>What stays on your Mac</h2>
+  <p>Your recordings, their transcripts, the generated summaries, your notes, your categories and your contacts are stored <strong>locally</strong>, in the application's own folder. They are never uploaded to us: no Inovya server receives them. There is no account to create, no identifier, no sync.</p>
+  <p>Local AI models (Apple Intelligence, models downloaded in the app, a runtime installed on your machine or your network) process your content without any outgoing connection.</p>
+
+  <h2>What the application sends</h2>
+
+  <div class="card">
+    <h3>Anonymous usage statistics</h3>
+    <dl>
+      <dt>Processor</dt><dd>TelemetryDeck, servers located in the European Union</dd>
+      <dt>Data</dt><dd>Technical counters: which feature was used, how long a transcription took, which model family answered, the application and macOS versions, the interface language. An identifier derived from your device is hashed on your Mac before anything is sent.</dd>
+      <dt>Never</dt><dd>Note content, transcripts, audio, contact, participant or category names, search terms, prompt content.</dd>
+      <dt>Legal basis</dt><dd>Legitimate interest (GDPR art. 6.1.f): improving the product from anonymous usage measurements.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Crash reports</h3>
+    <dl>
+      <dt>Processor</dt><dd>Sentry, servers located in the European Union</dd>
+      <dt>Data</dt><dd>The crash stack trace, your macOS version, your Mac model, the application version. The IP address is stripped and sending personal information is disabled. The SDK's network instrumentation is turned off, so no address of the servers you connect to is attached to a report.</dd>
+      <dt>Never</dt><dd>Anything from your notes, transcripts or audio.</dd>
+      <dt>Legal basis</dt><dd>Legitimate interest: fixing defects in the application.</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Online AI models, only once you decide</h3>
+    <p>If you turn "online models" on and select Claude (Anthropic) or ChatGPT (OpenAI) <strong>with your own API key</strong>, the content needed for the request is sent <strong>directly from your Mac to the provider you picked</strong>. Those exchanges pass through no Inovya server, and we have no access to them. The processing is then governed by that provider's own terms and privacy policy, under your own account; both companies are established in the United States. Until you turn that option on, nothing is sent to them.</p>
+  </div>
+
+  <div class="card">
+    <h3>Model downloads and local runtimes</h3>
+    <p>Downloading a local model contacts Hugging Face, which hosts the files, or Apple's servers for system models. As with any download, those services see your connection's IP address; none of your data is attached to the request. If you configure a local runtime (Ollama, LM Studio, llama.cpp), the app connects to the address you provide, on your machine or your network, and nothing leaves it.</p>
+  </div>
+
+  <h2>What we do not do</h2>
+  <ul>
+    <li>No advertising, no advertising tracker.</li>
+    <li>No selling or sharing of data with third parties.</li>
+    <li>No profiling, no tracking across apps or websites.</li>
+    <li>No cookies on this website, no audience measurement tool.</li>
+  </ul>
+
+  <h2>Retention</h2>
+  <p>Usage statistics and crash reports are kept for <strong>up to 90 days</strong>, then deleted or reduced to anonymous aggregates. Data on your Mac stays as long as you keep it: it disappears when you delete the note, or the app and its folder.</p>
+
+  <h2>Your rights</h2>
+  <p>The data the app sends is anonymous or pseudonymized and does not let us identify you: we are not able to single out "your" signals among the others (GDPR art. 11). You still hold the rights of access, rectification, erasure, objection, restriction and portability. To exercise them, or for any question: <a href="mailto:hello@voiceovya.com">hello@voiceovya.com</a>.</p>
+  <p>Your local data stays entirely under your control: the app can export it and delete it. You may also lodge a complaint with the French data protection authority, the CNIL, at <a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>.</p>
+
+  <h2>Data controller</h2>
+  <dl>
+    <dt>Company</dt><dd>Inovya SASU</dd>
+    <dt>Address</dt><dd>5 rue du Port Guichard, 44000 Nantes, France</dd>
+    <dt>SIREN</dt><dd>993 854 249</dd>
+    <dt>Contact</dt><dd><a href="mailto:hello@voiceovya.com">hello@voiceovya.com</a></dd>
+  </dl>
+
+  <h2>Changes</h2>
+  <p>Any change to this policy is published on this page, with its update date. Significant changes are called out in the application's release notes.</p>
+
+  <p style="margin-top:26px"><a href="terms.html">Terms of Use</a> · <a href="index.html">Back to the site</a></p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Inovya SASU · <a href="index.html#mentions-legales">Legal notice</a></div>
+</footer>
+
+</body>
+</html>

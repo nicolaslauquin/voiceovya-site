@@ -12,7 +12,11 @@ ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.dmg"
 
 # `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
 # a copy inside a subdirectory (modelbenchmark) has no effect.
-for file in index.html robots.txt .htaccess .ovhconfig; do
+# Les quatre pages légales sont vérifiées comme le reste : l'app y renvoie depuis Réglages >
+# Confidentialité, et la fiche App Store réclame l'URL de la politique de confidentialité. Une
+# page absente casse un lien affiché dans le produit.
+for file in index.html robots.txt .htaccess .ovhconfig \
+            confidentialite.html privacy.html cgu.html terms.html; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/${file}" >&2
     exit 1
@@ -35,6 +39,10 @@ SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SER
 sshpass -p "${SFTP_PASS}" sftp -o PreferredAuthentications=password -o PubkeyAuthentication=no "${SFTP_USER}@${HOST}" <<EOF
 cd ${REMOTE_DIR}
 put ${LOCAL_DIR}/index.html
+put ${LOCAL_DIR}/confidentialite.html
+put ${LOCAL_DIR}/privacy.html
+put ${LOCAL_DIR}/cgu.html
+put ${LOCAL_DIR}/terms.html
 put ${LOCAL_DIR}/robots.txt
 put ${LOCAL_DIR}/.htaccess
 put ${LOCAL_DIR}/.ovhconfig

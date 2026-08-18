@@ -321,10 +321,11 @@ section{padding:72px 0}
 .menubar .dim{color:var(--text-medium)}
 /* ---- Footer ---- */
 footer{border-top:.5px solid rgba(0,0,0,.06);padding:28px 0;font-size:12px;color:var(--text-medium)}
-footer .wrap{display:flex;align-items:center;justify-content:center}
+footer .wrap{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
 footer .footer-brand{white-space:nowrap}
 footer a{color:var(--text-medium);text-decoration:none}
 footer a:hover{color:var(--text-dark)}
+.footer-sep{color:var(--text-light)}
 .legal-modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:24px}
 .legal-modal:target{display:flex}
 .legal-backdrop{position:absolute;inset:0;background:rgba(17,24,20,.35);backdrop-filter:blur(10px)}
@@ -741,7 +742,13 @@ footer a:hover{color:var(--text-dark)}
 
 <footer>
   <div class="wrap">
-    <span class="footer-brand"><a href="#mentions-legales">© <span id="year"></span> Inovya SASU</a></span>
+    <span class="footer-brand">© <span id="year"></span> Inovya SASU</span>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="#mentions-legales" data-i18n="footer.legal">Mentions légales</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="confidentialite.html" data-legal-page="privacy" data-i18n="footer.privacy">Confidentialité</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="cgu.html" data-legal-page="terms" data-i18n="footer.terms">Conditions générales d’utilisation</a>
   </div>
 </footer>
 
@@ -894,6 +901,9 @@ en: {
   "legal.company.k":"Company",
   "legal.address.k":"Address",
   "legal.contact.k":"Contact",
+  "footer.legal":"Legal notice",
+  "footer.privacy":"Privacy policy",
+  "footer.terms":"Terms of use",
   "ct.t":"Let’s talk",
   "ct.p":"Have a question, an idea, or want to try VoiceOvya early? Get in touch.",
   "ct.cta":"Contact us"
@@ -917,6 +927,8 @@ function setLang(l){
   document.documentElement.lang = l;
   document.getElementById('lang-fr').classList.toggle('on', l==='fr');
   document.getElementById('lang-en').classList.toggle('on', l==='en');
+  document.querySelector('[data-legal-page="privacy"]').href = l === 'fr' ? 'confidentialite.html' : 'privacy.html';
+  document.querySelector('[data-legal-page="terms"]').href = l === 'fr' ? 'cgu.html' : 'terms.html';
   try{ localStorage.setItem('voiceovya-lang', l); }catch(e){}
   const dictatedText = document.querySelector('[data-dictate]')?.textContent.trim();
   startDictationPreview(dictatedText);
