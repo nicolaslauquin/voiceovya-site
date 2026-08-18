@@ -69,23 +69,23 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
 <main class="wrap">
   <p class="kicker">Confidentialité</p>
   <h1>Politique de confidentialité</h1>
-  <p class="updated">Dernière mise à jour : 17 août 2026</p>
+  <p class="updated">Dernière mise à jour : 18 août 2026</p>
 
-  <p class="lede">VoiceOvya enregistre, transcrit et résume vos réunions <strong>sur votre Mac</strong>. Cette page décrit les seules données qui quittent votre machine, celles qui n'en sortent jamais, et sur quelle base.</p>
+  <p class="lede">VoiceOvya enregistre, transcrit et résume vos réunions <strong>sur votre Mac</strong>. Cette page décrit les données traitées par l'application, leur destination et la base légale applicable.</p>
 
   <h2>Ce qui reste sur votre Mac</h2>
-  <p>Vos enregistrements audio, leurs transcriptions, les résumés générés, vos notes, vos catégories et vos contacts sont stockés <strong>localement</strong>, dans le dossier de l'application. Ils ne sont ni téléversés, ni sauvegardés chez nous : aucun serveur d'Inovya ne les reçoit. Il n'y a ni compte à créer, ni identifiant, ni synchronisation.</p>
-  <p>Les modèles d'IA locaux (Apple Intelligence, modèles téléchargés dans l'application, moteur installé sur votre machine ou votre réseau) traitent vos contenus sans connexion sortante.</p>
+  <p>Vos enregistrements audio, leurs transcriptions, les résumés générés, vos notes, vos catégories et vos contacts sont stockés <strong>localement</strong>, dans le dossier de l'application. Ces contenus ne sont pas transmis à Inovya. Il n'y a ni compte à créer, ni identifiant, ni synchronisation.</p>
+  <p>Lorsqu'un modèle d'IA local traite vos contenus, ceux-ci ne sont pas envoyés aux services d'IA en ligne.</p>
 
   <h2>Ce que l'application envoie</h2>
 
   <div class="card">
-    <h3>Statistiques d'usage anonymes</h3>
+    <h3>Statistiques d'usage pseudonymisées</h3>
     <dl>
       <dt>Sous-traitant</dt><dd>TelemetryDeck, serveurs situés dans l'Union européenne</dd>
       <dt>Données</dt><dd>Compteurs techniques : fonction utilisée, durée d'une transcription, famille de modèle sollicitée, version de l'application et de macOS, langue de l'interface. Un identifiant dérivé de votre appareil est haché sur votre Mac avant tout envoi.</dd>
-      <dt>Jamais</dt><dd>Contenu de note, transcription, audio, nom de contact, de participant ou de catégorie, requête de recherche, contenu de prompt.</dd>
-      <dt>Base légale</dt><dd>Intérêt légitime (art. 6.1.f RGPD) : améliorer le produit à partir de mesures d'usage anonymes.</dd>
+      <dt>Non collectées intentionnellement</dt><dd>Contenu de note, transcription, audio, nom de contact, de participant ou de catégorie, requête de recherche, contenu de prompt. L'application est conçue et configurée pour éviter leur collecte.</dd>
+      <dt>Base légale</dt><dd>Intérêt légitime (art. 6.1.f RGPD) : améliorer le produit à partir de mesures d'usage pseudonymisées.</dd>
     </dl>
   </div>
 
@@ -93,8 +93,8 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
     <h3>Rapports de plantage</h3>
     <dl>
       <dt>Sous-traitant</dt><dd>Sentry, serveurs situés dans l'Union européenne</dd>
-      <dt>Données</dt><dd>Trace d'exécution du plantage, version de macOS, modèle de Mac, version de l'application. L'adresse IP est supprimée et l'envoi d'informations personnelles est désactivé. L'instrumentation réseau du SDK est désactivée : aucune adresse des serveurs que vous joignez n'est jointe au rapport.</dd>
-      <dt>Jamais</dt><dd>Contenu de vos notes, transcriptions ou audio.</dd>
+      <dt>Données</dt><dd>Informations techniques nécessaires au diagnostic, notamment la trace d'exécution du plantage, la version de macOS, le modèle de Mac et la version de l'application.</dd>
+      <dt>Non collectées intentionnellement</dt><dd>Contenu de vos notes, transcriptions ou audio. L'application est conçue et configurée pour éviter leur collecte.</dd>
       <dt>Base légale</dt><dd>Intérêt légitime : corriger les défauts de l'application.</dd>
     </dl>
   </div>
@@ -106,13 +106,13 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
 
   <div class="card">
     <h3>Téléchargement de modèles et moteur local</h3>
-    <p>Télécharger un modèle local contacte Hugging Face, qui héberge les fichiers, ou les serveurs d'Apple pour les modèles système. Comme pour tout téléchargement, ces services voient l'adresse IP de votre connexion ; aucune de vos données n'est jointe à la requête. Si vous configurez un moteur local (Ollama, LM Studio, llama.cpp), l'application se connecte à l'adresse que vous indiquez, sur votre machine ou votre réseau, et rien n'en sort.</p>
+    <p>Le téléchargement d'un modèle contacte le service qui héberge les fichiers. Cette opération ne transmet pas vos contenus. Si vous configurez un moteur local, l'application utilise l'adresse que vous indiquez pour lui envoyer les contenus à traiter.</p>
   </div>
 
   <h2>Ce que nous ne faisons pas</h2>
   <ul>
     <li>Aucune publicité, aucun traceur publicitaire.</li>
-    <li>Aucune revente ni partage de données à des tiers.</li>
+    <li>Nous ne vendons pas vos données et ne les utilisons pas à des fins publicitaires.</li>
     <li>Aucun profilage, aucun suivi entre applications ou entre sites.</li>
     <li>Aucun cookie sur ce site, aucun outil de mesure d'audience.</li>
   </ul>
@@ -121,7 +121,7 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
   <p>Les statistiques d'usage et les rapports de plantage sont conservés <strong>au plus 90 jours</strong>, puis supprimés ou réduits à des agrégats anonymes. Les données présentes sur votre Mac, elles, y restent aussi longtemps que vous les conservez : elles disparaissent quand vous supprimez la note, ou l'application et son dossier.</p>
 
   <h2>Vos droits</h2>
-  <p>Les données que l'application envoie sont anonymes ou pseudonymisées et ne nous permettent pas de vous identifier : nous ne sommes pas en mesure de retrouver « vos » signaux parmi les autres (art. 11 RGPD). Vous disposez néanmoins des droits d'accès, de rectification, d'effacement, d'opposition, de limitation et de portabilité. Pour les exercer, ou pour toute question : <a href="mailto:hello@voiceovya.com">hello@voiceovya.com</a>.</p>
+  <p>Les données d'usage et les rapports techniques ne sont pas destinés à vous identifier. Vous pouvez exercer les droits applicables à votre situation, notamment les droits d'accès, de rectification, d'effacement, d'opposition et de limitation. Pour les exercer, ou pour toute question : <a href="mailto:hello@voiceovya.com">hello@voiceovya.com</a>.</p>
   <p>Vos données locales restent entièrement sous votre contrôle : l'application permet de les exporter et de les supprimer. Vous pouvez introduire une réclamation auprès de la CNIL, <a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>.</p>
 
   <h2>Responsable de traitement</h2>

@@ -67,23 +67,23 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
 <main class="wrap">
   <p class="kicker">Privacy</p>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 17 August 2026</p>
+  <p class="updated">Last updated: 18 August 2026</p>
 
-  <p class="lede">VoiceOvya records, transcribes and summarizes your meetings <strong>on your Mac</strong>. This page states the only data that leaves your machine, the data that never does, and on what basis.</p>
+  <p class="lede">VoiceOvya records, transcribes and summarizes your meetings <strong>on your Mac</strong>. This page describes the data processed by the application, where it goes and the applicable legal basis.</p>
 
   <h2>What stays on your Mac</h2>
-  <p>Your recordings, their transcripts, the generated summaries, your notes, your categories and your contacts are stored <strong>locally</strong>, in the application's own folder. They are never uploaded to us: no Inovya server receives them. There is no account to create, no identifier, no sync.</p>
-  <p>Local AI models (Apple Intelligence, models downloaded in the app, a runtime installed on your machine or your network) process your content without any outgoing connection.</p>
+  <p>Your recordings, their transcripts, the generated summaries, your notes, your categories and your contacts are stored <strong>locally</strong>, in the application's own folder. This content is not sent to Inovya. There is no account to create, no identifier, no sync.</p>
+  <p>When a local AI model processes your content, that content is not sent to online AI services.</p>
 
   <h2>What the application sends</h2>
 
   <div class="card">
-    <h3>Anonymous usage statistics</h3>
+    <h3>Pseudonymized usage statistics</h3>
     <dl>
       <dt>Processor</dt><dd>TelemetryDeck, servers located in the European Union</dd>
       <dt>Data</dt><dd>Technical counters: which feature was used, how long a transcription took, which model family answered, the application and macOS versions, the interface language. An identifier derived from your device is hashed on your Mac before anything is sent.</dd>
-      <dt>Never</dt><dd>Note content, transcripts, audio, contact, participant or category names, search terms, prompt content.</dd>
-      <dt>Legal basis</dt><dd>Legitimate interest (GDPR art. 6.1.f): improving the product from anonymous usage measurements.</dd>
+      <dt>Not intentionally collected</dt><dd>Note content, transcripts, audio, contact, participant or category names, search terms, prompt content. The application is designed and configured to avoid collecting them.</dd>
+      <dt>Legal basis</dt><dd>Legitimate interest (GDPR art. 6.1.f): improving the product from pseudonymized usage measurements.</dd>
     </dl>
   </div>
 
@@ -91,8 +91,8 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
     <h3>Crash reports</h3>
     <dl>
       <dt>Processor</dt><dd>Sentry, servers located in the European Union</dd>
-      <dt>Data</dt><dd>The crash stack trace, your macOS version, your Mac model, the application version. The IP address is stripped and sending personal information is disabled. The SDK's network instrumentation is turned off, so no address of the servers you connect to is attached to a report.</dd>
-      <dt>Never</dt><dd>Anything from your notes, transcripts or audio.</dd>
+      <dt>Data</dt><dd>Technical information needed for diagnosis, including the crash stack trace, your macOS version, your Mac model and the application version.</dd>
+      <dt>Not intentionally collected</dt><dd>Anything from your notes, transcripts or audio. The application is designed and configured to avoid collecting it.</dd>
       <dt>Legal basis</dt><dd>Legitimate interest: fixing defects in the application.</dd>
     </dl>
   </div>
@@ -104,13 +104,13 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
 
   <div class="card">
     <h3>Model downloads and local runtimes</h3>
-    <p>Downloading a local model contacts Hugging Face, which hosts the files, or Apple's servers for system models. As with any download, those services see your connection's IP address; none of your data is attached to the request. If you configure a local runtime (Ollama, LM Studio, llama.cpp), the app connects to the address you provide, on your machine or your network, and nothing leaves it.</p>
+    <p>Downloading a model contacts the service that hosts its files. This operation does not transmit your content. If you configure a local runtime, the application uses the address you provide to send it the content to process.</p>
   </div>
 
   <h2>What we do not do</h2>
   <ul>
     <li>No advertising, no advertising tracker.</li>
-    <li>No selling or sharing of data with third parties.</li>
+    <li>We do not sell your data or use it for advertising.</li>
     <li>No profiling, no tracking across apps or websites.</li>
     <li>No cookies on this website, no audience measurement tool.</li>
   </ul>
@@ -119,7 +119,7 @@ footer{border-top:.5px solid rgba(0,0,0,.06);margin-top:44px;padding:24px 0 40px
   <p>Usage statistics and crash reports are kept for <strong>up to 90 days</strong>, then deleted or reduced to anonymous aggregates. Data on your Mac stays as long as you keep it: it disappears when you delete the note, or the app and its folder.</p>
 
   <h2>Your rights</h2>
-  <p>The data the app sends is anonymous or pseudonymized and does not let us identify you: we are not able to single out "your" signals among the others (GDPR art. 11). You still hold the rights of access, rectification, erasure, objection, restriction and portability. To exercise them, or for any question: <a href="mailto:hello@voiceovya.com">hello@voiceovya.com</a>.</p>
+  <p>Usage data and technical reports are not intended to identify you. You may exercise the rights applicable to your situation, including access, rectification, erasure, objection and restriction. To exercise them, or for any question: <a href="mailto:hello@voiceovya.com">hello@voiceovya.com</a>.</p>
   <p>Your local data stays entirely under your control: the app can export it and delete it. You may also lodge a complaint with the French data protection authority, the CNIL, at <a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>.</p>
 
   <h2>Data controller</h2>
