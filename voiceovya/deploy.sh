@@ -6,8 +6,8 @@ SFTP_USER="voiceoe"          # ajuste si besoin
 REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site sur l'hébergement OVH)
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_0.5.1.dmg"
-ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.1.dmg"
+ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_0.5.3.dmg"
+ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.3.dmg"
 
 # `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
 # a copy inside a subdirectory (modelbenchmark) has no effect.
@@ -22,7 +22,7 @@ for file in index.html robots.txt .htaccess .ovhconfig \
   fi
 done
 
-for file in .htaccess .htpasswd index.html VoiceOvya_0.5.1.dmg; do
+for file in .htaccess .htpasswd index.html VoiceOvya_0.5.3.dmg; do
   if [[ ! -r "${LOCAL_DIR}/build/dist/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/build/dist/${file}" >&2
     exit 1
