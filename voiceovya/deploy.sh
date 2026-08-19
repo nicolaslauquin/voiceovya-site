@@ -6,9 +6,8 @@ SFTP_USER="voiceoe"          # ajuste si besoin
 REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site sur l'hébergement OVH)
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SITE_ROOT="$(cd "${LOCAL_DIR}/.." && pwd)"
-ARTIFACT_SOURCE="${SITE_ROOT}/../VoiceOvya/.claude/worktrees/chat-actions-missing-8edbfe/build/dist/VoiceOvya 0.5.dmg"
-ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.dmg"
+ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_0.5.1.dmg"
+ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.1.dmg"
 
 # `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
 # a copy inside a subdirectory (modelbenchmark) has no effect.
@@ -23,7 +22,7 @@ for file in index.html robots.txt .htaccess .ovhconfig \
   fi
 done
 
-for file in .htaccess .htpasswd index.html; do
+for file in .htaccess .htpasswd index.html VoiceOvya_0.5.1.dmg; do
   if [[ ! -r "${LOCAL_DIR}/build/dist/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/build/dist/${file}" >&2
     exit 1
@@ -52,14 +51,9 @@ put -r ${LOCAL_DIR}/assets
 put ${LOCAL_DIR}/build/dist/.htaccess build/dist/.htaccess
 put ${LOCAL_DIR}/build/dist/.htpasswd build/dist/.htpasswd
 put ${LOCAL_DIR}/build/dist/index.html build/dist/index.html
--rm "build/dist/VoiceOvya 0.5.dmg"
-$(if [[ -r "${ARTIFACT_SOURCE}" ]]; then printf 'put "%s" "%s"\n' "${ARTIFACT_SOURCE}" "${ARTIFACT_REMOTE}"; fi)
+put "${ARTIFACT_SOURCE}" "${ARTIFACT_REMOTE}"
 bye
 EOF
 
 unset SFTP_PASS
-if [[ -r "${ARTIFACT_SOURCE}" ]]; then
-  echo "Déploiement terminé avec ${ARTIFACT_REMOTE}."
-else
-  echo "Déploiement terminé sans artefact : ${ARTIFACT_SOURCE} est absent."
-fi
+echo "Déploiement terminé avec ${ARTIFACT_REMOTE}."
