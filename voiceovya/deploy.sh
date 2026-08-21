@@ -6,9 +6,10 @@ SFTP_USER="voiceoe"          # ajuste si besoin
 REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site sur l'hébergement OVH)
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_0.5.3.dmg"
-ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.3.dmg"
+ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_0.5.5.dmg"
+ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.5.dmg"
 
+# Never delete a previously published DMG without explicit user approval.
 # `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
 # a copy inside a subdirectory (modelbenchmark) has no effect.
 # Les quatre pages légales sont vérifiées comme le reste : l'app y renvoie depuis Réglages >
@@ -22,7 +23,7 @@ for file in index.html robots.txt .htaccess .ovhconfig \
   fi
 done
 
-for file in .htaccess .htpasswd index.html VoiceOvya_0.5.3.dmg; do
+for file in .htaccess .htpasswd index.html VoiceOvya_0.5.5.dmg; do
   if [[ ! -r "${LOCAL_DIR}/build/dist/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/build/dist/${file}" >&2
     exit 1
@@ -35,7 +36,10 @@ SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SER
   exit 1
 }
 
-sshpass -p "${SFTP_PASS}" sftp -o PreferredAuthentications=password -o PubkeyAuthentication=no "${SFTP_USER}@${HOST}" <<EOF
+SFTP_LOG="$(mktemp)"
+trap 'rm -f "${SFTP_LOG}"; unset SFTP_PASS' EXIT
+
+sshpass -p "${SFTP_PASS}" sftp -o PreferredAuthentications=password -o PubkeyAuthentication=no "${SFTP_USER}@${HOST}" <<EOF | tee "${SFTP_LOG}"
 cd ${REMOTE_DIR}
 put ${LOCAL_DIR}/index.html
 put ${LOCAL_DIR}/confidentialite.html
@@ -55,5 +59,9 @@ put "${ARTIFACT_SOURCE}" "${ARTIFACT_REMOTE}"
 bye
 EOF
 
-unset SFTP_PASS
+if rg -q 'write remote|close remote|dest open|upload .* failed|Connection closed|Permission denied' "${SFTP_LOG}"; then
+  echo "Le déploiement a échoué : le serveur a refusé au moins un transfert." >&2
+  exit 1
+fi
+
 echo "Déploiement terminé avec ${ARTIFACT_REMOTE}."
