@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SKIP_DMG=0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --no-dmg) SKIP_DMG=1 ;;
+    -h|--help)
+      echo "Usage: $(basename "$0") [--no-dmg]"
+      echo "  --no-dmg  Déploie le site sans réenvoyer le DMG (déjà en ligne)."
+      exit 0 ;;
+    *)
+      echo "Option inconnue : $1" >&2
+      echo "Usage: $(basename "$0") [--no-dmg]" >&2
+      exit 1 ;;
+  esac
+  shift
+done
+
 HOST="ftp.cluster129.hosting.ovh.net"
 SFTP_USER="voiceoe"          # ajuste si besoin
 REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site sur l'hébergement OVH)
@@ -27,7 +43,12 @@ for file in index.html robots.txt .htaccess .ovhconfig \
   fi
 done
 
-for file in .htaccess .htpasswd index.html VoiceOvya_0.5.5.dmg; do
+DIST_FILES=(.htaccess .htpasswd index.html)
+if (( SKIP_DMG == 0 )); then
+  DIST_FILES+=("$(basename "${ARTIFACT_SOURCE}")")
+fi
+
+for file in "${DIST_FILES[@]}"; do
   if [[ ! -r "${LOCAL_DIR}/build/dist/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/build/dist/${file}" >&2
     exit 1
@@ -39,6 +60,14 @@ SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SER
   echo "  security add-generic-password -a \"${SFTP_USER}\" -s \"${KEYCHAIN_SERVICE}\" -w -U" >&2
   exit 1
 }
+
+# Le DMG pèse plusieurs centaines de Mo et ne change qu'à une nouvelle version : `--no-dmg` republie
+# le site sans le renvoyer. Le fichier distant reste en place, jamais supprimé.
+if (( SKIP_DMG == 0 )); then
+  ARTIFACT_PUT="put \"${ARTIFACT_SOURCE}\" \"${ARTIFACT_REMOTE}\""
+else
+  ARTIFACT_PUT=""
+fi
 
 SFTP_LOG="$(mktemp)"
 trap 'rm -f "${SFTP_LOG}"; unset SFTP_PASS' EXIT
@@ -60,7 +89,7 @@ put -r ${LOCAL_DIR}/config
 put ${LOCAL_DIR}/build/dist/.htaccess build/dist/.htaccess
 put ${LOCAL_DIR}/build/dist/.htpasswd build/dist/.htpasswd
 put ${LOCAL_DIR}/build/dist/index.html build/dist/index.html
-put "${ARTIFACT_SOURCE}" "${ARTIFACT_REMOTE}"
+${ARTIFACT_PUT}
 bye
 EOF
 
@@ -69,4 +98,8 @@ if rg -q 'write remote|close remote|dest open|upload .* failed|Connection closed
   exit 1
 fi
 
-echo "Déploiement terminé avec ${ARTIFACT_REMOTE}."
+if (( SKIP_DMG == 0 )); then
+  echo "Déploiement terminé avec ${ARTIFACT_REMOTE}."
+else
+  echo "Déploiement terminé sans le DMG (${ARTIFACT_REMOTE} inchangé sur le serveur)."
+fi
