@@ -15,8 +15,12 @@ ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.5.dmg"
 # Les quatre pages légales sont vérifiées comme le reste : l'app y renvoie depuis Réglages >
 # Confidentialité, et la fiche App Store réclame l'URL de la politique de confidentialité. Une
 # page absente casse un lien affiché dans le produit.
+# Les trois payloads de remote config sont lus en direct par l'app installée
+# (docs/tech/remote-config.md du repo app) : version.json n'a plus de copie embarquée, un
+# 404 laisse le contrôle de version muet.
 for file in index.html robots.txt .htaccess .ovhconfig \
-            confidentialite.html privacy.html cgu.html terms.html; do
+            confidentialite.html privacy.html cgu.html terms.html \
+            config/v1/mac/version.json config/v1/mac/config.json config/v1/mac/news.json; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/${file}" >&2
     exit 1
@@ -50,6 +54,7 @@ put ${LOCAL_DIR}/robots.txt
 put ${LOCAL_DIR}/.htaccess
 put ${LOCAL_DIR}/.ovhconfig
 put -r ${LOCAL_DIR}/assets
+put -r ${LOCAL_DIR}/config
 -mkdir build
 -mkdir build/dist
 put ${LOCAL_DIR}/build/dist/.htaccess build/dist/.htaccess
