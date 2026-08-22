@@ -22,11 +22,6 @@ SFTP_USER="voiceoe"          # ajuste si besoin
 REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site sur l'hébergement OVH)
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# Seule occurrence de la version publiée : le DMG, l'appcast vérifié plus bas et la page de
-# redirection en dérivent tous les trois. Trois littéraux à synchroniser, c'était un de trop.
-VERSION="0.5.6"
-ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_${VERSION}.dmg"
-ARTIFACT_REMOTE="build/dist/VoiceOvya_${VERSION}.dmg"
 
 # Never delete a previously published DMG without explicit user approval.
 # `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
@@ -48,19 +43,25 @@ for file in index.html robots.txt .htaccess .ovhconfig appcast.xml \
   fi
 done
 
+# La version publiée est lue dans l'appcast plutôt que recopiée ici : l'appcast est produit et
+# signé par scripts/package-release.sh du repo app, jamais édité à la main, donc il ne peut pas
+# se désynchroniser du DMG qu'il annonce. Le littéral qu'il remplace, lui, restait en retard.
+VERSION="$(sed -n 's/.*<sparkle:shortVersionString>\(.*\)<\/sparkle:shortVersionString>.*/\1/p' \
+  "${LOCAL_DIR}/appcast.xml" | tail -1)"
+if [[ -z "${VERSION}" ]]; then
+  echo "appcast.xml n'annonce aucune version : recopie celui du repo app." >&2
+  exit 1
+fi
+ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_${VERSION}.dmg"
+ARTIFACT_REMOTE="build/dist/VoiceOvya_${VERSION}.dmg"
+
 # Plus d'authentification sur build/dist : Sparkle télécharge le DMG sans pouvoir présenter
 # d'identifiants, donc une Basic Auth ici casse la mise à jour automatique de l'app installée.
 if (( SKIP_DMG == 0 )) && [[ ! -r "${ARTIFACT_SOURCE}" ]]; then
-  echo "Fichier manquant : ${ARTIFACT_SOURCE}" >&2
+  echo "Fichier manquant : ${ARTIFACT_SOURCE} (l'appcast annonce ${VERSION})" >&2
   exit 1
 fi
 
-# L'appcast doit annoncer la version qu'on met en ligne. Sans ce contrôle, un appcast oublié à la
-# release précédente proposerait une mise à jour vers un DMG que ce déploiement ne publie pas.
-if ! grep -q "VoiceOvya_${VERSION}.dmg" "${LOCAL_DIR}/appcast.xml"; then
-  echo "appcast.xml ne référence pas VoiceOvya_${VERSION}.dmg : recopie celui du repo app." >&2
-  exit 1
-fi
 
 SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SERVICE}" -w 2>/dev/null)" || {
   echo "Aucun mot de passe trouvé dans le Trousseau. Enregistre-le d'abord avec :" >&2
