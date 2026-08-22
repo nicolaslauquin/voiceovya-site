@@ -29,14 +29,15 @@ LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Les quatre pages légales sont vérifiées comme le reste : l'app y renvoie depuis Réglages >
 # Confidentialité, et la fiche App Store réclame l'URL de la politique de confidentialité. Une
 # page absente casse un lien affiché dans le produit.
-# Les trois payloads de remote config sont lus en direct par l'app installée
+# Les deux payloads de remote config sont lus en direct par l'app installée
 # (docs/tech/remote-config.md du repo app) : version.json n'a plus de copie embarquée, un
-# 404 laisse le contrôle de version muet.
+# 404 laisse le contrôle de version muet. Le changelog, lui, n'est plus servi du tout : il
+# décrit le build qui le lit, donc il est embarqué avec lui.
 # `appcast.xml` est produit par scripts/package-release.sh du repo app, signé avec la clé EdDSA,
 # et recopié ici : c'est le flux que l'app installée interroge (SUFeedURL).
 for file in index.html robots.txt .htaccess .ovhconfig appcast.xml \
             confidentialite.html privacy.html cgu.html terms.html \
-            config/v1/mac/version.json config/v1/mac/config.json config/v1/mac/news.json; do
+            config/v1/mac/version.json config/v1/mac/config.json; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/${file}" >&2
     exit 1
