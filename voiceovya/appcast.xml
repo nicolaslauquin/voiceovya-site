@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>VoiceOvya</title>
+        <item>
+            <title>0.5.6</title>
+            <pubDate>Sat, 22 Aug 2026 10:59:31 +0200</pubDate>
+            <link>https://voiceovya.com</link>
+            <sparkle:version>7</sparkle:version>
+            <sparkle:shortVersionString>0.5.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.4</sparkle:minimumSystemVersion>
+            <description><![CDATA[  <h2>Nouveautés</h2>
+  <ul>
+    <li>Hors Mac App Store, l'app se met à jour toute seule</li>
+    <li>Contrôle de version : l'app prévient quand sa version devient trop ancienne</li>
+  </ul>
+  <h2>What's new</h2>
+  <ul>
+    <li>Outside the Mac App Store, the app updates itself</li>
+    <li>The app warns when its version has become too old</li>
+  </ul>
+]]></description>
+            <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.5.6.dmg" length="30402296" type="application/octet-stream" sparkle:edSignature="L45TjdrrFs6dT7qcU71RzBNoO+1dYGEbHRxE5116ib2Ci4Vmqq8uFjD9RVMajvwuvDSWOk7a2y5Y5PGqaBH6Dg=="/>
+        </item>
+    </channel>
+</rss>
