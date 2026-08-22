@@ -43,7 +43,9 @@ for file in index.html robots.txt .htaccess .ovhconfig \
   fi
 done
 
-DIST_FILES=(.htaccess .htpasswd index.html)
+# Plus d'authentification sur build/dist : Sparkle télécharge le DMG sans pouvoir présenter
+# d'identifiants, donc une Basic Auth ici casse la mise à jour automatique de l'app installée.
+DIST_FILES=(index.html)
 if (( SKIP_DMG == 0 )); then
   DIST_FILES+=("$(basename "${ARTIFACT_SOURCE}")")
 fi
@@ -86,8 +88,6 @@ put -r ${LOCAL_DIR}/assets
 put -r ${LOCAL_DIR}/config
 -mkdir build
 -mkdir build/dist
-put ${LOCAL_DIR}/build/dist/.htaccess build/dist/.htaccess
-put ${LOCAL_DIR}/build/dist/.htpasswd build/dist/.htpasswd
 put ${LOCAL_DIR}/build/dist/index.html build/dist/index.html
 ${ARTIFACT_PUT}
 bye
