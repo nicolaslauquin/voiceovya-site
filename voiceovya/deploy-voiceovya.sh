@@ -22,8 +22,11 @@ SFTP_USER="voiceoe"          # ajuste si besoin
 REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site sur l'hébergement OVH)
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_0.5.5.dmg"
-ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.5.dmg"
+# Seule occurrence de la version publiée : le DMG, l'appcast vérifié plus bas et la page de
+# redirection en dérivent tous les trois. Trois littéraux à synchroniser, c'était un de trop.
+VERSION="0.5.6"
+ARTIFACT_SOURCE="${LOCAL_DIR}/build/dist/VoiceOvya_${VERSION}.dmg"
+ARTIFACT_REMOTE="build/dist/VoiceOvya_${VERSION}.dmg"
 
 # Never delete a previously published DMG without explicit user approval.
 # `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
@@ -34,7 +37,9 @@ ARTIFACT_REMOTE="build/dist/VoiceOvya_0.5.5.dmg"
 # Les trois payloads de remote config sont lus en direct par l'app installée
 # (docs/tech/remote-config.md du repo app) : version.json n'a plus de copie embarquée, un
 # 404 laisse le contrôle de version muet.
-for file in index.html robots.txt .htaccess .ovhconfig \
+# `appcast.xml` est produit par scripts/package-release.sh du repo app, signé avec la clé EdDSA,
+# et recopié ici : c'est le flux que l'app installée interroge (SUFeedURL).
+for file in index.html robots.txt .htaccess .ovhconfig appcast.xml \
             confidentialite.html privacy.html cgu.html terms.html \
             config/v1/mac/version.json config/v1/mac/config.json config/v1/mac/news.json; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
@@ -45,17 +50,17 @@ done
 
 # Plus d'authentification sur build/dist : Sparkle télécharge le DMG sans pouvoir présenter
 # d'identifiants, donc une Basic Auth ici casse la mise à jour automatique de l'app installée.
-DIST_FILES=(index.html)
-if (( SKIP_DMG == 0 )); then
-  DIST_FILES+=("$(basename "${ARTIFACT_SOURCE}")")
+if (( SKIP_DMG == 0 )) && [[ ! -r "${ARTIFACT_SOURCE}" ]]; then
+  echo "Fichier manquant : ${ARTIFACT_SOURCE}" >&2
+  exit 1
 fi
 
-for file in "${DIST_FILES[@]}"; do
-  if [[ ! -r "${LOCAL_DIR}/build/dist/${file}" ]]; then
-    echo "Fichier manquant : ${LOCAL_DIR}/build/dist/${file}" >&2
-    exit 1
-  fi
-done
+# L'appcast doit annoncer la version qu'on met en ligne. Sans ce contrôle, un appcast oublié à la
+# release précédente proposerait une mise à jour vers un DMG que ce déploiement ne publie pas.
+if ! grep -q "VoiceOvya_${VERSION}.dmg" "${LOCAL_DIR}/appcast.xml"; then
+  echo "appcast.xml ne référence pas VoiceOvya_${VERSION}.dmg : recopie celui du repo app." >&2
+  exit 1
+fi
 
 SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SERVICE}" -w 2>/dev/null)" || {
   echo "Aucun mot de passe trouvé dans le Trousseau. Enregistre-le d'abord avec :" >&2
@@ -72,7 +77,34 @@ else
 fi
 
 SFTP_LOG="$(mktemp)"
-trap 'rm -f "${SFTP_LOG}"; unset SFTP_PASS' EXIT
+REDIRECT_PAGE="$(mktemp)"
+trap 'rm -f "${SFTP_LOG}" "${REDIRECT_PAGE}"; unset SFTP_PASS' EXIT
+
+# Page de téléchargement : générée depuis VERSION plutôt que versionnée dans le repo, où elle
+# nommait le DMG une seconde fois et restait en retard d'une release.
+cat > "${REDIRECT_PAGE}" <<HTML
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta http-equiv="refresh" content="0; url=VoiceOvya_${VERSION}.dmg">
+<title>Téléchargement VoiceOvya</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;background:#f4f8f6;color:#1d2522}
+main{width:min(520px,calc(100% - 40px));text-align:center}
+a{color:#157a4b;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+  <h1>Téléchargement VoiceOvya</h1>
+  <p>Si le téléchargement ne démarre pas, <a href="VoiceOvya_${VERSION}.dmg">cliquez ici</a>.</p>
+</main>
+</body>
+</html>
+HTML
 
 sshpass -p "${SFTP_PASS}" sftp -o PreferredAuthentications=password -o PubkeyAuthentication=no "${SFTP_USER}@${HOST}" <<EOF | tee "${SFTP_LOG}"
 cd ${REMOTE_DIR}
@@ -82,13 +114,14 @@ put ${LOCAL_DIR}/privacy.html
 put ${LOCAL_DIR}/cgu.html
 put ${LOCAL_DIR}/terms.html
 put ${LOCAL_DIR}/robots.txt
+put ${LOCAL_DIR}/appcast.xml
 put ${LOCAL_DIR}/.htaccess
 put ${LOCAL_DIR}/.ovhconfig
 put -r ${LOCAL_DIR}/assets
 put -r ${LOCAL_DIR}/config
 -mkdir build
 -mkdir build/dist
-put ${LOCAL_DIR}/build/dist/index.html build/dist/index.html
+put "${REDIRECT_PAGE}" build/dist/index.html
 ${ARTIFACT_PUT}
 bye
 EOF
