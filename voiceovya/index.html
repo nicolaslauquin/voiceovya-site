@@ -39,6 +39,7 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .nav-actions{display:flex;align-items:center;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text-dark);text-decoration:none}
 .brand img{width:28px;height:28px;border-radius:7px}
+.brand .beta-tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);border-radius:6px;padding:3px 7px;line-height:1;margin-left:-3px}
 .lang{display:flex;background:rgba(0,0,0,.06);border-radius:9px;padding:2px;gap:2px}
 .lang button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:600;color:var(--text-medium);padding:4px 10px;border-radius:7px;cursor:pointer}
 .lang button.on{background:#fff;color:var(--text-dark);box-shadow:0 1px 2px rgba(0,0,0,.12)}
@@ -63,8 +64,9 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .hl{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:600;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
 .hl svg{width:15px;height:15px;stroke:var(--accent-deep);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .moneyicon{width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex:none;color:var(--accent-deep);font-weight:800;font-size:14px;line-height:1}
-.applogo{width:123px;height:123px;margin:0 auto 26px;filter:drop-shadow(0 14px 30px rgba(31,158,99,.4))}
-.applogo img{width:100%;height:100%;display:block;border-radius:28px}
+.applogo{position:relative;width:123px;height:123px;margin:0 auto 26px;border-radius:28px;overflow:hidden;filter:drop-shadow(0 14px 30px rgba(31,158,99,.4))}
+.applogo img{width:100%;height:100%;display:block}
+.applogo .beta{position:absolute;left:102px;top:102px;width:100px;transform:translate(-50%,-50%) rotate(-45deg);background:linear-gradient(180deg,var(--accent),var(--accent-deep));color:#fff;font-size:7.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1;text-align:center;padding:3px 0;box-shadow:0 1px 4px rgba(0,0,0,.28)}
 
 /* ---- Hero app window: home note list ---- */
 .heroshot{max-width:940px;margin:52px auto 0}
@@ -372,6 +374,7 @@ footer a:hover{color:var(--text-dark)}
     <a class="brand" href="#">
       <img src="assets/appicon-sm.png" alt="" width="28" height="28">
       VoiceOvya
+      <span class="beta-tag" data-i18n="brand.beta">Beta</span>
     </a>
     <div class="nav-actions">
       <div class="lang" role="group" aria-label="Language">
@@ -387,12 +390,14 @@ footer a:hover{color:var(--text-dark)}
   <div class="hero">
     <div class="applogo">
       <img src="assets/appicon.png" alt="VoiceOvya" width="88" height="88">
+      <span class="beta" data-i18n="hero.betabadge">Beta</span>
     </div>
     <h1 data-i18n="hero.title">Vos réunions ont la réponse.</h1>
     <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac. Interrogez vos notes pour retrouver en quelques secondes ce qui a été dit, décidé ou promis.</p>
     <div class="cta-row">
       <a class="btn btn-primary btn-lg" id="download-link" href="build/dist/index.html" data-i18n="hero.download">Télécharger pour macOS 26.4+</a>
     </div>
+    <p class="note" data-i18n="hero.betanote">VoiceOvya est en version beta&nbsp;: l'app évolue vite, quelques imperfections sont encore possibles.</p>
     <p class="download-status hidden" id="download-status" aria-live="polite"></p>
     <div class="hl-row">
       <span class="hl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg><span data-i18n="hero.hl1">Local first</span></span>
@@ -788,6 +793,9 @@ en: {
   "hero.title":"Your meetings have the answer.",
   "hero.sub":"VoiceOvya records, transcribes, and summarizes your meetings on your Mac. Ask your notes to find in seconds what was said, decided, or promised.",
   "hero.download":"Download for macOS 26.4+",
+  "brand.beta":"Beta",
+  "hero.betabadge":"Beta",
+  "hero.betanote":"VoiceOvya is in beta: the app is moving fast, a few rough edges are still possible.",
   "compat.limited":"VoiceOvya is available on this Mac. Full power starts with macOS 27.",
   "compat.old":"This Mac appears to run macOS {version}. VoiceOvya requires macOS 26.4 or newer.",
   "compat.unknown":"We could not verify your macOS version from this browser. VoiceOvya requires macOS 26.4 or newer, with full power starting from macOS 27.",
