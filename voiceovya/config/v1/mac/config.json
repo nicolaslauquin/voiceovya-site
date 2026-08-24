@@ -4,7 +4,7 @@
     "whatsNew": { "enabled": true },
     "usageLimits": {
       "enabled": true,
-      "parameters": { "monthlyMinutes": 180, "dailyRecords": 6 }
+      "parameters": { "monthlyMinutes": 360, "dailyRecords": 6 }
     }
   }
 }
