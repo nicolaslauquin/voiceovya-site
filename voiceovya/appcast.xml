@@ -17,7 +17,7 @@
     <li>Importer ou supprimer un enregistrement plus facilement. Déposez les fichiers dans la bibliothèque. « Supprimer l'audio » conserve la note.</li>
     <li>Rechercher les actions à traiter par leur texte. Le champ recherche le texte des actions. Les filtres par catégorie et par période restent disponibles.</li>
     <li>Amélioration des performances pendant un enregistrement.</li>
-    <li>Refonte des réglages. Modèles classés par destination : ce Mac, cloud privé d'Apple ou service en ligne. ChatGPT et Claude apparaissent une seule fois.</li>
+    <li>Refonte des réglages. Modèles classés par destination : ce Mac ou service en ligne. ChatGPT et Claude apparaissent une seule fois.</li>
   </ul>
   <h2>What's new</h2>
   <ul>
@@ -26,7 +26,7 @@
     <li>Import or remove a recording more easily. Drop files onto the library to import them. Remove Audio keeps the note.</li>
     <li>Search pending actions by their text. The field searches action text. Category and period filters remain available.</li>
     <li>Improved performance while recording.</li>
-    <li>Redesigned settings. Models are grouped by destination: this Mac, Apple's private cloud, or an online service. ChatGPT and Claude each appear once.</li>
+    <li>Redesigned settings. Models are grouped by destination: this Mac or an online service. ChatGPT and Claude each appear once.</li>
   </ul>
 ]]></description>
             <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.7.dmg" length="24987066" type="application/octet-stream" sparkle:edSignature="rzzBNF9lgpJynSRwO8BReBVnzopafLBM6pnwvLYD7Jbm/lRLcIpzlFP92WRLe4fs53H4T9OdnTwfi9AEXf24DQ=="/>
