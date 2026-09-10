@@ -3,33 +3,33 @@
     <channel>
         <title>VoiceOvya</title>
         <item>
-            <title>0.6</title>
-            <pubDate>Tue, 25 Aug 2026 09:24:34 +0200</pubDate>
+            <title>0.7</title>
+            <pubDate>Fri, 11 Sep 2026 00:12:46 +0200</pubDate>
             <link>https://voiceovya.com</link>
-            <sparkle:version>9</sparkle:version>
-            <sparkle:shortVersionString>0.6</sparkle:shortVersionString>
+            <sparkle:version>10</sparkle:version>
+            <sparkle:shortVersionString>0.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.4</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description><![CDATA[  <h2>Nouveautés</h2>
   <ul>
-    <li>Support connecteur MCP. Vos outils compatibles MCP de confiance peuvent chercher dans la bibliothèque de VoiceOvya et interagir avec vos notes. En lecture seule. À activer dans vos réglages.</li>
-    <li>Améliorer une transcription avec l'IA. Une fois la transcription terminée, le modèle actif corrige la ponctuation et retire les mots parasites. À activer dans vos réglages « Enregistrement ».</li>
-    <li>Partager une note depuis le partage du système avec vos différents outils ou services.</li>
-    <li>La reconnaissance peut s'améliorer en s'appuyant sur les prénoms des participants d'une réunion. Actif par défaut, réglable dans vos réglages « Vocabulaire ».</li>
-    <li>Un quota d'usage pour la bêta. L'utilisation gratuite de la bêta est limitée à 6 h d'enregistrement par mois et 6 enregistrements par jour. Pour plus d'usage, contactez-nous.</li>
-    <li>Ajustements mineurs et corrections de bugs.</li>
+    <li>Définition et lecture/pause depuis la transcription. ⌘-clic ouvre le dictionnaire de macOS. Espace contrôle la lecture.</li>
+    <li>Exporter ou partager une note, avec ou sans son audio. ⌘E exporte le Markdown ; ⌥⌘E ajoute l'audio. Un passage sélectionné peut aussi être partagé.</li>
+    <li>Importer ou supprimer un enregistrement plus facilement. Déposez les fichiers dans la bibliothèque. « Supprimer l'audio » conserve la note.</li>
+    <li>Rechercher les actions à traiter par leur texte. Le champ recherche le texte des actions. Les filtres par catégorie et par période restent disponibles.</li>
+    <li>Amélioration des performances pendant un enregistrement.</li>
+    <li>Refonte des réglages. Modèles classés par destination : ce Mac, cloud privé d'Apple ou service en ligne. ChatGPT et Claude apparaissent une seule fois.</li>
   </ul>
   <h2>What's new</h2>
   <ul>
-    <li>MCP connector support. The MCP-compatible tools you trust can search the VoiceOvya library and work with your notes. Read-only. Turn it on in your settings.</li>
-    <li>Improve a transcript with AI. Once the transcript is done, the active model fixes punctuation and drops filler words. Turn it on in your Recording settings.</li>
-    <li>Share a note through the system share sheet, with your own tools and services.</li>
-    <li>Recognition can improve by leaning on the first names of a meeting's participants. On by default, adjustable in your Vocabulary settings.</li>
-    <li>A usage quota for the beta. Free use of the beta is capped at 6 hours of recording per month and 6 recordings per day. Contact us if you need more.</li>
-    <li>Minor adjustments and bug fixes.</li>
+    <li>Dictionary lookup and play/pause from the transcript. Command-click opens the macOS dictionary. Space controls playback.</li>
+    <li>Export or share a note, with or without its audio. Command-E exports Markdown; Option-Command-E includes the audio. A selected transcript passage can also be shared.</li>
+    <li>Import or remove a recording more easily. Drop files onto the library to import them. Remove Audio keeps the note.</li>
+    <li>Search pending actions by their text. The field searches action text. Category and period filters remain available.</li>
+    <li>Improved performance while recording.</li>
+    <li>Redesigned settings. Models are grouped by destination: this Mac, Apple's private cloud, or an online service. ChatGPT and Claude each appear once.</li>
   </ul>
 ]]></description>
-            <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.6.dmg" length="24565163" type="application/octet-stream" sparkle:edSignature="SJBbCD/2g/XjmwNyvmzLbJZAuzLv3vjVLWuaOyul5fE2RKbjWhf4SE9uwWkp0bV1ubk9wCZ135t+8FnaPKecAw=="/>
+            <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.7.dmg" length="24987066" type="application/octet-stream" sparkle:edSignature="rzzBNF9lgpJynSRwO8BReBVnzopafLBM6pnwvLYD7Jbm/lRLcIpzlFP92WRLe4fs53H4T9OdnTwfi9AEXf24DQ=="/>
         </item>
     </channel>
 </rss>
