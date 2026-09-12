@@ -3,33 +3,31 @@
     <channel>
         <title>VoiceOvya</title>
         <item>
-            <title>0.7</title>
-            <pubDate>Fri, 11 Sep 2026 00:12:46 +0200</pubDate>
+            <title>0.7.1</title>
+            <pubDate>Sat, 12 Sep 2026 12:36:37 +0200</pubDate>
             <link>https://voiceovya.com</link>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>0.7</sparkle:shortVersionString>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>0.7.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.4</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description><![CDATA[  <h2>Nouveautés</h2>
   <ul>
-    <li>Définition et lecture/pause depuis la transcription. ⌘-clic ouvre le dictionnaire de macOS. Espace contrôle la lecture.</li>
+    <li>Définition et lecture/pause depuis la transcription. Un ⌘-clic sur un mot ouvre le dictionnaire de macOS. La barre d'espace lance ou met en pause la lecture.</li>
     <li>Exporter ou partager une note, avec ou sans son audio. ⌘E exporte le Markdown ; ⌥⌘E ajoute l'audio. Un passage sélectionné peut aussi être partagé.</li>
     <li>Importer ou supprimer un enregistrement plus facilement. Déposez les fichiers dans la bibliothèque. « Supprimer l'audio » conserve la note.</li>
     <li>Rechercher les actions à traiter par leur texte. Le champ recherche le texte des actions. Les filtres par catégorie et par période restent disponibles.</li>
-    <li>Amélioration des performances pendant un enregistrement.</li>
-    <li>Refonte des réglages. Modèles classés par destination : ce Mac ou service en ligne. ChatGPT et Claude apparaissent une seule fois.</li>
+    <li>Refonte des réglages.</li>
   </ul>
   <h2>What's new</h2>
   <ul>
-    <li>Dictionary lookup and play/pause from the transcript. Command-click opens the macOS dictionary. Space controls playback.</li>
+    <li>Dictionary lookup and play/pause from the transcript. Command-click a word to open the macOS dictionary. Press Space to play or pause.</li>
     <li>Export or share a note, with or without its audio. Command-E exports Markdown; Option-Command-E includes the audio. A selected transcript passage can also be shared.</li>
-    <li>Import or remove a recording more easily. Drop files onto the library to import them. Remove Audio keeps the note.</li>
+    <li>Import or remove a recording more easily. Drop files onto the library to import them. Delete Audio keeps the note.</li>
     <li>Search pending actions by their text. The field searches action text. Category and period filters remain available.</li>
-    <li>Improved performance while recording.</li>
-    <li>Redesigned settings. Models are grouped by destination: this Mac or an online service. ChatGPT and Claude each appear once.</li>
+    <li>Redesigned settings.</li>
   </ul>
 ]]></description>
-            <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.7.dmg" length="24987066" type="application/octet-stream" sparkle:edSignature="rzzBNF9lgpJynSRwO8BReBVnzopafLBM6pnwvLYD7Jbm/lRLcIpzlFP92WRLe4fs53H4T9OdnTwfi9AEXf24DQ=="/>
+            <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.7.1.dmg" length="24963894" type="application/octet-stream" sparkle:edSignature="DHGzFmsGO7ZqbEr2lcKZyN8XpEdy0mgbRDGJ42KowSgGA9vNxjFA4jYWGDRiF8Gl9HOp3lJFHokviVEW6vSUAw=="/>
         </item>
     </channel>
 </rss>
