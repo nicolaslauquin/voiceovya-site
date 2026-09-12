@@ -22,8 +22,10 @@ SFTP_USER="voiceoe"          # ajuste si besoin
 REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site sur l'hébergement OVH)
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PUBLIC_URL="https://voiceovya.com"
 
-# Never delete a previously published DMG without explicit user approval.
+# A successful release keeps only its DMG and the previously published one. Cleanup happens
+# after upload and HTTP verification, so a failed deployment never removes a working download.
 # `.ovhconfig` selects the PHP engine for the whole hosting, so OVH only reads it at the web root:
 # a copy inside a subdirectory (modelbenchmark) has no effect.
 # Les quatre pages légales sont vérifiées comme le reste : l'app y renvoie depuis Réglages >
@@ -66,12 +68,12 @@ fi
 
 SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SERVICE}" -w 2>/dev/null)" || {
   echo "Aucun mot de passe trouvé dans le Trousseau. Enregistre-le d'abord avec :" >&2
-  echo "  security add-generic-password -a \"${SFTP_USER}\" -s \"${KEYCHAIN_SERVICE}\" -w -U" >&2
+  echo "  security add-generic-password -a \"${SFTP_USER}\" -s \"${KEYCHAIN_SERVICE}\" -U -w" >&2
   exit 1
 }
 
 # Le DMG pèse plusieurs centaines de Mo et ne change qu'à une nouvelle version : `--no-dmg` republie
-# le site sans le renvoyer. Le fichier distant reste en place, jamais supprimé.
+# le site sans le renvoyer et sans appliquer la rétention des DMG.
 if (( SKIP_DMG == 0 )); then
   ARTIFACT_PUT="put \"${ARTIFACT_SOURCE}\" \"${ARTIFACT_REMOTE}\""
 else
@@ -79,8 +81,11 @@ else
 fi
 
 SFTP_LOG="$(mktemp)"
+DMG_LIST="$(mktemp)"
+DMG_PRUNE_LOG="$(mktemp)"
 REDIRECT_PAGE="$(mktemp)"
-trap 'rm -f "${SFTP_LOG}" "${REDIRECT_PAGE}"; unset SFTP_PASS' EXIT
+VERIFY_FILE="$(mktemp)"
+trap 'rm -f "${SFTP_LOG}" "${DMG_LIST}" "${DMG_PRUNE_LOG}" "${REDIRECT_PAGE}" "${VERIFY_FILE}"; unset SFTP_PASS' EXIT
 
 # Page de téléchargement : générée depuis VERSION plutôt que versionnée dans le repo, où elle
 # nommait le DMG une seconde fois et restait en retard d'une release.
@@ -108,7 +113,12 @@ a{color:#157a4b;font-weight:700}
 </html>
 HTML
 
-sshpass -p "${SFTP_PASS}" sftp -o PreferredAuthentications=password -o PubkeyAuthentication=no "${SFTP_USER}@${HOST}" <<EOF | tee "${SFTP_LOG}"
+# `sftp` peut terminer avec 0 même lorsqu'une commande `put` échoue. Ses diagnostics sont écrits
+# sur stderr, donc stderr doit entrer dans `tee` pour que le contrôle ci-dessous les voie. Le
+# statut de la commande reste contrôlé séparément pour couvrir aussi une coupure ou un échec de
+# protocole qui ne correspondrait pas encore à un message connu.
+set +e
+sshpass -p "${SFTP_PASS}" sftp -o PreferredAuthentications=password -o PubkeyAuthentication=no "${SFTP_USER}@${HOST}" 2>&1 <<EOF | tee "${SFTP_LOG}"
 cd ${REMOTE_DIR}
 put ${LOCAL_DIR}/index.html
 put ${LOCAL_DIR}/confidentialite.html
@@ -127,10 +137,129 @@ put "${REDIRECT_PAGE}" build/dist/index.html
 ${ARTIFACT_PUT}
 bye
 EOF
+SFTP_STATUS="${PIPESTATUS[0]}"
+set -e
 
-if rg -q 'write remote|close remote|dest open|upload .* failed|Connection closed|Permission denied' "${SFTP_LOG}"; then
-  echo "Le déploiement a échoué : le serveur a refusé au moins un transfert." >&2
+if (( SFTP_STATUS != 0 )) || \
+   rg -qi 'write remote|close remote|dest open|upload .* failed|Connection closed|Permission denied' "${SFTP_LOG}"; then
+  echo "Le déploiement a échoué : au moins un transfert SFTP a été refusé." >&2
+  echo "Aucun message de succès ne sera affiché. Vérifie le quota et l'état FTP/SSH chez OVH." >&2
   exit 1
+fi
+
+# Le succès SFTP ne suffit pas : une réponse 2xx avec un fichier vide ou tronqué avait déjà laissé
+# le site inutilisable. Relire chaque ressource publique sans cache et comparer octet par octet
+# confirme à la fois le contenu envoyé, le routage du vhost et la prise en compte de `.ovhconfig`.
+verify_served_file() {
+  local source="$1"
+  local remote_path="$2"
+  local url="${PUBLIC_URL}/${remote_path}?deploy_check=$(date +%s)"
+
+  if ! curl -fsS --retry 2 --retry-delay 1 --max-time 180 "${url}" -o "${VERIFY_FILE}"; then
+    echo "Le déploiement a échoué au contrôle HTTP : ${PUBLIC_URL}/${remote_path} est inaccessible." >&2
+    exit 1
+  fi
+  if ! cmp -s "${source}" "${VERIFY_FILE}"; then
+    echo "Le déploiement a échoué au contrôle HTTP : ${remote_path} diffère du fichier local." >&2
+    exit 1
+  fi
+  echo "Vérifié : ${remote_path}"
+}
+
+verify_served_file "${LOCAL_DIR}/index.html" "index.html"
+verify_served_file "${LOCAL_DIR}/confidentialite.html" "confidentialite.html"
+verify_served_file "${LOCAL_DIR}/privacy.html" "privacy.html"
+verify_served_file "${LOCAL_DIR}/cgu.html" "cgu.html"
+verify_served_file "${LOCAL_DIR}/terms.html" "terms.html"
+verify_served_file "${LOCAL_DIR}/robots.txt" "robots.txt"
+verify_served_file "${LOCAL_DIR}/appcast.xml" "appcast.xml"
+verify_served_file "${LOCAL_DIR}/assets/appicon-sm.png" "assets/appicon-sm.png"
+verify_served_file "${LOCAL_DIR}/assets/appicon.png" "assets/appicon.png"
+verify_served_file "${LOCAL_DIR}/assets/record-detail-full.png" "assets/record-detail-full.png"
+verify_served_file "${LOCAL_DIR}/config/v1/mac/version.json" "config/v1/mac/version.json"
+verify_served_file "${LOCAL_DIR}/config/v1/mac/config.json" "config/v1/mac/config.json"
+verify_served_file "${REDIRECT_PAGE}" "build/dist/index.html"
+
+# L'appcast annonce ce DMG, y compris avec --no-dmg : s'il manque ou diffère, Sparkle ne peut pas
+# mettre les installations existantes à jour. Le fichier local est normalement conservé avec la
+# release ; quand il est présent, vérifier son contenu complet plutôt qu'un simple HTTP 200.
+if [[ -r "${ARTIFACT_SOURCE}" ]]; then
+  verify_served_file "${ARTIFACT_SOURCE}" "${ARTIFACT_REMOTE}"
+else
+  if ! curl -fsS --retry 2 --retry-delay 1 --max-time 180 \
+      "${PUBLIC_URL}/${ARTIFACT_REMOTE}?deploy_check=$(date +%s)" -o /dev/null; then
+    echo "Le déploiement a échoué au contrôle HTTP : ${ARTIFACT_REMOTE} est inaccessible." >&2
+    exit 1
+  fi
+  echo "Vérifié : ${ARTIFACT_REMOTE} est accessible (copie locale absente, contenu non comparé)."
+fi
+
+# Le quota OVH est partagé avec le reste de l'hébergement. Après la vérification du nouvel
+# artefact, garder les deux DMG les plus récemment envoyés — le nouveau et son prédécesseur — et
+# supprimer tous les plus anciens. Les noms extraits suivent un motif strict avant d'être injectés
+# dans les commandes SFTP.
+prune_remote_dmgs() {
+  local list_status
+  set +e
+  sshpass -p "${SFTP_PASS}" sftp \
+    -o PreferredAuthentications=password \
+    -o PubkeyAuthentication=no \
+    "${SFTP_USER}@${HOST}" > "${DMG_LIST}" 2>&1 <<EOF
+cd ${REMOTE_DIR}
+ls -1t build/dist/VoiceOvya_*.dmg
+bye
+EOF
+  list_status=$?
+  set -e
+
+  if (( list_status != 0 )) || \
+     rg -qi 'Connection closed|Permission denied|Couldn.t stat remote file' "${DMG_LIST}"; then
+    echo "Impossible de lister les DMG distants ; aucun ancien artefact n'a été supprimé." >&2
+    return 1
+  fi
+
+  local remote_dmgs=()
+  local remote_dmg
+  while IFS= read -r remote_dmg; do
+    remote_dmgs+=("${remote_dmg}")
+  done < <(
+    rg -o 'VoiceOvya_[0-9]+(\.[0-9]+){1,2}\.dmg' "${DMG_LIST}" | awk '!seen[$0]++'
+  )
+
+  if (( ${#remote_dmgs[@]} <= 2 )); then
+    echo "Rétention DMG vérifiée : ${#remote_dmgs[@]} fichier(s) distant(s)."
+    return
+  fi
+
+  local remove_commands=""
+  local index
+  for (( index = 2; index < ${#remote_dmgs[@]}; index++ )); do
+    remove_commands+="rm \"build/dist/${remote_dmgs[index]}\""$'\n'
+  done
+
+  local prune_status
+  set +e
+  sshpass -p "${SFTP_PASS}" sftp \
+    -o PreferredAuthentications=password \
+    -o PubkeyAuthentication=no \
+    "${SFTP_USER}@${HOST}" 2>&1 <<EOF | tee "${DMG_PRUNE_LOG}"
+cd ${REMOTE_DIR}
+${remove_commands}bye
+EOF
+  prune_status="${PIPESTATUS[0]}"
+  set -e
+
+  if (( prune_status != 0 )) || \
+     rg -qi 'Couldn.t delete|No such file|Failure|Connection closed|Permission denied' "${DMG_PRUNE_LOG}"; then
+    echo "La publication a réussi, mais la rétention des anciens DMG a échoué." >&2
+    return 1
+  fi
+
+  echo "Rétention DMG appliquée : ${remote_dmgs[0]} et ${remote_dmgs[1]} conservés."
+}
+
+if (( SKIP_DMG == 0 )); then
+  prune_remote_dmgs
 fi
 
 if (( SKIP_DMG == 0 )); then
