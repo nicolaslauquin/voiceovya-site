@@ -29,7 +29,7 @@ Choix statistiques :
 - **Médiane partout**, jamais de moyenne : un Mac en throttle ou un runtime mal configuré détruit
   une moyenne.
 - Les rapports mesurés en **surchauffe** (`thermalState` `serious`/`critical`) ou en **économie
-  d'énergie** sont exclus des vitesses — ils mesurent le gestionnaire d'énergie, pas le modèle.
+  d'énergie** sont exclus des vitesses, car ils mesurent le gestionnaire d'énergie, pas le modèle.
   Leur qualité, elle, reste comptée : elle ne dépend pas de la thermique.
 - Le temps affiché est celui de la **première analyse d'une note inédite**, jamais la seconde
   passe : les runtimes locaux mettent le contexte en cache et le second run est ~2× plus rapide,

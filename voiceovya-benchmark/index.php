@@ -1,6 +1,6 @@
 <?php
 // Public benchmark page: "with my Mac, which model should I use, and how many seconds does it
-// cost?". Rendered on read from the archived reports — no build step, no database.
+// cost?". Rendered on read from the archived reports, with no build step or database.
 
 require __DIR__ . '/lib.php';
 
@@ -24,7 +24,7 @@ function seconds(float $value): string
 
 function percent(?float $ratio): string
 {
-    return $ratio === null ? '—' : number_format($ratio * 100, 0, ',', ' ') . ' %';
+    return $ratio === null ? 'N/D' : number_format($ratio * 100, 0, ',', ' ') . ' %';
 }
 
 /** Sample count, flagged when a median rests on too few runs to mean anything. */
@@ -41,7 +41,7 @@ function samples(int $count): string
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Benchmark des modèles — VoiceOvya</title>
+<title>Benchmark des modèles | VoiceOvya</title>
 <meta name="description" content="Combien de secondes coûte l'analyse d'une note vocale, par Mac et par modèle d'IA. Mesures réelles partagées par les utilisateurs de VoiceOvya.">
 <style>
 :root{

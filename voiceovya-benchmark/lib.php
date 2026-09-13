@@ -66,7 +66,7 @@ function machine_config(array $report): string
 /**
  * Human names for the technical identifiers a report carries. The app deliberately ships
  * identifiers (`lmstudio`, `appleIntelligence`) so two reports stay comparable verbatim; a public
- * page has the opposite job, so the mapping lives here — on the reading side.
+ * page has the opposite job, so the mapping lives here, on the reading side.
  *
  * Mirrors LLMProvider.displayName and DevRuntimeKind.displayName. An unknown key falls back to
  * itself: a provider added in the app must show up on the page before this file is updated,

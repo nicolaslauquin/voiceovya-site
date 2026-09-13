@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>VoiceOvya · Gardez le fil de vos réunions</title>
-<meta name="description" content="VoiceOvya enregistre, transcrit, traduit et résume vos réunions sur Mac. Retrouvez les décisions et les actions sans relire toute la conversation.">
+<meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur Mac pour vous aider à retrouver rapidement ce qui a été décidé et ce qu’il reste à faire.">
 <link rel="canonical" href="https://voiceovya.com/">
 <meta name="theme-color" content="#f4f8f6">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="VoiceOvya · Gardez le fil de vos réunions">
-<meta property="og:description" content="Enregistrez, transcrivez, traduisez et résumez vos réunions sur Mac. Retrouvez ensuite les décisions et les actions.">
+<meta property="og:description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur Mac pour retrouver rapidement les décisions et les actions à suivre.">
 <meta property="og:url" content="https://voiceovya.com/">
 <link rel="icon" href="assets/appicon-sm.png">
 <style>
@@ -38,9 +38,9 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .nav-actions{display:flex;align-items:center;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text-dark);text-decoration:none}
 .brand img{width:28px;height:28px;border-radius:7px}
-.lang{display:flex;background:rgba(0,0,0,.06);border-radius:9px;padding:2px;gap:2px}
-.lang button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:600;color:var(--text-medium);padding:4px 10px;border-radius:7px;cursor:pointer}
-.lang button.on{background:#fff;color:var(--text-dark);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.lang{position:relative}
+.lang select{appearance:none;border:0;border-radius:9px;background:rgba(0,0,0,.06);color:var(--text-dark);font:inherit;font-size:12px;font-weight:650;padding:7px 30px 7px 11px;cursor:pointer}
+.lang::after{content:'⌄';position:absolute;right:10px;top:50%;transform:translateY(-56%);color:var(--text-medium);pointer-events:none}
 .nav-store{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:9px;background:var(--accent-soft);color:var(--accent-deep);font-size:11.5px;font-weight:700;white-space:nowrap}
 .btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-size:13px;font-weight:600;border-radius:11px;padding:8px 16px;text-decoration:none;transition:.18s}
 .btn-primary{color:#fff;background:linear-gradient(180deg,var(--accent),var(--accent-deep));box-shadow:0 2px 8px -2px rgba(31,158,99,.5)}
@@ -84,6 +84,26 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .ai-actions-capture .capture-head{margin-top:0}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
+/* ---- Product journey ---- */
+.journey{padding:72px 0;background:#fff}
+.journey .sec-head{margin-bottom:34px}
+.journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:journey}
+.journey-step{counter-increment:journey;position:relative;padding:22px 20px 24px;border-radius:16px;background:var(--bg-clear);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06)}
+.journey-step::before{content:counter(journey);position:absolute;z-index:1;top:15px;left:calc(50% + 14px);display:grid;place-items:center;width:24px;height:24px;border:3px solid var(--bg-clear);border-radius:50%;background:var(--accent-deep);color:#fff;font-size:12px;line-height:1;font-weight:750;box-shadow:0 3px 8px rgba(22,125,79,.22)}
+.journey-icon{display:block;width:60px;height:60px;margin:2px auto 26px;padding:14px;border-radius:17px;background:#fff;stroke:var(--accent-deep);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;box-shadow:var(--shadow-card)}
+.journey-step h3{font-size:17px;line-height:1.3;margin-bottom:8px}
+.journey-step p{font-size:15px;line-height:1.55;color:var(--text-medium)}
+
+/* ---- FAQ ---- */
+.faq{padding:72px 0;background:#fff}
+.faq-list{max-width:820px;margin:0 auto;border-top:.5px solid rgba(0,0,0,.1)}
+.faq details{border-bottom:.5px solid rgba(0,0,0,.1)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 4px;cursor:pointer;list-style:none;font-size:17px;font-weight:650;line-height:1.4}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';flex:none;color:var(--accent-deep);font-size:24px;font-weight:400;line-height:1;transition:transform .18s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 44px 22px 4px;color:var(--text-medium);font-size:16px;line-height:1.65}
+
 /* ---- Recording window ---- */
 .recwrap{position:relative}
 .winrec .bar .rtimer{margin-left:auto;font-family:var(--mono);font-size:12.5px;font-weight:600}
@@ -109,13 +129,15 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .notif .ntxt{flex:1;min-width:0}
 .notif .nt{font-size:13px;font-weight:600;line-height:1.35}
 .notif .nd{font-size:11.5px;color:var(--text-medium)}
-.notif .nbtn{font:inherit;font-size:12.5px;font-weight:500;border:0;border-radius:20px;padding:7px 13px;cursor:default;flex:none;color:var(--text-dark);background:rgba(0,0,0,.08)}
+.notif .nbtn{font:inherit;font-size:12.5px;font-weight:500;border:0;border-radius:20px;padding:7px 13px;cursor:default;flex:none;white-space:nowrap;color:var(--text-dark);background:rgba(0,0,0,.08)}
 .calrow{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
 .calrow .notif{flex:1;min-width:230px;margin-top:0}
+#calendar .wrap{grid-template-columns:1.2fr .8fr}
 
 /* ---- Sections ---- */
 section{padding:72px 0}
 .sec-head{text-align:center;max-width:640px;margin:0 auto 44px}
+.sec-head .kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep);margin-bottom:10px}
 .sec-head h2{font-size:clamp(24px,3.4vw,34px);margin-bottom:10px}
 .sec-head p{color:var(--text-medium);font-size:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
@@ -243,7 +265,8 @@ footer a:hover{color:var(--text-dark)}
 .legal-panel a:hover{text-decoration:underline}
 
 @media (max-width:760px){
-  .story .wrap{grid-template-columns:1fr;gap:28px}
+  .journey-grid{grid-template-columns:1fr 1fr}
+  .story .wrap,#calendar .wrap{grid-template-columns:1fr;gap:28px}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
   .calrow{flex-direction:column;flex-wrap:nowrap;gap:32px}
   .mbmenu,.calrow .notif{width:100%}
@@ -257,6 +280,7 @@ footer a:hover{color:var(--text-dark)}
 @media (max-width:560px){
   .nav-store{display:none}
   .ui-shot img{border-radius:12px}
+  .journey-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -270,9 +294,11 @@ footer a:hover{color:var(--text-dark)}
     </a>
     <div class="nav-actions">
       <span class="nav-store" data-i18n="nav.store">Bientôt sur le Mac App Store</span>
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" id="lang-fr">FR</button>
-        <button type="button" id="lang-en">EN</button>
+      <div class="lang">
+        <label class="sr-only" for="language">Langue</label>
+        <select id="language" aria-label="Langue">
+          <option value="fr">Français</option><option value="en">English</option><option value="de">Deutsch</option><option value="es">Español</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="pt-BR">Português (Brasil)</option>
+        </select>
       </div>
     </div>
   </div>
@@ -285,7 +311,7 @@ footer a:hover{color:var(--text-dark)}
       <img src="assets/appicon.png" alt="VoiceOvya" width="88" height="88">
     </div>
     <h1 data-i18n="hero.title">Gardez le fil de vos réunions.</h1>
-    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit, traduit et résume vos réunions sur votre Mac. Retrouvez ensuite les décisions et les actions sans relire toute la conversation.</p>
+    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit et résume vos réunions sur Mac pour vous aider à retrouver rapidement ce qui a été décidé et ce qu’il reste à faire.</p>
     <div class="cta-row">
       <span class="btn btn-primary btn-lg is-static" data-i18n="hero.download">Bientôt sur le Mac App Store</span>
     </div>
@@ -308,6 +334,38 @@ footer a:hover{color:var(--text-dark)}
     </figure>
   </div>
 </div>
+
+<section class="journey" id="fonctionnement">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="journey.k">Comment ça marche</span>
+      <h2 data-i18n="journey.t">Un fil continu, avant, pendant et après la réunion.</h2>
+      <p data-i18n="journey.p">VoiceOvya vous accompagne du démarrage de l’enregistrement jusqu’au moment où vous avez besoin de retrouver une information.</p>
+    </div>
+    <div class="journey-grid">
+      <article class="journey-step">
+        <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M8 15h3M8 18h6"/></svg>
+        <h3 data-i18n="journey.s1.t">Démarrez au bon moment</h3>
+        <p data-i18n="journey.s1.p">Lancez l’enregistrement depuis la notification liée à votre agenda ou depuis la barre des menus.</p>
+      </article>
+      <article class="journey-step">
+        <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2-5 3 10 3-13 3 16 2-8h3"/></svg>
+        <h3 data-i18n="journey.s2.t">Capturez la conversation</h3>
+        <p data-i18n="journey.s2.p">VoiceOvya enregistre le micro et l’audio système, puis transcrit les échanges en temps réel.</p>
+      </article>
+      <article class="journey-step">
+        <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"/><path d="M18.5 14l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg>
+        <h3 data-i18n="journey.s3.t">Transformez la réunion</h3>
+        <p data-i18n="journey.s3.p">Génération automatique d’un résumé, d’un compte rendu ou de vos propres actions IA dans le détail de la note.</p>
+      </article>
+      <article class="journey-step">
+        <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L21 21"/><path d="M8 8h4M8 11h3"/></svg>
+        <h3 data-i18n="journey.s4.t">Échangez avec vos notes</h3>
+        <p data-i18n="journey.s4.p">Retrouvez une action ou un passage oublié avec la recherche dans la transcription. Vous pouvez aussi interroger l’assistant IA pour remettre ce passage en contexte et en obtenir un résumé.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section class="story" id="live">
   <div class="story-intro">
@@ -351,7 +409,7 @@ footer a:hover{color:var(--text-dark)}
   <div class="wrap">
     <div class="capture-head">
       <h2 data-i18n="capture.assistant.t">Interrogez vos notes.</h2>
-      <p data-i18n="capture.assistant.p">Échangez avec vos notes grâce à l’assistant IA, pendant ou après la réunion. Posez vos questions pour retrouver les décisions, les actions et les informations utiles.</p>
+      <p data-i18n="capture.assistant.p">Échangez avec vos notes grâce à l’assistant IA. Pendant ou après la réunion, retrouvez une décision, une action ou une information sans parcourir toute la transcription.</p>
     </div>
     <figure class="ui-shot">
       <img src="assets/screenshots/ui/fr/assistant.webp?v=4" data-ui-shot="assistant" width="2080" height="1280" loading="lazy" alt="Assistant IA VoiceOvya dans une réunion" data-alt-fr="Assistant IA VoiceOvya dans une réunion" data-alt-en="VoiceOvya AI assistant inside a meeting">
@@ -470,8 +528,8 @@ footer a:hover{color:var(--text-dark)}
 <section class="privacy">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-i18n="priv.title">Vos réunions restent chez vous.</h2>
-      <p data-i18n="priv.sub">Audio, transcriptions et notes sont stockés sur votre Mac. Le traitement peut rester local si vous choisissez un modèle local.</p>
+      <h2 data-i18n="priv.title">Vos données restent sur votre Mac.</h2>
+      <p data-i18n="priv.sub">Vous choisissez explicitement si une fonction utilise un service cloud.</p>
     </div>
     <div class="grid">
       <div class="card">
@@ -494,6 +552,45 @@ footer a:hover{color:var(--text-dark)}
         <h3 data-i18n="priv.d.t">Exportable à tout moment</h3>
         <p data-i18n="priv.d.p">Transcription et résumé en Markdown ou texte, quand vous voulez. Vos données vous suivent, sans verrouillage.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-i18n="faq.k">Questions fréquentes</span>
+      <h2 data-i18n="faq.t">Ce qu’il faut savoir avant de commencer.</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary data-i18n="faq.offline.q">VoiceOvya fonctionne-t-il sans connexion Internet&nbsp;?</summary>
+        <p data-i18n="faq.offline.a">Oui. L’enregistrement, la transcription et le stockage des notes peuvent fonctionner sur votre Mac. Les fonctions IA peuvent également rester locales si vous choisissez un modèle compatible. Une connexion reste nécessaire si vous utilisez volontairement un service IA cloud.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.cloud.q">Mes réunions sont-elles envoyées dans le cloud&nbsp;?</summary>
+        <p data-i18n="faq.cloud.a">Non, pas automatiquement. L’audio, les transcriptions et les notes sont stockés sur votre Mac. Vous choisissez explicitement si une fonction utilise Apple Intelligence, un modèle local ou un service cloud configuré avec votre propre clé API.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.audio.q">Puis-je utiliser un casque ou des écouteurs Bluetooth&nbsp;?</summary>
+        <p data-i18n="faq.audio.a">Oui. VoiceOvya peut capturer le microphone sélectionné et l’audio système. Vous pouvez utiliser le microphone de votre Mac, un casque, des AirPods ou tout autre périphérique audio reconnu par macOS.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.find.q">Comment retrouver une information après une réunion&nbsp;?</summary>
+        <p data-i18n="faq.find.a">Vous pouvez rechercher directement un mot ou un passage dans la transcription. Vous pouvez aussi interroger l’assistant IA pour retrouver une décision ou une action, remettre un passage dans son contexte et en obtenir un résumé.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.actions.q">Puis-je créer mes propres résumés ou comptes rendus&nbsp;?</summary>
+        <p data-i18n="faq.actions.a">Oui. Vous pouvez créer des actions IA adaptées à vos besoins, comme un résumé, un compte rendu, un devis ou un autre format, puis les lancer depuis l’assistant ou générer automatiquement leur résultat dans la note.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.macos.q">De quelle version de macOS ai-je besoin&nbsp;?</summary>
+        <p data-i18n="faq.macos.a">VoiceOvya nécessite macOS 27 ou une version ultérieure.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.consent.q">Dois-je prévenir les participants avant d’enregistrer&nbsp;?</summary>
+        <p data-i18n="faq.consent.a">Oui. Avant d’enregistrer une réunion, assurez-vous d’en informer les participants et de respecter les règles applicables dans votre pays et votre organisation.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -554,7 +651,7 @@ footer a:hover{color:var(--text-dark)}
 const I18N = {
 en: {
   "hero.title":"Never lose the thread of a meeting.",
-  "hero.sub":"VoiceOvya records, transcribes, translates, and summarizes meetings on your Mac. Find decisions and action items without rereading the whole conversation.",
+  "hero.sub":"VoiceOvya records, transcribes, and summarizes meetings on your Mac so you can quickly find what was decided and what still needs to be done.",
   "nav.store":"Coming soon to the Mac App Store",
   "hero.download":"Coming soon to the Mac App Store",
   "hero.requirement":"Requires macOS 27 or later.",
@@ -596,12 +693,23 @@ en: {
   "capture.library.k":"Library",
   "capture.library.t":"Every meeting, all in one place.",
   "capture.library.p":"Organize your notes, search a conversation, and keep every action item close at hand.",
+  "journey.k":"How it works",
+  "journey.t":"One continuous thread, before, during, and after the meeting.",
+  "journey.p":"VoiceOvya stays with you from the moment recording starts until you need to find a piece of information again.",
+  "journey.s1.t":"Start at the right moment",
+  "journey.s1.p":"Start recording from a calendar notification or directly from the menu bar.",
+  "journey.s2.t":"Capture the conversation",
+  "journey.s2.p":"VoiceOvya records your microphone and system audio, then transcribes the conversation in real time.",
+  "journey.s3.t":"Turn the meeting into results",
+  "journey.s3.p":"Automatically generate a summary, meeting notes, or your own AI actions directly in the note details.",
+  "journey.s4.t":"Chat with your notes",
+  "journey.s4.p":"Find an action item or a forgotten passage by searching the transcript. You can also ask the AI assistant to put that passage back into context and summarize it.",
   "capture.assistant.t":"Ask your notes.",
-  "capture.assistant.p":"Chat with your notes through the AI assistant, during or after a meeting. Ask questions to find decisions, action items, and useful information.",
+  "capture.assistant.p":"Chat with your notes through the AI assistant. During or after a meeting, find a decision, an action item, or a piece of information without going through the entire transcript.",
   "capture.actions.t":"Create your own AI actions.",
   "capture.actions.p":"Create your own AI actions (summary, quote, and more), access them from the AI assistant, or automatically generate a card in the note details.",
-  "priv.title":"Your meetings stay with you.",
-  "priv.sub":"Audio, transcripts, and notes are stored on your Mac. Processing can stay local when you choose a local model.",
+  "priv.title":"Your data stays on your Mac.",
+  "priv.sub":"You explicitly choose whether a feature uses a cloud service.",
   "priv.a.t":"Stored on your Mac",
   "priv.a.p":"Audio, transcripts, and notes stay on your machine. No cloud is required.",
   "priv.b.t":"Optional local processing",
@@ -610,6 +718,22 @@ en: {
   "priv.c.p":"Use a local model with no per-request cost, or your own keys for cloud services.",
   "priv.d.t":"Exportable anytime",
   "priv.d.p":"Transcript and summary in Markdown or plain text, whenever you want. Your data goes with you, no lock-in.",
+  "faq.k":"Frequently asked questions",
+  "faq.t":"What to know before you get started.",
+  "faq.offline.q":"Does VoiceOvya work without an internet connection?",
+  "faq.offline.a":"Yes. Recording, transcription, and note storage can work on your Mac. AI features can also stay local when you choose a compatible model. An internet connection is required when you choose to use a cloud AI service.",
+  "faq.cloud.q":"Are my meetings sent to the cloud?",
+  "faq.cloud.a":"Not automatically. Audio, transcripts, and notes are stored on your Mac. You explicitly choose whether a feature uses Apple Intelligence, a local model, or a cloud service configured with your own API key.",
+  "faq.audio.q":"Can I use a headset or Bluetooth earbuds?",
+  "faq.audio.a":"Yes. VoiceOvya can capture the selected microphone and system audio. You can use your Mac’s microphone, a headset, AirPods, or any other audio device recognized by macOS.",
+  "faq.find.q":"How can I find information after a meeting?",
+  "faq.find.a":"You can search for a word or passage directly in the transcript. You can also ask the AI assistant to find a decision or action item, put a passage back into context, and summarize it.",
+  "faq.actions.q":"Can I create my own summaries or meeting notes?",
+  "faq.actions.a":"Yes. Create AI actions suited to your needs, such as a summary, meeting notes, a quote, or another format, then run them from the assistant or automatically generate their result in the note.",
+  "faq.macos.q":"Which version of macOS do I need?",
+  "faq.macos.a":"VoiceOvya requires macOS 27 or later.",
+  "faq.consent.q":"Should I tell participants before recording?",
+  "faq.consent.a":"Yes. Before recording a meeting, make sure participants are informed and follow the rules that apply in your country and organization.",
   "s1.win":"Live",
   "s1.section.k":"Capture &amp; transcription",
   "s1.section.t":"Live recording",
@@ -695,19 +819,30 @@ Object.assign(FR, {
 });
 I18N.fr = FR;
 
+const SUPPORTED_LOCALES = ['fr','en','de','es','it','ja','ko','pt-BR'];
+['de','es','it','ja','ko','pt-BR'].forEach(locale=>{ I18N[locale] = {...I18N.en}; });
+function normalizeLocale(value){
+  const locale = String(value || '').toLowerCase();
+  if (locale.startsWith('fr')) return 'fr'; if (locale.startsWith('de')) return 'de';
+  if (locale.startsWith('es')) return 'es'; if (locale.startsWith('it')) return 'it';
+  if (locale.startsWith('ja')) return 'ja'; if (locale.startsWith('ko')) return 'ko';
+  if (locale.startsWith('pt')) return 'pt-BR'; return 'en';
+}
+
 function setLang(l){
-  const d = I18N[l] || I18N.fr;
-  document.querySelectorAll('[data-i18n]').forEach(e=>{ if(d[e.dataset.i18n]!==undefined) e.innerHTML=d[e.dataset.i18n]; });
-  document.querySelectorAll('[data-i18n-ph]').forEach(e=>{ if(d[e.dataset.i18nPh]!==undefined) e.placeholder=d[e.dataset.i18nPh]; });
-  document.querySelectorAll('[data-alt-fr]').forEach(e=>{ e.alt = l === 'en' ? e.dataset.altEn : e.dataset.altFr; });
-  document.querySelectorAll('[data-ui-shot]').forEach(e=>{ e.src = `assets/screenshots/ui/${l}/${e.dataset.uiShot}.webp?v=4`; });
+  l = SUPPORTED_LOCALES.includes(l) ? l : normalizeLocale(l);
+  const d = I18N[l] || I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(e=>{ e.innerHTML=d[e.dataset.i18n] ?? I18N.en[e.dataset.i18n] ?? FR[e.dataset.i18n] ?? e.innerHTML; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(e=>{ e.placeholder=d[e.dataset.i18nPh] ?? I18N.en[e.dataset.i18nPh] ?? FR[e.dataset.i18nPh] ?? e.placeholder; });
+  document.querySelectorAll('[data-alt-fr]').forEach(e=>{ e.alt = l === 'fr' ? e.dataset.altFr : e.dataset.altEn; });
+  const captureLocale = l === 'fr' ? 'fr' : 'en';
+  document.querySelectorAll('[data-ui-shot]').forEach(e=>{ e.src = `assets/screenshots/ui/${captureLocale}/${e.dataset.uiShot}.webp?v=4`; });
   document.documentElement.lang = l;
   document.title = l === 'fr' ? 'VoiceOvya · Gardez le fil de vos réunions' : 'VoiceOvya · Never lose the thread of a meeting';
   document.querySelector('meta[name="description"]').content = l === 'fr'
-    ? 'VoiceOvya enregistre, transcrit, traduit et résume vos réunions sur Mac. Retrouvez les décisions et les actions sans relire toute la conversation.'
-    : 'VoiceOvya records, transcribes, translates, and summarizes meetings on Mac. Find decisions and actions without rereading the whole conversation.';
-  document.getElementById('lang-fr').classList.toggle('on', l==='fr');
-  document.getElementById('lang-en').classList.toggle('on', l==='en');
+    ? 'VoiceOvya enregistre, transcrit et résume vos réunions sur Mac pour vous aider à retrouver rapidement ce qui a été décidé et ce qu’il reste à faire.'
+    : 'VoiceOvya records, transcribes, and summarizes meetings on Mac so you can quickly find what was decided and what still needs to be done.';
+  document.getElementById('language').value = l;
   document.querySelector('[data-legal-page="privacy"]').href = l === 'fr' ? 'confidentialite.html' : 'privacy.html';
   document.querySelector('[data-legal-page="terms"]').href = l === 'fr' ? 'cgu.html' : 'terms.html';
   try{ localStorage.setItem('voiceovya-lang', l); }catch(e){}
@@ -715,11 +850,10 @@ function setLang(l){
   startDictationPreview(dictatedText);
   renderCompatibilityStatus();
 }
-document.getElementById('lang-fr').addEventListener('click', ()=>setLang('fr'));
-document.getElementById('lang-en').addEventListener('click', ()=>setLang('en'));
+document.getElementById('language').addEventListener('change', e=>setLang(e.target.value));
 
 const saved = (()=>{ try{ return localStorage.getItem('voiceovya-lang'); }catch(e){ return null; } })();
-setLang(saved || ((navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en'));
+setLang(saved || normalizeLocale(navigator.language));
 
 document.getElementById('year').textContent = new Date().getFullYear();
 

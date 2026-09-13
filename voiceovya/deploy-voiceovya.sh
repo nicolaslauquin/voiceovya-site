@@ -214,7 +214,7 @@ else
 fi
 
 # Le quota OVH est partagé avec le reste de l'hébergement. Après la vérification du nouvel
-# artefact, garder les deux DMG les plus récemment envoyés — le nouveau et son prédécesseur — et
+# artefact, garder les deux DMG les plus récemment envoyés, le nouveau et son prédécesseur, et
 # supprimer tous les plus anciens. Les noms extraits suivent un motif strict avant d'être injectés
 # dans les commandes SFTP.
 prune_remote_dmgs() {
