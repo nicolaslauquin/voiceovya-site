@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>VoiceOvya · Vos réunions ont la réponse</title>
-<meta name="description" content="VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac, avec les actions à réaliser. Smart actions, modèles locaux, respect de votre vie privée.">
+<title>VoiceOvya · Gardez le fil de vos réunions</title>
+<meta name="description" content="VoiceOvya enregistre, transcrit, traduit et résume vos réunions sur Mac. Retrouvez les décisions et les actions sans relire toute la conversation.">
 <link rel="canonical" href="https://voiceovya.com/">
 <meta name="theme-color" content="#f4f8f6">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="VoiceOvya · Vos réunions ont la réponse">
-<meta property="og:description" content="Enregistrez, transcrivez et résumez vos réunions sur votre Mac. Retrouvez en quelques secondes ce qui a été dit, décidé ou promis.">
+<meta property="og:title" content="VoiceOvya · Gardez le fil de vos réunions">
+<meta property="og:description" content="Enregistrez, transcrivez, traduisez et résumez vos réunions sur Mac. Retrouvez ensuite les décisions et les actions.">
 <meta property="og:url" content="https://voiceovya.com/">
 <link rel="icon" href="assets/appicon-sm.png">
 <style>
@@ -38,14 +38,15 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .nav-actions{display:flex;align-items:center;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--text-dark);text-decoration:none}
 .brand img{width:28px;height:28px;border-radius:7px}
-.brand .beta-tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);border-radius:6px;padding:3px 7px;line-height:1;margin-left:-3px}
 .lang{display:flex;background:rgba(0,0,0,.06);border-radius:9px;padding:2px;gap:2px}
 .lang button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:600;color:var(--text-medium);padding:4px 10px;border-radius:7px;cursor:pointer}
 .lang button.on{background:#fff;color:var(--text-dark);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.nav-store{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:9px;background:var(--accent-soft);color:var(--accent-deep);font-size:11.5px;font-weight:700;white-space:nowrap}
 .btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-size:13px;font-weight:600;border-radius:11px;padding:8px 16px;text-decoration:none;transition:.18s}
 .btn-primary{color:#fff;background:linear-gradient(180deg,var(--accent),var(--accent-deep));box-shadow:0 2px 8px -2px rgba(31,158,99,.5)}
 .btn-primary:hover{filter:brightness(1.06)}
 .btn-lg{font-size:15px;padding:12px 24px;border-radius:13px}
+.btn.is-static{cursor:default}.btn.is-static:hover{filter:none}
 
 /* ---- Hero ---- */
 .hero{padding:96px 0 72px;text-align:center}
@@ -65,95 +66,23 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .moneyicon{width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex:none;color:var(--accent-deep);font-weight:800;font-size:14px;line-height:1}
 .applogo{position:relative;width:123px;height:123px;margin:0 auto 26px;border-radius:28px;overflow:hidden;filter:drop-shadow(0 14px 30px rgba(31,158,99,.4))}
 .applogo img{width:100%;height:100%;display:block}
-.applogo .beta{position:absolute;left:102px;top:102px;width:100px;transform:translate(-50%,-50%) rotate(-45deg);background:linear-gradient(180deg,var(--accent),var(--accent-deep));color:#fff;font-size:7.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1;text-align:center;padding:3px 0;box-shadow:0 1px 4px rgba(0,0,0,.28)}
 
-/* ---- Hero app window: home note list ---- */
-.heroshot{max-width:940px;margin:52px auto 0}
-.winbig{text-align:left}
-.winbig .winbody{position:relative;display:grid;grid-template-columns:212px 1fr;overflow:hidden}
-.winbig .side{position:relative;z-index:1;background:rgba(244,248,246,.6);border-right:.5px solid rgba(0,0,0,.06);padding:12px 10px;animation:note-sidebar-cycle 9s ease-in-out infinite}
-.winbig .gh{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);padding:8px 8px 4px}
-.winbig .cat{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:9px;font-size:13px;margin-bottom:1px}
-.winbig .cat.sel{background:#fff;box-shadow:var(--shadow-card);font-weight:600;color:var(--accent-deep)}
-.winbig .cat .dot{width:8px;height:8px;border-radius:3px;flex:none}
-.winbig .cat .cn{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.winbig .cat .cc{font-size:11.5px;color:var(--text-light)}
-.srch{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);border-radius:9px;padding:5px 11px;font-size:11.5px;color:var(--text-light)}
-.srch svg{width:12px;height:12px;stroke:var(--text-light);stroke-width:2;fill:none;stroke-linecap:round}
-.mock-record{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:9px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;text-decoration:none;box-shadow:0 2px 7px -3px rgba(31,158,99,.65)}
-.mock-record .rec-dot{width:7px;height:7px;border-radius:50%;background:#fff}
-.winbig .srch{margin-left:0}
-.winbig .main{min-height:338px;padding:14px 18px}
-.winbig .listview{animation:note-list-cycle 9s ease-in-out infinite}
-.gh2{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-medium);margin-bottom:10px}
-.ncard{display:flex;align-items:center;gap:12px;background:#fff;border-radius:13px;padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.05)}
-.ncard.rise{animation:vo-rise .55s ease .35s backwards}
-.ncard.opening{animation:note-card-open 9s ease-in-out infinite}
-@keyframes vo-rise{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-.wv{width:38px;height:38px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;gap:2.5px}
-.wv i{width:3px;border-radius:2px;background:var(--c)}
-.wv i:nth-child(1){height:9px}.wv i:nth-child(2){height:16px}.wv i:nth-child(3){height:12px}.wv i:nth-child(4){height:7px}
-.ncard .nc{flex:1;min-width:0}
-.ncard .nct{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ncard .ncm{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--text-medium);margin-top:3px}
-.note-detail-preview{position:absolute;z-index:2;inset:0;background:#fff;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06);opacity:0;transform:translateX(38px) scale(.97);transform-origin:right center;pointer-events:none;animation:note-detail-open 9s ease-in-out infinite}
-.detail-note{width:75%;height:100%;min-width:0;box-sizing:border-box;padding:18px 20px;background:linear-gradient(135deg,#fff 0%,#fff 68%,var(--accent-soft) 100%)}
-.note-detail-preview .back{display:inline-flex;align-items:center;gap:6px;color:var(--accent-deep);font-size:11px;font-weight:700;margin-bottom:10px}
-.note-detail-preview .back svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.note-detail-preview h3{font-size:18px;line-height:1.2;margin-bottom:6px;max-width:440px}
-.note-detail-preview .meta{font-size:11.5px;color:var(--text-medium);margin-bottom:12px}
-.detail-block{background:#fff;border-radius:11px;padding:11px 12px;margin-bottom:8px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.05)}
-.detail-block .label,.detail-personal .label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--accent-deep);margin-bottom:5px}
-.detail-block p,.detail-block li{font-size:12.5px;line-height:1.45;color:var(--text-dark)}
-.detail-block ul{margin-left:16px}
-.detail-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.detail-actions{display:flex;flex-direction:column;gap:7px}
-.detail-action{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;line-height:1.35;color:var(--text-dark)}
-.detail-action .check{width:14px;height:14px;border-radius:4px;border:1.5px solid rgba(28,40,35,.22);flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center;background:#fff}
-.detail-action .check svg{width:10px;height:10px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.detail-action.done .check{background:var(--accent);border-color:var(--accent)}
-.detail-action.done span:last-child{color:var(--text-medium)}
-.detail-content{display:block}
-.detail-content .detail-row{margin-bottom:0}
-.detail-personal{padding:9px 11px;background:#fff;border-radius:11px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.05)}
-.detail-personal p{font-size:12.5px;line-height:1.45;color:var(--text-dark)}
-.detail-assistant{position:absolute;inset:0 0 0 auto;width:25%;box-sizing:border-box;display:flex;flex-direction:column;min-height:0;padding:16px 14px;background:var(--bg-clear);border-left:.5px solid rgba(0,0,0,.09);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.7);opacity:1;transform:none}
-.detail-assistant .assistant-head{font-size:11px;font-weight:800;color:var(--accent-deep);margin-bottom:10px}
-.detail-assistant .assistant-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;margin-bottom:10px}
-.detail-assistant .assistant-actions span{padding:5px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep);font-size:10px;font-weight:700;white-space:nowrap}
-.detail-assistant .assistant-question{max-width:100%;margin:0 0 8px;padding:8px 10px;background:var(--accent);border-radius:9px 9px 3px 9px;color:#fff;font-size:11px;line-height:1.35;font-weight:600}
-.detail-assistant .assistant-answer{margin:0;padding:9px 10px;background:var(--bg-clear);border-radius:3px 9px 9px 9px;color:var(--text-medium);font-size:10.5px;line-height:1.42}
-.detail-assistant .assistant-compose{display:flex;align-items:center;gap:8px;padding:7px 7px 7px 9px;border-radius:9px;background:#fff;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.12);font-size:10.5px;color:var(--text-dark)}
-.detail-assistant .assistant-compose > span:first-child{flex:1;min-width:0}
-.detail-assistant .assistant-send{width:26px;height:26px;flex:0 0 26px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center}
-.detail-assistant .assistant-send svg{width:12px;height:12px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-@keyframes note-card-open{
-  0%,18%,99%,100%{transform:translateY(0) scale(1);box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.05)}
-  25%,98%{transform:translateY(-1px) scale(1.015);box-shadow:0 20px 46px -24px rgba(18,38,28,.45),inset 0 0 0 1.5px var(--accent)}
-}
-@keyframes note-list-cycle{
-  0%,22%,99%,100%{opacity:1;transform:translateX(0) scale(1)}
-  32%,98%{opacity:0;transform:translateX(-18px) scale(.985)}
-}
-@keyframes note-sidebar-cycle{
-  0%,22%,99%,100%{opacity:1;transform:translateX(0)}
-  32%,98%{opacity:0;transform:translateX(-100%)}
-}
-@keyframes note-detail-open{
-  0%,22%,99%,100%{opacity:0;transform:translateX(38px) scale(.97)}
-  32%,98%{opacity:1;transform:translateX(0) scale(1)}
-}
-@media (prefers-reduced-motion:reduce){
-  .winbig .listview,.winbig .side,.ncard.opening,.note-detail-preview{animation:none}
-  .note-detail-preview{display:none}
-}
-.chip2{display:inline-flex;align-items:center;gap:5px;background:rgba(0,0,0,.045);border-radius:20px;padding:2px 9px;font-size:11px}
-.chip2 .dot{width:6px;height:6px;border-radius:50%}
-.avs{display:flex;flex:none}
-.avs span{width:22px;height:22px;border-radius:50%;background:#eadfce;color:#7c6a50;font-size:8.5px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1.5px #fff}
-.avs span+span{margin-left:-7px}
-.avs span:nth-child(2){background:#d9e4ef;color:#54718c}
-.avs span:nth-child(3){background:#e3dced;color:#6d5f8a}
+/* ---- Localized product captures ---- */
+.capture-head{text-align:center;max-width:700px;margin:48px auto 26px}
+.capture-head .kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep);margin-bottom:10px}
+.capture-head h2{font-size:clamp(24px,3.4vw,34px);line-height:1.2;margin:0}
+.capture-head p{color:var(--text-medium);font-size:16px;margin:12px auto 0;max-width:640px}
+.ui-shot{margin:0 auto;max-width:1080px}
+.ui-shot img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 30px 70px -30px rgba(18,38,28,.38),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.hero .ui-shot{max-width:960px}
+.assistant-capture{padding:72px 0;background:#fff}
+.assistant-capture .capture-head{margin-top:0}
+.assistant-capture .ui-shot{margin:0 auto}
+.translation-capture{padding:72px 0;background:var(--bg-clear)}
+.translation-capture .capture-head{margin-top:0}
+.ai-actions-capture{padding:72px 0;background:#fff}
+.ai-actions-capture .capture-head{margin-top:0}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
 /* ---- Recording window ---- */
 .recwrap{position:relative}
@@ -163,34 +92,6 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .winrec .rico .stopsq{width:10px;height:10px;border-radius:3px;background:var(--error)}
 .rtrans{padding:12px 14px 18px}
 .rlb{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-medium);margin-bottom:8px}
-/* ---- Note detail (assistant) ---- */
-#assistant .wrap{grid-template-columns:minmax(300px,.84fr) minmax(0,1.16fr);gap:40px}
-.assistant-copy{order:1;margin:0;text-align:left}
-.assistant-demo{order:2;position:relative;width:100%;min-height:430px;display:flex;align-items:center;justify-content:center;padding:24px}
-.assistant-demo::before{content:"";position:absolute;inset:44px 12px;background:var(--accent-soft);border-radius:16px;transform:rotate(-2deg)}
-.assistant-panel{position:relative;width:min(100%,520px);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 28px 64px -28px rgba(18,38,28,.38),inset 0 0 0 .5px rgba(0,0,0,.08);opacity:0}
-.assistant-demo.is-visible .assistant-panel{animation:assistant-focus .7s cubic-bezier(.2,.8,.2,1) both}
-.assistant-bar{display:flex;align-items:center;gap:9px;height:46px;padding:0 15px;border-bottom:.5px solid rgba(0,0,0,.08);font-size:12.5px;font-weight:600}
-.assistant-bar svg{width:16px;height:16px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.assistant-chat{padding:20px 20px 16px;min-height:310px}
-.assistant-question{width:fit-content;max-width:86%;margin-left:auto;background:var(--accent);color:#fff;border-radius:13px 13px 3px 13px;padding:10px 14px;font-size:13px;font-weight:600;opacity:0}
-.assistant-demo.is-visible .assistant-question{animation:assistant-rise .45s .2s ease both}
-.assistant-answer{margin-top:20px;opacity:0}
-.assistant-demo.is-visible .assistant-answer{animation:assistant-rise .45s .55s ease both}
-.assistant-context{display:flex;align-items:center;gap:7px;color:var(--accent-deep);font-size:10.5px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
-.assistant-context>span:first-child{width:6px;height:6px;flex:none;border-radius:50%;background:var(--accent)}
-.assistant-answer>p{font-size:13px;color:var(--text-medium);margin-bottom:11px}
-.assistant-results{display:grid;gap:7px;list-style:none}
-.assistant-results li{display:flex;align-items:center;gap:10px;padding:9px 11px;background:var(--bg-clear);border-radius:9px;font-size:12.5px;font-weight:600;opacity:0}
-.assistant-demo.is-visible .assistant-results li{animation:assistant-rise .4s ease both}
-.assistant-demo.is-visible .assistant-results li:nth-child(1){animation-delay:.75s}.assistant-demo.is-visible .assistant-results li:nth-child(2){animation-delay:.9s}.assistant-demo.is-visible .assistant-results li:nth-child(3){animation-delay:1.05s}
-.assistant-results svg{width:15px;height:15px;flex:none;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.assistant-compose{display:flex;align-items:center;gap:10px;margin-top:16px;padding:10px 12px;border-radius:10px;background:var(--bg-clear);color:var(--text-light);font-size:11.5px}
-.assistant-compose span{flex:1}.assistant-compose svg{width:16px;height:16px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-@keyframes assistant-focus{from{opacity:0;transform:scale(.92) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
-@keyframes assistant-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media (prefers-reduced-motion:reduce){.assistant-panel,.assistant-question,.assistant-answer,.assistant-results li{opacity:1!important;animation:none!important}}
-
 /* ---- Menu bar dropdown ---- */
 .mbmenu{width:250px;background:rgba(255,255,255,.9);backdrop-filter:blur(40px) saturate(1.6);border-radius:13px;padding:6px;box-shadow:var(--shadow-pop),inset 0 0 0 .5px rgba(0,0,0,.08)}
 .mmh{font-size:11.5px;color:var(--text-light);padding:5px 10px 2px}
@@ -209,8 +110,8 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .notif .nt{font-size:13px;font-weight:600;line-height:1.35}
 .notif .nd{font-size:11.5px;color:var(--text-medium)}
 .notif .nbtn{font:inherit;font-size:12.5px;font-weight:500;border:0;border-radius:20px;padding:7px 13px;cursor:default;flex:none;color:var(--text-dark);background:rgba(0,0,0,.08)}
-.calrow{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
-.calrow .notif{flex:1;min-width:230px;margin-top:22px}
+.calrow{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.calrow .notif{flex:1;min-width:230px;margin-top:0}
 
 /* ---- Sections ---- */
 section{padding:72px 0}
@@ -219,12 +120,6 @@ section{padding:72px 0}
 .sec-head p{color:var(--text-medium);font-size:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .card{background:#fff;border-radius:14px;padding:22px;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.06)}
-#features .card{box-shadow:var(--shadow-card),inset 0 0 0 1.5px var(--accent);background:linear-gradient(180deg,#fff,var(--accent-soft))}
-#features .grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:960px;margin:0 auto}
-#features .card{display:flex;align-items:center;gap:14px;min-height:92px;padding:18px 20px}
-#features .card .ic{margin-bottom:0}
-#features .card h3{margin-bottom:0;font-size:16px;line-height:1.25}
-#features .card p{display:none}
 .card .ic{width:42px;height:42px;aspect-ratio:1/1;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .card .ic svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .card .ic .moneyicon{width:22px;height:22px;color:#fff;font-size:22px}
@@ -247,7 +142,6 @@ section{padding:72px 0}
 .privacy .card p{color:rgba(255,255,255,.6)}
 
 /* ---- Per-section backgrounds (white / soft green rhythm) ---- */
-#features{background:#fff}
 #live{background:var(--accent-soft)}
 #assistant{background:#fff}
 #calendar{background:var(--accent-soft)}
@@ -284,6 +178,10 @@ section{padding:72px 0}
 
 /* ---- Story sections (illustrated, alternating) ---- */
 .story{padding:56px 0}
+.story-intro{text-align:center;max-width:760px;margin:0 auto 42px;padding:0 24px}
+.story-intro .kicker{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep);margin-bottom:10px}
+.story-intro h2{font-size:clamp(30px,4.2vw,42px);line-height:1.15;margin:0}
+.story-intro p{color:var(--text-medium);font-size:16px;max-width:680px;margin:14px auto 0}
 .story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
 .story .viz{order:1}
 .story .text{order:2}
@@ -315,9 +213,10 @@ section{padding:72px 0}
 .device .cursor{display:inline-block;width:2px;height:14px;background:var(--accent);vertical-align:text-bottom;margin-left:2px;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .device.plain{background:transparent;box-shadow:none;overflow:visible}
-.menubar{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.5);backdrop-filter:blur(28px) saturate(1.6);border-radius:11px;padding:7px 14px;color:var(--text-dark);font-size:12.5px;margin-bottom:16px;box-shadow:0 8px 24px -12px rgba(18,38,28,.25),inset 0 0 0 .5px rgba(0,0,0,.06)}
+.menubar{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.5);backdrop-filter:blur(28px) saturate(1.6);border-radius:11px;padding:7px 14px;color:var(--text-dark);font-size:12.5px;margin-bottom:8px;box-shadow:0 8px 24px -12px rgba(18,38,28,.25),inset 0 0 0 .5px rgba(0,0,0,.06)}
 .menubar .mi{display:flex;align-items:center;gap:6px;font-weight:600;color:var(--text-dark);padding:3px 4px}
 .menubar .mi svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;flex:none}
+.menubar .mi img{width:18px;height:18px;border-radius:4px;flex:none}
 .menubar .sp{flex:1}
 .menubar .st{width:15px;height:15px;stroke:var(--text-dark);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none;opacity:.8}
 .menubar .dim{color:var(--text-medium)}
@@ -344,14 +243,11 @@ footer a:hover{color:var(--text-dark)}
 .legal-panel a:hover{text-decoration:underline}
 
 @media (max-width:760px){
-  #features .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .story .wrap{grid-template-columns:1fr;gap:28px}
-  #assistant .wrap{grid-template-columns:1fr;gap:24px}
-  .assistant-copy,.assistant-demo{order:0}
-  .assistant-demo{min-height:390px;padding:8px 0}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
-  .winbig .winbody{grid-template-columns:1fr}
-  .winbig .side{display:none}
+  .calrow{flex-direction:column;flex-wrap:nowrap;gap:32px}
+  .mbmenu,.calrow .notif{width:100%}
+  .calrow .notif{flex:none;min-width:0}
 }
 @media (max-width:720px){
   .hero{padding:56px 0 40px}
@@ -359,11 +255,8 @@ footer a:hover{color:var(--text-dark)}
   .legal-panel dt{font-size:12px}
 }
 @media (max-width:560px){
-  #features .grid{grid-template-columns:1fr}
-  .mock-record{padding:6px 9px}
-  .detail-note{width:100%}
-  .detail-content{grid-template-columns:1fr}
-  .detail-assistant{display:none}
+  .nav-store{display:none}
+  .ui-shot img{border-radius:12px}
 }
 </style>
 </head>
@@ -374,9 +267,9 @@ footer a:hover{color:var(--text-dark)}
     <a class="brand" href="#">
       <img src="assets/appicon-sm.png" alt="" width="28" height="28">
       VoiceOvya
-      <span class="beta-tag" data-i18n="brand.beta">Beta</span>
     </a>
     <div class="nav-actions">
+      <span class="nav-store" data-i18n="nav.store">Bientôt sur le Mac App Store</span>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" id="lang-fr">FR</button>
         <button type="button" id="lang-en">EN</button>
@@ -390,172 +283,38 @@ footer a:hover{color:var(--text-dark)}
   <div class="hero">
     <div class="applogo">
       <img src="assets/appicon.png" alt="VoiceOvya" width="88" height="88">
-      <span class="beta" data-i18n="hero.betabadge">Beta</span>
     </div>
-    <h1 data-i18n="hero.title">Vos réunions ont la réponse.</h1>
-    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit et résume vos réunions sur votre Mac. Interrogez vos notes pour retrouver en quelques secondes ce qui a été dit, décidé ou promis.</p>
+    <h1 data-i18n="hero.title">Gardez le fil de vos réunions.</h1>
+    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit, traduit et résume vos réunions sur votre Mac. Retrouvez ensuite les décisions et les actions sans relire toute la conversation.</p>
     <div class="cta-row">
-      <a class="btn btn-primary btn-lg" id="download-link" href="build/dist/index.html" data-i18n="hero.download">Télécharger pour macOS 26.4+</a>
+      <span class="btn btn-primary btn-lg is-static" data-i18n="hero.download">Bientôt sur le Mac App Store</span>
     </div>
-    <p class="note" data-i18n="hero.betanote">VoiceOvya est en version beta&nbsp;: l'app évolue vite, quelques imperfections sont encore possibles.</p>
+    <p class="note" data-i18n="hero.requirement">Nécessite macOS 27 ou une version ultérieure.</p>
     <p class="download-status hidden" id="download-status" aria-live="polite"></p>
     <div class="hl-row">
-      <span class="hl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg><span data-i18n="hero.hl1">Local first</span></span>
-      <span class="hl"><svg viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg><span data-i18n="hero.hl1b">Fonctionne offline</span></span>
-      <span class="hl"><span class="moneyicon">€</span><span data-i18n="hero.hl2">Ne payez plus vos tokens</span></span>
-      <span class="hl"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="hero.hl3">Vie privée respectée</span></span>
+      <span class="hl"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg><span data-i18n="hero.hl1">Données sur votre Mac</span></span>
+      <span class="hl"><svg viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg><span data-i18n="hero.hl1b">Fonctionne hors ligne</span></span>
+      <span class="hl"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 14l.9 2.3L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.7z"/></svg><span data-i18n="hero.hl2">Modèles IA au choix</span></span>
+      <span class="hl"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span data-i18n="hero.hl3">Exports ouverts</span></span>
     </div>
 
-    <div class="heroshot">
-      <div class="device winbig">
-        <div class="bar">
-          <div class="lights"><span></span><span></span><span></span></div>
-          <span class="title" data-i18n="hs.win">Mes notes</span>
-          <a class="mock-record" href="#live"><span class="rec-dot"></span><span data-i18n="hs.record">Enregistrer</span></a>
-          <span class="srch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><span data-i18n="hs.srch">Rechercher dans les notes</span></span>
-        </div>
-        <div class="winbody">
-          <div class="side">
-            <div class="gh" data-i18n="hs.gnotes">Notes</div>
-            <div class="cat sel"><span class="dot" style="background:#6b7785"></span><span class="cn" data-i18n="hs.all">Toutes les notes</span><span class="cc">53</span></div>
-            <div class="cat"><span class="dot" style="background:#5b5bd6"></span><span class="cn">Finance</span><span class="cc">8</span></div>
-            <div class="cat"><span class="dot" style="background:#d98a1f"></span><span class="cn">Marketing</span><span class="cc">8</span></div>
-            <div class="cat"><span class="dot" style="background:#a259d9"></span><span class="cn" data-i18n="hs.cperso">Perso</span><span class="cc">9</span></div>
-            <div class="cat"><span class="dot" style="background:#6b7785"></span><span class="cn">Pro</span><span class="cc">8</span></div>
-            <div class="cat"><span class="dot" style="background:#1f9e63"></span><span class="cn" data-i18n="hs.cprod">Produit</span><span class="cc">10</span></div>
-            <div class="cat"><span class="dot" style="background:#2a73e8"></span><span class="cn">Tech</span><span class="cc">10</span></div>
-            <div class="gh" data-i18n="hs.gcts">Contacts</div>
-            <div class="cat"><span class="dot" style="background:#45525a"></span><span class="cn" data-i18n="hs.allc">Tous les contacts</span><span class="cc">12</span></div>
-          </div>
-          <div class="main">
-            <div class="listview">
-              <div class="gh2" data-i18n="hs.today">Aujourd'hui</div>
-              <div class="ncard rise opening" style="--c:#2a73e8">
-                <span class="wv" style="background:#e6eefb"><i></i><i></i><i></i><i></i></span>
-                <div class="nc">
-                  <div class="nct" data-i18n="hs.n1">Compte rendu #1</div>
-                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span><span>11:13 · 10 min</span></div>
-                </div>
-              </div>
-              <div class="ncard" style="--c:#1f9e63">
-                <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
-                <div class="nc">
-                  <div class="nct">Sync Design</div>
-                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:43 · 30 min</span></div>
-                </div>
-                <div class="avs"><span>CR</span><span>IB</span><span>MT</span><span>+1</span></div>
-              </div>
-              <div class="ncard" style="--c:#1f9e63">
-                <span class="wv" style="background:#e7f4ec"><i></i><i></i><i></i><i></i></span>
-                <div class="nc">
-                  <div class="nct" data-i18n="hs.n3">Suivi client #2</div>
-                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#1f9e63"></span><span data-i18n="hs.cprod">Produit</span></span><span>10:13 · 12 min</span></div>
-                </div>
-              </div>
-              <div class="ncard" style="--c:#d98a1f">
-                <span class="wv" style="background:#faf0dd"><i></i><i></i><i></i><i></i></span>
-                <div class="nc">
-                  <div class="nct" data-i18n="hs.n4">Idées produit #3</div>
-                  <div class="ncm"><span class="chip2"><span class="dot" style="background:#d98a1f"></span>Marketing</span><span>09:13 · 14 min</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="note-detail-preview" aria-hidden="true">
-            <div class="detail-note">
-              <div class="back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span data-i18n="hd.back">Notes</span></div>
-              <h3 data-i18n="hd.title">Compte rendu #1</h3>
-              <div class="meta"><span class="chip2"><span class="dot" style="background:#2a73e8"></span>Tech</span> · <span data-i18n="hd.meta">Samedi 18 juillet · 11:13 · 10 min</span></div>
-              <div class="detail-content">
-                <div class="detail-block">
-                  <div class="label" data-i18n="hd.sumt">Résumé court</div>
-                  <p data-i18n="hd.sum">Point rapide sur la roadmap produit, les retours de la beta et les priorités à valider cette semaine.</p>
-                </div>
-                <div class="detail-row">
-                  <div class="detail-block">
-                    <div class="label" data-i18n="hd.keyt">Points clés</div>
-                    <ul><li data-i18n="hd.k1">Capture locale prioritaire</li><li data-i18n="hd.k2">Recherche dans les notes</li></ul>
-                  </div>
-                  <div class="detail-block">
-                    <div class="label" data-i18n="hd.actt">Actions</div>
-                    <div class="detail-actions">
-                      <div class="detail-action done"><span class="check"><svg viewBox="0 0 12 12"><path d="M2.2 6.4l2.2 2.1 5-5.2"/></svg></span><span data-i18n="hd.a1">Lancer le pilote produit</span></div>
-                      <div class="detail-action"><span class="check"></span><span data-i18n="hd.a2">Préparer le récap client</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="detail-personal">
-                  <div class="label" data-i18n="hd.personalt">Notes perso</div>
-                  <p data-i18n="hd.personal">Audrey veut valider le périmètre avant vendredi.</p>
-                </div>
-              </div>
-            </div>
-            <div class="detail-assistant">
-              <div class="assistant-head" data-i18n="hd.ask">Assistant</div>
-              <div class="assistant-question" data-i18n="hd.question">Quel est le point prioritaire sur la roadmap selon Audrey ?</div>
-              <div class="assistant-answer" data-i18n="hd.answer">Audrey priorise la capture locale avant la recherche, car c'est le point le plus sensible pour les équipes beta.</div>
-              <div class="assistant-actions"><span data-i18n="hd.fast1">Actions à faire</span><span data-i18n="hd.fast2">Décisions</span><span data-i18n="hd.fast3">Points bloquants</span></div>
-              <div class="assistant-compose"><span data-i18n="hd.askhint">Poser une question...</span><span class="assistant-send"><svg viewBox="0 0 24 24"><path d="M19 7v5a4 4 0 0 1-4 4H5"/><path d="m9 12-4 4 4 4"/></svg></span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="capture-head">
+      <span class="kicker" data-i18n="capture.library.k">Bibliothèque</span>
+      <h2 data-i18n="capture.library.t">Toutes vos réunions, au même endroit.</h2>
+      <p data-i18n="capture.library.p">Classez vos notes, recherchez un échange et gardez les actions à suivre sous la main.</p>
     </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/ui/fr/library.webp?v=4" data-ui-shot="library" width="1700" height="1280" loading="eager" alt="Bibliothèque de réunions VoiceOvya" data-alt-fr="Bibliothèque de réunions VoiceOvya" data-alt-en="VoiceOvya meeting library">
+    </figure>
   </div>
 </div>
 
-<section id="features">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 data-i18n="feat.title">Tout le cycle de vos réunions, dans une app.</h2>
-      <p data-i18n="feat.sub">De l'enregistrement au résumé, sans quitter votre Mac.</p>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3 data-i18n="feat.rec.t">Enregistrement &amp; transcription en direct</h3>
-        <p data-i18n="feat.rec.p">Capturez micro et audio système, suivez la transcription en temps réel, horodatée à la seconde.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-blue"><svg viewBox="0 0 24 24"><path d="M5 8h9"/><path d="M9 4v4c0 4-2 7-5 9"/><path d="M6 13c2 0 4-1 5-3"/><path d="M13 20l4-10 4 10"/><path d="M15 16h4"/></svg></div>
-        <h3 data-i18n="feat.translate.t">Traducteur temps réel</h3>
-        <p data-i18n="feat.translate.p">Traduisez la conversation pendant qu'elle se déroule, sans interrompre la réunion.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-violet"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 14l.9 2.3L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.7z"/></svg></div>
-        <h3 data-i18n="feat.ai.t">Résumés &amp; assistants IA</h3>
-        <p data-i18n="feat.ai.p">Résumé automatique, décisions et actions extraites. Discutez avec vos notes via Claude ou ChatGPT.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-purple"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
-        <h3 data-i18n="feat.actions.t">Smart actions</h3>
-        <p data-i18n="feat.actions.p">Créez vos propres smart actions (compte-rendu, devis client) et appliquez-les en un clic sur n'importe quelle note.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-slate"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M7 21h10"/><circle cx="12" cy="11" r="3"/></svg></div>
-        <h3 data-i18n="feat.local.t">Modèles locaux</h3>
-        <p data-i18n="feat.local.p">Branchez Ollama, llama.cpp ou LM Studio et faites tourner l'IA entièrement sur votre machine.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-blue"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-        <h3 data-i18n="feat.cal.t">Connecté à votre agenda</h3>
-        <p data-i18n="feat.cal.p">VoiceOvya détecte vos réunions, propose d'enregistrer au bon moment et relie chaque note à son évènement.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-orange"><svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 13h6M9 17h4"/></svg></div>
-        <h3 data-i18n="feat.lib.t">Bibliothèque organisée</h3>
-        <p data-i18n="feat.lib.p">Notes classées par catégories et participants, recherche instantanée, notes perso à côté de la transcription.</p>
-      </div>
-      <div class="card">
-        <div class="ic g-teal"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="7" height="7" rx="2"/><rect x="13" y="14" width="7" height="7" rx="2"/><path d="M7.5 10v2a5 5 0 0 0 5 5h.5"/></svg></div>
-        <h3 data-i18n="feat.mcp.t">Connecteur MCP</h3>
-        <p data-i18n="feat.mcp.p">Connectez vos assistants IA à vos notes en lecture seule, via une connexion locale sécurisée.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="story" id="live">
+  <div class="story-intro">
+    <span class="kicker" data-i18n="s1.section.k">Capture &amp; transcription</span>
+    <h2 data-i18n="s1.section.t">Enregistrement en direct</h2>
+    <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion pour suivre chaque prise de parole au moment où elle est captée.</p>
+  </div>
   <div class="wrap">
     <div class="viz">
       <div class="recwrap">
@@ -569,7 +328,7 @@ footer a:hover{color:var(--text-dark)}
           </div>
           <div class="rtrans">
             <div class="rlb">Transcription</div>
-            <div class="line"><span class="ts">00:12</span><span class="txt"><span data-i18n="s1.l1">On commence par le point sur la roadmap produit et les retours de la beta.</span></span></div>
+            <div class="line"><span class="ts">00:12</span><span class="txt"><span data-i18n="s1.l1">On commence par le point sur la roadmap produit et les retours de la version pilote.</span></span></div>
             <div class="line"><span class="ts">00:38</span><span class="txt"><span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre : capture locale, résumés et recherche dans les notes.</span></span></div>
             <div class="line"><span class="ts">01:14</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale, parce qu'on veut garder les réunions confidentielles.</span></span></div>
             <div class="line"><span class="ts">01:58</span><span class="txt"><span data-i18n="s1.l4">Ensuite, il faut retrouver rapidement une décision sans relire toute la réunion.</span></span></div>
@@ -579,61 +338,62 @@ footer a:hover{color:var(--text-dark)}
       </div>
     </div>
     <div class="text">
-      <span class="kicker" data-i18n="s1.k">Enregistrement en direct</span>
-      <h2 data-i18n="s1.t">Chaque mot capté, à l'instant où il est dit</h2>
-      <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion pour suivre chaque prise de parole au moment où elle est captée.</p>
       <ul class="feats">
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f1">Micro, audio système et prise de notes en parallèle</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f2">Transcription lisible en direct, ligne par ligne</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f3">Quick récap et questions à l'assistant pendant la réunion</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f4">Mode fenêtre ou overlay, toujours visible si besoin</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f1">Micro et audio système capturés ensemble</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f2">Transcription horodatée, lisible en direct</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f4">Fenêtre ou overlay selon votre façon de travailler</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="story rev" id="assistant">
+<section class="assistant-capture" id="assistant">
   <div class="wrap">
-    <div class="text assistant-copy">
-      <span class="kicker" data-i18n="s2.k">Assistant</span>
-      <h2 data-i18n="s2.t">Interrogez vos notes.</h2>
-      <p data-i18n="s2.p">Retrouvez en quelques secondes ce qui a été dit, décidé ou promis dans vos réunions.</p>
-      <ul class="feats">
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f1">Smart actions réutilisables, exécutées en un clic</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f2">Prompts déclenchés automatiquement selon la catégorie</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.f3">Choisissez votre modèle préféré.</span></li>
-      </ul>
+    <div class="capture-head">
+      <h2 data-i18n="capture.assistant.t">Interrogez vos notes.</h2>
+      <p data-i18n="capture.assistant.p">Échangez avec vos notes grâce à l’assistant IA, pendant ou après la réunion. Posez vos questions pour retrouver les décisions, les actions et les informations utiles.</p>
     </div>
-    <div class="assistant-demo" aria-label="Démonstration de l'assistant VoiceOvya">
-      <div class="assistant-panel">
-        <div class="assistant-bar">
-          <svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 14l.9 2.3L22 17l-2.1.7L19 20l-.9-2.3L16 17l2.1-.7z"/></svg>
-          <span data-i18n="s2.context">Dans cette réunion</span>
-        </div>
-        <div class="assistant-chat">
-          <div class="assistant-question" data-i18n="s2.q">Quelles technologies sont évoquées ?</div>
-          <div class="assistant-answer">
-            <div class="assistant-context"><span></span><span data-i18n="s2.found">Réponse retrouvée dans vos notes</span></div>
-            <p data-i18n="s2.answer">Les technologies évoquées pendant cette conférence sont :</p>
-            <ul class="assistant-results">
-              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.a1">Les technologies émergentes</span></li>
-              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.a2">L'intelligence artificielle (IA)</span></li>
-              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s2.a3">Le machine learning</span></li>
-            </ul>
-          </div>
-          <div class="assistant-compose"><span data-i18n="s2.ask">Poser une question sur la note...</span><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></div>
-        </div>
-      </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/ui/fr/assistant.webp?v=4" data-ui-shot="assistant" width="2080" height="1280" loading="lazy" alt="Assistant IA VoiceOvya dans une réunion" data-alt-fr="Assistant IA VoiceOvya dans une réunion" data-alt-en="VoiceOvya AI assistant inside a meeting">
+    </figure>
+  </div>
+</section>
+
+<section class="translation-capture" id="translation">
+  <div class="wrap">
+    <div class="capture-head">
+      <h2 data-i18n="capture.translation.t">Traduction en temps réel</h2>
+      <p data-i18n="capture.translation.p">Écoutez dans une langue et suivez la traduction au fil de la conversation.</p>
     </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/ui/fr/translation.webp?v=4" data-ui-shot="translation" width="1880" height="1230" loading="lazy" alt="Traduction en temps réel dans VoiceOvya" data-alt-fr="Traduction en temps réel dans VoiceOvya" data-alt-en="Real-time translation in VoiceOvya">
+    </figure>
+  </div>
+</section>
+
+<section class="ai-actions-capture" id="ai-actions">
+  <div class="wrap">
+    <div class="capture-head">
+      <h2 data-i18n="capture.actions.t">Créez vos propres actions IA.</h2>
+      <p data-i18n="capture.actions.p">Créez vos actions IA (résumé, devis…) et accédez-y via l’assistant IA, ou générez automatiquement une carte dans le détail de la note.</p>
+    </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/ui/fr/ai-actions.webp?v=4" data-ui-shot="ai-actions" width="1700" height="1270" loading="lazy" alt="Configuration des actions IA dans VoiceOvya" data-alt-fr="Configuration des actions IA dans VoiceOvya" data-alt-en="AI action configuration in VoiceOvya">
+    </figure>
   </div>
 </section>
 
 <section class="story" id="calendar">
+  <div class="story-intro">
+    <span class="kicker" data-i18n="s3.k">Agenda</span>
+    <h2 data-i18n="s3.t">Démarrez au bon moment.</h2>
+    <p data-i18n="s3.p">VoiceOvya s’appuie sur votre agenda pour proposer l’enregistrement au début de la réunion, depuis une notification ou la barre des menus.</p>
+  </div>
   <div class="wrap">
     <div class="viz">
       <div class="device plain">
         <div class="menubar">
-          <span class="mi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg><span data-i18n="s3.mb">Organisation vacances</span></span>
+          <span class="mi"><img src="assets/appicon-sm.png" alt=""><span data-i18n="s3.mb">Organisation vacances</span></span>
           <span class="sp"></span>
           <svg class="st" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
           <svg class="st" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4zM15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
@@ -664,12 +424,9 @@ footer a:hover{color:var(--text-dark)}
       </div>
     </div>
     <div class="text">
-      <span class="kicker" data-i18n="s3.k">Agenda</span>
-      <h2 data-i18n="s3.t">Au bon moment, sans y penser</h2>
-      <p data-i18n="s3.p">VoiceOvya lit votre agenda et propose d'enregistrer pile quand la réunion démarre, depuis une notification ou la barre de menus.</p>
       <ul class="feats">
         <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f1">Notification à l'ouverture de chaque réunion</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f2">Enregistrement rapide depuis la barre de menu</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f2">Enregistrement rapide depuis la barre des menus</span></li>
       </ul>
     </div>
   </div>
@@ -678,32 +435,33 @@ footer a:hover{color:var(--text-dark)}
 <section class="models" id="models">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker" data-i18n="mo.k">Votre modèle, votre choix</span>
-      <h2 data-i18n="mo.t">Apple Intelligence, ou le modèle que vous voulez</h2>
+      <span class="kicker" data-i18n="mo.k">IA locale ou cloud</span>
+      <h2 data-i18n="mo.t">Le bon modèle pour chaque besoin.</h2>
+      <p data-i18n="mo.sub">Utilisez Apple Intelligence, un modèle local ou un service cloud avec votre propre clé API.</p>
     </div>
     <div class="profiles">
       <div class="profile">
-        <span class="pk easy" data-i18n="mo.ek">Clef en main</span>
-        <h3 data-i18n="mo.et">Zéro configuration</h3>
-        <p data-i18n="mo.ep">Vous n'y connaissez rien en informatique ? Aucun souci. VoiceOvya fonctionne par défaut avec Apple Intelligence, intégré à macOS : rien à installer, rien à régler, ça marche. Encore plus fluide sur une machine récente.</p>
+        <span class="pk easy" data-i18n="mo.ek">Prêt à l’emploi</span>
+        <h3 data-i18n="mo.et">Apple Intelligence intégré</h3>
+        <p data-i18n="mo.ep">VoiceOvya peut utiliser Apple Intelligence sans modèle supplémentaire à installer.</p>
         <div class="pviz">
           <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Apple Intelligence</span><span class="mb local" data-i18n="mo.builtin">Intégré macOS</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">MLX</span><span class="mb local" data-i18n="mo.local">Local</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Claude</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">ChatGPT</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
         </div>
-        <p class="pnote" data-i18n="mo.note">Vous utilisez déjà l’API d’OpenAI ou d’Anthropic ? Ajoutez votre clé, c’est tout.</p>
+        <p class="pnote" data-i18n="mo.note">Vous utilisez déjà les API d’OpenAI ou d’Anthropic ? Ajoutez votre propre clé.</p>
       </div>
       <div class="profile">
-        <span class="pk power" data-i18n="mo.pk">Power user</span>
-        <h3 data-i18n="mo.pt">Le modèle de votre choix</h3>
-        <p data-i18n="mo.pp">Branchez le modèle que vous voulez (gemma-4, qwen3…) via votre outil préféré : Ollama, llama.cpp ou LM Studio. C'est vous qui décidez ce qui tourne, et où.</p>
+        <span class="pk power" data-i18n="mo.pk">À la carte</span>
+        <h3 data-i18n="mo.pt">Vos modèles, vos outils</h3>
+        <p data-i18n="mo.pp">Connectez un modèle local avec Ollama, llama.cpp ou LM Studio. Vous choisissez ce qui tourne sur votre Mac.</p>
         <div class="pviz">
           <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Ollama · qwen/qwen3.6</span><span class="mb local">27b</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">LM Studio · google/gemma-4</span><span class="mb local">26b</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">llama.cpp · google/gemma-4</span><span class="mb local">e4b</span></div>
         </div>
-        <p class="pnote" data-i18n="mo.pn">Choisissez l'outil et votre modèle adapté à votre usage.</p>
+        <p class="pnote" data-i18n="mo.pn">Choisissez l’outil et le modèle adaptés à votre usage.</p>
       </div>
     </div>
   </div>
@@ -712,24 +470,24 @@ footer a:hover{color:var(--text-dark)}
 <section class="privacy">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-i18n="priv.title">Vos données, votre pouvoir</h2>
-      <p data-i18n="priv.sub">VoiceOvya est une app native macOS, pensée pour garder vos conversations chez vous et vos coûts sous contrôle.</p>
+      <h2 data-i18n="priv.title">Vos réunions restent chez vous.</h2>
+      <p data-i18n="priv.sub">Audio, transcriptions et notes sont stockés sur votre Mac. Le traitement peut rester local si vous choisissez un modèle local.</p>
     </div>
     <div class="grid">
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
         <h3 data-i18n="priv.a.t">Stockage sur votre Mac</h3>
-        <p data-i18n="priv.a.p">Audio, transcriptions et notes restent sur votre machine. Pas de compte, pas de cloud imposé.</p>
+        <p data-i18n="priv.a.p">Audio, transcriptions et notes restent sur votre machine. Aucun cloud n’est imposé.</p>
       </div>
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h3 data-i18n="priv.b.t">IA 100 % locale</h3>
+        <h3 data-i18n="priv.b.t">Traitement local en option</h3>
         <p data-i18n="priv.b.p">Avec Ollama, llama.cpp ou LM Studio, rien ne quitte votre Mac, même pas pour les résumés.</p>
       </div>
       <div class="card">
         <div class="ic g-accent"><span class="moneyicon">€</span></div>
-        <h3 data-i18n="priv.c.t">Ne payez plus vos tokens</h3>
-        <p data-i18n="priv.c.p">Pas d'abonnement : un modèle local gratuit, ou vos propres clés API. Vous gardez la main sur vos coûts.</p>
+        <h3 data-i18n="priv.c.t">Vos coûts, vos choix</h3>
+        <p data-i18n="priv.c.p">Utilisez un modèle local sans coût par requête, ou vos propres clés pour les services cloud.</p>
       </div>
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
@@ -742,9 +500,9 @@ footer a:hover{color:var(--text-dark)}
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2 data-i18n="ct.t">Échangeons</h2>
-    <p data-i18n="ct.p">Une question, une idée ou l’envie de tester VoiceOvya en avant-première ? Écrivez-nous.</p>
-    <a class="btn btn-lg" href="mailto:hello@voiceovya.com" data-i18n="ct.cta">Nous écrire</a>
+    <h2 data-i18n="ct.t">Envie de tester VoiceOvya&nbsp;?</h2>
+    <p data-i18n="ct.p">Une question ou l’envie de participer aux premiers essais&nbsp;? Écrivez-nous.</p>
+    <a class="btn btn-lg" href="mailto:hello@voiceovya.com" data-i18n="ct.cta">Nous contacter</a>
   </div>
 </section>
 
@@ -795,16 +553,14 @@ footer a:hover{color:var(--text-dark)}
 <script>
 const I18N = {
 en: {
-  "hero.title":"Your meetings have the answer.",
-  "hero.sub":"VoiceOvya records, transcribes, and summarizes your meetings on your Mac. Ask your notes to find in seconds what was said, decided, or promised.",
-  "hero.download":"Download for macOS 26.4+",
-  "brand.beta":"Beta",
-  "hero.betabadge":"Beta",
-  "hero.betanote":"VoiceOvya is in beta: the app is moving fast, a few rough edges are still possible.",
-  "compat.limited":"VoiceOvya is available on this Mac. Full power starts with macOS 27.",
-  "compat.old":"This Mac appears to run macOS {version}. VoiceOvya requires macOS 26.4 or newer.",
-  "compat.unknown":"We could not verify your macOS version from this browser. VoiceOvya requires macOS 26.4 or newer, with full power starting from macOS 27.",
-  "compat.notmac":"VoiceOvya is a Mac app. Download it from a Mac running macOS 26.4 or newer.",
+  "hero.title":"Never lose the thread of a meeting.",
+  "hero.sub":"VoiceOvya records, transcribes, translates, and summarizes meetings on your Mac. Find decisions and action items without rereading the whole conversation.",
+  "nav.store":"Coming soon to the Mac App Store",
+  "hero.download":"Coming soon to the Mac App Store",
+  "hero.requirement":"Requires macOS 27 or later.",
+  "compat.old":"This Mac appears to run macOS {version}. VoiceOvya requires macOS 27 or later.",
+  "compat.unknown":"VoiceOvya requires macOS 27 or later.",
+  "compat.notmac":"VoiceOvya is coming soon to the Mac App Store and requires macOS 27 or later.",
   "hs.win":"My notes",
   "hs.record":"Record",
   "hs.srch":"Search notes",
@@ -817,7 +573,7 @@ en: {
   "hd.title":"Minutes #1",
   "hd.meta":"Saturday 18 July · 11:13 · 10 min",
   "hd.sumt":"Short summary",
-  "hd.sum":"Quick update on the product roadmap, beta feedback, and priorities to validate this week.",
+  "hd.sum":"Quick update on the product roadmap, pilot feedback, and priorities to validate this week.",
   "hd.keyt":"Key points",
   "hd.k1":"Local capture is priority",
   "hd.k2":"Search across notes",
@@ -831,53 +587,44 @@ en: {
   "hd.fast2":"Decisions",
   "hd.fast3":"Blockers",
   "hd.question":"What is the top roadmap priority according to Audrey?",
-  "hd.answer":"Audrey prioritizes local capture before search, because it is the most sensitive point for beta teams.",
+  "hd.answer":"Audrey prioritizes local capture before search, because it is the most sensitive point for the pilot teams.",
   "hd.askhint":"Ask a question...",
-  "hero.hl1":"Local first",
+  "hero.hl1":"Data stored on your Mac",
   "hero.hl1b":"Works offline",
-  "hero.hl2":"Stop paying for tokens",
-  "hero.hl3":"Privacy respected",
-  "feat.title":"Your whole meeting cycle, in one app.",
-  "feat.sub":"From recording to summary, without leaving your Mac.",
-  "feat.actions.t":"Smart actions",
-  "feat.actions.p":"Build your own smart actions (minutes, client quote) and apply them to any note in one click.",
-  "feat.rec.t":"Live recording &amp; transcription",
-  "feat.rec.p":"Capture mic and system audio, follow the transcript in real time, timestamped to the second.",
-  "feat.translate.t":"Real-time translator",
-  "feat.translate.p":"Translate the conversation as it happens, without interrupting the meeting.",
-  "feat.ai.t":"AI summaries &amp; assistants",
-  "feat.ai.p":"Automatic summaries, extracted decisions and actions. Chat with your notes through Claude or ChatGPT.",
-  "feat.local.t":"Local models",
-  "feat.local.p":"Plug in Ollama, llama.cpp or LM Studio and run AI entirely on your machine.",
-  "feat.cal.t":"Connected to your calendar",
-  "feat.cal.p":"VoiceOvya detects your meetings, offers to record at the right moment and links every note to its event.",
-  "feat.lib.t":"An organized library",
-  "feat.lib.p":"Notes sorted by category and participants, instant search, personal notes next to the transcript.",
-  "feat.mcp.t":"MCP connector",
-  "feat.mcp.p":"Connect your AI assistants to your notes with read-only access over a secure local connection.",
-  "priv.title":"Your data, your power",
-  "priv.sub":"VoiceOvya is a native macOS app, built to keep your conversations at home and your costs under control.",
+  "hero.hl2":"Your choice of AI model",
+  "hero.hl3":"Open exports",
+  "capture.library.k":"Library",
+  "capture.library.t":"Every meeting, all in one place.",
+  "capture.library.p":"Organize your notes, search a conversation, and keep every action item close at hand.",
+  "capture.assistant.t":"Ask your notes.",
+  "capture.assistant.p":"Chat with your notes through the AI assistant, during or after a meeting. Ask questions to find decisions, action items, and useful information.",
+  "capture.actions.t":"Create your own AI actions.",
+  "capture.actions.p":"Create your own AI actions (summary, quote, and more), access them from the AI assistant, or automatically generate a card in the note details.",
+  "priv.title":"Your meetings stay with you.",
+  "priv.sub":"Audio, transcripts, and notes are stored on your Mac. Processing can stay local when you choose a local model.",
   "priv.a.t":"Stored on your Mac",
-  "priv.a.p":"Audio, transcripts and notes stay on your machine. No account, no forced cloud.",
-  "priv.b.t":"100% local AI",
+  "priv.a.p":"Audio, transcripts, and notes stay on your machine. No cloud is required.",
+  "priv.b.t":"Optional local processing",
   "priv.b.p":"With Ollama, llama.cpp or LM Studio, nothing leaves your Mac, not even for summaries.",
-  "priv.c.t":"Stop paying for tokens",
-  "priv.c.p":"No subscription: a free local model, or your own API keys. You stay in control of your costs.",
+  "priv.c.t":"Your costs, your choice",
+  "priv.c.p":"Use a local model with no per-request cost, or your own keys for cloud services.",
   "priv.d.t":"Exportable anytime",
   "priv.d.p":"Transcript and summary in Markdown or plain text, whenever you want. Your data goes with you, no lock-in.",
   "s1.win":"Live",
-  "s1.l1":"Let's start with the product roadmap and the beta feedback.",
+  "s1.section.k":"Capture &amp; transcription",
+  "s1.section.t":"Live recording",
+  "s1.l1":"Let's start with the product roadmap and feedback from the pilot release.",
   "s1.l2":"Yes, three priorities to settle this quarter: local capture, summaries, and note search.",
   "s1.l3":"The first one is local transcription, because we want to keep meetings confidential.",
   "s1.l4":"Then we need to find a decision quickly without rereading the whole meeting.",
   "s1.l5":"Camille confirms that we launch the pilot with the product team next Monday.",
   "s1.k":"Live recording",
-  "s1.t":"Every word captured, the moment it's said",
-  "s1.p":"The transcript scrolls in real time during the meeting so you can follow every speaker as their words are captured.",
-  "s1.f1":"Mic, system audio, and parallel note-taking",
-  "s1.f2":"A clear live transcript, line by line",
-  "s1.f3":"Quick recap and assistant questions during the meeting",
-  "s1.f4":"Window or overlay mode, always visible when needed",
+  "s1.p":"The transcript scrolls in real time during the meeting, so you can follow each contribution as it is captured.",
+  "s1.f1":"Mic and system audio captured together",
+  "s1.f2":"A timestamped transcript, readable live",
+  "s1.f4":"Window or overlay to suit the way you work",
+  "capture.translation.t":"Real-time translation",
+  "capture.translation.p":"Listen in one language and follow the translation as the conversation unfolds.",
   "s2.q":"Which technologies are mentioned?",
   "s2.context":"In this meeting",
   "s2.found":"Answer found in your notes",
@@ -903,23 +650,24 @@ en: {
   "s3.nt":"Vacation planning",
   "s3.b1":"Start recording",
   "s3.k":"Calendar",
-  "s3.t":"At the right moment, without thinking about it",
-  "s3.p":"VoiceOvya reads your calendar and offers to record right when the meeting starts, from a notification or the menu bar.",
+  "s3.t":"Start at the right moment.",
+  "s3.p":"VoiceOvya uses your calendar to offer recording when the meeting starts, from a notification or the menu bar.",
   "s3.f1":"Notification when each meeting opens",
   "s3.f2":"Quick recording from the menu bar",
-  "mo.k":"Your model, your choice",
-  "mo.t":"Apple Intelligence, or whatever model you want",
-  "mo.ek":"Turnkey",
-  "mo.et":"Zero configuration",
-  "mo.ep":"Not a computer person? No worries. VoiceOvya works out of the box with Apple Intelligence, built into macOS: nothing to install, nothing to set up, it just works. Even smoother on a recent machine.",
-  "mo.pk":"Power user",
-  "mo.pt":"The model of your choice",
-  "mo.pp":"Plug in whatever model you want (gemma-4, qwen3…) through your favorite tool: Ollama, llama.cpp or LM Studio. You decide what runs, and where.",
+  "mo.k":"Local or cloud AI",
+  "mo.t":"The right model for every need.",
+  "mo.sub":"Use Apple Intelligence, a local model, or a cloud service with your own API key.",
+  "mo.ek":"Ready to use",
+  "mo.et":"Apple Intelligence built in",
+  "mo.ep":"VoiceOvya can use Apple Intelligence without another model to install.",
+  "mo.pk":"Pick your setup",
+  "mo.pt":"Your models, your tools",
+  "mo.pp":"Connect a local model through Ollama, llama.cpp, or LM Studio. You choose what runs on your Mac.",
   "mo.builtin":"Built into macOS",
   "mo.local":"Local",
   "mo.key":"Your API key",
-  "mo.note":"Already using the OpenAI or Anthropic API? Add your key, that’s it.",
-  "mo.pn":"Pick your tool and the model suited to your use.",
+  "mo.note":"Already using the OpenAI or Anthropic APIs? Add your own key.",
+  "mo.pn":"Choose the tool and model suited to your needs.",
   "legal.k":"Legal notice",
   "legal.t":"Publisher information",
   "legal.p":"<strong>Inovya is a French software engineering and artificial intelligence consulting company.</strong> It helps businesses clarify their needs, scope their projects, and make technical decisions. Inovya also publishes its own software.",
@@ -932,8 +680,8 @@ en: {
   "footer.legal":"Legal notice",
   "footer.privacy":"Privacy policy",
   "footer.terms":"Terms of use",
-  "ct.t":"Let’s talk",
-  "ct.p":"Have a question, an idea, or want to try VoiceOvya early? Get in touch.",
+  "ct.t":"Want to try VoiceOvya?",
+  "ct.p":"Have a question or want to take part in early testing? Get in touch.",
   "ct.cta":"Contact us"
 }};
 
@@ -941,10 +689,9 @@ const FR = {};
 document.querySelectorAll('[data-i18n]').forEach(e=>FR[e.dataset.i18n]=e.innerHTML);
 document.querySelectorAll('[data-i18n-ph]').forEach(e=>FR[e.dataset.i18nPh]=e.placeholder);
 Object.assign(FR, {
-  "compat.limited":"VoiceOvya est disponible sur ce Mac. Toute sa puissance est disponible à partir de macOS 27.",
-  "compat.old":"Ce Mac semble utiliser macOS {version}. VoiceOvya nécessite macOS 26.4 ou plus récent.",
-  "compat.unknown":"Impossible de vérifier votre version de macOS depuis ce navigateur. VoiceOvya nécessite macOS 26.4 ou plus récent, avec toute sa puissance à partir de macOS 27.",
-  "compat.notmac":"VoiceOvya est une app Mac. Téléchargez-la depuis un Mac avec macOS 26.4 ou plus récent."
+  "compat.old":"Ce Mac semble utiliser macOS {version}. VoiceOvya nécessite macOS 27 ou une version ultérieure.",
+  "compat.unknown":"VoiceOvya nécessite macOS 27 ou une version ultérieure.",
+  "compat.notmac":"VoiceOvya arrive bientôt sur le Mac App Store et nécessite macOS 27 ou une version ultérieure."
 });
 I18N.fr = FR;
 
@@ -952,7 +699,13 @@ function setLang(l){
   const d = I18N[l] || I18N.fr;
   document.querySelectorAll('[data-i18n]').forEach(e=>{ if(d[e.dataset.i18n]!==undefined) e.innerHTML=d[e.dataset.i18n]; });
   document.querySelectorAll('[data-i18n-ph]').forEach(e=>{ if(d[e.dataset.i18nPh]!==undefined) e.placeholder=d[e.dataset.i18nPh]; });
+  document.querySelectorAll('[data-alt-fr]').forEach(e=>{ e.alt = l === 'en' ? e.dataset.altEn : e.dataset.altFr; });
+  document.querySelectorAll('[data-ui-shot]').forEach(e=>{ e.src = `assets/screenshots/ui/${l}/${e.dataset.uiShot}.webp?v=4`; });
   document.documentElement.lang = l;
+  document.title = l === 'fr' ? 'VoiceOvya · Gardez le fil de vos réunions' : 'VoiceOvya · Never lose the thread of a meeting';
+  document.querySelector('meta[name="description"]').content = l === 'fr'
+    ? 'VoiceOvya enregistre, transcrit, traduit et résume vos réunions sur Mac. Retrouvez les décisions et les actions sans relire toute la conversation.'
+    : 'VoiceOvya records, transcribes, translates, and summarizes meetings on Mac. Find decisions and actions without rereading the whole conversation.';
   document.getElementById('lang-fr').classList.toggle('on', l==='fr');
   document.getElementById('lang-en').classList.toggle('on', l==='en');
   document.querySelector('[data-legal-page="privacy"]').href = l === 'fr' ? 'confidentialite.html' : 'privacy.html';
@@ -991,11 +744,6 @@ function parseMacOSVersion(value){
   };
 }
 
-function isAtLeastMacOS(version, major, minor){
-  if (!version) return false;
-  return version.major > major || (version.major === major && version.minor >= minor);
-}
-
 function getMacOSVersionFromUA(){
   const match = navigator.userAgent.match(/Mac OS X ([\d_]+)/);
   return match ? parseMacOSVersion(match[1]) : null;
@@ -1020,30 +768,25 @@ function renderCompatibilityResult(result){
     el.textContent = '';
     return;
   }
-  if (result.status === 'limited') {
-    el.textContent = t('compat.limited');
-    return;
-  }
   if (result.status === 'old') {
     el.classList.add('warn');
     el.textContent = t('compat.old', {version: result.version.raw});
     return;
   }
-  el.textContent = t('compat.unknown');
+  el.classList.add('hidden');
+  el.textContent = '';
 }
 
 async function detectMacOSCompatibility(){
   if (!isMacPlatform()) return {status:'not-mac'};
   const uaVersion = getMacOSVersionFromUA();
   if (uaVersion && uaVersion.major >= 27) return {status:'ok', version:uaVersion};
-  if (isAtLeastMacOS(uaVersion, 26, 4)) return {status:'limited', version:uaVersion};
   if (uaVersion && uaVersion.major > 10) return {status:'old', version:uaVersion};
   if (navigator.userAgentData?.getHighEntropyValues) {
     try {
       const hints = await navigator.userAgentData.getHighEntropyValues(['platformVersion']);
       const hintVersion = parseMacOSVersion(hints.platformVersion);
       if (hintVersion && hintVersion.major >= 27) return {status:'ok', version:hintVersion};
-      if (isAtLeastMacOS(hintVersion, 26, 4)) return {status:'limited', version:hintVersion};
       if (hintVersion && hintVersion.major > 10) return {status:'old', version:hintVersion};
     } catch(e) {}
   }
@@ -1102,17 +845,6 @@ window.addEventListener('resize', ()=>{
     if (el?.dataset.fullText) reserveDictationHeight(el, el.dataset.fullText);
   });
 });
-
-const assistantDemo = document.querySelector('.assistant-demo');
-if ('IntersectionObserver' in window) {
-  new IntersectionObserver(([entry], observer)=>{
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('is-visible');
-    observer.disconnect();
-  }, {threshold:.3}).observe(assistantDemo);
-} else {
-  assistantDemo.classList.add('is-visible');
-}
 
 document.querySelectorAll('.jstimer').forEach(el=>{ el._s = parseInt(el.dataset.s,10)||0; });
 setInterval(()=>{
