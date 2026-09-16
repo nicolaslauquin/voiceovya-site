@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://voiceovya.com/</loc>
+  </url>
+  <url>
+    <loc>https://voiceovya.com/confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/confidentialite.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/privacy.html" />
+  </url>
+  <url>
+    <loc>https://voiceovya.com/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/confidentialite.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/privacy.html" />
+  </url>
+  <url>
+    <loc>https://voiceovya.com/cgu.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/cgu.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/terms.html" />
+  </url>
+  <url>
+    <loc>https://voiceovya.com/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/cgu.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/terms.html" />
+  </url>
+</urlset>

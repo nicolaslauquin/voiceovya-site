@@ -37,7 +37,7 @@ PUBLIC_URL="https://voiceovya.com"
 # décrit le build qui le lit, donc il est embarqué avec lui.
 # `appcast.xml` est produit par scripts/package-release.sh du repo app, signé avec la clé EdDSA,
 # et recopié ici : c'est le flux que l'app installée interroge (SUFeedURL).
-for file in index.html robots.txt .htaccess .ovhconfig appcast.xml \
+for file in index.html robots.txt sitemap.xml .htaccess .ovhconfig appcast.xml \
             confidentialite.html privacy.html cgu.html terms.html \
             config/v1/mac/version.json config/v1/mac/config.json; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
@@ -45,6 +45,11 @@ for file in index.html robots.txt .htaccess .ovhconfig appcast.xml \
     exit 1
   fi
 done
+
+if rg -qi "<meta[[:space:]][^>]*name=[\"']robots[\"'][^>]*noindex" "${LOCAL_DIR}/index.html"; then
+  echo "La page d'accueil contient encore une balise robots noindex." >&2
+  exit 1
+fi
 
 # La version publiée est lue dans l'appcast plutôt que recopiée ici : l'appcast est produit et
 # signé par scripts/package-release.sh du repo app, jamais édité à la main, donc il ne peut pas
@@ -85,7 +90,8 @@ DMG_LIST="$(mktemp)"
 DMG_PRUNE_LOG="$(mktemp)"
 REDIRECT_PAGE="$(mktemp)"
 VERIFY_FILE="$(mktemp)"
-trap 'rm -f "${SFTP_LOG}" "${DMG_LIST}" "${DMG_PRUNE_LOG}" "${REDIRECT_PAGE}" "${VERIFY_FILE}"; unset SFTP_PASS' EXIT
+VERIFY_HEADERS="$(mktemp)"
+trap 'rm -f "${SFTP_LOG}" "${DMG_LIST}" "${DMG_PRUNE_LOG}" "${REDIRECT_PAGE}" "${VERIFY_FILE}" "${VERIFY_HEADERS}"; unset SFTP_PASS' EXIT
 
 # Page de téléchargement : générée depuis VERSION plutôt que versionnée dans le repo, où elle
 # nommait le DMG une seconde fois et restait en retard d'une release.
@@ -126,6 +132,7 @@ put ${LOCAL_DIR}/privacy.html
 put ${LOCAL_DIR}/cgu.html
 put ${LOCAL_DIR}/terms.html
 put ${LOCAL_DIR}/robots.txt
+put ${LOCAL_DIR}/sitemap.xml
 put ${LOCAL_DIR}/appcast.xml
 put ${LOCAL_DIR}/.htaccess
 put ${LOCAL_DIR}/.ovhconfig
@@ -172,6 +179,7 @@ verify_served_file "${LOCAL_DIR}/privacy.html" "privacy.html"
 verify_served_file "${LOCAL_DIR}/cgu.html" "cgu.html"
 verify_served_file "${LOCAL_DIR}/terms.html" "terms.html"
 verify_served_file "${LOCAL_DIR}/robots.txt" "robots.txt"
+verify_served_file "${LOCAL_DIR}/sitemap.xml" "sitemap.xml"
 verify_served_file "${LOCAL_DIR}/appcast.xml" "appcast.xml"
 verify_served_file "${LOCAL_DIR}/assets/appicon-sm.png" "assets/appicon-sm.png"
 verify_served_file "${LOCAL_DIR}/assets/appicon.png" "assets/appicon.png"
@@ -179,6 +187,17 @@ verify_served_file "${LOCAL_DIR}/assets/record-detail-full.png" "assets/record-d
 verify_served_file "${LOCAL_DIR}/config/v1/mac/version.json" "config/v1/mac/version.json"
 verify_served_file "${LOCAL_DIR}/config/v1/mac/config.json" "config/v1/mac/config.json"
 verify_served_file "${REDIRECT_PAGE}" "build/dist/index.html"
+
+if ! curl -fsSI --retry 2 --retry-delay 1 --max-time 30 \
+    "${PUBLIC_URL}/?deploy_check=$(date +%s)" -o "${VERIFY_HEADERS}"; then
+  echo "Le déploiement a échoué au contrôle HTTP des en-têtes de la page d'accueil." >&2
+  exit 1
+fi
+if rg -qi '^x-robots-tag:.*noindex' "${VERIFY_HEADERS}"; then
+  echo "Le déploiement a échoué : la page d'accueil sert encore un en-tête X-Robots-Tag noindex." >&2
+  exit 1
+fi
+echo "Vérifié : la page d'accueil ne sert aucun en-tête X-Robots-Tag noindex."
 
 # L'appcast annonce ce DMG, y compris avec --no-dmg : s'il manque ou diffère, Sparkle ne peut pas
 # mettre les installations existantes à jour. Le fichier local est normalement conservé avec la

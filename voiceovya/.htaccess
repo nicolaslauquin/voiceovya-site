@@ -2,7 +2,6 @@ DirectoryIndex index.html
 Options -Indexes
 
 <IfModule mod_headers.c>
-  Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "DENY"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"

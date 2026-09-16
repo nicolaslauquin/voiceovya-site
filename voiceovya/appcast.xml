@@ -3,31 +3,27 @@
     <channel>
         <title>VoiceOvya</title>
         <item>
-            <title>0.7.1</title>
-            <pubDate>Sat, 12 Sep 2026 12:36:37 +0200</pubDate>
+            <title>0.8</title>
+            <pubDate>Sun, 13 Sep 2026 23:34:25 +0200</pubDate>
             <link>https://voiceovya.com</link>
-            <sparkle:version>11</sparkle:version>
-            <sparkle:shortVersionString>0.7.1</sparkle:shortVersionString>
+            <sparkle:version>12</sparkle:version>
+            <sparkle:shortVersionString>0.8</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.4</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description><![CDATA[  <h2>Nouveautés</h2>
   <ul>
-    <li>Définition et lecture/pause depuis la transcription. Un ⌘-clic sur un mot ouvre le dictionnaire de macOS. La barre d'espace lance ou met en pause la lecture.</li>
-    <li>Exporter ou partager une note, avec ou sans son audio. ⌘E exporte le Markdown ; ⌥⌘E ajoute l'audio. Un passage sélectionné peut aussi être partagé.</li>
-    <li>Importer ou supprimer un enregistrement plus facilement. Déposez les fichiers dans la bibliothèque. « Supprimer l'audio » conserve la note.</li>
-    <li>Rechercher les actions à traiter par leur texte. Le champ recherche le texte des actions. Les filtres par catégorie et par période restent disponibles.</li>
-    <li>Refonte des réglages.</li>
+    <li>Traduction : le texte traduit est désormais mis en valeur en vert. Dans l'écran d'enregistrement et la fenêtre flottante, le pointeur de traduction prend désormais la forme d'un point.</li>
+    <li>Les notes restent lisibles dans les fenêtres étroites. Dans une note, les cartes « Points clés » et « Décisions » se placent l'une sous l'autre avant que leur texte devienne trop étroit.</li>
+    <li>Divers bugs corrigés.</li>
   </ul>
   <h2>What's new</h2>
   <ul>
-    <li>Dictionary lookup and play/pause from the transcript. Command-click a word to open the macOS dictionary. Press Space to play or pause.</li>
-    <li>Export or share a note, with or without its audio. Command-E exports Markdown; Option-Command-E includes the audio. A selected transcript passage can also be shared.</li>
-    <li>Import or remove a recording more easily. Drop files onto the library to import them. Delete Audio keeps the note.</li>
-    <li>Search pending actions by their text. The field searches action text. Category and period filters remain available.</li>
-    <li>Redesigned settings.</li>
+    <li>Translation: translated text now stands out in green. On the recording screen and in the floating window, the translation indicator now takes the form of a dot.</li>
+    <li>Notes remain readable in narrow windows. In a note, the “Key points” and “Decisions” cards stack before their text becomes cramped.</li>
+    <li>Various bugs fixed.</li>
   </ul>
 ]]></description>
-            <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.7.1.dmg" length="24963894" type="application/octet-stream" sparkle:edSignature="DHGzFmsGO7ZqbEr2lcKZyN8XpEdy0mgbRDGJ42KowSgGA9vNxjFA4jYWGDRiF8Gl9HOp3lJFHokviVEW6vSUAw=="/>
+            <enclosure url="https://voiceovya.com/build/dist/VoiceOvya_0.8.dmg" length="24941305" type="application/octet-stream" sparkle:edSignature="oO6qph/DJ4apX/+dabJj2m+QZBmMjwR3WOIUtX7PnN4jyxN/JFYqYfDkh6clH2x0GgFIWB6/SRi8EebzHBm+Bw=="/>
         </item>
     </channel>
 </rss>
