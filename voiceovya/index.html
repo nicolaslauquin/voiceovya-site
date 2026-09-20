@@ -78,9 +78,7 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .assistant-capture{padding:72px 0;background:#fff}
 .assistant-capture .capture-head{margin-top:0}
 .assistant-capture .ui-shot{margin:0 auto}
-.translation-capture{padding:72px 0;background:var(--bg-clear)}
-.translation-capture .capture-head{margin-top:0}
-.translation-capture .ui-shot{max-width:480px}
+#live .ui-shot{max-width:420px}
 .ai-actions-capture{padding:72px 0;background:#fff}
 .ai-actions-capture .capture-head{margin-top:0}
 .ai-actions-capture .ui-shot{max-width:756px}
@@ -354,18 +352,18 @@ footer a:hover{color:var(--text-dark)}
       </article>
       <article class="journey-step">
         <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2-5 3 10 3-13 3 16 2-8h3"/></svg>
-        <h3 data-i18n="journey.s2.t">Capturez la conversation</h3>
-        <p data-i18n="journey.s2.p">VoiceOvya enregistre le micro et l’audio système, puis transcrit les échanges en temps réel.</p>
+        <h3 data-i18n="journey.s2.t">Traduction en direct</h3>
+        <p data-i18n="journey.s2.p">Suivez une transcription bilingue pendant la réunion.</p>
       </article>
       <article class="journey-step">
         <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"/><path d="M18.5 14l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg>
-        <h3 data-i18n="journey.s3.t">Transformez la réunion</h3>
-        <p data-i18n="journey.s3.p">Génération automatique d’un résumé, d’un compte rendu ou de vos propres actions IA dans le détail de la note.</p>
+        <h3 data-i18n="journey.s3.t">Actions IA automatiques</h3>
+        <p data-i18n="journey.s3.p">Résumés, décisions et tâches générés automatiquement, avec une langue de réponse configurable.</p>
       </article>
       <article class="journey-step">
         <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L21 21"/><path d="M8 8h4M8 11h3"/></svg>
-        <h3 data-i18n="journey.s4.t">Échangez avec vos notes</h3>
-        <p data-i18n="journey.s4.p">Retrouvez une action ou un passage oublié avec la recherche dans la transcription. Vous pouvez aussi interroger l’assistant IA pour remettre ce passage en contexte et en obtenir un résumé.</p>
+        <h3 data-i18n="journey.s4.t">Retrouvez une décision en quelques secondes</h3>
+        <p data-i18n="journey.s4.p">Bibliothèque, recherche et assistant IA pour retrouver le bon passage sans relire toute la réunion.</p>
       </article>
     </div>
   </div>
@@ -379,25 +377,9 @@ footer a:hover{color:var(--text-dark)}
   </div>
   <div class="wrap">
     <div class="viz">
-      <div class="recwrap">
-        <div class="device winrec">
-          <div class="bar">
-            <div class="lights"><span></span><span></span><span></span></div>
-            <span class="title" data-i18n="s1.win">En direct</span>
-            <span class="rtimer jstimer" data-s="111">00:01:51</span>
-            <span class="rico"><svg viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></svg></span>
-            <span class="rico"><span class="stopsq"></span></span>
-          </div>
-          <div class="rtrans">
-            <div class="rlb">Transcription</div>
-            <div class="line"><span class="ts">00:12</span><span class="txt"><span data-i18n="s1.l1">On commence par le point sur la roadmap produit et les retours de la version pilote.</span></span></div>
-            <div class="line"><span class="ts">00:38</span><span class="txt"><span data-i18n="s1.l2">Oui, trois priorités à arbitrer ce trimestre : capture locale, résumés et recherche dans les notes.</span></span></div>
-            <div class="line"><span class="ts">01:14</span><span class="txt"><span data-i18n="s1.l3">La première concerne la transcription locale, parce qu'on veut garder les réunions confidentielles.</span></span></div>
-            <div class="line"><span class="ts">01:58</span><span class="txt"><span data-i18n="s1.l4">Ensuite, il faut retrouver rapidement une décision sans relire toute la réunion.</span></span></div>
-            <div class="line active"><span class="ts">02:31</span><span class="txt"><span data-i18n="s1.l5" data-dictate>Camille confirme qu'on lance le pilote sur l'équipe produit lundi prochain.</span><span class="cursor"></span></span></div>
-          </div>
-        </div>
-      </div>
+      <figure class="ui-shot">
+        <img src="assets/screenshots/ui/fr/live-meeting.webp?v=1" data-ui-shot="live-meeting" width="840" height="1040" loading="lazy" alt="Enregistrement et transcription en direct dans VoiceOvya" data-alt-fr="Enregistrement et transcription en direct dans VoiceOvya" data-alt-en="Live recording and transcription in VoiceOvya">
+      </figure>
     </div>
     <div class="text">
       <ul class="feats">
@@ -417,18 +399,6 @@ footer a:hover{color:var(--text-dark)}
     </div>
     <figure class="ui-shot">
       <img src="assets/screenshots/ui/fr/assistant.webp?v=6" data-ui-shot="assistant" width="2544" height="1580" loading="lazy" alt="Assistant IA VoiceOvya dans une réunion" data-alt-fr="Assistant IA VoiceOvya dans une réunion" data-alt-en="VoiceOvya AI assistant inside a meeting">
-    </figure>
-  </div>
-</section>
-
-<section class="translation-capture" id="translation">
-  <div class="wrap">
-    <div class="capture-head">
-      <h2 data-i18n="capture.translation.t">Traduction en temps réel</h2>
-      <p data-i18n="capture.translation.p">Écoutez dans une langue et suivez la traduction au fil de la conversation.</p>
-    </div>
-    <figure class="ui-shot">
-      <img src="assets/screenshots/ui/fr/translation.webp?v=6" data-ui-shot="translation" width="840" height="1040" loading="lazy" alt="Traduction en temps réel dans VoiceOvya" data-alt-fr="Traduction en temps réel dans VoiceOvya" data-alt-en="Real-time translation in VoiceOvya">
     </figure>
   </div>
 </section>
@@ -661,12 +631,12 @@ en: {
   "journey.p":"VoiceOvya stays with you from the moment recording starts until you need to find a piece of information again.",
   "journey.s1.t":"Start at the right moment",
   "journey.s1.p":"Start recording from a calendar notification or directly from the menu bar.",
-  "journey.s2.t":"Capture the conversation",
-  "journey.s2.p":"VoiceOvya records your microphone and system audio, then transcribes the conversation in real time.",
-  "journey.s3.t":"Turn the meeting into results",
-  "journey.s3.p":"Automatically generate a summary, meeting notes, or your own AI actions directly in the note details.",
-  "journey.s4.t":"Chat with your notes",
-  "journey.s4.p":"Find an action item or a forgotten passage by searching the transcript. You can also ask the AI assistant to put that passage back into context and summarize it.",
+  "journey.s2.t":"Live translation",
+  "journey.s2.p":"Follow a bilingual transcript during the meeting.",
+  "journey.s3.t":"Automatic AI actions",
+  "journey.s3.p":"Automatically generate summaries, decisions, and tasks, with a configurable response language.",
+  "journey.s4.t":"Find a decision in seconds",
+  "journey.s4.p":"Library, search, and AI assistant help you find the right passage without rereading the whole meeting.",
   "capture.assistant.t":"Ask your notes.",
   "capture.assistant.p":"Chat with your notes through the AI assistant. During or after a meeting, find a decision, an action item, or a piece of information without going through the entire transcript.",
   "capture.actions.t":"Create your own AI actions.",
