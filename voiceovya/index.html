@@ -79,10 +79,18 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .assistant-capture .capture-head{margin-top:0}
 .assistant-capture .ui-shot{margin:0 auto}
 #live .ui-shot{max-width:420px}
+#live .wrap{display:block}
 .ai-actions-capture{padding:72px 0;background:#fff}
 .ai-actions-capture .capture-head{margin-top:0}
 .ai-actions-capture .ui-shot{max-width:756px}
 .calendar-capture{padding:72px 0;background:var(--accent-soft)}
+.calendar-capture .capture-head{margin-top:0}
+.calendar-capture .ui-shot{max-width:1080px;aspect-ratio:2.25;overflow:hidden;border-radius:18px}
+.calendar-capture .ui-shot img{transform:translateY(-28.9%)}
+.models-capture{padding:72px 0;background:#fff}
+.models-capture .capture-head{margin-top:0}
+.models-capture .ui-shot{max-width:1080px;aspect-ratio:2.25;overflow:hidden;border-radius:18px}
+.models-capture .ui-shot img{transform:translateY(-28.9%)}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
 /* ---- Product journey ---- */
@@ -381,13 +389,6 @@ footer a:hover{color:var(--text-dark)}
         <img src="assets/screenshots/ui/fr/live-meeting.webp?v=1" data-ui-shot="live-meeting" width="840" height="1040" loading="lazy" alt="Enregistrement et transcription en direct dans VoiceOvya" data-alt-fr="Enregistrement et transcription en direct dans VoiceOvya" data-alt-en="Live recording and transcription in VoiceOvya">
       </figure>
     </div>
-    <div class="text">
-      <ul class="feats">
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f1">Micro et audio système capturés ensemble</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f2">Transcription horodatée, lisible en direct</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s1.f4">Fenêtre ou overlay selon votre façon de travailler</span></li>
-      </ul>
-    </div>
   </div>
 </section>
 
@@ -417,44 +418,27 @@ footer a:hover{color:var(--text-dark)}
 
 <section class="calendar-capture" id="calendar">
   <div class="wrap">
+    <div class="capture-head">
+      <span class="kicker" data-i18n="capture.calendar.k">Toujours au bon moment</span>
+      <h2 data-i18n="capture.calendar.t">Démarrez au bon moment.</h2>
+      <p data-i18n="capture.calendar.p">VoiceOvya se connecte à votre agenda et propose une notification pour lancer l’enregistrement.</p>
+    </div>
     <figure class="ui-shot">
       <img src="assets/screenshots/marketing/fr/agenda-start.webp?v=1" data-marketing-shot="agenda-start" width="2880" height="1800" loading="lazy" alt="VoiceOvya propose de démarrer l'enregistrement au début d'une réunion" data-alt-fr="VoiceOvya propose de démarrer l'enregistrement au début d'une réunion" data-alt-en="VoiceOvya prompts you to start recording when a meeting begins">
     </figure>
   </div>
 </section>
 
-<section class="models" id="models">
+<section class="models-capture" id="models">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker" data-i18n="mo.k">IA locale ou cloud</span>
-      <h2 data-i18n="mo.t">Le bon modèle pour chaque besoin.</h2>
-      <p data-i18n="mo.sub">Utilisez Apple Intelligence, un modèle local ou un service cloud avec votre propre clé API.</p>
+    <div class="capture-head">
+      <span class="kicker" data-i18n="capture.models.k">IA locale ou cloud</span>
+      <h2 data-i18n="capture.models.t">Le bon modèle pour chaque besoin.</h2>
+      <p data-i18n="capture.models.p">Modèles locaux, privés et hors ligne sur votre Mac, ou puissance du cloud quand il faut aller plus loin.</p>
     </div>
-    <div class="profiles">
-      <div class="profile">
-        <span class="pk easy" data-i18n="mo.ek">Prêt à l’emploi</span>
-        <h3 data-i18n="mo.et">Apple Intelligence intégré</h3>
-        <p data-i18n="mo.ep">VoiceOvya peut utiliser Apple Intelligence sans modèle supplémentaire à installer.</p>
-        <div class="pviz">
-          <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Apple Intelligence</span><span class="mb local" data-i18n="mo.builtin">Intégré macOS</span></div>
-          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">MLX</span><span class="mb experimental" data-i18n="mo.experimental">Expérimental</span></div>
-          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Claude</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
-          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">ChatGPT</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
-        </div>
-        <p class="pnote" data-i18n="mo.note">Vous utilisez déjà les API d’OpenAI ou d’Anthropic ? Ajoutez votre propre clé.</p>
-      </div>
-      <div class="profile">
-        <span class="pk power" data-i18n="mo.pk">À la carte</span>
-        <h3 data-i18n="mo.pt">Vos modèles, vos outils</h3>
-        <p data-i18n="mo.pp">Connectez un modèle local avec Ollama, llama.cpp ou LM Studio. Vous choisissez ce qui tourne sur votre Mac.</p>
-        <div class="pviz">
-          <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Ollama · qwen/qwen3.6</span><span class="mb local">27b</span></div>
-          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">LM Studio · google/gemma-4</span><span class="mb local">26b</span></div>
-          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">llama.cpp · google/gemma-4</span><span class="mb local">e4b</span></div>
-        </div>
-        <p class="pnote" data-i18n="mo.pn">Choisissez l’outil et le modèle adaptés à votre usage.</p>
-      </div>
-    </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/marketing/fr/ai-models.webp?v=1" data-marketing-shot="ai-models" width="2880" height="1800" loading="lazy" alt="Modèles IA locaux et cloud dans VoiceOvya" data-alt-fr="Modèles IA locaux et cloud dans VoiceOvya" data-alt-en="Local and cloud AI models in VoiceOvya">
+    </figure>
   </div>
 </section>
 
@@ -641,6 +625,12 @@ en: {
   "capture.assistant.p":"Chat with your notes through the AI assistant. During or after a meeting, find a decision, an action item, or a piece of information without going through the entire transcript.",
   "capture.actions.t":"Create your own AI actions.",
   "capture.actions.p":"Create your own AI actions (summary, quote, and more), access them from the AI assistant, or automatically generate a card in the note details.",
+  "capture.calendar.k":"Always at the right time",
+  "capture.calendar.t":"Start at the right time.",
+  "capture.calendar.p":"VoiceOvya connects to your calendar and offers a notification to start recording.",
+  "capture.models.k":"Local or cloud AI",
+  "capture.models.t":"The right model for every need.",
+  "capture.models.p":"Private, local, offline models on your Mac, or cloud power when you need to go further.",
   "priv.title":"Your data stays on your Mac.",
   "priv.sub":"You explicitly choose whether a feature uses a cloud service.",
   "priv.a.t":"Stored on your Mac",
