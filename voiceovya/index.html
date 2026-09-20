@@ -89,8 +89,16 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .calendar-capture .ui-shot img{transform:translateY(-28.9%)}
 .models-capture{padding:72px 0;background:#fff}
 .models-capture .capture-head{margin-top:0}
-.models-capture .ui-shot{max-width:1080px;aspect-ratio:2.25;overflow:hidden;border-radius:18px}
-.models-capture .ui-shot img{transform:translateY(-28.9%)}
+.models-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:30px;align-items:center;max-width:1080px;margin:0 auto}
+.models-layout .ui-shot{max-width:none}
+.model-group+.model-group{margin-top:22px}
+.model-group h3{margin:0 0 9px;font-size:11px;font-weight:750;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-deep)}
+.model-argument{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:#fff;box-shadow:var(--shadow-card),inset 0 0 0 .5px rgba(0,0,0,.07)}
+.model-argument+.model-argument{margin-top:8px}
+.model-argument svg{width:20px;height:20px;padding:8px;border-radius:10px;background:var(--accent-soft);stroke:var(--accent-deep);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.model-argument b{display:block;font-size:15px;line-height:1.25}
+.model-argument small{display:block;margin-top:1px;color:var(--text-medium);font-size:12px;line-height:1.3}
+.model-footnote{margin:12px 0 0;color:var(--text-medium);font-size:11px;line-height:1.45}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
 /* ---- Product journey ---- */
@@ -277,6 +285,7 @@ footer a:hover{color:var(--text-dark)}
 @media (max-width:760px){
   .journey-grid{grid-template-columns:1fr 1fr}
   .story .wrap,#calendar .wrap{grid-template-columns:1fr;gap:28px}
+  .models-layout{grid-template-columns:1fr}
   .story .viz,.story .text,.story.rev .viz,.story.rev .text{order:0}
   .calrow{flex-direction:column;flex-wrap:nowrap;gap:32px}
   .mbmenu,.calrow .notif{width:100%}
@@ -303,7 +312,6 @@ footer a:hover{color:var(--text-dark)}
       VoiceOvya
     </a>
     <div class="nav-actions">
-      <span class="nav-store" data-i18n="nav.store">Bientôt sur le Mac App Store</span>
       <div class="lang">
         <label class="sr-only" for="language">Langue</label>
         <select id="language" aria-label="Langue">
@@ -320,8 +328,8 @@ footer a:hover{color:var(--text-dark)}
     <div class="applogo">
       <img src="assets/appicon.png" alt="VoiceOvya" width="88" height="88">
     </div>
-    <h1 data-i18n="hero.title">Gardez le fil de vos réunions.</h1>
-    <p class="sub" data-i18n="hero.sub">VoiceOvya enregistre, transcrit et résume vos réunions sur Mac pour vous aider à retrouver rapidement ce qui a été décidé et ce qu’il reste à faire.</p>
+    <h1 data-i18n="hero.title">Retrouvez l’essentiel de chaque réunion.</h1>
+    <p class="sub" data-i18n="hero.sub">Enregistrez, transcrivez et retrouvez l’essentiel de chaque réunion, sans perdre une décision ni une action.</p>
     <div class="cta-row">
       <span class="btn btn-primary btn-lg is-static" data-i18n="hero.download">Bientôt sur le Mac App Store</span>
     </div>
@@ -336,8 +344,8 @@ footer a:hover{color:var(--text-dark)}
 
     <div class="capture-head">
       <span class="kicker" data-i18n="capture.library.k">Bibliothèque</span>
-      <h2 data-i18n="capture.library.t">Toutes vos réunions, au même endroit.</h2>
-      <p data-i18n="capture.library.p">Classez vos notes, recherchez un échange et gardez les actions à suivre sous la main.</p>
+      <h2 data-i18n="capture.library.t">Vos réunions, toutes les réponses.</h2>
+      <p data-i18n="capture.library.p">Recherche avancée : retrouvez une décision, une action ou un passage clé sans réécouter toute la réunion, via le transcript et l’audio.</p>
     </div>
     <figure class="ui-shot">
       <img src="assets/screenshots/ui/fr/library.webp?v=6" data-ui-shot="library" width="2080" height="1580" loading="eager" alt="Bibliothèque de réunions VoiceOvya" data-alt-fr="Bibliothèque de réunions VoiceOvya" data-alt-en="VoiceOvya meeting library">
@@ -348,71 +356,32 @@ footer a:hover{color:var(--text-dark)}
 <section class="journey" id="fonctionnement">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker" data-i18n="journey.k">Comment ça marche</span>
-      <h2 data-i18n="journey.t">Un fil continu, avant, pendant et après la réunion.</h2>
-      <p data-i18n="journey.p">VoiceOvya vous accompagne du démarrage de l’enregistrement jusqu’au moment où vous avez besoin de retrouver une information.</p>
+      <span class="kicker" data-i18n="journey.k">De la réunion à l’action</span>
+      <h2 data-i18n="journey.t">Enregistrez moins. Retenez l’essentiel.</h2>
+      <p data-i18n="journey.p">VoiceOvya vous accompagne avant, pendant et après la réunion pour transformer les échanges en décisions exploitables.</p>
     </div>
     <div class="journey-grid">
       <article class="journey-step">
         <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M8 15h3M8 18h6"/></svg>
-        <h3 data-i18n="journey.s1.t">Démarrez au bon moment</h3>
-        <p data-i18n="journey.s1.p">Lancez l’enregistrement depuis la notification liée à votre agenda ou depuis la barre des menus.</p>
+        <h3 data-i18n="journey.s1.t">Votre agenda donne le départ</h3>
+        <p data-i18n="journey.s1.p">Au début de la réunion, VoiceOvya vous propose de lancer l’enregistrement en un geste.</p>
       </article>
       <article class="journey-step">
         <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2l2-5 3 10 3-13 3 16 2-8h3"/></svg>
-        <h3 data-i18n="journey.s2.t">Traduction en direct</h3>
-        <p data-i18n="journey.s2.p">Suivez une transcription bilingue pendant la réunion.</p>
+        <h3 data-i18n="journey.s2.t">Suivez chaque échange, même dans une autre langue</h3>
+        <p data-i18n="journey.s2.p">La transcription et la traduction en direct gardent la conversation accessible à tous.</p>
       </article>
       <article class="journey-step">
         <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"/><path d="M18.5 14l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg>
-        <h3 data-i18n="journey.s3.t">Actions IA automatiques</h3>
-        <p data-i18n="journey.s3.p">Résumés, décisions et tâches générés automatiquement, avec une langue de réponse configurable.</p>
+        <h3 data-i18n="journey.s3.t">Le compte rendu se construit tout seul</h3>
+        <p data-i18n="journey.s3.p">Résumés, décisions et tâches sont prêts à relire et à partager, dans la langue de votre choix.</p>
       </article>
       <article class="journey-step">
         <svg class="journey-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L21 21"/><path d="M8 8h4M8 11h3"/></svg>
-        <h3 data-i18n="journey.s4.t">Retrouvez une décision en quelques secondes</h3>
-        <p data-i18n="journey.s4.p">Bibliothèque, recherche et assistant IA pour retrouver le bon passage sans relire toute la réunion.</p>
+        <h3 data-i18n="journey.s4.t">Trouvez une réponse, pas une heure d’audio</h3>
+        <p data-i18n="journey.s4.p">Recherche, bibliothèque et assistant IA retrouvent le bon passage en quelques secondes.</p>
       </article>
     </div>
-  </div>
-</section>
-
-<section class="story" id="live">
-  <div class="story-intro">
-    <span class="kicker" data-i18n="s1.section.k">Capture &amp; transcription</span>
-    <h2 data-i18n="s1.section.t">Enregistrement en direct</h2>
-    <p data-i18n="s1.p">La transcription défile en temps réel pendant la réunion pour suivre chaque prise de parole au moment où elle est captée.</p>
-  </div>
-  <div class="wrap">
-    <div class="viz">
-      <figure class="ui-shot">
-        <img src="assets/screenshots/ui/fr/live-meeting.webp?v=1" data-ui-shot="live-meeting" width="840" height="1040" loading="lazy" alt="Enregistrement et transcription en direct dans VoiceOvya" data-alt-fr="Enregistrement et transcription en direct dans VoiceOvya" data-alt-en="Live recording and transcription in VoiceOvya">
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section class="assistant-capture" id="assistant">
-  <div class="wrap">
-    <div class="capture-head">
-      <h2 data-i18n="capture.assistant.t">Interrogez vos notes.</h2>
-      <p data-i18n="capture.assistant.p">Échangez avec vos notes grâce à l’assistant IA. Pendant ou après la réunion, retrouvez une décision, une action ou une information sans parcourir toute la transcription.</p>
-    </div>
-    <figure class="ui-shot">
-      <img src="assets/screenshots/ui/fr/assistant.webp?v=6" data-ui-shot="assistant" width="2544" height="1580" loading="lazy" alt="Assistant IA VoiceOvya dans une réunion" data-alt-fr="Assistant IA VoiceOvya dans une réunion" data-alt-en="VoiceOvya AI assistant inside a meeting">
-    </figure>
-  </div>
-</section>
-
-<section class="ai-actions-capture" id="ai-actions">
-  <div class="wrap">
-    <div class="capture-head">
-      <h2 data-i18n="capture.actions.t">Créez vos propres actions IA.</h2>
-      <p data-i18n="capture.actions.p">Créez vos actions IA (résumé, devis…) et accédez-y via l’assistant IA, ou générez automatiquement une carte dans le détail de la note.</p>
-    </div>
-    <figure class="ui-shot">
-      <img src="assets/screenshots/ui/fr/ai-actions.webp?v=6" data-ui-shot="ai-actions" width="1800" height="1340" loading="lazy" alt="Configuration des actions IA dans VoiceOvya" data-alt-fr="Configuration des actions IA dans VoiceOvya" data-alt-en="AI action configuration in VoiceOvya">
-    </figure>
   </div>
 </section>
 
@@ -429,45 +398,102 @@ footer a:hover{color:var(--text-dark)}
   </div>
 </section>
 
+<section class="story" id="live">
+  <div class="story-intro">
+    <span class="kicker" data-i18n="s1.section.k">Pendant la réunion</span>
+    <h2 data-i18n="s1.section.t">Capturez l’essentiel sans quitter la discussion.</h2>
+    <p data-i18n="s1.p">La transcription défile en direct, vous gardez le contexte et vous ne perdez aucun point important.</p>
+  </div>
+  <div class="wrap">
+    <div class="viz">
+      <figure class="ui-shot">
+        <img src="assets/screenshots/ui/fr/live-meeting.webp?v=1" data-ui-shot="live-meeting" width="840" height="1040" loading="lazy" alt="Enregistrement et transcription en direct dans VoiceOvya" data-alt-fr="Enregistrement et transcription en direct dans VoiceOvya" data-alt-en="Live recording and transcription in VoiceOvya">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="assistant-capture" id="assistant">
+  <div class="wrap">
+    <div class="capture-head">
+      <span class="kicker" data-i18n="capture.assistant.k">Après la réunion</span>
+      <h2 data-i18n="capture.assistant.t">Posez une question. Retrouvez la réponse.</h2>
+      <p data-i18n="capture.assistant.p">Demandez une décision, une action ou une information. L’assistant trouve le bon passage sans vous faire relire toute la transcription.</p>
+    </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/ui/fr/assistant.webp?v=6" data-ui-shot="assistant" width="2544" height="1580" loading="lazy" alt="Assistant IA VoiceOvya dans une réunion" data-alt-fr="Assistant IA VoiceOvya dans une réunion" data-alt-en="VoiceOvya AI assistant inside a meeting">
+    </figure>
+  </div>
+</section>
+
+<section class="ai-actions-capture" id="ai-actions">
+  <div class="wrap">
+    <div class="capture-head">
+      <span class="kicker" data-i18n="capture.actions.k">Passez à l’action</span>
+      <h2 data-i18n="capture.actions.t">Transformez chaque réunion en actions.</h2>
+      <p data-i18n="capture.actions.p">Résumés, comptes rendus, devis ou actions sur mesure : créez vos automatismes et retrouvez-les directement dans la note.</p>
+    </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/ui/fr/ai-actions.webp?v=6" data-ui-shot="ai-actions" width="1800" height="1340" loading="lazy" alt="Configuration des actions IA dans VoiceOvya" data-alt-fr="Configuration des actions IA dans VoiceOvya" data-alt-en="AI action configuration in VoiceOvya">
+    </figure>
+  </div>
+</section>
+
 <section class="models-capture" id="models">
   <div class="wrap">
     <div class="capture-head">
-      <span class="kicker" data-i18n="capture.models.k">IA locale ou cloud</span>
-      <h2 data-i18n="capture.models.t">Le bon modèle pour chaque besoin.</h2>
-      <p data-i18n="capture.models.p">Modèles locaux, privés et hors ligne sur votre Mac, ou puissance du cloud quand il faut aller plus loin.</p>
+      <span class="kicker" data-i18n="capture.models.k">Votre IA, vos règles</span>
+      <h2 data-i18n="capture.models.t">La puissance dont vous avez besoin. Le contrôle que vous exigez.</h2>
+      <p data-i18n="capture.models.p">Travaillez localement, hors ligne ou avec le cloud de votre choix, sans compromis sur la maîtrise de vos données.</p>
     </div>
-    <figure class="ui-shot">
-      <img src="assets/screenshots/marketing/fr/ai-models.webp?v=1" data-marketing-shot="ai-models" width="2880" height="1800" loading="lazy" alt="Modèles IA locaux et cloud dans VoiceOvya" data-alt-fr="Modèles IA locaux et cloud dans VoiceOvya" data-alt-en="Local and cloud AI models in VoiceOvya">
-    </figure>
+    <div class="models-layout">
+      <figure class="ui-shot">
+        <img src="assets/screenshots/ui/fr/ai-models.webp?v=1" data-ui-shot="ai-models" width="1800" height="1340" loading="lazy" alt="Réglages des modèles IA dans VoiceOvya" data-alt-fr="Réglages des modèles IA dans VoiceOvya" data-alt-en="AI model settings in VoiceOvya">
+      </figure>
+      <div class="model-groups">
+        <div class="model-group">
+          <h3 data-i18n="models.local.k">Vos données restent protégées et hors ligne</h3>
+          <div class="model-argument"><svg viewBox="0 0 24 24"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"/></svg><span><b>Apple Intelligence</b><small data-i18n="models.apple.local">Intégré à macOS</small></span></div>
+          <div class="model-argument"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg><span><b>MLX</b><small data-i18n="models.mlx">Modèles à télécharger</small></span></div>
+          <div class="model-argument"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>LM Studio · Ollama · llama.cpp</b><small data-i18n="models.local.tools">Vos outils de modèles locaux</small></span></div>
+          <p class="model-footnote" data-i18n="models.note">Les performances dépendent de la puissance et de la mémoire de votre Mac.</p>
+        </div>
+        <div class="model-group">
+          <h3 data-i18n="models.cloud.k">Dans le cloud, rapidité et performance</h3>
+          <div class="model-argument"><svg viewBox="0 0 24 24"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"/></svg><span><b>Apple Intelligence</b><small data-i18n="models.apple.cloud">Cloud privé Apple</small></span></div>
+          <div class="model-argument"><svg viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 0-8 5 5 0 0 0-9.7-1.7A4.2 4.2 0 0 0 7 18z"/></svg><span><b>Claude · ChatGPT</b><small data-i18n="models.api">Votre clé API</small></span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="privacy">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-i18n="priv.title">Vos données restent sur votre Mac.</h2>
-      <p data-i18n="priv.sub">Vous choisissez explicitement si une fonction utilise un service cloud.</p>
+      <h2 data-i18n="priv.title">Vos réunions restent les vôtres.</h2>
+      <p data-i18n="priv.sub">Audio, transcriptions et notes restent sur votre Mac. Le cloud ne s’utilise que si vous le choisissez.</p>
     </div>
     <div class="grid">
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-        <h3 data-i18n="priv.a.t">Stockage sur votre Mac</h3>
-        <p data-i18n="priv.a.p">Audio, transcriptions et notes restent sur votre machine. Aucun cloud n’est imposé.</p>
+        <h3 data-i18n="priv.a.t">Rien n’est envoyé par défaut</h3>
+        <p data-i18n="priv.a.p">Audio, transcriptions et notes restent sur votre Mac. Aucun cloud n’est imposé.</p>
       </div>
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h3 data-i18n="priv.b.t">Traitement local en option</h3>
-        <p data-i18n="priv.b.p">Avec Ollama, llama.cpp ou LM Studio, rien ne quitte votre Mac, même pas pour les résumés.</p>
+        <h3 data-i18n="priv.b.t">Même l’IA peut rester locale</h3>
+        <p data-i18n="priv.b.p">Avec Ollama, llama.cpp ou LM Studio, même les résumés peuvent rester sur votre Mac.</p>
       </div>
       <div class="card">
         <div class="ic g-accent"><span class="moneyicon">€</span></div>
-        <h3 data-i18n="priv.c.t">Vos coûts, vos choix</h3>
+        <h3 data-i18n="priv.c.t">Vous gardez la main sur les coûts</h3>
         <p data-i18n="priv.c.p">Utilisez un modèle local sans coût par requête, ou vos propres clés pour les services cloud.</p>
       </div>
       <div class="card">
         <div class="ic g-accent"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
-        <h3 data-i18n="priv.d.t">Exportable à tout moment</h3>
-        <p data-i18n="priv.d.p">Transcription et résumé en Markdown ou texte, quand vous voulez. Vos données vous suivent, sans verrouillage.</p>
+        <h3 data-i18n="priv.d.t">Vos notes restent portables</h3>
+        <p data-i18n="priv.d.p">Exportez transcription et résumé en Markdown ou texte, quand vous voulez, sans verrouillage.</p>
       </div>
     </div>
   </div>
@@ -476,8 +502,8 @@ footer a:hover{color:var(--text-dark)}
 <section class="faq" id="faq">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker" data-i18n="faq.k">Questions fréquentes</span>
-      <h2 data-i18n="faq.t">Ce qu’il faut savoir avant de commencer.</h2>
+      <span class="kicker" data-i18n="faq.k">Avant de commencer</span>
+      <h2 data-i18n="faq.t">Les réponses aux questions que vous vous posez.</h2>
     </div>
     <div class="faq-list">
       <details>
@@ -514,9 +540,9 @@ footer a:hover{color:var(--text-dark)}
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2 data-i18n="ct.t">Envie de tester VoiceOvya&nbsp;?</h2>
-    <p data-i18n="ct.p">Une question ou l’envie de participer aux premiers essais&nbsp;? Écrivez-nous.</p>
-    <a class="btn btn-lg" href="mailto:hello@voiceovya.com" data-i18n="ct.cta">Nous contacter</a>
+    <h2 data-i18n="ct.t">Prêt à ne plus perdre le fil&nbsp;?</h2>
+    <p data-i18n="ct.p">VoiceOvya arrive bientôt sur le Mac App Store. Une question ou envie de participer aux premiers essais&nbsp;?</p>
+    <a class="btn btn-lg" href="mailto:hello@voiceovya.com" data-i18n="ct.cta">Parler à l’équipe</a>
   </div>
 </section>
 
@@ -567,8 +593,8 @@ footer a:hover{color:var(--text-dark)}
 <script>
 const I18N = {
 en: {
-  "hero.title":"Never lose the thread of a meeting.",
-  "hero.sub":"VoiceOvya records, transcribes, and summarizes meetings on your Mac so you can quickly find what was decided and what still needs to be done.",
+  "hero.title":"Find what matters in every meeting.",
+  "hero.sub":"Record, transcribe, and find what matters in every meeting, without losing a decision or action item.",
   "nav.store":"Coming soon to the Mac App Store",
   "hero.download":"Coming soon to the Mac App Store",
   "hero.requirement":"Requires macOS 27 or later.",
@@ -608,41 +634,51 @@ en: {
   "hero.hl2":"Your choice of AI model",
   "hero.hl3":"Open exports",
   "capture.library.k":"Library",
-  "capture.library.t":"Every meeting, all in one place.",
-  "capture.library.p":"Organize your notes, search a conversation, and keep every action item close at hand.",
-  "journey.k":"How it works",
-  "journey.t":"One continuous thread, before, during, and after the meeting.",
-  "journey.p":"VoiceOvya stays with you from the moment recording starts until you need to find a piece of information again.",
-  "journey.s1.t":"Start at the right moment",
-  "journey.s1.p":"Start recording from a calendar notification or directly from the menu bar.",
-  "journey.s2.t":"Live translation",
-  "journey.s2.p":"Follow a bilingual transcript during the meeting.",
-  "journey.s3.t":"Automatic AI actions",
-  "journey.s3.p":"Automatically generate summaries, decisions, and tasks, with a configurable response language.",
-  "journey.s4.t":"Find a decision in seconds",
-  "journey.s4.p":"Library, search, and AI assistant help you find the right passage without rereading the whole meeting.",
-  "capture.assistant.t":"Ask your notes.",
-  "capture.assistant.p":"Chat with your notes through the AI assistant. During or after a meeting, find a decision, an action item, or a piece of information without going through the entire transcript.",
-  "capture.actions.t":"Create your own AI actions.",
-  "capture.actions.p":"Create your own AI actions (summary, quote, and more), access them from the AI assistant, or automatically generate a card in the note details.",
+  "capture.library.t":"Your meetings, every answer.",
+  "capture.library.p":"Advanced search: find a decision, an action item, or a key passage through the transcript and audio, without replaying the whole meeting.",
+  "journey.k":"From meeting to action",
+  "journey.t":"Record less. Remember what matters.",
+  "journey.p":"VoiceOvya supports you before, during, and after every meeting, turning conversations into usable decisions.",
+  "journey.s1.t":"Your calendar starts the process",
+  "journey.s1.p":"When the meeting begins, VoiceOvya lets you start recording in one step.",
+  "journey.s2.t":"Follow every exchange, even in another language",
+  "journey.s2.p":"Live transcription and translation keep the conversation accessible to everyone.",
+  "journey.s3.t":"Meeting notes build themselves",
+  "journey.s3.p":"Summaries, decisions, and tasks are ready to review and share, in your preferred language.",
+  "journey.s4.t":"Find an answer, not an hour of audio",
+  "journey.s4.p":"Search, library, and AI assistant find the right passage in seconds.",
+  "capture.assistant.k":"After the meeting",
+  "capture.assistant.t":"Ask a question. Find the answer.",
+  "capture.assistant.p":"Ask for a decision, an action item, or a detail. The assistant finds the right passage without making you reread the transcript.",
+  "capture.actions.k":"Move to action",
+  "capture.actions.t":"Turn every meeting into action.",
+  "capture.actions.p":"Summaries, meeting notes, quotes, or custom actions: create your automations and find them right inside the note.",
   "capture.calendar.k":"Always at the right time",
   "capture.calendar.t":"Start at the right time.",
   "capture.calendar.p":"VoiceOvya connects to your calendar and offers a notification to start recording.",
-  "capture.models.k":"Local or cloud AI",
-  "capture.models.t":"The right model for every need.",
-  "capture.models.p":"Private, local, offline models on your Mac, or cloud power when you need to go further.",
-  "priv.title":"Your data stays on your Mac.",
-  "priv.sub":"You explicitly choose whether a feature uses a cloud service.",
-  "priv.a.t":"Stored on your Mac",
-  "priv.a.p":"Audio, transcripts, and notes stay on your machine. No cloud is required.",
-  "priv.b.t":"Optional local processing",
-  "priv.b.p":"With Ollama, llama.cpp or LM Studio, nothing leaves your Mac, not even for summaries.",
-  "priv.c.t":"Your costs, your choice",
+  "capture.models.k":"Your AI, your rules",
+  "capture.models.t":"The power you need. The control you expect.",
+  "capture.models.p":"Work locally, offline, or with the cloud provider you choose, without compromising control of your data.",
+  "models.local.k":"Your data stays protected and offline",
+  "models.apple.local":"Built into macOS",
+  "models.mlx":"Models to download",
+  "models.local.tools":"Your local model tools",
+  "models.cloud.k":"In the cloud, speed and performance",
+  "models.apple.cloud":"Apple Private Cloud",
+  "models.api":"Your API key",
+  "models.note":"Performance depends on your Mac’s processing power and memory.",
+  "priv.title":"Your meetings stay yours.",
+  "priv.sub":"Audio, transcripts, and notes stay on your Mac. Cloud services are used only when you choose them.",
+  "priv.a.t":"Nothing is sent by default",
+  "priv.a.p":"Audio, transcripts, and notes stay on your Mac. No cloud is required.",
+  "priv.b.t":"Even AI can stay local",
+  "priv.b.p":"With Ollama, llama.cpp, or LM Studio, even summaries can stay on your Mac.",
+  "priv.c.t":"You keep control of costs",
   "priv.c.p":"Use a local model with no per-request cost, or your own keys for cloud services.",
-  "priv.d.t":"Exportable anytime",
-  "priv.d.p":"Transcript and summary in Markdown or plain text, whenever you want. Your data goes with you, no lock-in.",
-  "faq.k":"Frequently asked questions",
-  "faq.t":"What to know before you get started.",
+  "priv.d.t":"Your notes stay portable",
+  "priv.d.p":"Export transcripts and summaries in Markdown or plain text whenever you want, with no lock-in.",
+  "faq.k":"Before you start",
+  "faq.t":"Answers to the questions you are asking.",
   "faq.offline.q":"Does VoiceOvya work without an internet connection?",
   "faq.offline.a":"Yes. Recording, transcription, and note storage can work on your Mac. AI features can also stay local when you choose a compatible model. An internet connection is required when you choose to use a cloud AI service.",
   "faq.cloud.q":"Are my meetings sent to the cloud?",
@@ -658,15 +694,15 @@ en: {
   "faq.consent.q":"Should I tell participants before recording?",
   "faq.consent.a":"Yes. Before recording a meeting, make sure participants are informed and follow the rules that apply in your country and organization.",
   "s1.win":"Live",
-  "s1.section.k":"Capture &amp; transcription",
-  "s1.section.t":"Live recording",
+  "s1.section.k":"During the meeting",
+  "s1.section.t":"Capture what matters without leaving the conversation.",
   "s1.l1":"Let's start with the product roadmap and feedback from the pilot release.",
   "s1.l2":"Yes, three priorities to settle this quarter: local capture, summaries, and note search.",
   "s1.l3":"The first one is local transcription, because we want to keep meetings confidential.",
   "s1.l4":"Then we need to find a decision quickly without rereading the whole meeting.",
   "s1.l5":"Camille confirms that we launch the pilot with the product team next Monday.",
   "s1.k":"Live recording",
-  "s1.p":"The transcript scrolls in real time during the meeting, so you can follow each contribution as it is captured.",
+  "s1.p":"The transcript runs live, so you keep the context and do not miss an important point.",
   "s1.f1":"Mic and system audio captured together",
   "s1.f2":"A timestamped transcript, readable live",
   "s1.f4":"Window or overlay to suit the way you work",
@@ -728,9 +764,9 @@ en: {
   "footer.legal":"Legal notice",
   "footer.privacy":"Privacy policy",
   "footer.terms":"Terms of use",
-  "ct.t":"Want to try VoiceOvya?",
-  "ct.p":"Have a question or want to take part in early testing? Get in touch.",
-  "ct.cta":"Contact us"
+  "ct.t":"Ready to stop losing the thread?",
+  "ct.p":"VoiceOvya is coming soon to the Mac App Store. Have a question or want to take part in early testing?",
+  "ct.cta":"Talk to the team"
 }};
 
 const FR = {};
@@ -745,6 +781,90 @@ I18N.fr = FR;
 
 const SUPPORTED_LOCALES = ['fr','en','de','es','it','ja','ko','pt-BR'];
 ['de','es','it','ja','ko','pt-BR'].forEach(locale=>{ I18N[locale] = {...I18N.en}; });
+Object.assign(I18N.de, {
+  "hero.title":"Finden Sie das Wesentliche in jedem Meeting.",
+  "capture.library.t":"Ihre Meetings, alle Antworten.",
+  "journey.k":"Vom Meeting zur Aktion", "journey.t":"Weniger aufnehmen. Das Wesentliche behalten.",
+  "journey.s1.t":"Ihr Kalender gibt den Startschuss", "journey.s2.t":"Folgen Sie jedem Austausch, auch in einer anderen Sprache", "journey.s3.t":"Das Protokoll entsteht von selbst", "journey.s4.t":"Finden Sie eine Antwort, nicht eine Stunde Audio",
+  "capture.calendar.k":"Immer zum richtigen Zeitpunkt", "capture.calendar.t":"Starten Sie zum richtigen Zeitpunkt.",
+  "s1.section.k":"Während des Meetings", "s1.section.t":"Halten Sie das Wesentliche fest, ohne das Gespräch zu verlassen.",
+  "capture.assistant.k":"Nach dem Meeting", "capture.assistant.t":"Fragen Sie. Finden Sie die Antwort.",
+  "capture.actions.k":"In Aktion treten", "capture.actions.t":"Machen Sie aus jedem Meeting konkrete Aktionen.",
+  "capture.models.k":"Ihre KI, Ihre Regeln", "capture.models.t":"Die Leistung, die Sie brauchen. Die Kontrolle, die Sie erwarten.",
+  "models.local.k":"Ihre Daten bleiben geschützt und offline", "models.cloud.k":"In der Cloud: Geschwindigkeit und Leistung",
+  "priv.title":"Ihre Meetings bleiben Ihre.", "faq.k":"Bevor Sie beginnen", "faq.t":"Antworten auf Ihre Fragen.",
+  "ct.t":"Bereit, nie wieder den Faden zu verlieren?", "ct.cta":"Mit dem Team sprechen"
+});
+Object.assign(I18N.es, {
+  "hero.title":"Encuentra lo esencial en cada reunión.",
+  "capture.library.t":"Tus reuniones, todas las respuestas.",
+  "journey.k":"De la reunión a la acción", "journey.t":"Graba menos. Recuerda lo importante.",
+  "journey.s1.t":"Tu calendario marca el inicio", "journey.s2.t":"Sigue cada conversación, incluso en otro idioma", "journey.s3.t":"El acta se crea sola", "journey.s4.t":"Encuentra una respuesta, no una hora de audio",
+  "capture.calendar.k":"Siempre en el momento adecuado", "capture.calendar.t":"Empieza en el momento adecuado.",
+  "s1.section.k":"Durante la reunión", "s1.section.t":"Captura lo importante sin salir de la conversación.",
+  "capture.assistant.k":"Después de la reunión", "capture.assistant.t":"Haz una pregunta. Encuentra la respuesta.",
+  "capture.actions.k":"Pasa a la acción", "capture.actions.t":"Convierte cada reunión en acciones.",
+  "capture.models.k":"Tu IA, tus reglas", "capture.models.t":"La potencia que necesitas. El control que exiges.",
+  "models.local.k":"Tus datos siguen protegidos y sin conexión", "models.cloud.k":"En la nube, rapidez y rendimiento",
+  "priv.title":"Tus reuniones siguen siendo tuyas.", "faq.k":"Antes de empezar", "faq.t":"Respuestas a tus preguntas.",
+  "ct.t":"¿Listo para no perder nunca el hilo?", "ct.cta":"Hablar con el equipo"
+});
+Object.assign(I18N.it, {
+  "hero.title":"Trova ciò che conta in ogni riunione.",
+  "capture.library.t":"Le tue riunioni, tutte le risposte.",
+  "journey.k":"Dalla riunione all’azione", "journey.t":"Registra meno. Ricorda ciò che conta.",
+  "journey.s1.t":"Il tuo calendario dà il via", "journey.s2.t":"Segui ogni scambio, anche in un’altra lingua", "journey.s3.t":"Il verbale si crea da solo", "journey.s4.t":"Trova una risposta, non un’ora di audio",
+  "capture.calendar.k":"Sempre al momento giusto", "capture.calendar.t":"Inizia al momento giusto.",
+  "s1.section.k":"Durante la riunione", "s1.section.t":"Cattura ciò che conta senza uscire dalla conversazione.",
+  "capture.assistant.k":"Dopo la riunione", "capture.assistant.t":"Fai una domanda. Trova la risposta.",
+  "capture.actions.k":"Passa all’azione", "capture.actions.t":"Trasforma ogni riunione in azioni.",
+  "capture.models.k":"La tua IA, le tue regole", "capture.models.t":"La potenza che ti serve. Il controllo che pretendi.",
+  "models.local.k":"I tuoi dati restano protetti e offline", "models.cloud.k":"Nel cloud, velocità e prestazioni",
+  "priv.title":"Le tue riunioni restano tue.", "faq.k":"Prima di iniziare", "faq.t":"Le risposte alle tue domande.",
+  "ct.t":"Pronto a non perdere più il filo?", "ct.cta":"Parla con il team"
+});
+Object.assign(I18N['pt-BR'], {
+  "hero.title":"Encontre o que importa em cada reunião.",
+  "capture.library.t":"Suas reuniões, todas as respostas.",
+  "journey.k":"Da reunião à ação", "journey.t":"Grave menos. Lembre do que importa.",
+  "journey.s1.t":"Seu calendário dá o início", "journey.s2.t":"Acompanhe cada conversa, mesmo em outro idioma", "journey.s3.t":"A ata se constrói sozinha", "journey.s4.t":"Encontre uma resposta, não uma hora de áudio",
+  "capture.calendar.k":"Sempre na hora certa", "capture.calendar.t":"Comece na hora certa.",
+  "s1.section.k":"Durante a reunião", "s1.section.t":"Capture o que importa sem sair da conversa.",
+  "capture.assistant.k":"Depois da reunião", "capture.assistant.t":"Faça uma pergunta. Encontre a resposta.",
+  "capture.actions.k":"Entre em ação", "capture.actions.t":"Transforme cada reunião em ações.",
+  "capture.models.k":"Sua IA, suas regras", "capture.models.t":"A potência de que você precisa. O controle que você exige.",
+  "models.local.k":"Seus dados permanecem protegidos e offline", "models.cloud.k":"Na nuvem, velocidade e desempenho",
+  "priv.title":"Suas reuniões continuam sendo suas.", "faq.k":"Antes de começar", "faq.t":"Respostas para as suas perguntas.",
+  "ct.t":"Pronto para não perder mais o fio?", "ct.cta":"Fale com a equipe"
+});
+Object.assign(I18N.ja, {
+  "hero.title":"会議ごとの大切なことを、すぐに見つける。",
+  "capture.library.t":"すべての会議に、すべての答えを。",
+  "journey.k":"会議から行動へ", "journey.t":"記録は少なく。大切なことは確実に。",
+  "journey.s1.t":"カレンダーが開始の合図", "journey.s2.t":"別の言語でも、すべての会話を追える", "journey.s3.t":"議事録を自動で作成", "journey.s4.t":"1時間の音声ではなく、答えを見つける",
+  "capture.calendar.k":"いつでも最適なタイミングで", "capture.calendar.t":"最適なタイミングで開始。",
+  "s1.section.k":"会議中", "s1.section.t":"会話を離れずに、大切なことを記録。",
+  "capture.assistant.k":"会議後", "capture.assistant.t":"質問する。答えが見つかる。",
+  "capture.actions.k":"行動につなげる", "capture.actions.t":"すべての会議を行動に変える。",
+  "capture.models.k":"AIも、ルールも、自分で選ぶ", "capture.models.t":"必要なパワーと、求めるコントロールを。",
+  "models.local.k":"データは保護され、オフラインのまま", "models.cloud.k":"クラウドでは、高速かつ高性能",
+  "priv.title":"会議データは、あなたのもの。", "faq.k":"始める前に", "faq.t":"よくある質問への回答。",
+  "ct.t":"もう会議の流れを見失わない準備はできましたか？", "ct.cta":"チームに相談する"
+});
+Object.assign(I18N.ko, {
+  "hero.title":"모든 회의에서 중요한 내용을 찾아보세요.",
+  "capture.library.t":"모든 회의, 모든 답변.",
+  "journey.k":"회의에서 실행까지", "journey.t":"적게 기록하고, 중요한 내용을 기억하세요.",
+  "journey.s1.t":"캘린더가 시작을 알려줍니다", "journey.s2.t":"다른 언어로도 모든 대화를 따라가세요", "journey.s3.t":"회의록이 자동으로 완성됩니다", "journey.s4.t":"한 시간의 오디오 대신 답을 찾으세요",
+  "capture.calendar.k":"언제나 적절한 순간에", "capture.calendar.t":"적절한 순간에 시작하세요.",
+  "s1.section.k":"회의 중", "s1.section.t":"대화에서 벗어나지 않고 중요한 내용을 기록하세요.",
+  "capture.assistant.k":"회의 후", "capture.assistant.t":"질문하세요. 답을 찾으세요.",
+  "capture.actions.k":"실행으로 옮기기", "capture.actions.t":"모든 회의를 실행으로 바꾸세요.",
+  "capture.models.k":"나의 AI, 나의 규칙", "capture.models.t":"필요한 성능, 원하는 제어.",
+  "models.local.k":"데이터는 보호되고 오프라인으로 유지됩니다", "models.cloud.k":"클라우드에서는 속도와 성능",
+  "priv.title":"회의는 언제나 당신의 것입니다.", "faq.k":"시작하기 전에", "faq.t":"궁금한 점에 대한 답변.",
+  "ct.t":"더 이상 회의 흐름을 놓치지 않을 준비가 되셨나요?", "ct.cta":"팀에 문의하기"
+});
 function normalizeLocale(value){
   const locale = String(value || '').toLowerCase();
   if (locale.startsWith('fr')) return 'fr'; if (locale.startsWith('de')) return 'de';
