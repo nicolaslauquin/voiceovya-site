@@ -80,8 +80,11 @@ header{position:relative;z-index:1;background:rgba(244,248,246,.75);backdrop-fil
 .assistant-capture .ui-shot{margin:0 auto}
 .translation-capture{padding:72px 0;background:var(--bg-clear)}
 .translation-capture .capture-head{margin-top:0}
+.translation-capture .ui-shot{max-width:480px}
 .ai-actions-capture{padding:72px 0;background:#fff}
 .ai-actions-capture .capture-head{margin-top:0}
+.ai-actions-capture .ui-shot{max-width:756px}
+.calendar-capture{padding:72px 0;background:var(--accent-soft)}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 
 /* ---- Product journey ---- */
@@ -189,6 +192,7 @@ section{padding:72px 0}
 .mopt .mb{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;flex:none}
 .mopt .mb.local{background:var(--accent-soft);color:var(--accent-deep)}
 .mopt .mb.online{background:rgba(0,0,0,.06);color:var(--text-medium)}
+.mopt .mb.experimental{background:#fff0d8;color:#a45d00}
 .pnote{margin-top:12px;font-size:12.5px;color:var(--text-medium)}
 
 /* ---- Contact band ---- */
@@ -330,7 +334,7 @@ footer a:hover{color:var(--text-dark)}
       <p data-i18n="capture.library.p">Classez vos notes, recherchez un échange et gardez les actions à suivre sous la main.</p>
     </div>
     <figure class="ui-shot">
-      <img src="assets/screenshots/ui/fr/library.webp?v=4" data-ui-shot="library" width="1700" height="1280" loading="eager" alt="Bibliothèque de réunions VoiceOvya" data-alt-fr="Bibliothèque de réunions VoiceOvya" data-alt-en="VoiceOvya meeting library">
+      <img src="assets/screenshots/ui/fr/library.webp?v=6" data-ui-shot="library" width="2080" height="1580" loading="eager" alt="Bibliothèque de réunions VoiceOvya" data-alt-fr="Bibliothèque de réunions VoiceOvya" data-alt-en="VoiceOvya meeting library">
     </figure>
   </div>
 </div>
@@ -412,7 +416,7 @@ footer a:hover{color:var(--text-dark)}
       <p data-i18n="capture.assistant.p">Échangez avec vos notes grâce à l’assistant IA. Pendant ou après la réunion, retrouvez une décision, une action ou une information sans parcourir toute la transcription.</p>
     </div>
     <figure class="ui-shot">
-      <img src="assets/screenshots/ui/fr/assistant.webp?v=4" data-ui-shot="assistant" width="2080" height="1280" loading="lazy" alt="Assistant IA VoiceOvya dans une réunion" data-alt-fr="Assistant IA VoiceOvya dans une réunion" data-alt-en="VoiceOvya AI assistant inside a meeting">
+      <img src="assets/screenshots/ui/fr/assistant.webp?v=6" data-ui-shot="assistant" width="2544" height="1580" loading="lazy" alt="Assistant IA VoiceOvya dans une réunion" data-alt-fr="Assistant IA VoiceOvya dans une réunion" data-alt-en="VoiceOvya AI assistant inside a meeting">
     </figure>
   </div>
 </section>
@@ -424,7 +428,7 @@ footer a:hover{color:var(--text-dark)}
       <p data-i18n="capture.translation.p">Écoutez dans une langue et suivez la traduction au fil de la conversation.</p>
     </div>
     <figure class="ui-shot">
-      <img src="assets/screenshots/ui/fr/translation.webp?v=4" data-ui-shot="translation" width="1880" height="1230" loading="lazy" alt="Traduction en temps réel dans VoiceOvya" data-alt-fr="Traduction en temps réel dans VoiceOvya" data-alt-en="Real-time translation in VoiceOvya">
+      <img src="assets/screenshots/ui/fr/translation.webp?v=6" data-ui-shot="translation" width="840" height="1040" loading="lazy" alt="Traduction en temps réel dans VoiceOvya" data-alt-fr="Traduction en temps réel dans VoiceOvya" data-alt-en="Real-time translation in VoiceOvya">
     </figure>
   </div>
 </section>
@@ -436,57 +440,16 @@ footer a:hover{color:var(--text-dark)}
       <p data-i18n="capture.actions.p">Créez vos actions IA (résumé, devis…) et accédez-y via l’assistant IA, ou générez automatiquement une carte dans le détail de la note.</p>
     </div>
     <figure class="ui-shot">
-      <img src="assets/screenshots/ui/fr/ai-actions.webp?v=4" data-ui-shot="ai-actions" width="1700" height="1270" loading="lazy" alt="Configuration des actions IA dans VoiceOvya" data-alt-fr="Configuration des actions IA dans VoiceOvya" data-alt-en="AI action configuration in VoiceOvya">
+      <img src="assets/screenshots/ui/fr/ai-actions.webp?v=6" data-ui-shot="ai-actions" width="1800" height="1340" loading="lazy" alt="Configuration des actions IA dans VoiceOvya" data-alt-fr="Configuration des actions IA dans VoiceOvya" data-alt-en="AI action configuration in VoiceOvya">
     </figure>
   </div>
 </section>
 
-<section class="story" id="calendar">
-  <div class="story-intro">
-    <span class="kicker" data-i18n="s3.k">Agenda</span>
-    <h2 data-i18n="s3.t">Démarrez au bon moment.</h2>
-    <p data-i18n="s3.p">VoiceOvya s’appuie sur votre agenda pour proposer l’enregistrement au début de la réunion, depuis une notification ou la barre des menus.</p>
-  </div>
+<section class="calendar-capture" id="calendar">
   <div class="wrap">
-    <div class="viz">
-      <div class="device plain">
-        <div class="menubar">
-          <span class="mi"><img src="assets/appicon-sm.png" alt=""><span data-i18n="s3.mb">Organisation vacances</span></span>
-          <span class="sp"></span>
-          <svg class="st" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
-          <svg class="st" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4zM15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-          <svg class="st" viewBox="0 0 24 24"><rect x="2" y="7" width="17" height="10" rx="2.5"/><path d="M22 11v2"/><rect x="4" y="9" width="10" height="6" rx="1" fill="currentColor" stroke="none"/></svg>
-          <span class="dim">12:04</span>
-        </div>
-        <div class="calrow">
-          <div class="mbmenu">
-            <div class="mmh" data-i18n="s3.mh">Prochaines réunions</div>
-            <div class="mmi hov"><div class="mmt"><b data-i18n="s3.m1">Organisation vacances</b><div class="mms">12:00 – 12:30</div></div><span class="mmr" data-i18n="s3.m1r">en cours</span></div>
-            <div class="mmi"><div class="mmt"><b data-i18n="s3.m2">Association AG</b><div class="mms">13:00 – 13:30</div></div><span class="mmr" data-i18n="s3.m2r">dans 51 min</span></div>
-            <div class="msep"></div>
-            <div class="mmi" data-i18n="s3.launch">Lancer un enregistrement</div>
-            <div class="msep"></div>
-            <div class="mmi" data-i18n="s3.open">Ouvrir VoiceOvya</div>
-            <div class="mmi" data-i18n="s3.prefs">Accéder aux préférences</div>
-            <div class="mmi" data-i18n="s3.quit">Quitter VoiceOvya</div>
-          </div>
-          <div class="notif">
-            <img class="nicon" src="assets/appicon-sm.png" alt="">
-            <div class="ntxt">
-              <div class="nt" data-i18n="s3.nt">Organisation vacances</div>
-              <div class="nd">16:00 – 16:30</div>
-            </div>
-            <button class="nbtn" data-i18n="s3.b1">Lancer l'enregistrement</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text">
-      <ul class="feats">
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f1">Notification à l'ouverture de chaque réunion</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="s3.f2">Enregistrement rapide depuis la barre des menus</span></li>
-      </ul>
-    </div>
+    <figure class="ui-shot">
+      <img src="assets/screenshots/marketing/fr/agenda-start.webp?v=1" data-marketing-shot="agenda-start" width="2880" height="1800" loading="lazy" alt="VoiceOvya propose de démarrer l'enregistrement au début d'une réunion" data-alt-fr="VoiceOvya propose de démarrer l'enregistrement au début d'une réunion" data-alt-en="VoiceOvya prompts you to start recording when a meeting begins">
+    </figure>
   </div>
 </section>
 
@@ -504,7 +467,7 @@ footer a:hover{color:var(--text-dark)}
         <p data-i18n="mo.ep">VoiceOvya peut utiliser Apple Intelligence sans modèle supplémentaire à installer.</p>
         <div class="pviz">
           <div class="mopt sel"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Apple Intelligence</span><span class="mb local" data-i18n="mo.builtin">Intégré macOS</span></div>
-          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">MLX</span><span class="mb local" data-i18n="mo.local">Local</span></div>
+          <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">MLX</span><span class="mb experimental" data-i18n="mo.experimental">Expérimental</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">Claude</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
           <div class="mopt"><svg class="check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="mn">ChatGPT</span><span class="mb online" data-i18n="mo.key">Votre clé API</span></div>
         </div>
@@ -789,6 +752,7 @@ en: {
   "mo.pp":"Connect a local model through Ollama, llama.cpp, or LM Studio. You choose what runs on your Mac.",
   "mo.builtin":"Built into macOS",
   "mo.local":"Local",
+  "mo.experimental":"Experimental",
   "mo.key":"Your API key",
   "mo.note":"Already using the OpenAI or Anthropic APIs? Add your own key.",
   "mo.pn":"Choose the tool and model suited to your needs.",
@@ -836,7 +800,8 @@ function setLang(l){
   document.querySelectorAll('[data-i18n-ph]').forEach(e=>{ e.placeholder=d[e.dataset.i18nPh] ?? I18N.en[e.dataset.i18nPh] ?? FR[e.dataset.i18nPh] ?? e.placeholder; });
   document.querySelectorAll('[data-alt-fr]').forEach(e=>{ e.alt = l === 'fr' ? e.dataset.altFr : e.dataset.altEn; });
   const captureLocale = l === 'fr' ? 'fr' : 'en';
-  document.querySelectorAll('[data-ui-shot]').forEach(e=>{ e.src = `assets/screenshots/ui/${captureLocale}/${e.dataset.uiShot}.webp?v=4`; });
+  document.querySelectorAll('[data-ui-shot]').forEach(e=>{ e.src = `assets/screenshots/ui/${captureLocale}/${e.dataset.uiShot}.webp?v=6`; });
+  document.querySelectorAll('[data-marketing-shot]').forEach(e=>{ e.src = `assets/screenshots/marketing/${captureLocale}/${e.dataset.marketingShot}.webp?v=1`; });
   document.documentElement.lang = l;
   document.title = l === 'fr' ? 'VoiceOvya · Gardez le fil de vos réunions' : 'VoiceOvya · Never lose the thread of a meeting';
   document.querySelector('meta[name="description"]').content = l === 'fr'
