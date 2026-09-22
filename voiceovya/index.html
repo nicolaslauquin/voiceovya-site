@@ -337,8 +337,8 @@ footer a:hover{color:var(--text-dark)}
     <h1 data-i18n="hero.title">Retrouvez l’essentiel de chaque réunion.</h1>
     <p class="sub" data-i18n="hero.sub">Enregistrez, transcrivez et retrouvez l’essentiel de chaque réunion, sans perdre une décision ni une action.</p>
     <div class="cta-row">
-      <a class="btn btn-primary btn-lg" id="beta-cta" href="mailto:hello+betacontact@voiceovya.com?subject=Join%20the%20beta%20test%20program&amp;body=Please%20add%20me%20to%20the%20beta%20test%20program.%0A%0AMy%20motivation%3A%0A" data-i18n="hero.download" data-telemetry-event="Marketing.BetaSignup.clicked">Rejoindre la bêta sur TestFlight</a>
-      <a class="btn btn-secondary btn-lg" id="updates-cta" href="mailto:hello+betacontact@voiceovya.com?subject=Keep%20me%20updated&amp;body=Please%20keep%20me%20updated%20about%20VoiceOvya.%0A" data-i18n="hero.updates" data-telemetry-event="Marketing.UpdatesSignup.clicked">Me tenir informé</a>
+      <a class="btn btn-primary btn-lg" id="beta-cta" href="mailto:hello+joinbeta@voiceovya.com?subject=Join%20the%20beta%20test%20program&amp;body=Please%20add%20me%20to%20the%20beta%20test%20program." data-i18n="hero.download" data-telemetry-event="Marketing.BetaSignup.clicked">Rejoindre la bêta sur TestFlight</a>
+      <a class="btn btn-secondary btn-lg" id="updates-cta" href="mailto:hello+betawaitlist@voiceovya.com?subject=Keep%20me%20updated&amp;body=Please%20keep%20me%20updated%20about%20VoiceOvya.%0A" data-i18n="hero.updates" data-telemetry-event="Marketing.UpdatesSignup.clicked">Me tenir informé</a>
     </div>
     <p class="note" data-i18n="hero.requirement">Nécessite macOS 27 ou une version ultérieure.</p>
     <p class="download-status hidden" id="download-status" aria-live="polite"></p>
@@ -605,7 +605,7 @@ en: {
   "nav.store":"Coming soon to the Mac App Store",
   "hero.download":"Join the beta on TestFlight",
   "beta.subject":"Join the beta test program",
-  "beta.body":"Please add me to the beta test program.\n\nMy motivation:\n",
+  "beta.body":"Please add me to the beta test program.",
   "hero.updates":"Keep me updated",
   "updates.subject":"Keep me updated",
   "updates.body":"Please keep me updated about VoiceOvya.\n",
@@ -787,7 +787,7 @@ document.querySelectorAll('[data-i18n-ph]').forEach(e=>FR[e.dataset.i18nPh]=e.pl
 Object.assign(FR, {
   "hero.download":"Rejoindre la bêta sur TestFlight",
   "beta.subject":"Rejoindre le programme bêta",
-  "beta.body":"Bonjour,\n\nJe souhaite rejoindre le programme bêta.\n\nMa motivation :\n",
+  "beta.body":"Bonjour,\n\nJe souhaite rejoindre le programme bêta.",
   "hero.updates":"Me tenir informé",
   "updates.subject":"Me tenir informé de VoiceOvya",
   "updates.body":"Bonjour,\n\nJe souhaite recevoir les actualités de VoiceOvya.\n",
@@ -954,42 +954,42 @@ Object.assign(I18N.de, {
   "priv.b.t":"Auch KI kann lokal bleiben", "priv.b.p":"Mit Ollama, llama.cpp oder LM Studio können selbst Zusammenfassungen auf Ihrem Mac bleiben.",
   "priv.c.t":"Sie behalten die Kosten im Griff", "priv.c.p":"Nutzen Sie ein lokales Modell ohne Kosten pro Anfrage oder eigene Schlüssel für Cloud-Dienste.",
   "priv.d.t":"Ihre Notizen bleiben portabel", "priv.d.p":"Exportieren Sie Transkripte und Zusammenfassungen jederzeit als Markdown oder Klartext, ohne Bindung."
-  ,"hero.download":"Beta auf TestFlight beitreten", "beta.subject":"Am Beta-Testprogramm teilnehmen", "beta.body":"Hallo,\n\nich möchte am Beta-Testprogramm teilnehmen.\n\nMeine Motivation:\n", "hero.updates":"Auf dem Laufenden bleiben", "updates.subject":"Bitte halten Sie mich auf dem Laufenden", "updates.body":"Hallo,\n\nbitte halten Sie mich über VoiceOvya auf dem Laufenden.\n", "hero.requirement":"Erfordert macOS 27 oder neuer.", "hero.hl1":"Daten auf Ihrem Mac", "hero.hl1b":"Funktioniert offline", "hero.hl2":"KI-Modell nach Wahl", "hero.hl3":"Offene Exporte"
+  ,"hero.download":"Beta auf TestFlight beitreten", "beta.subject":"Am Beta-Testprogramm teilnehmen", "beta.body":"Hallo,\n\nich möchte am Beta-Testprogramm teilnehmen.", "hero.updates":"Auf dem Laufenden bleiben", "updates.subject":"Bitte halten Sie mich auf dem Laufenden", "updates.body":"Hallo,\n\nbitte halten Sie mich über VoiceOvya auf dem Laufenden.\n", "hero.requirement":"Erfordert macOS 27 oder neuer.", "hero.hl1":"Daten auf Ihrem Mac", "hero.hl1b":"Funktioniert offline", "hero.hl2":"KI-Modell nach Wahl", "hero.hl3":"Offene Exporte"
 });
 Object.assign(I18N.es, {
   "priv.a.t":"No se envía nada por defecto", "priv.a.p":"El audio, las transcripciones y las notas se quedan en tu Mac. No necesitas la nube.",
   "priv.b.t":"Incluso la IA puede ser local", "priv.b.p":"Con Ollama, llama.cpp o LM Studio, incluso los resúmenes pueden quedarse en tu Mac.",
   "priv.c.t":"Mantienes el control de los costes", "priv.c.p":"Usa un modelo local sin coste por solicitud o tus propias claves para servicios cloud.",
   "priv.d.t":"Tus notas siguen siendo portables", "priv.d.p":"Exporta transcripciones y resúmenes en Markdown o texto sin formato cuando quieras, sin dependencia."
-  ,"hero.download":"Únete a la beta en TestFlight", "beta.subject":"Unirme al programa beta", "beta.body":"Hola,\n\nMe gustaría unirme al programa beta.\n\nMi motivación:\n", "hero.updates":"Mantenerme informado", "updates.subject":"Mantenme informado", "updates.body":"Hola,\n\nMe gustaría recibir novedades de VoiceOvya.\n", "hero.requirement":"Requiere macOS 27 o posterior.", "hero.hl1":"Datos en tu Mac", "hero.hl1b":"Funciona sin conexión", "hero.hl2":"Elige tu modelo de IA", "hero.hl3":"Exportaciones abiertas"
+  ,"hero.download":"Únete a la beta en TestFlight", "beta.subject":"Unirme al programa beta", "beta.body":"Hola,\n\nMe gustaría unirme al programa beta.", "hero.updates":"Mantenerme informado", "updates.subject":"Mantenme informado", "updates.body":"Hola,\n\nMe gustaría recibir novedades de VoiceOvya.\n", "hero.requirement":"Requiere macOS 27 o posterior.", "hero.hl1":"Datos en tu Mac", "hero.hl1b":"Funciona sin conexión", "hero.hl2":"Elige tu modelo de IA", "hero.hl3":"Exportaciones abiertas"
 });
 Object.assign(I18N.it, {
   "priv.a.t":"Nulla viene inviato per impostazione predefinita", "priv.a.p":"Audio, trascrizioni e note restano sul tuo Mac. Non è necessario alcun cloud.",
   "priv.b.t":"Anche l’IA può restare locale", "priv.b.p":"Con Ollama, llama.cpp o LM Studio, anche i riepiloghi possono restare sul tuo Mac.",
   "priv.c.t":"Mantieni il controllo dei costi", "priv.c.p":"Usa un modello locale senza costi per richiesta o le tue chiavi per servizi cloud.",
   "priv.d.t":"Le tue note restano portabili", "priv.d.p":"Esporta trascrizioni e riepiloghi in Markdown o testo semplice quando vuoi, senza vincoli."
-  ,"hero.download":"Partecipa alla beta su TestFlight", "beta.subject":"Partecipare al programma beta", "beta.body":"Ciao,\n\nVorrei partecipare al programma beta.\n\nLa mia motivazione:\n", "hero.updates":"Tienimi aggiornato", "updates.subject":"Tienimi aggiornato", "updates.body":"Ciao,\n\nVorrei ricevere gli aggiornamenti di VoiceOvya.\n", "hero.requirement":"Richiede macOS 27 o versione successiva.", "hero.hl1":"Dati sul tuo Mac", "hero.hl1b":"Funziona offline", "hero.hl2":"Scegli il tuo modello IA", "hero.hl3":"Esportazioni aperte"
+  ,"hero.download":"Partecipa alla beta su TestFlight", "beta.subject":"Partecipare al programma beta", "beta.body":"Ciao,\n\nVorrei partecipare al programma beta.", "hero.updates":"Tienimi aggiornato", "updates.subject":"Tienimi aggiornato", "updates.body":"Ciao,\n\nVorrei ricevere gli aggiornamenti di VoiceOvya.\n", "hero.requirement":"Richiede macOS 27 o versione successiva.", "hero.hl1":"Dati sul tuo Mac", "hero.hl1b":"Funziona offline", "hero.hl2":"Scegli il tuo modello IA", "hero.hl3":"Esportazioni aperte"
 });
 Object.assign(I18N['pt-BR'], {
   "priv.a.t":"Nada é enviado por padrão", "priv.a.p":"Áudio, transcrições e notas permanecem no seu Mac. Nenhuma nuvem é necessária.",
   "priv.b.t":"Até a IA pode ficar local", "priv.b.p":"Com Ollama, llama.cpp ou LM Studio, até os resumos podem permanecer no seu Mac.",
   "priv.c.t":"Você mantém o controle dos custos", "priv.c.p":"Use um modelo local sem custo por solicitação ou suas próprias chaves para serviços de nuvem.",
   "priv.d.t":"Suas notas continuam portáteis", "priv.d.p":"Exporte transcrições e resumos em Markdown ou texto simples quando quiser, sem bloqueio."
-  ,"hero.download":"Participe da beta no TestFlight", "beta.subject":"Participar do programa beta", "beta.body":"Olá,\n\nGostaria de participar do programa beta.\n\nMinha motivação:\n", "hero.updates":"Quero receber novidades", "updates.subject":"Quero receber novidades", "updates.body":"Olá,\n\nGostaria de receber novidades do VoiceOvya.\n", "hero.requirement":"Requer macOS 27 ou posterior.", "hero.hl1":"Dados no seu Mac", "hero.hl1b":"Funciona offline", "hero.hl2":"Escolha seu modelo de IA", "hero.hl3":"Exportações abertas"
+  ,"hero.download":"Participe da beta no TestFlight", "beta.subject":"Participar do programa beta", "beta.body":"Olá,\n\nGostaria de participar do programa beta.", "hero.updates":"Quero receber novidades", "updates.subject":"Quero receber novidades", "updates.body":"Olá,\n\nGostaria de receber novidades do VoiceOvya.\n", "hero.requirement":"Requer macOS 27 ou posterior.", "hero.hl1":"Dados no seu Mac", "hero.hl1b":"Funciona offline", "hero.hl2":"Escolha seu modelo de IA", "hero.hl3":"Exportações abertas"
 });
 Object.assign(I18N.ja, {
   "priv.a.t":"標準では何も送信しません", "priv.a.p":"音声、文字起こし、ノートは Mac に残ります。クラウドは必須ではありません。",
   "priv.b.t":"AI もローカルに保てます", "priv.b.p":"Ollama、llama.cpp、LM Studio を使えば、要約も Mac に残せます。",
   "priv.c.t":"コストも自分で管理", "priv.c.p":"リクエストごとの料金がないローカルモデル、またはクラウド用の独自キーを利用できます。",
   "priv.d.t":"ノートはいつでも持ち運べます", "priv.d.p":"文字起こしと要約を Markdown またはプレーンテキストでいつでも書き出せます。"
-  ,"hero.download":"TestFlight ベータに参加", "beta.subject":"ベータテストプログラムに参加", "beta.body":"こんにちは。\n\nベータテストプログラムへの参加を希望します。\n\n参加の動機：\n", "hero.updates":"最新情報を受け取る", "updates.subject":"VoiceOvya の最新情報を受け取りたい", "updates.body":"こんにちは。\n\nVoiceOvya の最新情報を受け取りたいです。\n", "hero.requirement":"macOS 27 以降が必要です。", "hero.hl1":"データは Mac に保存", "hero.hl1b":"オフラインで利用可能", "hero.hl2":"AI モデルを選択可能", "hero.hl3":"オープンな書き出し"
+  ,"hero.download":"TestFlight ベータに参加", "beta.subject":"ベータテストプログラムに参加", "beta.body":"こんにちは。\n\nベータテストプログラムへの参加を希望します。", "hero.updates":"最新情報を受け取る", "updates.subject":"VoiceOvya の最新情報を受け取りたい", "updates.body":"こんにちは。\n\nVoiceOvya の最新情報を受け取りたいです。\n", "hero.requirement":"macOS 27 以降が必要です。", "hero.hl1":"データは Mac に保存", "hero.hl1b":"オフラインで利用可能", "hero.hl2":"AI モデルを選択可能", "hero.hl3":"オープンな書き出し"
 });
 Object.assign(I18N.ko, {
   "priv.a.t":"기본적으로 전송되는 데이터가 없습니다", "priv.a.p":"오디오, 전사본, 노트는 Mac에 남습니다. 클라우드는 필요하지 않습니다.",
   "priv.b.t":"AI도 로컬에 유지할 수 있습니다", "priv.b.p":"Ollama, llama.cpp 또는 LM Studio를 사용하면 요약도 Mac에 유지할 수 있습니다.",
   "priv.c.t":"비용도 직접 관리합니다", "priv.c.p":"요청당 비용이 없는 로컬 모델이나 클라우드 서비스용 자체 키를 사용하세요.",
   "priv.d.t":"노트는 언제나 휴대할 수 있습니다", "priv.d.p":"전사본과 요약을 언제든 Markdown 또는 일반 텍스트로 내보낼 수 있습니다."
-  ,"hero.download":"TestFlight 베타 참여하기", "beta.subject":"베타 테스트 프로그램 참여", "beta.body":"안녕하세요.\n\n베타 테스트 프로그램에 참여하고 싶습니다.\n\n참여 동기:\n", "hero.updates":"새 소식 받기", "updates.subject":"VoiceOvya 새 소식 받기", "updates.body":"안녕하세요.\n\nVoiceOvya의 새 소식을 받고 싶습니다.\n", "hero.requirement":"macOS 27 이상이 필요합니다.", "hero.hl1":"데이터는 Mac에 저장", "hero.hl1b":"오프라인에서 작동", "hero.hl2":"AI 모델 선택", "hero.hl3":"자유로운 내보내기"
+  ,"hero.download":"TestFlight 베타 참여하기", "beta.subject":"베타 테스트 프로그램 참여", "beta.body":"안녕하세요.\n\n베타 테스트 프로그램에 참여하고 싶습니다.", "hero.updates":"새 소식 받기", "updates.subject":"VoiceOvya 새 소식 받기", "updates.body":"안녕하세요.\n\nVoiceOvya의 새 소식을 받고 싶습니다.\n", "hero.requirement":"macOS 27 이상이 필요합니다.", "hero.hl1":"데이터는 Mac에 저장", "hero.hl1b":"오프라인에서 작동", "hero.hl2":"AI 모델 선택", "hero.hl3":"자유로운 내보내기"
 });
 Object.assign(I18N.de, {
   "faq.offline.q":"Funktioniert VoiceOvya ohne Internetverbindung?", "faq.offline.a":"Ja. Aufnahme, Transkription und Speicherung können auf Ihrem Mac funktionieren. KI-Funktionen bleiben mit einem kompatiblen Modell ebenfalls lokal. Eine Internetverbindung ist nur nötig, wenn Sie freiwillig einen Cloud-KI-Dienst nutzen.",
@@ -1104,13 +1104,13 @@ function setLang(l){
   if (betaLink) {
     const subject = d['beta.subject'] ?? I18N.en['beta.subject'];
     const body = d['beta.body'] ?? I18N.en['beta.body'];
-    betaLink.href = `mailto:hello+betacontact@voiceovya.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    betaLink.href = `mailto:hello+joinbeta@voiceovya.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
   const updatesLink = document.getElementById('updates-cta');
   if (updatesLink) {
     const subject = d['updates.subject'] ?? I18N.en['updates.subject'];
     const body = d['updates.body'] ?? I18N.en['updates.body'];
-    updatesLink.href = `mailto:hello+betacontact@voiceovya.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    updatesLink.href = `mailto:hello+betawaitlist@voiceovya.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
   try{ localStorage.setItem('voiceovya-lang', l); }catch(e){}
   const dictatedText = document.querySelector('[data-dictate]')?.textContent.trim();
