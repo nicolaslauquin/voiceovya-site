@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SKIP_DMG=0
+SKIP_DMG=1
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --no-dmg) SKIP_DMG=1 ;;
+    --with-dmg) SKIP_DMG=0 ;;
     -h|--help)
-      echo "Usage: $(basename "$0") [--no-dmg]"
-      echo "  --no-dmg  Déploie le site sans réenvoyer le DMG (déjà en ligne)."
+      echo "Usage: $(basename "$0") [--with-dmg]"
+      echo "  --with-dmg  Déploie le site et envoie le DMG annoncé par l'appcast."
+      echo "  --no-dmg    Compatibilité : comportement par défaut, sans renvoi du DMG."
       exit 0 ;;
     *)
       echo "Option inconnue : $1" >&2
-      echo "Usage: $(basename "$0") [--no-dmg]" >&2
+      echo "Usage: $(basename "$0") [--with-dmg]" >&2
       exit 1 ;;
   esac
   shift
@@ -104,8 +106,8 @@ SFTP_PASS="$(security find-generic-password -a "${SFTP_USER}" -s "${KEYCHAIN_SER
   exit 1
 }
 
-# Le DMG pèse plusieurs centaines de Mo et ne change qu'à une nouvelle version : `--no-dmg` republie
-# le site sans le renvoyer et sans appliquer la rétention des DMG.
+# Le DMG ne change qu'à une nouvelle version. Par défaut, le script republie le site sans le
+# renvoyer et sans appliquer la rétention. `--with-dmg` active ces deux opérations.
 if (( SKIP_DMG == 0 )); then
   ARTIFACT_PUT="put \"${ARTIFACT_SOURCE}\" \"${ARTIFACT_REMOTE}\""
 else
@@ -229,7 +231,7 @@ for remote_path in "${INDEXABLE_PATHS[@]}"; do
 done
 echo "Vérifié : les cinq pages indexables ne servent aucun en-tête X-Robots-Tag noindex."
 
-# L'appcast annonce ce DMG, y compris avec --no-dmg : s'il manque ou diffère, Sparkle ne peut pas
+# L'appcast annonce ce DMG, même sans `--with-dmg` : s'il manque ou diffère, Sparkle ne peut pas
 # mettre les installations existantes à jour. Le fichier local est normalement conservé avec la
 # release ; quand il est présent, vérifier son contenu complet plutôt qu'un simple HTTP 200.
 if [[ -r "${ARTIFACT_SOURCE}" ]]; then

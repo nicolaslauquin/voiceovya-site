@@ -2,7 +2,7 @@
 
 ## Publication initiale
 
-1. Publier les changements SEO avec `./deploy-voiceovya.sh --no-dmg` depuis ce dossier.
+1. Publier les changements SEO avec `./deploy-voiceovya.sh` depuis ce dossier.
 2. Vérifier publiquement :
    - `https://voiceovya.com/robots.txt` autorise l'exploration et déclare le sitemap ;
    - `https://voiceovya.com/sitemap.xml` répond en HTTP 200 ;
@@ -30,7 +30,7 @@ La demande ne garantit pas l'indexation immédiate. Contrôler ensuite l'état d
 2. Adapter le suivi TelemetryDeck du CTA principal pour mesurer les ouvertures de la fiche Mac App Store. Décider si le CTA secondaire `#updates-cta` reste utile.
 3. Remplacer les libellés liés à la bêta ou à la sortie prochaine dans `hero.download`, `ct.p` et `compat.notmac` pour les huit langues. Supprimer les textes et le code de génération d'e-mail devenus inutilisés.
 4. Dans `config/v1/mac/version.json`, renseigner la même URL dans `appStoreURL`. Ne pas modifier le canal Sparkle direct ni son `appcast.xml` dans cette opération.
-5. Tester le CTA dans les huit langues, sur ordinateur et mobile, puis republier avec `./deploy-voiceovya.sh --no-dmg`.
+5. Tester le CTA dans les huit langues, sur ordinateur et mobile, puis republier avec `./deploy-voiceovya.sh`.
 6. Dans Search Console, inspecter à nouveau `https://voiceovya.com/`, lancer le test en direct et demander une nouvelle indexation.
 
 Ne renseigner l'URL App Store qu'une fois la fiche publique. Jusque-là, le site propose deux CTA cliquables par e-mail, pour rejoindre la bêta et recevoir les actualités. Le DMG reste disponible uniquement pour le canal de mise à jour directe et sa page technique n'est pas incluse dans le sitemap.
