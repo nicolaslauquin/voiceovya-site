@@ -8,20 +8,24 @@
     <loc>https://voiceovya.com/confidentialite.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/confidentialite.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voiceovya.com/confidentialite.html" />
   </url>
   <url>
     <loc>https://voiceovya.com/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/confidentialite.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voiceovya.com/confidentialite.html" />
   </url>
   <url>
     <loc>https://voiceovya.com/cgu.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/cgu.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/terms.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voiceovya.com/cgu.html" />
   </url>
   <url>
     <loc>https://voiceovya.com/terms.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://voiceovya.com/cgu.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://voiceovya.com/terms.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voiceovya.com/cgu.html" />
   </url>
 </urlset>

@@ -605,7 +605,6 @@ const I18N = {
 en: {
   "hero.title":"Find what matters in every meeting.",
   "hero.sub":"Record, transcribe, and find what matters in every meeting, without losing a decision or action item.",
-  "nav.store":"Coming soon to the Mac App Store",
   "hero.download":"Join the beta",
   "beta.subject":"Join the beta test program",
   "beta.body":"Please add me to the beta test program.",
@@ -1096,10 +1095,12 @@ function setLang(l){
   document.querySelectorAll('[data-ui-shot]').forEach(e=>{ e.src = `assets/screenshots/ui/${captureLocale}/${e.dataset.uiShot}.webp?v=6`; });
   document.querySelectorAll('[data-marketing-shot]').forEach(e=>{ e.src = `assets/screenshots/marketing/${captureLocale}/${e.dataset.marketingShot}.webp?v=1`; });
   document.documentElement.lang = l;
-  document.title = l === 'fr' ? 'VoiceOvya · Gardez le fil de vos réunions' : 'VoiceOvya · Never lose the thread of a meeting';
+  document.title = l === 'fr'
+    ? 'VoiceOvya · Gardez le fil de vos réunions'
+    : `VoiceOvya · ${d['hero.title']}`;
   document.querySelector('meta[name="description"]').content = l === 'fr'
     ? 'VoiceOvya enregistre, transcrit et résume vos réunions sur Mac pour vous aider à retrouver rapidement ce qui a été décidé et ce qu’il reste à faire.'
-    : 'VoiceOvya records, transcribes, and summarizes meetings on Mac so you can quickly find what was decided and what still needs to be done.';
+    : d['hero.sub'];
   document.getElementById('language').value = l;
   document.querySelector('[data-legal-page="privacy"]').href = l === 'fr' ? 'confidentialite.html' : 'privacy.html';
   document.querySelector('[data-legal-page="terms"]').href = l === 'fr' ? 'cgu.html' : 'terms.html';

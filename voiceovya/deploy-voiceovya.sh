@@ -23,6 +23,8 @@ REMOTE_DIR="/home/voiceoe/www/"            # ajuste si besoin (racine du site su
 KEYCHAIN_SERVICE="voiceovya-sftp"
 LOCAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PUBLIC_URL="https://voiceovya.com"
+INDEXABLE_FILES=(index.html confidentialite.html privacy.html cgu.html terms.html)
+INDEXABLE_PATHS=("" confidentialite.html privacy.html cgu.html terms.html)
 
 # A successful release keeps only its DMG and the previously published one. Cleanup happens
 # after upload and HTTP verification, so a failed deployment never removes a working download.
@@ -37,8 +39,7 @@ PUBLIC_URL="https://voiceovya.com"
 # décrit le build qui le lit, donc il est embarqué avec lui.
 # `appcast.xml` est produit par scripts/package-release.sh du repo app, signé avec la clé EdDSA,
 # et recopié ici : c'est le flux que l'app installée interroge (SUFeedURL).
-for file in index.html robots.txt sitemap.xml .htaccess .ovhconfig appcast.xml \
-            confidentialite.html privacy.html cgu.html terms.html \
+for file in "${INDEXABLE_FILES[@]}" robots.txt sitemap.xml .htaccess .ovhconfig appcast.xml \
             config/v1/mac/version.json config/v1/mac/config.json; do
   if [[ ! -r "${LOCAL_DIR}/${file}" ]]; then
     echo "Fichier manquant : ${LOCAL_DIR}/${file}" >&2
@@ -46,10 +47,36 @@ for file in index.html robots.txt sitemap.xml .htaccess .ovhconfig appcast.xml \
   fi
 done
 
-if rg -qi "<meta[[:space:]][^>]*name=[\"']robots[\"'][^>]*noindex" "${LOCAL_DIR}/index.html"; then
-  echo "La page d'accueil contient encore une balise robots noindex." >&2
+if ! xmllint --noout "${LOCAL_DIR}/sitemap.xml" "${LOCAL_DIR}/appcast.xml"; then
+  echo "Le sitemap ou l'appcast n'est pas un document XML valide." >&2
   exit 1
 fi
+if rg -qi '^[[:space:]]*Disallow:[[:space:]]*/[[:space:]]*$' "${LOCAL_DIR}/robots.txt"; then
+  echo "robots.txt interdit encore l'exploration de tout le site." >&2
+  exit 1
+fi
+if ! rg -Fq "Sitemap: ${PUBLIC_URL}/sitemap.xml" "${LOCAL_DIR}/robots.txt"; then
+  echo "robots.txt ne déclare pas le sitemap public." >&2
+  exit 1
+fi
+
+for index in "${!INDEXABLE_FILES[@]}"; do
+  file="${INDEXABLE_FILES[index]}"
+  public_url="${PUBLIC_URL}/${INDEXABLE_PATHS[index]}"
+  if rg -i "<meta[^>]*name[[:space:]]*=[[:space:]]*[\"'](robots|googlebot|bingbot)[\"'][^>]*>" \
+      "${LOCAL_DIR}/${file}" | rg -qi 'noindex'; then
+    echo "La page indexable ${file} contient encore une balise robots noindex." >&2
+    exit 1
+  fi
+  if ! rg -Fq "<link rel=\"canonical\" href=\"${public_url}\">" "${LOCAL_DIR}/${file}"; then
+    echo "La page indexable ${file} ne déclare pas son URL canonique ${public_url}." >&2
+    exit 1
+  fi
+  if ! rg -Fq "<loc>${public_url}</loc>" "${LOCAL_DIR}/sitemap.xml"; then
+    echo "Le sitemap ne contient pas l'URL canonique ${public_url}." >&2
+    exit 1
+  fi
+done
 
 # La version publiée est lue dans l'appcast plutôt que recopiée ici : l'appcast est produit et
 # signé par scripts/package-release.sh du repo app, jamais édité à la main, donc il ne peut pas
@@ -188,16 +215,19 @@ verify_served_file "${LOCAL_DIR}/config/v1/mac/version.json" "config/v1/mac/vers
 verify_served_file "${LOCAL_DIR}/config/v1/mac/config.json" "config/v1/mac/config.json"
 verify_served_file "${REDIRECT_PAGE}" "build/dist/index.html"
 
-if ! curl -fsSI --retry 2 --retry-delay 1 --max-time 30 \
-    "${PUBLIC_URL}/?deploy_check=$(date +%s)" -o "${VERIFY_HEADERS}"; then
-  echo "Le déploiement a échoué au contrôle HTTP des en-têtes de la page d'accueil." >&2
-  exit 1
-fi
-if rg -qi '^x-robots-tag:.*noindex' "${VERIFY_HEADERS}"; then
-  echo "Le déploiement a échoué : la page d'accueil sert encore un en-tête X-Robots-Tag noindex." >&2
-  exit 1
-fi
-echo "Vérifié : la page d'accueil ne sert aucun en-tête X-Robots-Tag noindex."
+for remote_path in "${INDEXABLE_PATHS[@]}"; do
+  page_name="${remote_path:-index.html}"
+  if ! curl -fsSI --retry 2 --retry-delay 1 --max-time 30 \
+      "${PUBLIC_URL}/${remote_path}?deploy_check=$(date +%s)" -o "${VERIFY_HEADERS}"; then
+    echo "Le déploiement a échoué au contrôle HTTP des en-têtes de ${page_name}." >&2
+    exit 1
+  fi
+  if rg -qi '^x-robots-tag:.*noindex' "${VERIFY_HEADERS}"; then
+    echo "Le déploiement a échoué : ${page_name} sert encore un en-tête X-Robots-Tag noindex." >&2
+    exit 1
+  fi
+done
+echo "Vérifié : les cinq pages indexables ne servent aucun en-tête X-Robots-Tag noindex."
 
 # L'appcast annonce ce DMG, y compris avec --no-dmg : s'il manque ou diffère, Sparkle ne peut pas
 # mettre les installations existantes à jour. Le fichier local est normalement conservé avec la
